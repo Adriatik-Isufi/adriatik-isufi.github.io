@@ -207,7 +207,7 @@ export default function FahrschulePage() {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden fixed inset-0 top-16 bg-white z-40 overflow-y-auto">
+            <div className="md:hidden fixed inset-0 top-16 bg-white z-60 overflow-y-auto">
               <div className="px-4 pt-4 pb-6 space-y-2">
                 {["Home", "Services", "Preise", "Über uns", "Bewertungen", "Kontakt"].map((item, index) => {
                   const sectionId = ["home", "services", "prices", "about", "reviews", "contact"][index]
