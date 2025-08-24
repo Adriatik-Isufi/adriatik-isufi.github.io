@@ -11,8 +11,8 @@ const nextConfig = {
   },
   output: 'export',
   trailingSlash: true,
-  basePath: process.env.NODE_ENV === 'production' ? '/adriatik-isufi.github.io' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/adriatik-isufi.github.io/' : '',
+  basePath: '',
+  assetPrefix: '',
 }
 
 export default nextConfig
