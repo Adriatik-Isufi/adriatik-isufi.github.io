@@ -8,7 +8,13 @@
     "deploy": "npm run export && touch out/.nojekyll",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "docker:build": "docker build -t fahrschule-06 .",
+    "docker:run": "docker run -p 8906:3000 fahrschule-06",
+    "docker:dev": "docker compose up fahrschule-dev -d",
+    "docker:prod": "docker compose up fahrschule-app -d",
+    "docker:stop": "docker compose down",
+    "docker:logs": "docker compose logs -f"
   },
   "dependencies": {
     "@emailjs/browser": "latest",
