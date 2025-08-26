@@ -112,7 +112,7 @@ export default function ComingSoon({ onEnterSite }: { onEnterSite: () => void })
               <span className="animate-blink ml-1">|</span>
             </h2>
             <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed animate-fade-in-delayed">
-              Wir arbeiten hart daran, Ihnen die beste Fahrschul-Erfahrung in n der Region Aargau und Olten zu bieten. Unsere neue Website wird
+              Wir arbeiten hart daran, Ihnen die beste Fahrschul-Erfahrung in der Region Aargau und Olten zu bieten. Unsere neue Website wird
               bald online sein!
             </p>
           </div>
