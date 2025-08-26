@@ -3,16 +3,19 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Phone, MapPin, Clock, Car, Users, Award, Star, CheckCircle, ArrowRight, Menu, X, Globe } from "lucide-react"
-import Image from "next/image"
+import { Car, Users, Award, Star, CheckCircle, ArrowRight, Menu, X, Globe, Phone, MapPin, Clock } from "lucide-react"
 import emailjs from "@emailjs/browser"
+import ComingSoon from "@/components/coming-soon"
 
 export default function FahrschulePage() {
+  const [showComingSoon, setShowComingSoon] = useState(true)
+
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
   const [formData, setFormData] = useState({
@@ -28,6 +31,9 @@ export default function FahrschulePage() {
   const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set())
 
   useEffect(() => {
+    if (showComingSoon) {
+      return
+    }
     const handleScroll = () => {
       setScrollY(window.scrollY)
 
@@ -71,7 +77,11 @@ export default function FahrschulePage() {
       window.removeEventListener("scroll", handleScroll)
       observer.disconnect()
     }
-  }, [])
+  }, [showComingSoon])
+
+  if (showComingSoon) {
+    return <ComingSoon onEnterSite={() => setShowComingSoon(false)} />
+  }
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -207,7 +217,10 @@ export default function FahrschulePage() {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden fixed inset-x-0 top-16 bg-white shadow-lg border-t border-gray-200 overflow-y-auto" style={{ zIndex: 60, height: "calc(100vh - 4rem)" }}>
+            <div
+              className="md:hidden fixed inset-x-0 top-16 bg-white shadow-lg border-t border-gray-200 overflow-y-auto"
+              style={{ zIndex: 60, height: "calc(100vh - 4rem)" }}
+            >
               <div className="px-4 pt-4 pb-6 space-y-2">
                 {["Home", "Services", "Preise", "Über uns", "Bewertungen", "Kontakt"].map((item, index) => {
                   const sectionId = ["home", "services", "prices", "about", "reviews", "contact"][index]
@@ -697,7 +710,26 @@ export default function FahrschulePage() {
                 </div>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative space-y-6">
+              {/* Instructor Photos */}
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="relative overflow-hidden rounded-xl shadow-lg">
+                  <img
+                    src="/instructor-with-car.jpg"
+                    alt="Fahrlehrer mit Fahrschule 06 Auto"
+                    className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="relative overflow-hidden rounded-xl shadow-lg">
+                  <img
+                    src="/instructor-in-car.jpg"
+                    alt="Fahrlehrer im Fahrschule 06 Auto"
+                    className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </div>
+
+              {/* Statistics */}
               <div className="bg-[#1351d8]/10 rounded-2xl p-8">
                 <div className="grid grid-cols-2 gap-6">
                   {[
