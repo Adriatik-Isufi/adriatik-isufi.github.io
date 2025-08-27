@@ -15,6 +15,18 @@ import ComingSoon from "@/components/coming-soon"
 
 export default function FahrschulePage() {
   const [showComingSoon, setShowComingSoon] = useState(true)
+  
+  // Check for preview token in URL parameters
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search)
+      const previewToken = urlParams.get('preview')
+      // Hard-to-guess preview token: fs06_preview_2024_secure_dev
+      if (previewToken === 'fs06_preview_2024_secure_dev') {
+        setShowComingSoon(false)
+      }
+    }
+  }, [])
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
