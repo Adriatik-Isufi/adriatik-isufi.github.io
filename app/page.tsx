@@ -300,14 +300,14 @@ export default function FahrschulePage() {
             <div className="space-y-8 animate-fade-in-up" data-animate="hero-content" id="hero-content">
               <div className="space-y-4">
                 <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20">
-                  Zürich's moderne Fahrschule
+                  Aargaus fresheste Fahrschule
                 </Badge>
                 <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
                   Willkommen bei <span className="text-[#1351d8]">Fahrschule 06</span>
                 </h1>
                 <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-                  Ihre professionelle Fahrschule in Zürich. Mit modernen Fahrzeugen, erfahrenen Fahrlehrern und
-                  individueller Betreuung bringen wir Sie sicher zum Führerschein.
+                  Ihre professionelle Fahrschule im Raum Aargau/Olten. Mit einem modernen Fahrzeug, erfahrenem Fahrlehrer
+                  und individueller Betreuung bringe ich dich sicher zum Führerschein.
                 </p>
               </div>
 
@@ -332,7 +332,7 @@ export default function FahrschulePage() {
 
               <div className="flex items-center space-x-8 pt-8">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-[#1351d8]">300+</div>
+                  <div className="text-2xl font-bold text-[#1351d8]">200+</div>
                   <div className="text-sm text-gray-600">Erfolgreiche Schüler</div>
                 </div>
                 <div className="text-center">
@@ -509,6 +509,89 @@ export default function FahrschulePage() {
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Transparente Preise ohne versteckte Kosten. Wählen Sie das Paket, das am besten zu Ihnen passt.
             </p>
+          </div>
+
+          {/* Individual Pricing Breakdown */}
+          <div className="mb-16">
+            <div className="bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-2xl p-8 shadow-lg">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Einzelpreise</h3>
+                <p className="text-gray-600">Flexible Buchung nach Ihren Bedürfnissen</p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Fahrstunden */}
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                    <Car className="h-5 w-5 text-[#1351d8] mr-2" />
+                    Fahrstunden
+                  </h4>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                      <div>
+                        <span className="font-medium text-gray-900">Einzellektion</span>
+                        <span className="text-sm text-gray-500 block">45 min</span>
+                      </div>
+                      <span className="font-semibold text-[#1351d8]">CHF 85.-</span>
+                    </div>
+                    <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                      <div>
+                        <span className="font-medium text-gray-900">Doppellektion</span>
+                        <span className="text-sm text-gray-500 block">90 min</span>
+                      </div>
+                      <span className="font-semibold text-[#1351d8]">CHF 160.-</span>
+                    </div>
+                    <div className="flex justify-between items-center py-2">
+                      <div>
+                        <span className="font-medium text-gray-900">Kontrollfahrt</span>
+                        <span className="text-sm text-gray-500 block">90 min</span>
+                      </div>
+                      <span className="font-semibold text-[#1351d8]">CHF 160.-</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Theorie */}
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                    <Users className="h-5 w-5 text-[#1351d8] mr-2" />
+                    Theorie
+                  </h4>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                      <div>
+                        <span className="font-medium text-gray-900">Einzellektion</span>
+                        <span className="text-sm text-gray-500 block">45 min</span>
+                      </div>
+                      <span className="font-semibold text-[#1351d8]">CHF 55.-</span>
+                    </div>
+                    <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                      <div>
+                        <span className="font-medium text-gray-900">Doppellektion</span>
+                        <span className="text-sm text-gray-500 block">90 min</span>
+                      </div>
+                      <span className="font-semibold text-[#1351d8]">CHF 90.-</span>
+                    </div>
+                    <div className="flex justify-between items-center py-2">
+                      <div>
+                        <span className="font-medium text-gray-900">VKU</span>
+                        <span className="text-sm text-gray-500 block">4 Teile (à 2h)</span>
+                      </div>
+                      <span className="font-semibold text-[#1351d8]">CHF 150.-</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Value Proposition Bridge */}
+            <div className="text-center mt-12 mb-8">
+              <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-[#1351d8]/10 via-[#1351d8]/5 to-[#1351d8]/10 px-8 py-4 rounded-full border border-[#1351d8]/20">
+                <div className="text-sm text-gray-600">Einzelbuchung zu teuer?</div>
+                <ArrowRight className="h-4 w-4 text-[#1351d8]" />
+                <div className="text-sm font-semibold text-[#1351d8]">Sparen Sie mit unseren Paketen!</div>
+              </div>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -745,7 +828,7 @@ export default function FahrschulePage() {
               <div className="bg-[#1351d8]/10 rounded-2xl p-8">
                 <div className="grid grid-cols-2 gap-6">
                   {[
-                    { value: "300+", label: "Erfolgreiche Fahrschüler" },
+                    { value: "200+", label: "Erfolgreiche Fahrschüler" },
                     { value: "90%", label: "Erfolgsquote bei Prüfungen" },
                     { value: "3+", label: "Jahre Erfahrung" },
                   ].map((stat, index) => (
