@@ -682,7 +682,7 @@ export default function FahrschulePage() {
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-[#1351d8]">CHF 850</span>
                   <span className="text-gray-600">.-</span>
-                  <div className="text-sm text-green-600 font-medium mt-2">Sie sparen CHF 100.-</div>
+                  <div className="text-sm text-green-600 font-medium mt-2">Sie sparen CHF 50.-</div>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
