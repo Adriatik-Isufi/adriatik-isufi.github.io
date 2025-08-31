@@ -11,13 +11,12 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Car, Users, Award, CheckCircle, ArrowRight, Menu, X, Globe, Phone, MapPin, Clock } from "lucide-react"
 import { LottieAnimation } from "@/components/lottie-animation"
-import ComingSoon from "@/components/coming-soon"
 import emailjs from "@emailjs/browser"
+import Link from "next/link"
 
 export default function FahrschulePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
-  const [showComingSoon, setShowComingSoon] = useState(true)
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -29,18 +28,7 @@ export default function FahrschulePage() {
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
   const [scrollY, setScrollY] = useState(0)
   const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set())
-
-  // Check for preview token in URL parameters
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const urlParams = new URLSearchParams(window.location.search)
-      const previewToken = urlParams.get('preview')
-      // Hard-to-guess preview token: fs06_preview_2024_secure_dev
-      if (previewToken === 'fs06_preview_2024_secure_dev') {
-        setShowComingSoon(false)
-      }
-    }
-  }, [])
+  const [selectedPackage, setSelectedPackage] = useState<string>("")
 
   useEffect(() => {
     const handleScroll = () => {
@@ -175,9 +163,13 @@ export default function FahrschulePage() {
     }
   }
 
-  // Show coming soon page by default, unless preview token is provided
-  if (showComingSoon) {
-    return <ComingSoon onEnterSite={() => setShowComingSoon(false)} />
+  const handlePackageSelect = (packageName: string) => {
+    setSelectedPackage(packageName)
+    setFormData((prev) => ({
+      ...prev,
+      message: `Hallo, ich interessiere mich für das ${packageName}. Bitte kontaktieren Sie mich für weitere Informationen.`,
+    }))
+    scrollToSection("contact")
   }
 
   return (
@@ -311,9 +303,7 @@ export default function FahrschulePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 animate-fade-in-up" data-animate="hero-content" id="hero-content">
               <div className="space-y-4">
-                <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20">
-                  Aargaus fresheste Fahrschule
-                </Badge>
+                <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20">Fahren mit Vision</Badge>
                 <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
                   Willkommen bei <span className="text-[#1351d8]">Fahrschule 06</span>
                 </h1>
@@ -434,7 +424,7 @@ export default function FahrschulePage() {
                           <CheckCircle className="h-10 w-10 sm:h-12 sm:w-12 text-white/60" />
                         </div>
                       </div>
-                      
+
                       {/* Orbiting background elements */}
                       <div className="absolute inset-0">
                         <div
@@ -456,7 +446,7 @@ export default function FahrschulePage() {
                           style={{ animationDelay: "1.5s" }}
                         ></div>
                       </div>
-                      
+
                       {/* Lottie Animation - appears on top when loaded */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <LottieAnimation
@@ -467,7 +457,7 @@ export default function FahrschulePage() {
                         />
                       </div>
                     </div>
-                    
+
                     {/* Floating elements around the circle */}
                     <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 bg-[#1351d8]/30 rounded-full animate-pulse"></div>
                     <div
@@ -629,7 +619,6 @@ export default function FahrschulePage() {
                       </div>
                       <div className="text-right">
                         <span className="font-semibold text-[#1351d8]">CHF 160.-</span>
-                        <span className="text-xs text-gray-500 block">zzgl. CHF 30 für VKU-Materialien</span>
                       </div>
                     </div>
                     <div className="flex justify-between items-center py-2">
@@ -637,7 +626,7 @@ export default function FahrschulePage() {
                         <span className="font-medium text-gray-900">Nothelferkurs</span>
                         <span className="text-sm text-gray-500 block">2 Teile (à 5h)</span>
                       </div>
-                      <span className="font-semibold text-[#1351d8]">CHF 140.-</span>
+                      <span className="font-semibold text-[#1351d8]">CHF 120.-</span>
                     </div>
                   </div>
                 </div>
@@ -703,7 +692,7 @@ export default function FahrschulePage() {
                 <div className="pt-6">
                   <Button
                     className="w-full bg-gray-700 hover:bg-gray-600 text-white transition-colors duration-300"
-                    onClick={() => scrollToSection("contact")}
+                    onClick={() => handlePackageSelect("Basis Paket")}
                   >
                     Paket wählen
                   </Button>
@@ -727,7 +716,7 @@ export default function FahrschulePage() {
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-[#1351d8]">CHF 950</span>
                   <span className="text-gray-600">.-</span>
-                  <div className="text-sm text-green-600 font-medium mt-2">Sie sparen CHF 140.-</div>
+                  <div className="text-sm text-green-600 font-medium mt-2">Sie sparen CHF 110.-</div>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -756,7 +745,7 @@ export default function FahrschulePage() {
                 <div className="pt-6">
                   <Button
                     className="w-full bg-[#1351d8]/90 hover:bg-[#1351d8] text-white transition-colors duration-300"
-                    onClick={() => scrollToSection("contact")}
+                    onClick={() => handlePackageSelect("Komfort Paket")}
                   >
                     Paket wählen
                   </Button>
@@ -777,7 +766,7 @@ export default function FahrschulePage() {
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-[#1351d8]">CHF 1,790</span>
                   <span className="text-gray-600">.-</span>
-                  <div className="text-sm text-green-600 font-medium mt-2">Sie sparen CHF 260.-</div>
+                  <div className="text-sm text-green-600 font-medium mt-2">Sie sparen CHF 230.-</div>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -810,7 +799,7 @@ export default function FahrschulePage() {
                 <div className="pt-6">
                   <Button
                     className="w-full bg-gray-700 hover:bg-gray-600 text-white transition-colors duration-300"
-                    onClick={() => scrollToSection("contact")}
+                    onClick={() => handlePackageSelect("Premium Paket")}
                   >
                     Paket wählen
                   </Button>
@@ -832,7 +821,8 @@ export default function FahrschulePage() {
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
                 Fahrschule 06 steht für moderne Fahrausbildung im Raum Aargau/Olten. Mit meiner Erfahrung, modernem
-                Fahrzeug und individueller Betreuung bringen wir dich sicher und entspannt zum Führerschein.
+                Fahrzeug und individueller Betreuung bringen wir dich sicher und entspannt zum Führerschein - ganz nach
+                unserem Motto: Fahren mit Vision.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
@@ -1022,9 +1012,7 @@ export default function FahrschulePage() {
                     <div>
                       <div className="font-semibold text-gray-900">Öffnungszeiten</div>
                       <div className="text-gray-600">
-                        Mo-Fr: 08:00 - 20:00
-                        <br />
-                        Sa: 08:00 - 16:00
+                        Mo-Sa: 08:00 - 20:00
                         <br />
                         So: Nach Vereinbarung
                       </div>
@@ -1180,8 +1168,7 @@ export default function FahrschulePage() {
             <div>
               <h4 className="font-semibold mb-4">Öffnungszeiten</h4>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li>Mo-Fr: 08:00 - 20:00</li>
-                <li>Sa: 08:00 - 16:00</li>
+                <li>Mo-Sa: 08:00 - 20:00</li>
                 <li>So: Nach Vereinbarung</li>
               </ul>
             </div>
@@ -1208,7 +1195,7 @@ export default function FahrschulePage() {
                   aria-label="Instagram"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12.017 2.016c2.687 0 3.007.01 4.067.059 1.06.048 1.636.228 2.02.378.507.197.87.433 1.25.813.38.38.616.743.813 1.25.15.384.33.96.378 2.02.049 1.06.059 1.38.059 4.067 0 2.687-.01 3.007-.059 4.067-.048 1.06-.228 1.636-.378 2.02-.197.507-.433.87-.813 1.25-.38.38-.743.616-1.25.813-.384.15-.96.33-2.02.378-1.06.049-1.38.059-4.067.059-2.687 0-3.007-.01-4.067-.059-1.06-.048-1.636-.228-2.02-.378-.507-.197-.87-.433-1.25-.813-.38.38-.743-.616-.813-1.25-.15-.384-.33-.96-.378-2.02-.049-1.06-.059-1.38-.059-4.067 0-2.687.01-3.007.059-4.067.048-1.06.228-1.636.378-2.02.197-.507.433-.87.813-1.25.38-.38.743-.616 1.25-.813.384-.15.96-.33 2.02-.378 1.06-.049 1.38-.059 4.067-.059zm0-2.016c-2.734 0-3.077.012-4.15.062-1.071.049-1.803.22-2.444.469-.661.257-1.223.602-1.782 1.161-.559.559-.904 1.121-1.161 1.782-.249.641-.42 1.373-.469 2.444-.05 1.073-.062 1.416-.062 4.15 0 2.734.012 3.077.062 4.15.049 1.071.22 1.803.469 2.444.257.661.602 1.223 1.161 1.782.559.559 1.121.904 1.782 1.161.641.249 1.373.42 2.444.469 1.073.05 1.416.062 4.15.062 2.734 0 3.077-.012 4.15-.062 1.071-.049 1.803-.22 2.444-.469.661-.257 1.223-.602 1.782-1.161.559-.559 1.121-.904 1.161-1.782.249-.641.42-1.373.469-2.444.05-1.073.062-1.416.062-4.15 0-2.734-.012-3.077-.062-4.15-.049-1.071-.22-1.803-.469-2.444-.257-.661-.602-1.223-1.161-1.782-.559-.559-1.121-.904-1.782-1.161-.641-.249-1.373-.42-2.444-.469-1.073-.05-1.416-.062-4.15-.062zm0 5.838c-2.403 0-4.35 1.947-4.35 4.35 0 2.403 1.947 4.35 4.35 4.35 2.403 0 4.35-1.947 4.35-4.35 0-2.403-1.947-4.35-4.35-4.35zm0 7.175c-1.564 0-2.825-1.261-2.825-2.825 0-1.564 1.261-2.825 2.825-2.825 1.564 0 2.825 1.261 2.825 2.825 0 1.564-1.261 2.825-2.825 2.825zm5.538-7.362c0 .561-.455 1.016-1.016 1.016-.561 0-1.016-.455-1.016-1.016 0-.561.455-1.016 1.016-1.016.561 0 1.016.455 1.016 1.016z" />
+                    <path d="M12.017 2.016c2.687 0 3.007.01 4.067.059 1.06.048 1.636.228 2.02.378.507.197.87.433 1.25.813.38.38.616.743.813 1.25.15.384.33.96.378 2.02.049 1.06.059 1.38.059 4.067 0 2.687-.01 3.007-.059 4.067-.048 1.06-.228 1.636-.378 2.02-.197.507-.433.87-.813 1.25-.38.38-.743-.616-.813-1.25-.15-.384-.33-.96-.378-2.02-.049-1.06-.059-1.38-.059-4.067 0-2.687.01-3.007.059-4.067.048-1.06.228-1.636.378-2.02.197-.507.433-.87.813-1.25.38-.38.743-.616 1.25-.813.384-.15.96-.33 2.02-.378 1.06-.049 1.38-.059 4.067-.059zm0-2.016c-2.734 0-3.077.012-4.15.062-1.071.049-1.803.22-2.444.469-.661.257-1.223.602-1.782 1.161-.559.559-.904 1.121-1.161 1.782-.249.641-.42 1.373-.469 2.444-.05 1.073-.062 1.416-.062 4.15 0 2.734.012 3.077.062 4.15.049 1.071.22 1.803.469 2.444.257.661.602 1.223 1.161 1.782.559.559 1.121.904 1.161-1.782.249-.641.42-1.373.469-2.444.05-1.073.062-1.416.062-4.15 0-2.734-.012-3.077-.062-4.15-.049-1.071-.22-1.803-.469-2.444-.257-.661-.602-1.223-1.161-1.782-.559-.559-1.121-.904-1.782-1.161-.641-.249-1.373-.42-2.444-.469-1.073-.05-1.416-.062-4.15-.062zm0 5.838c-2.403 0-4.35 1.947-4.35 4.35 0 2.403 1.947 4.35 4.35 4.35 2.403 0 4.35-1.947 4.35-4.35 0-2.403-1.947-4.35-4.35-4.35zm0 7.175c-1.564 0-2.825-1.261-2.825-2.825 0-1.564 1.261-2.825 2.825-2.825 1.564 0 2.825 1.261 2.825 2.825 0 1.564-1.261 2.825-2.825 2.825zm5.538-7.362c0 .561-.455 1.016-1.016 1.016-.561 0-1.016-.455-1.016-1.016 0-.561.455-1.016 1.016-1.016.561 0 1.016.455 1.016 1.016z" />
                   </svg>
                 </a>
                 <a
@@ -1238,7 +1225,12 @@ export default function FahrschulePage() {
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2024 Fahrschule 06. Alle Rechte vorbehalten.</p>
+            <div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
+              <p>&copy; 2025 Fahrschule 06. Alle Rechte vorbehalten.</p>
+              <Link href="/impressum" className="text-gray-400 hover:text-white transition-colors">
+                Impressum
+              </Link>
+            </div>
           </div>
         </div>
       </footer>

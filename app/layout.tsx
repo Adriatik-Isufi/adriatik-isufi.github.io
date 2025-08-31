@@ -81,8 +81,7 @@ export default function RootLayout({
                 "longitude": "8.2297"
               },
               "openingHours": [
-                "Mo-Fr 08:00-20:00",
-                "Sa 08:00-16:00"
+                "Mo-Sa 08:00-20:00",
               ],
               "serviceArea": {
                 "@type": "Place",
