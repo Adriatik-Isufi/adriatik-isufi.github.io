@@ -9,25 +9,11 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Car, Users, Award, Star, CheckCircle, ArrowRight, Menu, X, Globe, Phone, MapPin, Clock } from "lucide-react"
+import { Car, Users, Award, CheckCircle, ArrowRight, Menu, X, Globe, Phone, MapPin, Clock } from "lucide-react"
+import { LottieAnimation } from "@/components/lottie-animation"
 import emailjs from "@emailjs/browser"
-import ComingSoon from "@/components/coming-soon"
 
 export default function FahrschulePage() {
-  const [showComingSoon, setShowComingSoon] = useState(true)
-  
-  // Check for preview token in URL parameters
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const urlParams = new URLSearchParams(window.location.search)
-      const previewToken = urlParams.get('preview')
-      // Hard-to-guess preview token: fs06_preview_2024_secure_dev
-      if (previewToken === 'fs06_preview_2024_secure_dev') {
-        setShowComingSoon(false)
-      }
-    }
-  }, [])
-
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
   const [formData, setFormData] = useState({
@@ -43,9 +29,6 @@ export default function FahrschulePage() {
   const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set())
 
   useEffect(() => {
-    if (showComingSoon) {
-      return
-    }
     const handleScroll = () => {
       setScrollY(window.scrollY)
 
@@ -89,11 +72,7 @@ export default function FahrschulePage() {
       window.removeEventListener("scroll", handleScroll)
       observer.disconnect()
     }
-  }, [showComingSoon])
-
-  if (showComingSoon) {
-    return <ComingSoon onEnterSite={() => setShowComingSoon(false)} />
-  }
+  }, [])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -107,19 +86,25 @@ export default function FahrschulePage() {
     {
       title: "Kategorie B (Auto)",
       description: "Führerschein für Personenwagen bis 3.5t",
-      features: ["Theorieunterricht", "Praktische Fahrstunden", "Prüfungsvorbereitung"],
+      features: [
+        "Nothelferkurs",
+        "Theorieunterricht",
+        "Praktische Fahrstunden",
+        "Verkehrskundeunterricht (VKU)",
+        "Prüfungsvorbereitung",
+      ],
       icon: <Car className="h-8 w-8" />,
     },
     {
-      title: "Intensivkurse",
-      description: "Schnell zum Führerschein in wenigen Wochen",
-      features: ["Kompakte Ausbildung", "Flexible Termine", "Individuelle Betreuung"],
+      title: "Kategorie B BPT 121 (Taxi)",
+      description: "Führerschein für berufsmässigen Personentransport",
+      features: ["Theorieunterricht", "Praktische Fahrstunden", "Prüfungsvorbereitung"],
       icon: <Clock className="h-8 w-8" />,
     },
     {
-      title: "Auffrischungskurse",
-      description: "Für Wiedereinsteiger und unsichere Fahrer",
-      features: ["Vertrauensaufbau", "Moderne Fahrtechnik", "Stressfreies Lernen"],
+      title: "Kontrollfahrt",
+      description: "Für Besitzer ausländischer Führerausweise",
+      features: ["Kompetente Beratung", "Praktische Fahrstunden", "Prüfungsvorbereitung"],
       icon: <Users className="h-8 w-8" />,
     },
   ]
@@ -306,8 +291,8 @@ export default function FahrschulePage() {
                   Willkommen bei <span className="text-[#1351d8]">Fahrschule 06</span>
                 </h1>
                 <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-                  Ihre professionelle Fahrschule im Raum Aargau/Olten. Mit einem modernen Fahrzeug, erfahrenem Fahrlehrer
-                  und individueller Betreuung bringe ich dich sicher zum Führerschein.
+                  Deine professionelle Fahrschule im Raum Aargau/Olten. Mit einem modernen Fahrzeug, erfahrenem
+                  Fahrlehrer und individueller Betreuung bringe ich dich sicher zum Führerschein.
                 </p>
               </div>
 
@@ -334,10 +319,6 @@ export default function FahrschulePage() {
                 <div className="text-center">
                   <div className="text-2xl font-bold text-[#1351d8]">200+</div>
                   <div className="text-sm text-gray-600">Erfolgreiche Schüler</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-[#1351d8]">90%</div>
-                  <div className="text-sm text-gray-600">Erfolgsquote</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-[#1351d8]">3+</div>
@@ -384,53 +365,56 @@ export default function FahrschulePage() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Statistics Banner */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16 lg:mb-20">
-            {/* Left side - Statistics */}
-            <div className="text-white text-center lg:text-left">
-              <div className="mb-8">
-                <div className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
-                  <span className="text-[#1351d8]">90%</span> der Fahrschüler
-                </div>
-                <div className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-6">
-                  bestehen die Fahrprüfung beim ersten Versuch
-                </div>
-                <Button
-                  size="lg"
-                  className="bg-[#1351d8] hover:bg-[#1351d8]/90 text-white px-6 sm:px-8 py-3 text-base sm:text-lg w-full sm:w-auto"
-                  onClick={() => scrollToSection("contact")}
-                >
-                  MELDE DICH JETZT AN
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </div>
-            </div>
-
-            {/* Right side - Visual Element */}
-            <div className="flex justify-center">
-              <div className="relative">
-                {/* Large circle background */}
-                <div className="w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
-                  {/* Inner content */}
-                  <div className="text-center">
-                    {/* Shield icon */}
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center mx-auto mb-4 shadow-lg">
-                      <CheckCircle className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
+          {/* Integrated Hero Banner */}
+          <div className="relative mb-16 lg:mb-20">
+            {/* Main container with border effect */}
+            <div className="relative bg-gradient-to-r from-[#1351d8]/20 via-[#1351d8]/10 to-[#1351d8]/20 rounded-3xl border-2 border-[#1351d8]/30 p-8 lg:p-12 backdrop-blur-sm">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                {/* Left side - Content */}
+                <div className="text-white text-center lg:text-left space-y-6">
+                  <div className="space-y-4">
+                    <div className="text-4xl sm:text-5xl lg:text-6xl font-bold">
+                      <span className="text-[#1351d8]">Professionelle</span>
+                      <br />
+                      <span className="text-white">Fahrausbildung</span>
                     </div>
-                    {/* Car icon */}
-                    <div className="w-12 h-6 sm:w-16 sm:h-8 bg-gradient-to-r from-[#1351d8] to-blue-600 rounded-full flex items-center justify-center mx-auto shadow-lg">
-                      <Car className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+                    <div className="text-xl sm:text-2xl lg:text-3xl font-semibold text-white/90">
+                      im Raum Aargau/Olten
+                    </div>
+                    <div className="text-lg text-white/80 max-w-md mx-auto lg:mx-0">
+                      Über 200 zufriedene Fahrschüler haben bereits erfolgreich ihre Prüfung mit mir bestanden.
+                    </div>
+                  </div>
+                  <Button
+                    size="lg"
+                    className="bg-[#1351d8] hover:bg-[#1351d8]/90 text-white px-6 sm:px-8 py-3 text-base sm:text-lg w-full sm:w-auto shadow-lg hover:shadow-xl transition-all duration-300"
+                    onClick={() => scrollToSection("contact")}
+                  >
+                    MELDE DICH JETZT AN
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </div>
+
+                {/* Right side - Lottie Animation */}
+                <div className="flex justify-center lg:justify-end">
+                  <div className="relative">
+                    {/* Decorative background circle */}
+                    <div className="absolute inset-0 bg-white/10 rounded-full blur-2xl scale-110"></div>
+                    <div className="relative bg-white/5 backdrop-blur-sm rounded-full p-4 border border-white/20">
+                      <LottieAnimation
+                        src="https://lottie.host/04e273e6-2479-441f-b3ff-ae7d8d2d383d/nwbCgzD7mZ.lottie"
+                        width={280}
+                        height={280}
+                        speed={1}
+                      />
                     </div>
                   </div>
                 </div>
-
-                {/* Floating elements */}
-                <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 bg-[#1351d8] rounded-full animate-pulse"></div>
-                <div
-                  className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-4 h-4 sm:w-6 sm:h-6 bg-green-400 rounded-full animate-pulse"
-                  style={{ animationDelay: "1s" }}
-                ></div>
               </div>
+
+              {/* Decorative elements */}
+              <div className="absolute top-4 right-4 w-8 h-8 bg-[#1351d8]/30 rounded-full blur-sm"></div>
+              <div className="absolute bottom-4 left-4 w-6 h-6 bg-white/20 rounded-full blur-sm"></div>
             </div>
           </div>
 
@@ -572,12 +556,22 @@ export default function FahrschulePage() {
                       </div>
                       <span className="font-semibold text-[#1351d8]">CHF 90.-</span>
                     </div>
-                    <div className="flex justify-between items-center py-2">
+                    <div className="flex justify-between items-center py-2 border-b border-gray-100">
                       <div>
                         <span className="font-medium text-gray-900">VKU</span>
                         <span className="text-sm text-gray-500 block">4 Teile (à 2h)</span>
                       </div>
-                      <span className="font-semibold text-[#1351d8]">CHF 150.-</span>
+                      <div className="text-right">
+                        <span className="font-semibold text-[#1351d8]">CHF 160.-</span>
+                        <span className="text-xs text-gray-500 block">zzgl. CHF 30 für VKU-Materialien</span>
+                      </div>
+                    </div>
+                    <div className="flex justify-between items-center py-2">
+                      <div>
+                        <span className="font-medium text-gray-900">Nothelferkurs</span>
+                        <span className="text-sm text-gray-500 block">2 Teile (à 5h)</span>
+                      </div>
+                      <span className="font-semibold text-[#1351d8]">CHF 140.-</span>
                     </div>
                   </div>
                 </div>
@@ -594,12 +588,25 @@ export default function FahrschulePage() {
             </div>
           </div>
 
+          <div className="mb-16">
+            <div className="bg-gradient-to-br from-blue-50 to-white border border-blue-200 rounded-2xl p-8 shadow-lg">
+              <div className="text-center">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Grundpauschale</h3>
+                <p className="text-gray-600 mb-4">
+                  Die Grundpauschale beinhaltet einen Versicherungsanteil sowie die Fahrschüleradministration. Die
+                  Pauschale ist einmalig zu Bezahlen und beläuft sich auf Fr. 100.-
+                </p>
+                <div className="inline-flex items-center bg-[#1351d8]/10 text-[#1351d8] px-6 py-3 rounded-full font-semibold">
+                  CHF 100.- einmalig
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Basis Paket */}
             <Card
-              className={`relative border-2 border-gray-200 hover:border-[#1351d8]/30 transition-all duration-500 hover:scale-105 ${
-                visibleElements.has("price-basic") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`relative border-2 border-gray-200 hover:border-[#1351d8]/30 transition-all duration-500 hover:scale-105 ${visibleElements.has("price-basic") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               data-animate="price-basic"
               id="price-basic"
             >
@@ -607,8 +614,9 @@ export default function FahrschulePage() {
                 <CardTitle className="text-2xl font-bold text-gray-900 mb-2">Basis Paket</CardTitle>
                 <p className="text-gray-600 mb-6">Ideal für Einsteiger</p>
                 <div className="mb-6">
-                  <span className="text-4xl font-bold text-[#1351d8]">CHF 1,200</span>
+                  <span className="text-4xl font-bold text-[#1351d8]">CHF 850</span>
                   <span className="text-gray-600">.-</span>
+                  <div className="text-sm text-green-600 font-medium mt-2">Sie sparen CHF 100.-</div>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -619,19 +627,11 @@ export default function FahrschulePage() {
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">Theorieunterricht</span>
+                    <span className="text-gray-700">Grundpauschale</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">Lehrmaterial inklusive</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">Prüfungsanmeldung</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">Grundausstattung</span>
+                    <span className="text-gray-700">Individuelle Betreuung</span>
                   </div>
                 </div>
                 <div className="pt-6">
@@ -645,57 +645,46 @@ export default function FahrschulePage() {
               </CardContent>
             </Card>
 
-            {/* Komfort Paket - Beliebt */}
+            {/* Komfort Paket */}
             <Card
-              className={`relative border-2 border-[#1351d8] hover:border-[#1351d8] transition-all duration-500 hover:scale-105 shadow-lg ${
-                visibleElements.has("price-comfort") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`relative border-2 border-[#1351d8] hover:border-[#1351d8] transition-all duration-500 hover:scale-105 shadow-lg ${visibleElements.has("price-comfort") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               data-animate="price-comfort"
               id="price-comfort"
               style={{ animationDelay: "200ms" }}
             >
-              {/* Beliebt Badge */}
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                 <Badge className="bg-[#1351d8] text-white px-4 py-1 text-sm font-medium">⭐ Beliebt</Badge>
               </div>
-
               <CardHeader className="text-center pb-8 pt-8">
                 <CardTitle className="text-2xl font-bold text-gray-900 mb-2">Komfort Paket</CardTitle>
                 <p className="text-gray-600 mb-6">Unser beliebtestes Angebot</p>
                 <div className="mb-6">
-                  <span className="text-4xl font-bold text-[#1351d8]">CHF 1,800</span>
+                  <span className="text-4xl font-bold text-[#1351d8]">CHF 950</span>
                   <span className="text-gray-600">.-</span>
+                  <div className="text-sm text-green-600 font-medium mt-2">Sie sparen CHF 140.-</div>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">20 Fahrstunden à 45 Min</span>
+                    <span className="text-gray-700">10 Fahrstunden à 45 Min</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">Theorieunterricht</span>
+                    <span className="text-gray-700">Verkehrskundeunterricht (VKU)</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">Lehrmaterial inklusive</span>
+                    <span className="text-gray-700">Grundpauschale</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Individuelle Betreuung</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
                     <span className="text-gray-700">Prüfungsanmeldung</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">Prüfungsfahrt inklusive</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">Online-Lernplattform</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">Flexible Terminplanung</span>
                   </div>
                 </div>
                 <div className="pt-6">
@@ -711,9 +700,7 @@ export default function FahrschulePage() {
 
             {/* Premium Paket */}
             <Card
-              className={`relative border-2 border-gray-200 hover:border-[#1351d8]/30 transition-all duration-500 hover:scale-105 ${
-                visibleElements.has("price-premium") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className={`relative border-2 border-gray-200 hover:border-[#1351d8]/30 transition-all duration-500 hover:scale-105 ${visibleElements.has("price-premium") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               data-animate="price-premium"
               id="price-premium"
               style={{ animationDelay: "400ms" }}
@@ -722,47 +709,36 @@ export default function FahrschulePage() {
                 <CardTitle className="text-2xl font-bold text-gray-900 mb-2">Premium Paket</CardTitle>
                 <p className="text-gray-600 mb-6">Rundum-sorglos-Paket</p>
                 <div className="mb-6">
-                  <span className="text-4xl font-bold text-[#1351d8]">CHF 2,500</span>
+                  <span className="text-4xl font-bold text-[#1351d8]">CHF 1,790</span>
                   <span className="text-gray-600">.-</span>
+                  <div className="text-sm text-green-600 font-medium mt-2">Sie sparen CHF 260.-</div>
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">30 Fahrstunden à 45 Min</span>
+                    <span className="text-gray-700">20 Fahrstunden à 45 Min</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">Theorieunterricht</span>
+                    <span className="text-gray-700">Verkehrskundeunterricht (VKU)</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">Lehrmaterial inklusive</span>
+                    <span className="text-gray-700">Grundpauschale</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Individuelle Betreuung</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">1 Prüfungssimulation à 90 Min</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
                     <span className="text-gray-700">Prüfungsanmeldung</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">Prüfungsfahrt inklusive</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">Online-Lernplattform</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">Intensivbetreuung</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">Erfolgsgarantie</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">Zusätzliche Prüfung gratis</span>
                   </div>
                 </div>
                 <div className="pt-6">
@@ -785,23 +761,29 @@ export default function FahrschulePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20">Über uns</Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">Ihre Fahrschule in Zürich</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+                Deine Fahrschule in der Region Aargau/Olten
+              </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Fahrschule 06 steht für moderne Fahrausbildung in Zürich. Mit unserem erfahrenen Team, modernen
-                Fahrzeugen und individueller Betreuung bringen wir Sie sicher und entspannt zum Führerschein.
+                Fahrschule 06 steht für moderne Fahrausbildung im Raum Aargau/Olten. Mit meiner Erfahrung, modernem
+                Fahrzeug und individueller Betreuung bringen wir dich sicher und entspannt zum Führerschein.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Award className="h-6 w-6 text-[#1351d8]" />
-                  <span className="text-gray-700">Zertifizierte Fahrlehrer mit langjähriger Erfahrung</span>
+                  <span className="text-gray-700">
+                    Eidgenössisch Diplomierter Fahrlehrer mit langjähriger Erfahrung
+                  </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Car className="h-6 w-6 text-[#1351d8]" />
-                  <span className="text-gray-700">Moderne Fahrzeuge mit neuester Sicherheitstechnik</span>
+                  <span className="text-gray-700">
+                    Modernes Fahrzeug mit neuester Sicherheitstechnik und Ausstattung
+                  </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Users className="h-6 w-6 text-[#1351d8]" />
-                  <span className="text-gray-700">Individuelle Betreuung und flexible Terminplanung</span>
+                  <span className="text-gray-700">Massgeschneiderte Betreuung und flexible Terminplanung</span>
                 </div>
               </div>
             </div>
@@ -829,7 +811,6 @@ export default function FahrschulePage() {
                 <div className="grid grid-cols-2 gap-6">
                   {[
                     { value: "200+", label: "Erfolgreiche Fahrschüler" },
-                    { value: "90%", label: "Erfolgsquote bei Prüfungen" },
                     { value: "3+", label: "Jahre Erfahrung" },
                   ].map((stat, index) => (
                     <div
@@ -852,47 +833,31 @@ export default function FahrschulePage() {
         </div>
       </section>
 
-      {/* Reviews Section */}
-      <section id="reviews" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Elfsight Google Reviews Widget - Auto-collapsing container */}
-          <div className="max-w-6xl mx-auto">
-            <div className="relative">
-              <div className="elfsight-app-6c554cba-f50e-4e80-b00a-0be0c2847328" data-elfsight-app-lazy></div>
-              {/* Overlay to hide the bottom "Free Google Reviews widget" text */}
-              <div className="absolute bottom-0 left-0 right-0 h-12 bg-white z-10"></div>
-            </div>
-          </div>
-
-          {/* Action Buttons - Only show when widget is present */}
-          <div className="text-center mt-8">
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-[#1351d8] hover:bg-[#1351d8]/90 text-white"
-                onClick={() => window.open("https://maps.app.goo.gl/Mz2o7vcbSXpGn5WRA", "_blank")}
-              >
-                <Star className="mr-2 h-5 w-5" />
-                Alle Bewertungen auf Google
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-green-600 text-green-600 hover:bg-green-50 bg-transparent"
-                onClick={() =>
-                  window.open(
-                    "https://search.google.com/local/writereview?placeid=ChIJsofKEfEbUEcRsrLgKwIQ7rE",
-                    "_blank",
-                  )
-                }
-              >
-                <ArrowRight className="mr-2 h-5 w-5" />
-                Bewertung schreiben
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 
+// Reviews Section - Commented out temporarily
+<section id="reviews" className="py-20 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-6xl mx-auto">
+      <div className="relative">
+        <div className="elfsight-app-6c554cba-f50e-4e80-b00a-0be0c2847328" data-elfsight-app-lazy></div>
+        <div className="absolute bottom-0 left-0 right-0 h-12 bg-white z-10"></div>
+      </div>
+    </div>
+    <div className="text-center mt-8">
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button size="lg" className="bg-[#1351d8] hover:bg-[#1351d8]/90 text-white" onClick={() => window.open("https://maps.app.goo.gl/Mz2o7vcbSXpGn5WRA", "_blank")}>
+          <Star className="mr-2 h-5 w-5" />
+          Alle Bewertungen auf Google
+        </Button>
+        <Button size="lg" variant="outline" className="border-green-600 text-green-600 hover:bg-green-50 bg-transparent" onClick={() => window.open("https://search.google.com/local/writereview?placeid=ChIJsofKEfEbUEcRsrLgKwIQ7rE", "_blank")}>
+          <ArrowRight className="mr-2 h-5 w-5" />
+          Bewertung schreiben
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
+*/}
 
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-gray-50">
@@ -940,14 +905,38 @@ export default function FahrschulePage() {
                   </div>
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-[#1351d8]/10 rounded-full flex items-center justify-center">
+                      <svg className="h-6 w-6 text-[#1351d8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900">E-Mail</div>
+                      <div className="flex flex-col space-y-1">
+                        <a
+                          href="mailto:fahrschule06@hotmail.com"
+                          className="text-[#1351d8] hover:text-[#1351d8]/80 font-medium transition-colors"
+                        >
+                          fahrschule06@hotmail.com
+                        </a>
+                        <span className="text-sm text-gray-500">oder nutzen Sie das Formular auf der Seite</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-[#1351d8]/10 rounded-full flex items-center justify-center">
                       <MapPin className="h-6 w-6 text-[#1351d8]" />
                     </div>
                     <div>
                       <div className="font-semibold text-gray-900">Adresse</div>
                       <div className="text-gray-600">
-                        Bederstrasse 51
+                        Oberdorf 4
                         <br />
-                        8002 Zürich, Schweiz
+                        5057 Reitnau
                       </div>
                     </div>
                   </div>
@@ -1087,7 +1076,7 @@ export default function FahrschulePage() {
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-5 gap-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <Image src="/logo.svg" alt="Fahrschule 06 Logo" width={32} height={32} className="w-8 h-8" />
@@ -1097,7 +1086,8 @@ export default function FahrschulePage() {
                 </div>
               </div>
               <p className="text-gray-400 text-sm">
-                Ihre professionelle Fahrschule in Zürich für eine sichere und entspannte Fahrausbildung.
+                Ihre professionelle Fahrschule in der Region Aargau/Olten für eine sichere und entspannte
+                Fahrausbildung.
               </p>
             </div>
 
@@ -1105,8 +1095,8 @@ export default function FahrschulePage() {
               <h4 className="font-semibold mb-4">Services</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>Kategorie B (Auto)</li>
-                <li>Intensivkurse</li>
-                <li>Auffrischungskurse</li>
+                <li>Kategorie B BPT 121 (Taxi)</li>
+                <li>Kontrollfahrt</li>
                 <li>Theorieunterricht</li>
               </ul>
             </div>
@@ -1115,8 +1105,8 @@ export default function FahrschulePage() {
               <h4 className="font-semibold mb-4">Kontakt</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>+41 76 340 22 01</li>
-                <li>Bederstrasse 51</li>
-                <li>8002 Zürich</li>
+                <li>Oberdorf 4</li>
+                <li>5057 Reitnau</li>
                 <li>fahrschule06.ch</li>
               </ul>
             </div>
@@ -1128,6 +1118,56 @@ export default function FahrschulePage() {
                 <li>Sa: 08:00 - 16:00</li>
                 <li>So: Nach Vereinbarung</li>
               </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4">Folgen Sie uns</h4>
+              <div className="flex space-x-4">
+                <a
+                  href="https://www.facebook.com/vaxhid.mustafa"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors"
+                  aria-label="Facebook"
+                >
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://www.instagram.com/fahrschule06/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors"
+                  aria-label="Instagram"
+                >
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.017 2.016c2.687 0 3.007.01 4.067.059 1.06.048 1.636.228 2.02.378.507.197.87.433 1.25.813.38.38.616.743.813 1.25.15.384.33.96.378 2.02.049 1.06.059 1.38.059 4.067 0 2.687-.01 3.007-.059 4.067-.048 1.06-.228 1.636-.378 2.02-.197.507-.433.87-.813 1.25-.38.38-.743.616-1.25.813-.384.15-.96.33-2.02.378-1.06.049-1.38.059-4.067.059-2.687 0-3.007-.01-4.067-.059-1.06-.048-1.636-.228-2.02-.378-.507-.197-.87-.433-1.25-.813-.38.38-.743-.616-.813-1.25-.15-.384-.33-.96-.378-2.02-.049-1.06-.059-1.38-.059-4.067 0-2.687.01-3.007.059-4.067.048-1.06.228-1.636.378-2.02.197-.507.433-.87.813-1.25.38-.38.743-.616 1.25-.813.384-.15.96-.33 2.02-.378 1.06-.049 1.38-.059 4.067-.059zm0-2.016c-2.734 0-3.077.012-4.15.062-1.071.049-1.803.22-2.444.469-.661.257-1.223.602-1.782 1.161-.559.559-.904 1.121-1.161 1.782-.249.641-.42 1.373-.469 2.444-.05 1.073-.062 1.416-.062 4.15 0 2.734.012 3.077.062 4.15.049 1.071.22 1.803.469 2.444.257.661.602 1.223 1.161 1.782.559.559 1.121.904 1.782 1.161.641.249 1.373.42 2.444.469 1.073.05 1.416.062 4.15.062 2.734 0 3.077-.012 4.15-.062 1.071-.049 1.803-.22 2.444-.469.661-.257 1.223-.602 1.782-1.161.559-.559 1.121-.904 1.161-1.782.249-.641.42-1.373.469-2.444.05-1.073.062-1.416.062-4.15 0-2.734-.012-3.077-.062-4.15-.049-1.071-.22-1.803-.469-2.444-.257-.661-.602-1.223-1.161-1.782-.559-.559-1.121-.904-1.782-1.161-.641-.249-1.373-.42-2.444-.469-1.073-.05-1.416-.062-4.15-.062zm0 5.838c-2.403 0-4.35 1.947-4.35 4.35 0 2.403 1.947 4.35 4.35 4.35 2.403 0 4.35-1.947 4.35-4.35 0-2.403-1.947-4.35-4.35-4.35zm0 7.175c-1.564 0-2.825-1.261-2.825-2.825 0-1.564 1.261-2.825 2.825-2.825 1.564 0 2.825 1.261 2.825 2.825 0 1.564-1.261 2.825-2.825 2.825zm5.538-7.362c0 .561-.455 1.016-1.016 1.016-.561 0-1.016-.455-1.016-1.016 0-.561.455-1.016 1.016-1.016.561 0 1.016.455 1.016 1.016z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://www.tiktok.com/@fahrschule_06"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors"
+                  aria-label="TikTok"
+                >
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/vaxhid-mustafa-ab8574210/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
