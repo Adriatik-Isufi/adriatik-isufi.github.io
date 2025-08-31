@@ -11,11 +11,13 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Car, Users, Award, CheckCircle, ArrowRight, Menu, X, Globe, Phone, MapPin, Clock } from "lucide-react"
 import { LottieAnimation } from "@/components/lottie-animation"
+import ComingSoon from "@/components/coming-soon"
 import emailjs from "@emailjs/browser"
 
 export default function FahrschulePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
+  const [showComingSoon, setShowComingSoon] = useState(true)
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -27,6 +29,18 @@ export default function FahrschulePage() {
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
   const [scrollY, setScrollY] = useState(0)
   const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set())
+
+  // Check for preview token in URL parameters
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search)
+      const previewToken = urlParams.get('preview')
+      // Hard-to-guess preview token: fs06_preview_2024_secure_dev
+      if (previewToken === 'fs06_preview_2024_secure_dev') {
+        setShowComingSoon(false)
+      }
+    }
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,14 +77,22 @@ export default function FahrschulePage() {
       })
     }, observerOptions)
 
-    // Observe all animated elements
-    const animatedElements = document.querySelectorAll("[data-animate]")
-    animatedElements.forEach((el) => observer.observe(el))
+    // Use a timeout to ensure DOM is ready and observe elements
+    const setupObserver = () => {
+      const animatedElements = document.querySelectorAll("[data-animate]")
+      animatedElements.forEach((el) => {
+        observer.observe(el)
+      })
+    }
+
+    // Set up observer after a short delay to ensure DOM is ready
+    const timeoutId = setTimeout(setupObserver, 100)
 
     window.addEventListener("scroll", handleScroll)
     return () => {
       window.removeEventListener("scroll", handleScroll)
       observer.disconnect()
+      clearTimeout(timeoutId)
     }
   }, [])
 
@@ -151,6 +173,11 @@ export default function FahrschulePage() {
     } finally {
       setIsSubmitting(false)
     }
+  }
+
+  // Show coming soon page by default, unless preview token is provided
+  if (showComingSoon) {
+    return <ComingSoon onEnterSite={() => setShowComingSoon(false)} />
   }
 
   return (
@@ -395,19 +422,58 @@ export default function FahrschulePage() {
                   </Button>
                 </div>
 
-                {/* Right side - Lottie Animation */}
+                {/* Right side - Animation Area */}
                 <div className="flex justify-center lg:justify-end">
                   <div className="relative">
-                    {/* Decorative background circle */}
+                    {/* Always visible background decorative elements */}
                     <div className="absolute inset-0 bg-white/10 rounded-full blur-2xl scale-110"></div>
-                    <div className="relative bg-white/5 backdrop-blur-sm rounded-full p-4 border border-white/20">
-                      <LottieAnimation
-                        src="https://lottie.host/04e273e6-2479-441f-b3ff-ae7d8d2d383d/nwbCgzD7mZ.lottie"
-                        width={280}
-                        height={280}
-                        speed={1}
-                      />
+                    <div className="relative bg-white/5 backdrop-blur-sm rounded-full p-4 border border-white/20 w-[320px] h-[320px] flex items-center justify-center">
+                      {/* Background decorative elements - always visible */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-green-400/20 to-green-600/20 rounded-full flex items-center justify-center shadow-lg animate-pulse">
+                          <CheckCircle className="h-10 w-10 sm:h-12 sm:w-12 text-white/60" />
+                        </div>
+                      </div>
+                      
+                      {/* Orbiting background elements */}
+                      <div className="absolute inset-0">
+                        <div
+                          className="absolute top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[#1351d8]/20 rounded-full flex items-center justify-center animate-bounce"
+                          style={{ animationDelay: "0s" }}
+                        >
+                          <Car className="h-4 w-4 text-white/60" />
+                        </div>
+                        <div
+                          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-green-400/20 rounded-full animate-bounce"
+                          style={{ animationDelay: "1s" }}
+                        ></div>
+                        <div
+                          className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-white/30 rounded-full animate-pulse"
+                          style={{ animationDelay: "0.5s" }}
+                        ></div>
+                        <div
+                          className="absolute right-4 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-[#1351d8]/30 rounded-full animate-pulse"
+                          style={{ animationDelay: "1.5s" }}
+                        ></div>
+                      </div>
+                      
+                      {/* Lottie Animation - appears on top when loaded */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <LottieAnimation
+                          src="https://lottie.host/04e273e6-2479-441f-b3ff-ae7d8d2d383d/nwbCgzD7mZ.lottie"
+                          width={280}
+                          height={280}
+                          speed={1}
+                        />
+                      </div>
                     </div>
+                    
+                    {/* Floating elements around the circle */}
+                    <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 bg-[#1351d8]/30 rounded-full animate-pulse"></div>
+                    <div
+                      className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-4 h-4 sm:w-6 sm:h-6 bg-green-400/30 rounded-full animate-pulse"
+                      style={{ animationDelay: "1s" }}
+                    ></div>
                   </div>
                 </div>
               </div>
