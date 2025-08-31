@@ -45,6 +45,17 @@ export default function RootLayout({
         <meta name="geo.position" content="47.3769;8.2297" />
         <meta name="ICBM" content="47.3769, 8.2297" />
         <link rel="canonical" href="https://fahrschule06.ch" />
+        
+        {/* Favicon and Icons */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+        
+        {/* Additional meta tags for better search engine display */}
+        <meta name="theme-color" content="#1351d8" />
+        <meta name="msapplication-TileColor" content="#1351d8" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
         <script src="https://elfsightcdn.com/platform.js" async></script>
         <script
           type="application/ld+json"
