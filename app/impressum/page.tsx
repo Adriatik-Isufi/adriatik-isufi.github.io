@@ -124,14 +124,13 @@ export default function ImpressumPage() {
       {/* Main Content */}
       <main className="pt-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {/* Back Button */}
+          {/* Back Button - Convert to blue button */}
           <div className="mb-8">
-            <Link
-              href="/"
-              className="inline-flex items-center text-[#1351d8] hover:text-[#1351d8]/80 transition-colors"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Zurück zur Hauptseite
+            <Link href="/">
+              <Button className="bg-[#1351d8] hover:bg-[#1351d8]/90 text-white font-bold">
+                <ArrowLeft className="h-4 w-4 mr-2" />
+                Zurück zur Hauptseite
+              </Button>
             </Link>
           </div>
 
@@ -150,7 +149,7 @@ export default function ImpressumPage() {
                   <p className="text-gray-700">Oberdorf 4</p>
                   <p className="text-gray-700">5057 Reitnau</p>
                   <p className="text-gray-700">Telefon: +41 76 340 22 01</p>
-                  <p className="text-gray-700">E-Mail: fahrschule06@hotmail.com</p>
+                  <p className="text-gray-700">E-Mail: info@fahrschule06.ch</p>
                 </div>
               </div>
 
@@ -223,7 +222,7 @@ export default function ImpressumPage() {
               <h4 className="font-semibold mb-4">Kontakt</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>+41 76 340 22 01</li>
-                <li>fahrschule06@hotmail.com</li>
+                <li>info@fahrschule06.ch</li>
                 <li>Oberdorf 4</li>
                 <li>5057 Reitnau</li>
                 <li>fahrschule06.ch</li>
@@ -234,7 +233,6 @@ export default function ImpressumPage() {
               <h4 className="font-semibold mb-4">Öffnungszeiten</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>Mo-Sa: 08:00 - 20:00</li>
-                <li>So: Nach Vereinbarung</li>
               </ul>
             </div>
 
@@ -291,8 +289,11 @@ export default function ImpressumPage() {
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
             <div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
-              <p>&copy; 2025 Fahrschule 06. Alle Rechte vorbehalten.</p>
-              <Link href="/impressum" className="text-gray-400 hover:text-white transition-colors">
+              <p>&copy; 2024 Fahrschule 06. Alle Rechte vorbehalten.</p>
+              <Link
+                href="/impressum"
+                className="text-gray-400 hover:text-white transition-colors underline hover:no-underline font-medium"
+              >
                 Impressum
               </Link>
             </div>
