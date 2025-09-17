@@ -347,7 +347,6 @@ export default function FahrschulePage() {
                         </Button>
                       </div>
                       <div className="pt-4 border-t border-gray-200 space-y-3">
-  
                         <a
                           href="tel:+41763402201"
                           className="flex items-center space-x-3 text-[#1351d8] hover:text-[#1351d8]/80 transition-colors p-3 rounded-lg hover:bg-blue-50"
@@ -355,17 +354,22 @@ export default function FahrschulePage() {
                           <Phone className="w-5 h-5" />
                           <span className="font-medium">+41 76 340 22 01</span>
                         </a>
-                        
+
                         <a
                           href="mailto:info@fahrschule06.ch"
                           className="flex items-center space-x-3 text-[#1351d8] hover:text-[#1351d8]/80 transition-colors p-3 rounded-lg hover:bg-blue-50"
                         >
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                            />
                           </svg>
                           <span className="font-medium">info@fahrschule06.ch</span>
                         </a>
-                        
+
                         <a
                           href="https://wa.me/41763402201?text=Hallo%20Fahrschule%2006%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Fahrausbildung."
                           target="_blank"
@@ -525,7 +529,7 @@ export default function FahrschulePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 animate-fade-in-up" data-animate="hero-content" id="hero-content">
               <div className="space-y-4">
-                <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20">Fahren mit Vision</Badge>
+                <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20">Fahren mit Vision</Badge>
                 <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
                   Willkommen bei <span className="text-[#1351d8]">Fahrschule 06</span>
                 </h1>
@@ -1044,7 +1048,7 @@ export default function FahrschulePage() {
               <p className="text-lg text-gray-600 leading-relaxed">
                 Fahrschule 06 steht für moderne Fahrausbildung im Raum Aargau/Olten. Mit meiner Erfahrung, modernem
                 Fahrzeug und individueller Betreuung bringen wir dich sicher und entspannt zum Führerschein - ganz nach
-                unserem Motto: Fahren mit Vision.
+                unserem Motto: Fahren mit Vision.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
@@ -1065,9 +1069,11 @@ export default function FahrschulePage() {
                 </div>
               </div>
             </div>
-            <div className="relative space-y-6">
-              {/* Instructor Photos */}
-              <div className="grid grid-cols-2 gap-4 mb-6">
+
+            {/* Fixed layout - Photos and Video aligned properly */}
+            <div className="flex gap-4 items-start">
+              {/* Left side - Two stacked photos */}
+              <div className="flex flex-col gap-4 flex-1">
                 <div className="relative overflow-hidden rounded-xl shadow-lg">
                   <img
                     src="/instructor-with-car.jpg"
@@ -1084,26 +1090,27 @@ export default function FahrschulePage() {
                 </div>
               </div>
 
-              {/* Statistics */}
-              <div className="bg-[#1351d8]/10 rounded-2xl p-8">
-                <div className="grid grid-cols-2 gap-6">
-                  {[
-                    { value: "200+", label: "Erfolgreiche Fahrschüler" },
-                    { value: "3+", label: "Jahre Erfahrung" },
-                  ].map((stat, index) => (
-                    <div
-                      key={index}
-                      className={`text-center transform transition-all duration-700 hover:scale-110 ${
-                        visibleElements.has(`stat-${index}`) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                      }`}
-                      data-animate={`stat-${index}`}
-                      id={`stat-${index}`}
-                      style={{ animationDelay: `${index * 100}ms` }}
-                    >
-                      <div className="text-3xl font-bold text-[#1351d8] mb-2">{stat.value}</div>
-                      <div className="text-sm text-gray-600">{stat.label}</div>
+              {/* Right side - Video with exact height matching */}
+              <div className="flex-shrink-0">
+                <div className="relative">
+                  <video
+                    className="w-48 rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-300 object-cover"
+                    style={{ height: "400px" }} // Exact height to match two photos + gap
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  >
+                    <source src="/video1.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+
+                  {/* Subtle overlay for branding */}
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="bg-black/50 backdrop-blur-sm rounded-lg px-3 py-2 text-white text-sm font-medium text-center">
+                      Fahrschule 06 - Fahren mit Vision
                     </div>
-                  ))}
+                  </div>
                 </div>
               </div>
             </div>
