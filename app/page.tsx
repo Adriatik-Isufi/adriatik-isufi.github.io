@@ -868,7 +868,7 @@ export default function FahrschulePage() {
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left side - Video */}
-            <div className="relative mx-auto" style={{ width: "75%" }}>
+            <div className="relative lg:mx-auto lg:w-3/4">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl group bg-gradient-to-br from-[#1351d8]/5 to-blue-50 p-3">
                 <video
                   ref={videoRef}
@@ -1203,7 +1203,7 @@ export default function FahrschulePage() {
               </div>
               <CardHeader className="text-center pb-8 pt-8">
                 <CardTitle className="text-2xl font-bold text-gray-900 mb-2">Komfort Paket</CardTitle>
-                <p className="text-gray-600 mb-6">Unser beliebtestes Angebot</p>
+                <p className="text-gray-600 mb-6">Unser beliebtes Angebot</p>
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-[#1351d8]">CHF 950</span>
                   <span className="text-gray-600">.-</span>
