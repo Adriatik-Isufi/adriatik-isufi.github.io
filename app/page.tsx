@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import dynamic from "next/dynamic"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -10,15 +10,37 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Car, Users, Award, CheckCircle, ArrowRight, Menu, X, Globe, Phone, MapPin, Clock, Star } from "lucide-react"
+import {
+  Car,
+  Users,
+  Award,
+  CheckCircle,
+  ArrowRight,
+  Menu,
+  X,
+  Globe,
+  Phone,
+  MapPin,
+  Clock,
+  Star,
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
+  User,
+} from "lucide-react"
 import { LottieAnimation } from "@/components/lottie-animation"
 import emailjs from "@emailjs/browser"
 import Link from "next/link"
 
 // Dynamic import for Elfsight widget to prevent hydration issues
-const ElfsightReviews = dynamic(() => Promise.resolve(() => (
-  <div className="elfsight-app-e1b3b955-e48e-4ee8-a212-977e492efaa4" data-elfsight-app-lazy></div>
-)), { ssr: false })
+const ElfsightReviews = dynamic(
+  () =>
+    Promise.resolve(() => (
+      <div className="elfsight-app-e1b3b955-e48e-4ee8-a212-977e492efaa4" data-elfsight-app-lazy></div>
+    )),
+  { ssr: false },
+)
 
 export default function FahrschulePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -37,11 +59,17 @@ export default function FahrschulePage() {
   const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set())
   const [selectedPackage, setSelectedPackage] = useState<string>("")
 
+  // Video state management
+  const [isVideoMuted, setIsVideoMuted] = useState(false) // Start unmuted
+  const [isVideoPlaying, setIsVideoPlaying] = useState(true)
+  const [isVideoVisible, setIsVideoVisible] = useState(true)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY)
 
-      const sections = ["home", "services", "prices", "about", "reviews", "contact"]
+      const sections = ["home", "services", "teacher", "prices", "about", "reviews", "contact"]
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -72,12 +100,45 @@ export default function FahrschulePage() {
       })
     }, observerOptions)
 
+    // Video visibility observer for auto-mute functionality
+    const videoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target.id === "teacher-video") {
+            setIsVideoVisible(entry.isIntersecting)
+            if (videoRef.current) {
+              if (entry.isIntersecting) {
+                // Video is visible - play and keep current mute state
+                videoRef.current.play()
+                setIsVideoPlaying(true)
+              } else {
+                // Video is not visible - pause and mute
+                videoRef.current.pause()
+                setIsVideoPlaying(false)
+                if (!isVideoMuted) {
+                  setIsVideoMuted(true)
+                  videoRef.current.muted = true
+                }
+              }
+            }
+          }
+        })
+      },
+      { threshold: 0.3 },
+    )
+
     // Use a timeout to ensure DOM is ready and observe elements
     const setupObserver = () => {
       const animatedElements = document.querySelectorAll("[data-animate]")
       animatedElements.forEach((el) => {
         observer.observe(el)
       })
+
+      // Observe the video for auto-mute functionality
+      const teacherVideo = document.getElementById("teacher-video")
+      if (teacherVideo) {
+        videoObserver.observe(teacherVideo)
+      }
     }
 
     // Set up observer after a short delay to ensure DOM is ready
@@ -87,9 +148,10 @@ export default function FahrschulePage() {
     return () => {
       window.removeEventListener("scroll", handleScroll)
       observer.disconnect()
+      videoObserver.disconnect()
       clearTimeout(timeoutId)
     }
-  }, [])
+  }, [isVideoMuted])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -179,6 +241,27 @@ export default function FahrschulePage() {
     scrollToSection("contact")
   }
 
+  // Video control functions
+  const toggleVideoMute = () => {
+    if (videoRef.current) {
+      const newMutedState = !isVideoMuted
+      setIsVideoMuted(newMutedState)
+      videoRef.current.muted = newMutedState
+    }
+  }
+
+  const toggleVideoPlay = () => {
+    if (videoRef.current) {
+      if (isVideoPlaying) {
+        videoRef.current.pause()
+        setIsVideoPlaying(false)
+      } else {
+        videoRef.current.play()
+        setIsVideoPlaying(true)
+      }
+    }
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Floating WhatsApp Button - Mobile */}
@@ -208,8 +291,8 @@ export default function FahrschulePage() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              {["Home", "Services", "Preise", "Über uns", "Bewertungen", "Kontakt"].map((item, index) => {
-                const sectionId = ["home", "services", "prices", "about", "reviews", "contact"][index]
+              {["Home", "Services", "Fahrlehrer", "Preise", "Über uns", "Bewertungen", "Kontakt"].map((item, index) => {
+                const sectionId = ["home", "services", "teacher", "prices", "about", "reviews", "contact"][index]
                 return (
                   <button
                     key={item}
@@ -331,18 +414,22 @@ export default function FahrschulePage() {
                     <div className="space-y-6">
                       <h3 className="text-xl font-bold text-gray-900 mb-8 mt-4">Navigation</h3>
                       <div className="space-y-3">
-                        {["Home", "Services", "Preise", "Über uns", "Bewertungen", "Kontakt"].map((item, index) => {
-                          const sectionId = ["home", "services", "prices", "about", "reviews", "contact"][index]
-                          return (
-                            <button
-                              key={item}
-                              onClick={() => scrollToSection(sectionId)}
-                              className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-[#1351d8] hover:bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20"
-                            >
-                              {item}
-                            </button>
-                          )
-                        })}
+                        {["Home", "Services", "Fahrlehrer", "Preise", "Über uns", "Bewertungen", "Kontakt"].map(
+                          (item, index) => {
+                            const sectionId = ["home", "services", "teacher", "prices", "about", "reviews", "contact"][
+                              index
+                            ]
+                            return (
+                              <button
+                                key={item}
+                                onClick={() => scrollToSection(sectionId)}
+                                className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-[#1351d8] hover:bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20"
+                              >
+                                {item}
+                              </button>
+                            )
+                          },
+                        )}
                       </div>
                       <div className="pt-4">
                         <Button
@@ -531,7 +618,7 @@ export default function FahrschulePage() {
           <div className="absolute bottom-20 left-10 w-48 h-48 bg-blue-200/20 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 animate-fade-in-up" data-animate="hero-content" id="hero-content">
               <div className="space-y-4">
@@ -591,7 +678,7 @@ export default function FahrschulePage() {
       </section>
 
       {/* Services Section with Dramatic Background */}
-      <section id="services" className="relative py-20 overflow-hidden">
+      <section id="services" className="relative py-16 overflow-hidden">
         {/* Dark textured background with overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
           {/* Textured overlay */}
@@ -657,6 +744,16 @@ export default function FahrschulePage() {
                         </div>
                       </div>
 
+                      {/* Lottie Animation - appears on top when loaded */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <LottieAnimation
+                          src="https://lottie.host/04e273e6-2479-441f-b3ff-ae7d8d2d383d/nwbCgzD7mZ.lottie"
+                          width={280}
+                          height={280}
+                          speed={1}
+                        />
+                      </div>
+
                       {/* Orbiting background elements */}
                       <div className="absolute inset-0">
                         <div
@@ -678,20 +775,10 @@ export default function FahrschulePage() {
                           style={{ animationDelay: "1.5s" }}
                         ></div>
                       </div>
-
-                      {/* Lottie Animation - appears on top when loaded */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <LottieAnimation
-                          src="https://lottie.host/04e273e6-2479-441f-b3ff-ae7d8d2d383d/nwbCgzD7mZ.lottie"
-                          width={280}
-                          height={280}
-                          speed={1}
-                        />
-                      </div>
                     </div>
 
                     {/* Floating elements around the circle */}
-                    <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-8 bg-[#1351d8]/30 rounded-full animate-pulse"></div>
+                    <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-6 h-6 sm:w-8 sm:h-6 bg-[#1351d8]/30 rounded-full animate-pulse"></div>
                     <div
                       className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-4 h-4 sm:w-6 sm:h-6 bg-green-400/30 rounded-full animate-pulse"
                       style={{ animationDelay: "1s" }}
@@ -699,10 +786,6 @@ export default function FahrschulePage() {
                   </div>
                 </div>
               </div>
-
-              {/* Decorative elements */}
-              <div className="absolute top-4 right-4 w-8 h-8 bg-[#1351d8]/30 rounded-full blur-sm"></div>
-              <div className="absolute bottom-4 left-4 w-6 h-6 bg-white/20 rounded-full blur-sm"></div>
             </div>
           </div>
 
@@ -772,8 +855,184 @@ export default function FahrschulePage() {
         </div>
       </section>
 
+      {/* Meet the Teacher Section */}
+      <section id="teacher" className="py-16 bg-gradient-to-br from-gray-50 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20 mb-4">Ihr Fahrlehrer</Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Lernen Sie mich kennen</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Persönlich, professionell und mit Leidenschaft für die Fahrausbildung
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - Video */}
+            <div className="relative">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl group bg-gradient-to-br from-[#1351d8]/5 to-blue-50 p-2">
+                <video
+                  ref={videoRef}
+                  id="teacher-video"
+                  className="w-full h-auto rounded-xl"
+                  autoPlay
+                  loop
+                  muted={isVideoMuted}
+                  playsInline
+                  onLoadedData={() => {
+                    if (videoRef.current) {
+                      videoRef.current.play()
+                    }
+                  }}
+                >
+                  <source src="/fahrschule06_video2.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+
+                {/* Elegant Video Controls Overlay */}
+                <div className="absolute inset-2 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl pointer-events-none">
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between pointer-events-auto">
+                    {/* Left side - Play/Pause */}
+                    <button
+                      onClick={toggleVideoPlay}
+                      className="flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 group/btn"
+                    >
+                      {isVideoPlaying ? (
+                        <Pause className="w-6 h-6 text-white group-hover/btn:scale-110 transition-transform" />
+                      ) : (
+                        <Play className="w-6 h-6 text-white ml-1 group-hover/btn:scale-110 transition-transform" />
+                      )}
+                    </button>
+
+                    {/* Right side - Mute/Unmute */}
+                    <button
+                      onClick={toggleVideoMute}
+                      className="flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 group/btn"
+                    >
+                      {isVideoMuted ? (
+                        <VolumeX className="w-6 h-6 text-white group-hover/btn:scale-110 transition-transform" />
+                      ) : (
+                        <Volume2 className="w-6 h-6 text-white group-hover/btn:scale-110 transition-transform" />
+                      )}
+                    </button>
+                  </div>
+
+                  {/* Video Status Indicator */}
+                  <div className="absolute top-4 right-4 pointer-events-none">
+                    <div className="flex items-center space-x-2 bg-black/30 backdrop-blur-sm rounded-full px-3 py-1">
+                      <div
+                        className={`w-2 h-2 rounded-full ${isVideoPlaying ? "bg-green-400" : "bg-red-400"} animate-pulse`}
+                      ></div>
+                      <span className="text-white text-xs font-medium">
+                        {isVideoPlaying ? (isVideoMuted ? "STUMM" : "TON AN") : "PAUSE"}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Subtle branding overlay - moved to top-left to avoid controls */}
+                <div className="absolute top-6 left-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                  <div className="bg-black/50 backdrop-blur-sm rounded-lg px-3 py-2">
+                    <p className="text-white text-sm font-medium">Vaxhid Mustafa - Ihr Fahrlehrer</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating decorative elements */}
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-[#1351d8]/20 rounded-full animate-pulse"></div>
+              <div
+                className="absolute -bottom-4 -left-4 w-6 h-6 bg-green-400/30 rounded-full animate-pulse"
+                style={{ animationDelay: "1s" }}
+              ></div>
+            </div>
+
+            {/* Right side - Content */}
+            <div className="space-y-6">
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-12 h-12 bg-[#1351d8]/10 rounded-full flex items-center justify-center">
+                    <User className="h-6 w-6 text-[#1351d8]" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900">Vaxhid Mustafa</h3>
+                    <p className="text-[#1351d8] font-medium">Eidgenössisch diplomierter Fahrlehrer</p>
+                  </div>
+                </div>
+
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Hallo! Ich bin Vaxhid, Ihr persönlicher Fahrlehrer bei Fahrschule 06. Mit über 3 Jahren Erfahrung und
+                  mehr als 200 erfolgreich ausgebildeten Fahrschülern bringe ich Sie sicher und entspannt zum
+                  Führerschein.
+                </p>
+
+                <p className="text-gray-600 leading-relaxed">
+                  Meine Philosophie ist einfach: Jeder lernt anders, und deshalb passe ich meinen Unterricht individuell
+                  an Ihre Bedürfnisse an. Ob Sie nervös sind oder bereits Vorerfahrung haben - gemeinsam schaffen wir
+                  das!
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <h4 className="text-lg font-semibold text-gray-900">Meine Qualifikationen:</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Eidg. Fahrlehrerdiplom</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">VKU-Moderator</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">Kategorie B & BPT 121</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
+                    <span className="text-gray-700">3+ Jahre Erfahrung</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-[#1351d8]/5 to-blue-50 rounded-xl p-6 border border-[#1351d8]/10">
+                <div className="flex items-start space-x-4">
+                  <div className="w-10 h-10 bg-[#1351d8]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Star className="h-5 w-5 text-[#1351d8]" />
+                  </div>
+                  <div>
+                    <h5 className="font-semibold text-gray-900 mb-2">Mein Versprechen an Sie:</h5>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      "Ich begleite Sie geduldig und professionell auf Ihrem Weg zum Führerschein. Ihr Erfolg ist mein
+                      Erfolg - und gemeinsam erreichen wir Ihr Ziel!"
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button
+                  size="lg"
+                  className="bg-[#1351d8] hover:bg-[#1351d8]/90 text-white"
+                  onClick={() => scrollToSection("contact")}
+                >
+                  Jetzt Fahrstunde buchen
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-[#1351d8] text-[#1351d8] hover:bg-[#1351d8]/5 bg-transparent"
+                  onClick={() => scrollToSection("prices")}
+                >
+                  Preise ansehen
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Prices Section */}
-      <section id="prices" className="py-20 bg-white">
+      <section id="prices" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20 mb-4">Unsere Preise</Badge>
@@ -1043,7 +1302,7 @@ export default function FahrschulePage() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-gradient-to-br from-[#1351d8]/5 to-white">
+      <section id="about" className="py-16 bg-gradient-to-br from-[#1351d8]/5 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -1125,7 +1384,7 @@ export default function FahrschulePage() {
       </section>
 
       {/* Reviews Section */}
-      <section id="reviews" className="py-4 bg-white">
+      <section id="reviews" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Title, description and buttons commented out - built into widget
           <div className="text-center mb-16">
@@ -1136,7 +1395,7 @@ export default function FahrschulePage() {
             </p>
           </div>
           */}
-          
+
           <div className="max-w-6xl mx-auto">
             <div className="relative">
               {/* Elfsight widget - dynamically loaded to prevent hydration issues */}
@@ -1144,7 +1403,7 @@ export default function FahrschulePage() {
               <div className="absolute bottom-0 left-0 right-0 h-12 bg-white z-10"></div>
             </div>
           </div>
-          
+
           {/* Buttons commented out - built into widget
           <div className="text-center mt-8">
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -1174,7 +1433,7 @@ export default function FahrschulePage() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gray-50">
+      <section id="contact" className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20 mb-4">Kontakt</Badge>
