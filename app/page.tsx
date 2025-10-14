@@ -32,6 +32,7 @@ import {
 import { LottieAnimation } from "@/components/lottie-animation"
 import emailjs from "@emailjs/browser"
 import Link from "next/link"
+import { ReviewsSection } from "@/components/reviews-section"
 
 // Dynamic import for Elfsight widget to prevent hydration issues
 const ElfsightReviews = dynamic(
@@ -1383,54 +1384,7 @@ export default function FahrschulePage() {
         </div>
       </section>
 
-      {/* Reviews Section */}
-      <section id="reviews" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Title, description and buttons commented out - built into widget
-            <div className="text-center mb-16">
-              <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20 mb-4">Bewertungen</Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Was unsere Kunden sagen</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Lesen Sie die Erfahrungen unserer zufriedenen Fahrschüler
-              </p>
-            </div>
-            */}
-
-          <div className="max-w-6xl mx-auto">
-            <div className="relative">
-              {/* Elfsight widget - dynamically loaded to prevent hydration issues */}
-              <ElfsightReviews />
-              <div className="absolute bottom-0 left-0 right-0 h-12 bg-white z-10"></div>
-            </div>
-          </div>
-
-          {/* Buttons commented out - built into widget
-            <div className="text-center mt-8">
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  size="lg" 
-                  className="bg-[#1351d8] hover:bg-[#1351d8]/90 text-white" 
-                  onClick={() => window.open("https://maps.app.goo.gl/Mz2o7vcbSXpGn5WRA", "_blank")}
-                >
-                  <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                  Alle Bewertungen auf Google
-                </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="border-green-600 text-green-600 hover:bg-green-50 bg-transparent" 
-                  onClick={() => window.open("https://search.google.com/local/writereview?placeid=ChIJsofKEfEbUEcRsrLgKwIQ7rE", "_blank")}
-                >
-                  <ArrowRight className="mr-2 h-5 w-5" />
-                  Bewertung schreiben
-                </Button>
-              </div>
-            </div>
-            */}
-        </div>
-      </section>
+      <ReviewsSection />
 
       {/* Contact Section */}
       <section id="contact" className="py-16 bg-gray-50">

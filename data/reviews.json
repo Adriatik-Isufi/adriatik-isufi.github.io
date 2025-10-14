@@ -1,0 +1,21 @@
+{
+    "reviews": [
+      {
+        "id": 1,
+        "name": "Adriatik Isufi",
+        "rating": 5,
+        "date": "2025-10-14",
+        "text": "Super Fahrlehrer! Sehr geduldig, freundlich und erklärt alles so, dass man es direkt versteht. Hab mich von Anfang an wohlgefühlt und schon nach ca. 5 Stunden echt sicher auf der Straße. Kann ich nur empfehlen!",
+        "avatar": "AI"
+      },
+      {
+        "id": 2,
+        "name": "Suleyman Zazaoglu",
+        "rating": 5,
+        "date": "2025-10-14",
+        "text": "Ich war mit der Fahrschule 06 sehr zufrieden. Ich kann Vacit wärmstens empfehlen. Vielen Dank für alles.",
+        "avatar": "SZ"
+      }
+    ],
+    "googleReviewsUrl": "https://maps.app.goo.gl/FQjm2ZRoo8V7TPxz9"
+  }
