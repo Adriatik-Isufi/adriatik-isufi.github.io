@@ -3,9 +3,16 @@
       {
         "id": 1,
         "name": "Süleyman",
-        "image": "/Suleiman.jpg",
+        "image": "/Success/Suleiman.jpg",
         "caption": "Herzlichen Glückwunsch Süleyman",
         "date": "2025-10-13"
+      },
+      {
+        "id": 2,
+        "name": "Jon",
+        "image": "/Success/jon-success.jpg",
+        "caption": "Gratuliere Jon 👏💪😎",
+        "date": "2025-10-18"
       }
     ]
   }
