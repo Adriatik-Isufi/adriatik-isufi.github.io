@@ -12,7 +12,7 @@
       "id": 2,
       "name": "jon",
       "rating": 5,
-      "date": "vor 4 Tagen",
+      "date": "vor 5 Tagen",
       "text": "Vaxhid ist ein top Fahrlehrer, den ich nur weiterempfehlen kann. Die Fahrstunden sind professionell, lehrreich und gleichzeitig lustig. Er ist ehrlich, geduldig und sorgt dafür, dass man sich beim Fahren sicher fühlt. Wer einen guten Fahrlehrer sucht, ist bei Vaxhid genau richtig. 100 % Empfehlung!",
       "avatar": "J"
     },
@@ -26,25 +26,33 @@
     },
     {
       "id": 4,
+      "name": "Superjuanito 2.0",
+      "rating": 5,
+      "date": "vor 14 Stunden",
+      "text": "Ich kann meinen Fahrlehrer nur wärmstens empfehlen! Vom ersten Tag an war der Unterricht professionell, geduldig und motivierend. Er hat immer Ruhe bewahrt, selbst wenn ich mal nervös oder unsicher war. Besonders toll fand ich, dass er alles verständlich erklärt und mir das nötige Selbstvertrauen fürs Fahren gegeben hat. Dank seiner Unterstützung habe ich meine Prüfung beim ersten Mal bestanden! Ein wirklich super Fahrlehrer – vielen Dank für alles!",
+      "avatar": "S2"
+    },
+    {
+      "id": 5,
       "name": "Timur Ünal",
       "rating": 5,
-      "date": "vor 7 Minuten",
+      "date": "vor 1 Tag",
       "text": "Ich hatte eine tolle Zeit mit Vaxhid! Er war immer gut gelaunt, humorvoll und gleichzeitig total geduldig. Wirklich ein super Fahrlehrer, den ich jedem nur empfehlen kann! 🚗 …",
       "avatar": "TÜ"
     },
     {
-      "id": 5,
+      "id": 6,
       "name": "Lea Sermaxhaj",
       "rating": 5,
-      "date": "vor 10 Minuten",
+      "date": "vor 1 Tag",
       "text": "Wer eine top Fahrschule sucht, ist hier genau richtig! Vaxhid war immer geduldig, motivierend und lustig. Jede Fahrstunde war lehrreich und hat gleichzeitig viel Spass gemacht. Durch seine grossartige Unterstützung war ich bestens auf die Prüfung vorbereitet und habe sie gleich beim ersten Mal bestanden!\n100 % empfehlenswert!!!",
       "avatar": "LS"
     },
     {
-      "id": 6,
+      "id": 7,
       "name": "karacuha berra",
       "rating": 5,
-      "date": "vor 15 Stunden",
+      "date": "vor 1 Tag",
       "text": "Ich habe mit Vaxhid für meine Theoretische Prüfung gelernt er hat sich Zeit genommen und es mit mir angeschaut ,hat sich auf jeden Fall gelohnt\nDanke Vaxhid 🙏🤗😁 …",
       "avatar": "KB"
     }
