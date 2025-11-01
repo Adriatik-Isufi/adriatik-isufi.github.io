@@ -35,11 +35,14 @@ export function ReviewsSection() {
   const [selectedStoryIndex, setSelectedStoryIndex] = useState<number | null>(null)
   const [progress, setProgress] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const [isHolding, setIsHolding] = useState(false)
+  const [selectedReview, setSelectedReview] = useState<Review | null>(null)
   const reviewsPerPage = 3
   const reviews: Review[] = reviewsData.reviews
   const googleReviewsUrl = reviewsData.googleReviewsUrl
   const stories: Story[] = storiesData.stories
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null)
+  const holdTimerRef = useRef<NodeJS.Timeout | null>(null)
   const storyDuration = 5000 // 5 seconds per story
 
   const totalPages = Math.ceil(reviews.length / reviewsPerPage)
@@ -74,7 +77,7 @@ export function ReviewsSection() {
   }
 
   useEffect(() => {
-    if (selectedStoryIndex === null || isPaused) return
+    if (selectedStoryIndex === null || isHolding) return
 
     setProgress(0)
     const startTime = Date.now()
@@ -101,7 +104,7 @@ export function ReviewsSection() {
         clearInterval(progressIntervalRef.current)
       }
     }
-  }, [selectedStoryIndex, isPaused, stories.length])
+  }, [selectedStoryIndex, isHolding, stories.length])
 
   const goToPrevious = () => {
     if (selectedStoryIndex !== null && selectedStoryIndex > 0) {
@@ -119,12 +122,34 @@ export function ReviewsSection() {
     }
   }
 
-  const handleTapZone = (e: React.MouseEvent<HTMLDivElement>, zone: "left" | "right") => {
+  const handleTap = (
+    e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
+    zone: "left" | "right",
+  ) => {
     e.stopPropagation()
     if (zone === "left") {
       goToPrevious()
     } else {
       goToNext()
+    }
+  }
+
+  const handleHoldStart = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault()
+    holdTimerRef.current = setTimeout(() => {
+      setIsHolding(true)
+    }, 200) // 200ms delay to distinguish between tap and hold
+  }
+
+  const handleHoldEnd = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault()
+    if (holdTimerRef.current) {
+      clearTimeout(holdTimerRef.current)
+    }
+
+    // If was holding, just release. If not holding, it was a tap
+    if (isHolding) {
+      setIsHolding(false)
     }
   }
 
@@ -148,6 +173,11 @@ export function ReviewsSection() {
   const averageRating = (reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length).toFixed(1)
   const selectedStory = selectedStoryIndex !== null ? stories[selectedStoryIndex] : null
 
+  const shouldShowReadMore = (text: string) => {
+    // Approximate: if text is longer than 200 characters, it likely exceeds 4 lines
+    return text.length > 200
+  }
+
   return (
     <section id="reviews" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -157,57 +187,59 @@ export function ReviewsSection() {
               Bewertungen / Erfolgsgeschichten
             </Badge>
 
-            <div className="flex flex-col items-center gap-4 mb-4">
-              <div className="flex items-center justify-center gap-4">
-                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">Was unsere Kunden sagen</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Was unsere Kunden sagen</h2>
 
-                {stories.length > 0 && (
-                  <div className="hidden md:flex items-center gap-2">
-                    {stories.map((story, index) => (
-                      <button key={story.id} onClick={() => setSelectedStoryIndex(index)} className="group">
-                        <div className="relative">
-                          <div className="absolute inset-0 bg-gradient-to-tr from-[#1351d8] via-blue-500 to-cyan-400 rounded-full p-[2px] animate-pulse">
-                            <div className="bg-white rounded-full p-[2px] w-full h-full">
-                              <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full overflow-hidden">
-                                <img
-                                  src={story.image || "/placeholder.svg"}
-                                  alt={story.name}
-                                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          <div className="w-12 h-12 lg:w-14 lg:h-14" />
-                        </div>
-                      </button>
-                    ))}
+            {stories.length > 0 && (
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <button onClick={() => setSelectedStoryIndex(0)} className="group relative">
+                  <svg className="w-20 h-20 sm:w-24 sm:h-24 -rotate-90 animate-pulse-ring" viewBox="0 0 100 100">
+                    {stories.map((_, index) => {
+                      const segmentAngle = 360 / stories.length
+                      const startAngle = index * segmentAngle
+                      const circumference = 2 * Math.PI * 42
+                      const segmentLength = circumference / stories.length
+                      const gap = 4 // Increased gap between segments for clearer separation
+
+                      return (
+                        <circle
+                          key={index}
+                          cx="50"
+                          cy="50"
+                          r="42"
+                          fill="none"
+                          stroke="url(#gradient)"
+                          strokeWidth="5"
+                          strokeDasharray={`${segmentLength - gap} ${circumference - (segmentLength - gap)}`}
+                          strokeDashoffset={-(index * segmentLength + circumference / 4)}
+                          className="transition-all duration-300"
+                        />
+                      )
+                    })}
+                    <defs>
+                      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#1351d8" />
+                        <stop offset="50%" stopColor="#3b82f6" />
+                        <stop offset="100%" stopColor="#06b6d4" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-16 sm:w-[4.75rem] sm:h-[4.75rem] rounded-full overflow-hidden border-2 border-white">
+                      <img
+                        src={stories[0].image || "/placeholder.svg"}
+                        alt="Success Stories"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
                   </div>
+                </button>
+
+                {stories.length > 1 && (
+                  <span className="text-sm font-semibold text-[#1351d8]">+{stories.length - 1}</span>
                 )}
               </div>
-
-              {stories.length > 0 && (
-                <div className="flex md:hidden items-center gap-2">
-                  {stories.map((story, index) => (
-                    <button key={story.id} onClick={() => setSelectedStoryIndex(index)} className="group">
-                      <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-tr from-[#1351d8] via-blue-500 to-cyan-400 rounded-full p-[2px] animate-pulse">
-                          <div className="bg-white rounded-full p-[2px] w-full h-full">
-                            <div className="w-14 h-14 rounded-full overflow-hidden">
-                              <img
-                                src={story.image || "/placeholder.svg"}
-                                alt={story.name}
-                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div className="w-14 h-14" />
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
+            )}
 
             <p className="text-xl text-gray-600 mb-8">Lesen Sie die Erfahrungen unserer zufriedenen Fahrschüler</p>
 
@@ -251,12 +283,54 @@ export function ReviewsSection() {
           </div>
         </div>
 
-        {selectedStory && selectedStoryIndex !== null && (
+        {selectedReview && (
           <div
-            className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
+            className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+            onClick={() => setSelectedReview(null)}
           >
+            <div
+              className="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto scrollbar-hide p-6 relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                onClick={() => setSelectedReview(null)}
+              >
+                <X className="h-5 w-5" />
+              </Button>
+
+              <div className="flex items-start space-x-4 mb-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#1351d8] to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-semibold text-sm">{selectedReview.avatar}</span>
+                </div>
+
+                <div className="flex-1 text-left">
+                  <h3 className="font-semibold text-gray-900 mb-1 text-lg">{selectedReview.name}</h3>
+                  <div className="flex items-center space-x-2 mb-2">
+                    <div className="flex">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`h-5 w-5 ${
+                            i < selectedReview.rating ? "fill-[#1351d8] text-[#1351d8]" : "text-gray-300"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-sm text-gray-500">{selectedReview.date}</p>
+                </div>
+              </div>
+
+              <p className="text-gray-700 leading-relaxed text-left whitespace-pre-wrap">{selectedReview.text}</p>
+            </div>
+          </div>
+        )}
+
+        {selectedStory && selectedStoryIndex !== null && (
+          <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center">
             <div className="absolute top-4 left-4 right-4 flex space-x-1 z-10">
               {stories.map((_, index) => (
                 <div key={index} className="flex-1 h-1 bg-white/30 rounded-full overflow-hidden">
@@ -304,12 +378,26 @@ export function ReviewsSection() {
             <div className="max-w-lg w-full h-full flex items-center relative">
               <div
                 className="absolute left-0 top-0 bottom-0 w-1/3 cursor-pointer z-[5]"
-                onClick={(e) => handleTapZone(e, "left")}
+                onClick={(e) => {
+                  if (!isHolding) handleTap(e, "left")
+                }}
+                onMouseDown={handleHoldStart}
+                onMouseUp={handleHoldEnd}
+                onMouseLeave={handleHoldEnd}
+                onTouchStart={handleHoldStart}
+                onTouchEnd={handleHoldEnd}
               />
 
               <div
                 className="absolute right-0 top-0 bottom-0 w-1/3 cursor-pointer z-[5]"
-                onClick={(e) => handleTapZone(e, "right")}
+                onClick={(e) => {
+                  if (!isHolding) handleTap(e, "right")
+                }}
+                onMouseDown={handleHoldStart}
+                onMouseUp={handleHoldEnd}
+                onMouseLeave={handleHoldEnd}
+                onTouchStart={handleHoldStart}
+                onTouchEnd={handleHoldEnd}
               />
 
               <div className="w-full px-4">
@@ -354,8 +442,8 @@ export function ReviewsSection() {
               >
                 {reviews.map((review) => (
                   <div key={review.id} className="w-full flex-shrink-0 px-2">
-                    <Card className="border border-gray-200 hover:border-[#1351d8]/30 transition-all duration-300 hover:shadow-lg">
-                      <CardContent className="p-6">
+                    <Card className="border border-gray-200 hover:border-[#1351d8]/30 transition-all duration-300 hover:shadow-lg h-[280px] flex flex-col">
+                      <CardContent className="p-6 flex flex-col h-full">
                         <div className="flex items-start space-x-4 mb-4">
                           <div className="w-12 h-12 bg-gradient-to-br from-[#1351d8] to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                             <span className="text-white font-semibold text-sm">{review.avatar}</span>
@@ -379,7 +467,18 @@ export function ReviewsSection() {
                           </div>
                         </div>
 
-                        <p className="text-gray-600 leading-relaxed text-left">{review.text}</p>
+                        <div className="flex-1 overflow-hidden">
+                          <p className="text-gray-600 leading-relaxed text-left line-clamp-4">{review.text}</p>
+                        </div>
+
+                        {shouldShowReadMore(review.text) && (
+                          <button
+                            onClick={() => setSelectedReview(review)}
+                            className="text-[#1351d8] text-sm font-medium hover:underline mt-2 text-left"
+                          >
+                            mehr lesen...
+                          </button>
+                        )}
                       </CardContent>
                     </Card>
                   </div>
@@ -405,9 +504,9 @@ export function ReviewsSection() {
             {currentReviews.map((review) => (
               <Card
                 key={review.id}
-                className="border border-gray-200 hover:border-[#1351d8]/30 transition-all duration-300 hover:shadow-lg"
+                className="border border-gray-200 hover:border-[#1351d8]/30 transition-all duration-300 hover:shadow-lg h-[280px] flex flex-col"
               >
-                <CardContent className="p-6">
+                <CardContent className="p-6 flex flex-col h-full">
                   <div className="flex items-start space-x-4 mb-4">
                     <div className="w-12 h-12 bg-gradient-to-br from-[#1351d8] to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-white font-semibold text-sm">{review.avatar}</span>
@@ -431,7 +530,18 @@ export function ReviewsSection() {
                     </div>
                   </div>
 
-                  <p className="text-gray-600 leading-relaxed text-left">{review.text}</p>
+                  <div className="flex-1 overflow-hidden">
+                    <p className="text-gray-600 leading-relaxed text-left line-clamp-4">{review.text}</p>
+                  </div>
+
+                  {shouldShowReadMore(review.text) && (
+                    <button
+                      onClick={() => setSelectedReview(review)}
+                      className="text-[#1351d8] text-sm font-medium hover:underline mt-2 text-left"
+                    >
+                      mehr lesen...
+                    </button>
+                  )}
                 </CardContent>
               </Card>
             ))}
