@@ -353,28 +353,6 @@ export function ReviewsSection() {
               <X className="h-6 w-6" />
             </Button>
 
-            {selectedStoryIndex > 0 && (
-              <Button
-                variant="ghost"
-                size="icon"
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/10 z-10 hidden md:flex"
-                onClick={goToPrevious}
-              >
-                <ChevronLeft className="h-8 w-8" />
-              </Button>
-            )}
-
-            {selectedStoryIndex < stories.length - 1 && (
-              <Button
-                variant="ghost"
-                size="icon"
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/10 z-10 hidden md:flex"
-                onClick={goToNext}
-              >
-                <ChevronRight className="h-8 w-8" />
-              </Button>
-            )}
-
             <div className="max-w-lg w-full h-full flex items-center relative">
               <div
                 className="absolute left-0 top-0 bottom-0 w-1/3 cursor-pointer z-[5]"

@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect, useRef } from "react"
-import { X, ChevronLeft, ChevronRight } from "lucide-react"
+import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import storiesData from "@/data/stories.json"
 
@@ -207,26 +207,6 @@ export function StoriesViewer() {
           >
             <X className="h-6 w-6" />
           </Button>
-
-          {selectedStoryIndex > 0 && (
-            <button
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/70 z-20 hidden md:flex items-center justify-center h-12 w-12 rounded-full transition-colors duration-200"
-              onClick={goToPrevious}
-              aria-label="Previous story"
-            >
-              <ChevronLeft className="h-8 w-8" />
-            </button>
-          )}
-
-          {selectedStoryIndex < stories.length - 1 && (
-            <button
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/70 z-20 hidden md:flex items-center justify-center h-12 w-12 rounded-full transition-colors duration-200"
-              onClick={goToNext}
-              aria-label="Next story"
-            >
-              <ChevronRight className="h-8 w-8" />
-            </button>
-          )}
 
           <div className="max-w-lg w-full h-full flex items-center relative">
             {/* Touch zones for mobile only */}
