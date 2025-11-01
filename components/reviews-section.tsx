@@ -138,10 +138,10 @@ export function ReviewsSection() {
     e.preventDefault()
     holdTimerRef.current = setTimeout(() => {
       setIsHolding(true)
-    }, 200) // 200ms delay to distinguish between tap and hold
+    }, 300) // Increased to 300ms for better tap detection
   }
 
-  const handleHoldEnd = (e: React.MouseEvent | React.TouchEvent) => {
+  const handleHoldEnd = (e: React.MouseEvent | React.TouchEvent, zone?: "left" | "right") => {
     e.preventDefault()
     if (holdTimerRef.current) {
       clearTimeout(holdTimerRef.current)
@@ -150,6 +150,9 @@ export function ReviewsSection() {
     // If was holding, just release. If not holding, it was a tap
     if (isHolding) {
       setIsHolding(false)
+    } else if (zone) {
+      // It was a tap, navigate
+      handleTap(e as any, zone)
     }
   }
 
@@ -355,27 +358,21 @@ export function ReviewsSection() {
 
             <div className="max-w-lg w-full h-full flex items-center relative">
               <div
-                className="absolute left-0 top-0 bottom-0 w-1/3 cursor-pointer z-[5]"
-                onClick={(e) => {
-                  if (!isHolding) handleTap(e, "left")
-                }}
+                className="absolute left-0 top-0 bottom-0 w-1/2 z-[5] touch-none"
                 onMouseDown={handleHoldStart}
-                onMouseUp={handleHoldEnd}
+                onMouseUp={(e) => handleHoldEnd(e, "left")}
                 onMouseLeave={handleHoldEnd}
                 onTouchStart={handleHoldStart}
-                onTouchEnd={handleHoldEnd}
+                onTouchEnd={(e) => handleHoldEnd(e, "left")}
               />
 
               <div
-                className="absolute right-0 top-0 bottom-0 w-1/3 cursor-pointer z-[5]"
-                onClick={(e) => {
-                  if (!isHolding) handleTap(e, "right")
-                }}
+                className="absolute right-0 top-0 bottom-0 w-1/2 z-[5] touch-none"
                 onMouseDown={handleHoldStart}
-                onMouseUp={handleHoldEnd}
+                onMouseUp={(e) => handleHoldEnd(e, "right")}
                 onMouseLeave={handleHoldEnd}
                 onTouchStart={handleHoldStart}
-                onTouchEnd={handleHoldEnd}
+                onTouchEnd={(e) => handleHoldEnd(e, "right")}
               />
 
               <div className="w-full px-4">
