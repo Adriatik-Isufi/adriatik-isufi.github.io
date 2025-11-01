@@ -21,6 +21,8 @@ export function StoriesViewer() {
   const [isPaused, setIsPaused] = useState(false)
   const stories: Story[] = storiesData.stories
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null)
+  const longPressTimerRef = useRef<NodeJS.Timeout | null>(null)
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null)
   const storyDuration = 5000 // 5 seconds per story
 
   useEffect(() => {
@@ -53,6 +55,26 @@ export function StoriesViewer() {
     }
   }, [selectedStoryIndex, isPaused, stories.length])
 
+  useEffect(() => {
+    if (selectedStoryIndex === null) return
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        goToPrevious()
+      } else if (e.key === "ArrowRight") {
+        goToNext()
+      } else if (e.key === " " || e.key === "Spacebar") {
+        e.preventDefault()
+        setIsPaused((prev) => !prev)
+      } else if (e.key === "Escape") {
+        setSelectedStoryIndex(null)
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [selectedStoryIndex, stories.length])
+
   const goToPrevious = () => {
     if (selectedStoryIndex !== null && selectedStoryIndex > 0) {
       setSelectedStoryIndex(selectedStoryIndex - 1)
@@ -69,7 +91,57 @@ export function StoriesViewer() {
     }
   }
 
-  const handleTapZone = (e: React.MouseEvent<HTMLDivElement>, zone: "left" | "right") => {
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>, zone: "left" | "right") => {
+    const touch = e.touches[0]
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY }
+
+    // Start long-press timer (500ms)
+    longPressTimerRef.current = setTimeout(() => {
+      setIsPaused(true)
+    }, 500)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    // Cancel long-press if user moves finger
+    if (longPressTimerRef.current && touchStartRef.current) {
+      const touch = e.touches[0]
+      const deltaX = Math.abs(touch.clientX - touchStartRef.current.x)
+      const deltaY = Math.abs(touch.clientY - touchStartRef.current.y)
+
+      // If moved more than 10px, cancel long press
+      if (deltaX > 10 || deltaY > 10) {
+        clearTimeout(longPressTimerRef.current)
+        longPressTimerRef.current = null
+      }
+    }
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>, zone: "left" | "right") => {
+    // If long-press timer is still active, it was a tap (not a long press)
+    if (longPressTimerRef.current) {
+      clearTimeout(longPressTimerRef.current)
+      longPressTimerRef.current = null
+
+      // Only navigate if not paused (if paused, unpause instead)
+      if (isPaused) {
+        setIsPaused(false)
+      } else {
+        // Navigate based on zone
+        if (zone === "left") {
+          goToPrevious()
+        } else {
+          goToNext()
+        }
+      }
+    } else {
+      // Long press ended, unpause
+      setIsPaused(false)
+    }
+
+    touchStartRef.current = null
+  }
+
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>, zone: "left" | "right") => {
     e.stopPropagation()
     if (zone === "left") {
       goToPrevious()
@@ -112,11 +184,7 @@ export function StoriesViewer() {
 
       {/* Story Modal with Instagram-like behavior */}
       {selectedStory && selectedStoryIndex !== null && (
-        <div
-          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
+        <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center">
           <div className="absolute top-4 left-4 right-4 flex space-x-1 z-10">
             {stories.map((_, index) => (
               <div key={index} className="flex-1 h-1 bg-white/30 rounded-full overflow-hidden">
@@ -141,39 +209,44 @@ export function StoriesViewer() {
           </Button>
 
           {selectedStoryIndex > 0 && (
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/10 z-10 hidden md:flex"
+            <button
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/70 z-20 hidden md:flex items-center justify-center h-12 w-12 rounded-full transition-colors duration-200"
               onClick={goToPrevious}
+              aria-label="Previous story"
             >
               <ChevronLeft className="h-8 w-8" />
-            </Button>
+            </button>
           )}
 
           {selectedStoryIndex < stories.length - 1 && (
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/10 z-10 hidden md:flex"
+            <button
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/70 z-20 hidden md:flex items-center justify-center h-12 w-12 rounded-full transition-colors duration-200"
               onClick={goToNext}
+              aria-label="Next story"
             >
               <ChevronRight className="h-8 w-8" />
-            </Button>
+            </button>
           )}
 
           <div className="max-w-lg w-full h-full flex items-center relative">
-            {/* Left tap zone (previous) */}
-            <div
-              className="absolute left-0 top-0 bottom-0 w-1/3 cursor-pointer z-[5]"
-              onClick={(e) => handleTapZone(e, "left")}
-            />
+            {/* Touch zones for mobile only */}
+            <div className="md:hidden">
+              <div
+                className="absolute left-0 top-0 bottom-0 w-1/2 cursor-pointer z-[5]"
+                onClick={(e) => handleClick(e, "left")}
+                onTouchStart={(e) => handleTouchStart(e, "left")}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={(e) => handleTouchEnd(e, "left")}
+              />
 
-            {/* Right tap zone (next) */}
-            <div
-              className="absolute right-0 top-0 bottom-0 w-1/3 cursor-pointer z-[5]"
-              onClick={(e) => handleTapZone(e, "right")}
-            />
+              <div
+                className="absolute right-0 top-0 bottom-0 w-1/2 cursor-pointer z-[5]"
+                onClick={(e) => handleClick(e, "right")}
+                onTouchStart={(e) => handleTouchStart(e, "right")}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={(e) => handleTouchEnd(e, "right")}
+              />
+            </div>
 
             <div className="w-full px-4">
               {/* Story Header */}
