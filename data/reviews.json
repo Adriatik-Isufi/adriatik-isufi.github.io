@@ -1,4 +1,7 @@
 {
+  "overallRating": 5.0,
+  "totalReviews": 8,
+  "googleReviewsUrl": "https://maps.app.goo.gl/FQjm2ZRoo8V7TPxz9",
   "reviews": [
     {
       "id": 1,
@@ -64,6 +67,5 @@
       "text": "Super Fahrlehrer! Sehr geduldig, freundlich und erklärt alles so, dass man es direkt versteht. Hab mich von Anfang an wohlgefühlt und schon nach ca. 5 Stunden echt sicher auf der Straße. Kann ich nur empfehlen!",
       "avatar": "AI"
     }
-  ],
-  "googleReviewsUrl": "https://maps.app.goo.gl/FQjm2ZRoo8V7TPxz9"
+  ]
 }

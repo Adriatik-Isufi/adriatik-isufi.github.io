@@ -39,6 +39,8 @@ export function ReviewsSection() {
   const [selectedReview, setSelectedReview] = useState<Review | null>(null)
   const reviewsPerPage = 3
   const reviews: Review[] = reviewsData.reviews
+  const overallRating = reviewsData.overallRating
+  const totalReviews = reviewsData.totalReviews
   const googleReviewsUrl = reviewsData.googleReviewsUrl
   const stories: Story[] = storiesData.stories
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null)
@@ -173,7 +175,6 @@ export function ReviewsSection() {
     })
   }
 
-  const averageRating = (reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length).toFixed(1)
   const selectedStory = selectedStoryIndex !== null ? stories[selectedStoryIndex] : null
 
   const shouldShowReadMore = (text: string) => {
@@ -271,14 +272,14 @@ export function ReviewsSection() {
                 </div>
 
                 <div className="flex items-center space-x-2">
-                  <span className="text-5xl font-bold text-[#1351d8]">{averageRating}</span>
+                  <span className="text-5xl font-bold text-[#1351d8]">{overallRating.toFixed(1)}</span>
                   <div className="flex flex-col">
                     <div className="flex">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} className="h-5 w-5 fill-[#1351d8] text-[#1351d8]" />
                       ))}
                     </div>
-                    <p className="text-sm text-gray-600 mt-1">Basierend auf {reviews.length} Bewertungen</p>
+                    <p className="text-sm text-gray-600 mt-1">Basierend auf {totalReviews} Bewertungen</p>
                   </div>
                 </div>
               </div>
@@ -492,12 +493,7 @@ export function ReviewsSection() {
                       <div className="flex items-center space-x-2 mb-2">
                         <div className="flex">
                           {[...Array(5)].map((_, i) => (
-                            <Star
-                              key={i}
-                              className={`h-4 w-4 ${
-                                i < review.rating ? "fill-[#1351d8] text-[#1351d8]" : "text-gray-300"
-                              }`}
-                            />
+                            <Star key={i} className="h-4 w-4 fill-[#1351d8] text-[#1351d8]" />
                           ))}
                         </div>
                       </div>
