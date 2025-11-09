@@ -1,26 +1,34 @@
 {
   "overallRating": 5.0,
-  "totalReviews": 9,
+  "totalReviews": 10,
   "googleReviewsUrl": "https://maps.app.goo.gl/FQjm2ZRoo8V7TPxz9",
   "reviews": [
     {
       "id": 1,
+      "name": "Erza Thaqi",
+      "rating": 5,
+      "date": "vor 1 Tag",
+      "text": "Dank deiner Geduld und deiner coolen, ruhigen Art habe ich die Prüfung geschafft! Du hast mir immer Sicherheit gegeben und alles super erklärt – sogar die schwierigeren Sachen hast du easy verständlich gemacht. Ich habe mich jedes Mal auf die Fahrstunden gefreut und kann dich echt nur weiterempfehlen. Danke Vaxhid :)",
+      "avatar": "ET"
+    },
+    {
+      "id": 2,
       "name": "Nadine Gerber",
       "rating": 5,
-      "date": "vor 22 Stunden",
+      "date": "vor 2 Tagen",
       "text": "Vaxhid ist wirklich ein super Fahrlehrer. Ob Mental Break Down oder Höhenflug er hat mit mir alles erlebt und much dabei unterstützt weiter positiv zu bleiben. Mit viel Geduld und Humor hat er mich erfolgreich beim ersten Versuch durch die Fahrprüfung gebracht. Danke!",
       "avatar": "NG"
     },
     {
-      "id": 2,
+      "id": 3,
       "name": "Dila",
       "rating": 5,
-      "date": "vor einer Woche",
+      "date": "vor 2 Wochen",
       "text": "Der beste Fahrlehrer!!! Er nimmt sich immer Zeit, um alles perfekt zu erklären und zu zeigen. Kann ich nur jedem empfehlen 👍🏽👍🏽 …",
       "avatar": "D"
     },
     {
-      "id": 3,
+      "id": 4,
       "name": "Superjuanito 2.0",
       "rating": 5,
       "date": "vor 2 Wochen",
@@ -28,7 +36,7 @@
       "avatar": "S2"
     },
     {
-      "id": 4,
+      "id": 5,
       "name": "Timur Ünal",
       "rating": 5,
       "date": "vor 2 Wochen",
@@ -36,7 +44,7 @@
       "avatar": "TÜ"
     },
     {
-      "id": 5,
+      "id": 6,
       "name": "Lea Sermaxhaj",
       "rating": 5,
       "date": "vor 2 Wochen",
@@ -44,7 +52,7 @@
       "avatar": "LS"
     },
     {
-      "id": 6,
+      "id": 7,
       "name": "karacuha berra",
       "rating": 5,
       "date": "vor 2 Wochen",
@@ -52,7 +60,7 @@
       "avatar": "KB"
     },
     {
-      "id": 7,
+      "id": 8,
       "name": "jon",
       "rating": 5,
       "date": "vor 3 Wochen",
@@ -60,7 +68,7 @@
       "avatar": "J"
     },
     {
-      "id": 8,
+      "id": 9,
       "name": "Suleyman Zazaoglu",
       "rating": 5,
       "date": "vor 3 Wochen",
@@ -68,7 +76,7 @@
       "avatar": "SZ"
     },
     {
-      "id": 9,
+      "id": 10,
       "name": "Adriatik Isufi",
       "rating": 5,
       "date": "vor 2 Monaten",
