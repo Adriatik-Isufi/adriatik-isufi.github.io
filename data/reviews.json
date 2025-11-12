@@ -5,6 +5,14 @@
   "reviews": [
     {
       "id": 1,
+      "name": "Tenzin Norzin",
+      "rating": 5,
+      "date": "vor einer Stunde",
+      "text": "Heute endlich bestanden 🥳 Ein riesen Dank an Vaxhid für die ganze Unterstützung! Er war immer mega geduldig und jede Fahrstunde war super lehrreich. Kann ihn wirklich jedem empfehlen!! 🚗🙌",
+      "avatar": "TN"
+    },
+    {
+      "id": 2,
       "name": "Erza Thaqi",
       "rating": 5,
       "date": "vor 1 Tag",
@@ -12,7 +20,7 @@
       "avatar": "ET"
     },
     {
-      "id": 2,
+      "id": 3,
       "name": "Nadine Gerber",
       "rating": 5,
       "date": "vor 2 Tagen",
@@ -20,7 +28,7 @@
       "avatar": "NG"
     },
     {
-      "id": 3,
+      "id": 4,
       "name": "Dila",
       "rating": 5,
       "date": "vor 2 Wochen",
@@ -28,7 +36,7 @@
       "avatar": "D"
     },
     {
-      "id": 4,
+      "id": 5,
       "name": "Superjuanito 2.0",
       "rating": 5,
       "date": "vor 2 Wochen",
@@ -36,7 +44,7 @@
       "avatar": "S2"
     },
     {
-      "id": 5,
+      "id": 6,
       "name": "Timur Ünal",
       "rating": 5,
       "date": "vor 2 Wochen",
@@ -44,7 +52,7 @@
       "avatar": "TÜ"
     },
     {
-      "id": 6,
+      "id": 7,
       "name": "Lea Sermaxhaj",
       "rating": 5,
       "date": "vor 2 Wochen",
@@ -52,7 +60,7 @@
       "avatar": "LS"
     },
     {
-      "id": 7,
+      "id": 8,
       "name": "karacuha berra",
       "rating": 5,
       "date": "vor 2 Wochen",
@@ -60,7 +68,7 @@
       "avatar": "KB"
     },
     {
-      "id": 8,
+      "id": 9,
       "name": "jon",
       "rating": 5,
       "date": "vor 3 Wochen",
@@ -68,7 +76,7 @@
       "avatar": "J"
     },
     {
-      "id": 9,
+      "id": 10,
       "name": "Suleyman Zazaoglu",
       "rating": 5,
       "date": "vor 3 Wochen",
@@ -76,7 +84,7 @@
       "avatar": "SZ"
     },
     {
-      "id": 10,
+      "id": 11,
       "name": "Adriatik Isufi",
       "rating": 5,
       "date": "vor 2 Monaten",
