@@ -37,6 +37,8 @@ export function ReviewsSection() {
   const [isPaused, setIsPaused] = useState(false)
   const [isHolding, setIsHolding] = useState(false)
   const [selectedReview, setSelectedReview] = useState<Review | null>(null)
+  const [truncatedReviews, setTruncatedReviews] = useState<Set<number>>(new Set())
+  const reviewRefs = useRef<Map<number, HTMLParagraphElement>>(new Map())
   const reviewsPerPage = 3
   const reviews: Review[] = reviewsData.reviews
   const overallRating = reviewsData.overallRating
@@ -108,6 +110,20 @@ export function ReviewsSection() {
     }
   }, [selectedStoryIndex, isHolding, stories.length])
 
+  useEffect(() => {
+    const truncated = new Set<number>()
+    reviewRefs.current.forEach((element, reviewId) => {
+      if (element) {
+        // Check if element is truncated by comparing scrollHeight to clientHeight
+        const isTruncated = element.scrollHeight > element.clientHeight
+        if (isTruncated) {
+          truncated.add(reviewId)
+        }
+      }
+    })
+    setTruncatedReviews(truncated)
+  }, [currentPage, mobileReviewIndex, reviews])
+
   const goToPrevious = () => {
     if (selectedStoryIndex !== null && selectedStoryIndex > 0) {
       setSelectedStoryIndex(selectedStoryIndex - 1)
@@ -176,11 +192,6 @@ export function ReviewsSection() {
   }
 
   const selectedStory = selectedStoryIndex !== null ? stories[selectedStoryIndex] : null
-
-  const shouldShowReadMore = (text: string) => {
-    // Approximate: if text is longer than 200 characters, it likely exceeds 4 lines
-    return text.length > 200
-  }
 
   return (
     <section id="reviews" className="py-16 bg-white">
@@ -430,12 +441,7 @@ export function ReviewsSection() {
                             <div className="flex items-center space-x-2 mb-2">
                               <div className="flex">
                                 {[...Array(5)].map((_, i) => (
-                                  <Star
-                                    key={i}
-                                    className={`h-4 w-4 ${
-                                      i < review.rating ? "fill-[#1351d8] text-[#1351d8]" : "text-gray-300"
-                                    }`}
-                                  />
+                                  <Star key={i} className="h-4 w-4 fill-[#1351d8] text-[#1351d8]" />
                                 ))}
                               </div>
                             </div>
@@ -444,10 +450,17 @@ export function ReviewsSection() {
                         </div>
 
                         <div className="flex-1 overflow-hidden">
-                          <p className="text-gray-600 leading-relaxed text-left line-clamp-4">{review.text}</p>
+                          <p
+                            ref={(el) => {
+                              if (el) reviewRefs.current.set(review.id, el)
+                            }}
+                            className="text-gray-600 leading-relaxed text-left line-clamp-4"
+                          >
+                            {review.text}
+                          </p>
                         </div>
 
-                        {shouldShowReadMore(review.text) && (
+                        {truncatedReviews.has(review.id) && (
                           <button
                             onClick={() => setSelectedReview(review)}
                             className="text-[#1351d8] text-sm font-medium hover:underline mt-2 text-left"
@@ -502,10 +515,17 @@ export function ReviewsSection() {
                   </div>
 
                   <div className="flex-1 overflow-hidden">
-                    <p className="text-gray-600 leading-relaxed text-left line-clamp-4">{review.text}</p>
+                    <p
+                      ref={(el) => {
+                        if (el) reviewRefs.current.set(review.id, el)
+                      }}
+                      className="text-gray-600 leading-relaxed text-left line-clamp-4"
+                    >
+                      {review.text}
+                    </p>
                   </div>
 
-                  {shouldShowReadMore(review.text) && (
+                  {truncatedReviews.has(review.id) && (
                     <button
                       onClick={() => setSelectedReview(review)}
                       className="text-[#1351d8] text-sm font-medium hover:underline mt-2 text-left"
