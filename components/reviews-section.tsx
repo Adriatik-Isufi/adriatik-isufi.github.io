@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Star, ChevronLeft, ChevronRight, X } from "lucide-react"
+import { Star, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import reviewsData from "@/data/reviews.json"
 import storiesData from "@/data/stories.json"
 
@@ -111,68 +111,52 @@ export function ReviewsSection() {
   }, [selectedStoryIndex, isHolding, stories.length])
 
   useEffect(() => {
-    const truncated = new Set<number>()
-    reviewRefs.current.forEach((element, reviewId) => {
-      if (element) {
-        // Check if element is truncated by comparing scrollHeight to clientHeight
-        const isTruncated = element.scrollHeight > element.clientHeight
-        if (isTruncated) {
+    const checkTruncation = () => {
+      const truncated = new Set<number>()
+      
+      reviewRefs.current.forEach((element, reviewId) => {
+        if (!element) return
+        
+        // Create a clone to measure natural height
+        const clone = element.cloneNode(true) as HTMLElement
+        clone.style.display = 'block'
+        clone.style.webkitLineClamp = 'unset'
+        clone.style.position = 'absolute'
+        clone.style.visibility = 'hidden'
+        clone.style.width = `${element.offsetWidth}px` // Match original width
+        
+        // Append to body temporarily
+        document.body.appendChild(clone)
+        
+        // Get the natural height
+        const naturalHeight = clone.offsetHeight
+        
+        // Get the clamped height from the original element
+        const clampedHeight = element.offsetHeight
+        
+        // Remove the clone
+        document.body.removeChild(clone)
+        
+        // If natural height is greater than clamped height, it's truncated
+        if (naturalHeight > clampedHeight) {
           truncated.add(reviewId)
         }
-      }
-    })
-    setTruncatedReviews(truncated)
-  }, [currentPage, mobileReviewIndex, reviews])
-
-  const goToPrevious = () => {
-    if (selectedStoryIndex !== null && selectedStoryIndex > 0) {
-      setSelectedStoryIndex(selectedStoryIndex - 1)
-    }
-  }
-
-  const goToNext = () => {
-    if (selectedStoryIndex !== null) {
-      if (selectedStoryIndex < stories.length - 1) {
-        setSelectedStoryIndex(selectedStoryIndex + 1)
-      } else {
-        setSelectedStoryIndex(null)
-      }
-    }
-  }
-
-  const handleTap = (
-    e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>,
-    zone: "left" | "right",
-  ) => {
-    e.stopPropagation()
-    if (zone === "left") {
-      goToPrevious()
-    } else {
-      goToNext()
-    }
-  }
-
-  const handleHoldStart = (e: React.MouseEvent | React.TouchEvent) => {
-    e.preventDefault()
-    holdTimerRef.current = setTimeout(() => {
-      setIsHolding(true)
-    }, 300) // Increased to 300ms for better tap detection
-  }
-
-  const handleHoldEnd = (e: React.MouseEvent | React.TouchEvent, zone?: "left" | "right") => {
-    e.preventDefault()
-    if (holdTimerRef.current) {
-      clearTimeout(holdTimerRef.current)
+      })
+      
+      setTruncatedReviews(truncated)
     }
 
-    // If was holding, just release. If not holding, it was a tap
-    if (isHolding) {
-      setIsHolding(false)
-    } else if (zone) {
-      // It was a tap, navigate
-      handleTap(e as any, zone)
+    // Wait for fonts and layout to be ready
+    const timeoutId = setTimeout(checkTruncation, 150)
+    
+    // Recheck on window resize
+    window.addEventListener('resize', checkTruncation)
+    
+    return () => {
+      clearTimeout(timeoutId)
+      window.removeEventListener('resize', checkTruncation)
     }
-  }
+  }, [currentPage, mobileReviewIndex])
 
   const nextPage = () => {
     setCurrentPage((prev) => (prev + 1) % totalPages)
