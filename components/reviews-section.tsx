@@ -107,6 +107,85 @@ export function ReviewsSection() {
     }
   }
 
+  const handleTouchStart = (e: React.TouchEvent, direction: 'left' | 'right') => {
+    const touchX = e.touches[0].clientX
+    const touchY = e.touches[0].clientY
+    
+    holdTimerRef.current = setTimeout(() => {
+      setIsPaused(true)
+    }, 500) // 500ms to trigger pause
+    
+    // Store touch start coordinates
+    ;(e.currentTarget as any).touchStartX = touchX
+    ;(e.currentTarget as any).touchStartY = touchY
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent, direction: 'left' | 'right') => {
+    const touchStartX = (e.currentTarget as any).touchStartX
+    const touchStartY = (e.currentTarget as any).touchStartY
+    const touchEndX = e.changedTouches[0].clientX
+    const touchEndY = e.changedTouches[0].clientY
+    
+    // Calculate distance moved
+    const moveDistance = Math.sqrt(
+      Math.pow(touchEndX - touchStartX, 2) + Math.pow(touchEndY - touchStartY, 2)
+    )
+    
+    if (holdTimerRef.current) {
+      clearTimeout(holdTimerRef.current)
+      holdTimerRef.current = null
+    }
+
+    // If it was a hold (paused), just unpause
+    if (isPaused) {
+      setIsPaused(false)
+      return
+    }
+
+    // Only navigate if it was a tap (not a drag/swipe)
+    if (moveDistance < 10) {
+      if (direction === 'left' && selectedStoryIndex !== null && selectedStoryIndex > 0) {
+        setSelectedStoryIndex(selectedStoryIndex - 1)
+        setProgress(0)
+      } else if (direction === 'right' && selectedStoryIndex !== null && selectedStoryIndex < stories.length - 1) {
+        setSelectedStoryIndex(selectedStoryIndex + 1)
+        setProgress(0)
+      } else if (direction === 'right' && selectedStoryIndex === stories.length - 1) {
+        // Close modal if on last story and tapping right
+        setSelectedStoryIndex(null)
+      }
+    }
+  }
+
+  const handleMouseDown = () => {
+    holdTimerRef.current = setTimeout(() => {
+      setIsPaused(true)
+    }, 500)
+  }
+
+  const handleMouseUp = (direction: 'left' | 'right') => {
+    if (holdTimerRef.current) {
+      clearTimeout(holdTimerRef.current)
+      holdTimerRef.current = null
+    }
+
+    if (isPaused) {
+      setIsPaused(false)
+      return
+    }
+
+    // Navigate on click
+    if (direction === 'left' && selectedStoryIndex !== null && selectedStoryIndex > 0) {
+      setSelectedStoryIndex(selectedStoryIndex - 1)
+      setProgress(0)
+    } else if (direction === 'right' && selectedStoryIndex !== null && selectedStoryIndex < stories.length - 1) {
+      setSelectedStoryIndex(selectedStoryIndex + 1)
+      setProgress(0)
+    } else if (direction === 'right' && selectedStoryIndex === stories.length - 1) {
+      setSelectedStoryIndex(null)
+    }
+  }
+
   useEffect(() => {
     if (selectedStoryIndex === null || isPaused) return
 
@@ -382,30 +461,30 @@ export function ReviewsSection() {
             <div className="max-w-lg w-full h-full flex items-center relative">
               <div
                 className="absolute left-0 top-0 bottom-0 w-1/2 z-[5] touch-none"
-                onMouseDown={handleHoldStart}
-                onMouseUp={() => handleHoldEnd("left")}
+                onMouseDown={handleMouseDown}
+                onMouseUp={() => handleMouseUp("left")}
                 onMouseLeave={() => {
                   if (holdTimerRef.current) {
                     clearTimeout(holdTimerRef.current)
                     holdTimerRef.current = null
                   }
                 }}
-                onTouchStart={handleHoldStart}
-                onTouchEnd={() => handleHoldEnd("left")}
+                onTouchStart={(e) => handleTouchStart(e, "left")}
+                onTouchEnd={(e) => handleTouchEnd(e, "left")}
               />
 
               <div
                 className="absolute right-0 top-0 bottom-0 w-1/2 z-[5] touch-none"
-                onMouseDown={handleHoldStart}
-                onMouseUp={() => handleHoldEnd("right")}
+                onMouseDown={handleMouseDown}
+                onMouseUp={() => handleMouseUp("right")}
                 onMouseLeave={() => {
                   if (holdTimerRef.current) {
                     clearTimeout(holdTimerRef.current)
                     holdTimerRef.current = null
                   }
                 }}
-                onTouchStart={handleHoldStart}
-                onTouchEnd={() => handleHoldEnd("right")}
+                onTouchStart={(e) => handleTouchStart(e, "right")}
+                onTouchEnd={(e) => handleTouchEnd(e, "right")}
               />
 
               <div className="w-full px-4">
