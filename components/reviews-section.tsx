@@ -35,7 +35,6 @@ export function ReviewsSection() {
   const [selectedStoryIndex, setSelectedStoryIndex] = useState<number | null>(null)
   const [progress, setProgress] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
-  const [isHolding, setIsHolding] = useState(false)
   const [selectedReview, setSelectedReview] = useState<Review | null>(null)
   const [truncatedReviews, setTruncatedReviews] = useState<Set<number>>(new Set())
   const reviewRefs = useRef<Map<number, HTMLParagraphElement>>(new Map())
@@ -80,8 +79,36 @@ export function ReviewsSection() {
     }
   }
 
+  const handleHoldStart = () => {
+    holdTimerRef.current = setTimeout(() => {
+      setIsPaused(true)
+    }, 500) // 500ms to trigger pause
+  }
+
+  const handleHoldEnd = (direction?: 'left' | 'right') => {
+    if (holdTimerRef.current) {
+      clearTimeout(holdTimerRef.current)
+      holdTimerRef.current = null
+    }
+
+    // If it was a hold (paused), just unpause
+    if (isPaused) {
+      setIsPaused(false)
+      return
+    }
+
+    // Otherwise, it's a tap/click - navigate
+    if (direction === 'left' && selectedStoryIndex !== null && selectedStoryIndex > 0) {
+      setSelectedStoryIndex(selectedStoryIndex - 1)
+      setProgress(0)
+    } else if (direction === 'right' && selectedStoryIndex !== null && selectedStoryIndex < stories.length - 1) {
+      setSelectedStoryIndex(selectedStoryIndex + 1)
+      setProgress(0)
+    }
+  }
+
   useEffect(() => {
-    if (selectedStoryIndex === null || isHolding) return
+    if (selectedStoryIndex === null || isPaused) return
 
     setProgress(0)
     const startTime = Date.now()
@@ -108,7 +135,7 @@ export function ReviewsSection() {
         clearInterval(progressIntervalRef.current)
       }
     }
-  }, [selectedStoryIndex, isHolding, stories.length])
+  }, [selectedStoryIndex, isPaused, stories.length])
 
   useEffect(() => {
     const checkTruncation = () => {
@@ -356,19 +383,29 @@ export function ReviewsSection() {
               <div
                 className="absolute left-0 top-0 bottom-0 w-1/2 z-[5] touch-none"
                 onMouseDown={handleHoldStart}
-                onMouseUp={(e) => handleHoldEnd(e, "left")}
-                onMouseLeave={handleHoldEnd}
+                onMouseUp={() => handleHoldEnd("left")}
+                onMouseLeave={() => {
+                  if (holdTimerRef.current) {
+                    clearTimeout(holdTimerRef.current)
+                    holdTimerRef.current = null
+                  }
+                }}
                 onTouchStart={handleHoldStart}
-                onTouchEnd={(e) => handleHoldEnd(e, "left")}
+                onTouchEnd={() => handleHoldEnd("left")}
               />
 
               <div
                 className="absolute right-0 top-0 bottom-0 w-1/2 z-[5] touch-none"
                 onMouseDown={handleHoldStart}
-                onMouseUp={(e) => handleHoldEnd(e, "right")}
-                onMouseLeave={handleHoldEnd}
+                onMouseUp={() => handleHoldEnd("right")}
+                onMouseLeave={() => {
+                  if (holdTimerRef.current) {
+                    clearTimeout(holdTimerRef.current)
+                    holdTimerRef.current = null
+                  }
+                }}
                 onTouchStart={handleHoldStart}
-                onTouchEnd={(e) => handleHoldEnd(e, "right")}
+                onTouchEnd={() => handleHoldEnd("right")}
               />
 
               <div className="w-full px-4">
