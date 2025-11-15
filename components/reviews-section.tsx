@@ -108,25 +108,27 @@ export function ReviewsSection() {
   }
 
   const handleTouchStart = (e: React.TouchEvent, direction: 'left' | 'right') => {
+    e.preventDefault()
+    
     const touchX = e.touches[0].clientX
     const touchY = e.touches[0].clientY
     
     holdTimerRef.current = setTimeout(() => {
       setIsPaused(true)
-    }, 500) // 500ms to trigger pause
+    }, 500)
     
-    // Store touch start coordinates
     ;(e.currentTarget as any).touchStartX = touchX
     ;(e.currentTarget as any).touchStartY = touchY
   }
 
   const handleTouchEnd = (e: React.TouchEvent, direction: 'left' | 'right') => {
+    e.preventDefault()
+    
     const touchStartX = (e.currentTarget as any).touchStartX
     const touchStartY = (e.currentTarget as any).touchStartY
     const touchEndX = e.changedTouches[0].clientX
     const touchEndY = e.changedTouches[0].clientY
     
-    // Calculate distance moved
     const moveDistance = Math.sqrt(
       Math.pow(touchEndX - touchStartX, 2) + Math.pow(touchEndY - touchStartY, 2)
     )
@@ -136,13 +138,11 @@ export function ReviewsSection() {
       holdTimerRef.current = null
     }
 
-    // If it was a hold (paused), just unpause
     if (isPaused) {
       setIsPaused(false)
       return
     }
 
-    // Only navigate if it was a tap (not a drag/swipe)
     if (moveDistance < 10) {
       if (direction === 'left' && selectedStoryIndex !== null && selectedStoryIndex > 0) {
         setSelectedStoryIndex(selectedStoryIndex - 1)
@@ -151,7 +151,6 @@ export function ReviewsSection() {
         setSelectedStoryIndex(selectedStoryIndex + 1)
         setProgress(0)
       } else if (direction === 'right' && selectedStoryIndex === stories.length - 1) {
-        // Close modal if on last story and tapping right
         setSelectedStoryIndex(null)
       }
     }
