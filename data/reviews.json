@@ -1,10 +1,18 @@
 {
   "overallRating": 5.0,
-  "totalReviews": 15,
+  "totalReviews": 16,
   "googleReviewsUrl": "https://maps.app.goo.gl/FQjm2ZRoo8V7TPxz9",
   "reviews": [
     {
       "id": 1,
+      "name": "Lis Mustafa",
+      "rating": 5,
+      "date": "vor 1 Stunde",
+      "text": "Vaxhid ist mit Abstand der beste Fahrlehrer. Er ist sehr geduldig und super humorvoll. Jede Fahrstunde mit ihm war ein Genuss. Er hat mich super auf die Prüfung vorbereitet und ich habe easy beim ersten Mal bestanden. Ich kann ihn nur weiterempfehlen. Weiter so!👍 …",
+      "avatar": "LM"
+    },
+    {
+      "id": 2,
       "name": "Dinis Bagnibov",
       "rating": 5,
       "date": "vor 1 Tag",
@@ -12,7 +20,7 @@
       "avatar": "DB"
     },
     {
-      "id": 2,
+      "id": 3,
       "name": "D&L Streetshine",
       "rating": 5,
       "date": "vor 1 Tag",
@@ -20,15 +28,15 @@
       "avatar": "DS"
     },
     {
-      "id": 3,
+      "id": 4,
       "name": "Dominik Simic",
       "rating": 5,
-      "date": "vor 1 Tag",
+      "date": "vor 2 Tagen",
       "text": "Die Fahrschule 06 von Vaxhid ist absolut empfehlenswert. Er erklärt alles geduldig und klar, sodass man schnell Fortschritte macht. Die Atmosphäre während den Fahrstunden ist immer freundlich und entspannt. Wer professionell und sicher zum Führerschein möchte, sollte definitiv zu Vaxhid gehen!",
       "avatar": "DS"
     },
     {
-      "id": 4,
+      "id": 5,
       "name": "Elisa Mirdita",
       "rating": 5,
       "date": "vor einer Woche",
@@ -36,7 +44,7 @@
       "avatar": "EM"
     },
     {
-      "id": 5,
+      "id": 6,
       "name": "Tenzin Norzin",
       "rating": 5,
       "date": "vor einer Woche",
@@ -44,7 +52,7 @@
       "avatar": "TN"
     },
     {
-      "id": 6,
+      "id": 7,
       "name": "Erza Thaqi",
       "rating": 5,
       "date": "vor einer Woche",
@@ -52,15 +60,15 @@
       "avatar": "ET"
     },
     {
-      "id": 7,
+      "id": 8,
       "name": "Nadine Gerber",
       "rating": 5,
-      "date": "vor einer Woche",
+      "date": "vor 2 Wochen",
       "text": "Vaxhid ist wirklich ein super Fahrlehrer. Ob Mental Break Down oder Höhenflug er hat mit mir alles erlebt und much dabei unterstützt weiter positiv zu bleiben. Mit viel Geduld und Humor hat er mich erfolgreich beim ersten Versuch durch die Fahrprüfung gebracht. Danke!",
       "avatar": "NG"
     },
     {
-      "id": 8,
+      "id": 9,
       "name": "Dila",
       "rating": 5,
       "date": "vor 3 Wochen",
@@ -68,7 +76,7 @@
       "avatar": "D"
     },
     {
-      "id": 9,
+      "id": 10,
       "name": "Superjuanito 2.0",
       "rating": 5,
       "date": "vor 4 Wochen",
@@ -76,7 +84,7 @@
       "avatar": "S2"
     },
     {
-      "id": 10,
+      "id": 11,
       "name": "Timur Ünal",
       "rating": 5,
       "date": "vor 4 Wochen",
@@ -84,7 +92,7 @@
       "avatar": "TÜ"
     },
     {
-      "id": 11,
+      "id": 12,
       "name": "Lea Sermaxhaj",
       "rating": 5,
       "date": "vor 4 Wochen",
@@ -92,7 +100,7 @@
       "avatar": "LS"
     },
     {
-      "id": 12,
+      "id": 13,
       "name": "karacuha berra",
       "rating": 5,
       "date": "vor 4 Wochen",
@@ -100,7 +108,7 @@
       "avatar": "KB"
     },
     {
-      "id": 13,
+      "id": 14,
       "name": "jon",
       "rating": 5,
       "date": "vor einem Monat",
@@ -108,7 +116,7 @@
       "avatar": "J"
     },
     {
-      "id": 14,
+      "id": 15,
       "name": "Suleyman Zazaoglu",
       "rating": 5,
       "date": "vor einem Monat",
@@ -116,7 +124,7 @@
       "avatar": "SZ"
     },
     {
-      "id": 15,
+      "id": 16,
       "name": "Adriatik Isufi",
       "rating": 5,
       "date": "vor 2 Monaten",
