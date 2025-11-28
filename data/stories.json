@@ -34,6 +34,13 @@
         "image": "/Success/tenzin-norzin-success.jpg",
         "caption": "Herzlichen Glückwunsch zur bestandenen Autoprüfung 🥳😃",
         "date": "2025-11-12"
+      },
+      {
+        "id": 6, 
+        "name": "Emanuela Lenjani",
+        "image": "/Success/emanuela-lenjani-success.jpg",
+        "caption": "Gratuliere Emanuela 👏💪",
+        "date": "2025-11-12"
       }
     ]
   }
