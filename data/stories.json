@@ -41,6 +41,13 @@
         "image": "/Success/emanuela-lenjani-success.jpg",
         "caption": "Gratuliere Emanuela 👏💪",
         "date": "2025-11-12"
+      },
+      {
+        "id": 7, 
+        "name": "Severin",
+        "image": "/Success/severin-success.jpg",
+        "caption": "Herzlichen Glückwunsch zur bestandenen Prüfung Severin🥳😁",
+        "date": "2025-12-02"
       }
     ]
   }
