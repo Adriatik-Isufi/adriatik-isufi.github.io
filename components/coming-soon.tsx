@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 
+
 export default function ComingSoon({ onEnterSite }: { onEnterSite: () => void }) {
   const [mounted, setMounted] = useState(false)
   const [showContent, setShowContent] = useState(false)
