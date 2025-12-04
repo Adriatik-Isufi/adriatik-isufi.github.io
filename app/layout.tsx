@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Fahrschule 06: Deine professionelle Fahrschule in Aargau/Olten. Führerschein Kategorie B, VKU, Fahrstunden mit modernem Auto. Jetzt anmelden für deine Fahrausbildung!",
   keywords:
     "Fahrschule Aargau, Fahrschule Olten, Führerschein Aargau, Fahrstunden Olten, VKU Aargau, Fahrausbildung, Kategorie B, Fahrschule 06, Reitnau",
-  generator: "v0.app",
+  generator: "Fahrschule 06 Website",
   openGraph: {
     title: "Fahrschule 06 - Führerschein Aargau/Olten",
     description:
