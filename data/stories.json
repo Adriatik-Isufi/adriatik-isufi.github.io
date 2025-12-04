@@ -48,6 +48,13 @@
         "image": "/Success/severin-success.jpg",
         "caption": "Herzlichen Glückwunsch zur bestandenen Prüfung Severin🥳😁",
         "date": "2025-12-02"
+      },
+      {
+        "id": 8, 
+        "name": "Carolina Gräub",
+        "image": "/Success/carolina-graub-success.jpg",
+        "caption": "Gratuliere Carolina 💪👏",
+        "date": "2025-12-04"
       }
     ]
   }
