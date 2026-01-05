@@ -64,8 +64,8 @@ export function PromoPopup() {
             {/* Promo Image */}
             <div className="relative w-full">
               <Image
-                src="/christmas-promo.png"
-                alt="Fahrschule 06 Weihnachtsaktion - 10% Rabatt auf Gutscheine"
+                src="/new-year-promo.png"
+                alt="Fahrschule 06 Neujahrsaktion - 10% Rabatt auf Gutscheine"
                 width={800}
                 height={1200}
                 className="w-full h-auto"
