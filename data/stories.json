@@ -55,6 +55,13 @@
         "image": "/Success/carolina-graub-success.jpg",
         "caption": "Gratuliere Carolina 💪👏",
         "date": "2025-12-04"
+      },
+      {
+        "id": 9, 
+        "name": "Gershan",
+        "image": "/Success/gershan-success.jpg",
+        "caption": "Gratuliere Gershan 👏💪",
+        "date": "2026-01-08"
       }
     ]
   }

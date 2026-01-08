@@ -1,16 +1,16 @@
-# Christmas 2024 Promotion Archive
+# New Year 2024 Promotion Archive
 
-This folder contains the Christmas promotional materials from December 2025.
+This folder contains the New Year promotional materials from December 2025.
 
 ## Contents
 
-- **promo-popup.tsx** - React component for the Christmas promotional popup
-- **christmas-promo.png** - Christmas promotional image (10% discount offer)
+- **promo-popup.tsx** - React component for the New Year promotional popup
+- **New Year-promo.png** - New Year promotional image (10% discount offer)
 
 ## How to Reactivate for Next Year
 
 1. Copy `promo-popup.tsx` back to the `components/` folder
-2. Copy `christmas-promo.png` back to the `public/` folder
+2. Copy `New Year.png` back to the `public/` folder
 3. In `app/page.tsx`, add the import:
    ```typescript
    import { PromoPopup } from "@/components/promo-popup"
