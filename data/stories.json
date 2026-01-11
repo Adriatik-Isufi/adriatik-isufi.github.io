@@ -62,6 +62,13 @@
         "image": "/Success/gershan-success.jpg",
         "caption": "Gratuliere Gershan 👏💪",
         "date": "2026-01-08"
+      },
+      {
+        "id": 10, 
+        "name": "Josh",
+        "image": "/Success/josh-success.jpg",
+        "caption": "Herzlichen Glückwunsch zur bestandenen Autoprüfung Josh🥳",
+        "date": "2026-01-09"
       }
     ]
   }
