@@ -69,6 +69,13 @@
         "image": "/Success/josh-success.jpg",
         "caption": "Herzlichen Glückwunsch zur bestandenen Autoprüfung Josh🥳",
         "date": "2026-01-09"
+      },
+      {
+        "id": 11, 
+        "name": "Duena",
+        "image": "/Success/duena-success.jpg",
+        "caption": "Gratuliere Duena 👏💪",
+        "date": "2026-02-02"
       }
     ]
   }
