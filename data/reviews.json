@@ -1,10 +1,18 @@
 {
   "overallRating": 5.0,
-  "totalReviews": 21,
+  "totalReviews": 22,
   "googleReviewsUrl": "https://maps.app.goo.gl/FQjm2ZRoo8V7TPxz9",
   "reviews": [
     {
-      "id": 3,
+      "id": 1,
+      "name": "Duena Basha",
+      "rating": 5,
+      "date": "vor 2 Tagen",
+      "text": "Er ist ein sehr guter Fahrlehrer. Er erklärt alles verständlich, ist nett, geduldig und man lernt viel bei ihm. Absolut empfehlenswert!",
+      "avatar": "DB"
+    },
+    {
+      "id": 4,
       "name": "Joshua Hottiger",
       "rating": 5,
       "date": "vor 3 Wochen",
@@ -12,31 +20,31 @@
       "avatar": "JH"
     },
     {
-      "id": 4,
+      "id": 5,
       "name": "Gershan Ambikaipalan",
       "rating": 5,
-      "date": "vor 3 Wochen",
+      "date": "vor 4 Wochen",
       "text": "Ich kenne zwar nicht viele Fahrlehrer, aber ich kann mit Überzeugung sagen, dass Vaxhid der beste Fahrlehrer ist, den man sich aussuchen kann. Vaxhid ist nicht nur ein Fahrlehrer – er unterstützt einen auch psychisch und hilft bei allem, wo es nur möglich ist. Seine Fahrstunden sind sehr gut strukturiert, geduldig und verständlich gestaltet, und dabei wird ganz, ganz viel gelacht. Einfach top!\nDanke dir, Vaxhid – absolut weiterzuempfehlen! ♥️🫂",
       "avatar": "GA"
     },
     {
-      "id": 5,
+      "id": 6,
       "name": "Carolina Gräub",
       "rating": 5,
-      "date": "vor einem Monat",
+      "date": "vor 2 Monaten",
       "text": "Ich kann mir keinen besseren Fahrlehrer vorstellen. Er geht mit dir auf all deine Fragen ein und erklärt sie dir sehr geschikt.",
       "avatar": "CG"
     },
     {
-      "id": 6,
+      "id": 7,
       "name": "Noizey",
       "rating": 5,
-      "date": "vor einem Monat",
+      "date": "vor 2 Monaten",
       "text": "Ich kann die Fahrschule 06 von Vaxhid nur empfehlen!🙏\nVaxhid ist sehr geduldig, verständnisvoll, humorvoll und kompetent. Wenn ich etwas nicht direkt gecheckt habe oder nervös war, hat er mir immer ruhig und mit viel Geduld geholfen.\nDank seiner Unterstützung und motivierenden Art habe ich die Prüfung gleich beim ersten Mal bestanden.💯🚗",
       "avatar": "N"
     },
     {
-      "id": 8,
+      "id": 9,
       "name": "Loresa Sylejmani",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -44,7 +52,7 @@
       "avatar": "LS"
     },
     {
-      "id": 9,
+      "id": 10,
       "name": "Dinis Bagnibov",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -52,7 +60,7 @@
       "avatar": "DB"
     },
     {
-      "id": 10,
+      "id": 11,
       "name": "D&L Streetshine",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -60,7 +68,7 @@
       "avatar": "DS"
     },
     {
-      "id": 11,
+      "id": 12,
       "name": "Dominik Simic",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -68,7 +76,7 @@
       "avatar": "DS"
     },
     {
-      "id": 12,
+      "id": 13,
       "name": "Elisa Mirdita",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -76,7 +84,7 @@
       "avatar": "EM"
     },
     {
-      "id": 13,
+      "id": 14,
       "name": "Tenzin Norzin",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -84,7 +92,7 @@
       "avatar": "TN"
     },
     {
-      "id": 14,
+      "id": 15,
       "name": "Erza Thaqi",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -92,7 +100,7 @@
       "avatar": "ET"
     },
     {
-      "id": 15,
+      "id": 16,
       "name": "Nadine Gerber",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -100,7 +108,7 @@
       "avatar": "NG"
     },
     {
-      "id": 16,
+      "id": 17,
       "name": "Dila",
       "rating": 5,
       "date": "vor 3 Monaten",
@@ -108,7 +116,7 @@
       "avatar": "D"
     },
     {
-      "id": 17,
+      "id": 18,
       "name": "Superjuanito 2.0",
       "rating": 5,
       "date": "vor 3 Monaten",
@@ -116,7 +124,7 @@
       "avatar": "S2"
     },
     {
-      "id": 18,
+      "id": 19,
       "name": "Timur Ünal",
       "rating": 5,
       "date": "vor 3 Monaten",
@@ -124,7 +132,7 @@
       "avatar": "TÜ"
     },
     {
-      "id": 19,
+      "id": 20,
       "name": "Lea Sermaxhaj",
       "rating": 5,
       "date": "vor 3 Monaten",
@@ -132,7 +140,7 @@
       "avatar": "LS"
     },
     {
-      "id": 20,
+      "id": 21,
       "name": "karacuha berra",
       "rating": 5,
       "date": "vor 3 Monaten",
@@ -140,7 +148,7 @@
       "avatar": "KB"
     },
     {
-      "id": 21,
+      "id": 22,
       "name": "jon",
       "rating": 5,
       "date": "vor 3 Monaten",
@@ -148,7 +156,7 @@
       "avatar": "J"
     },
     {
-      "id": 22,
+      "id": 23,
       "name": "Suleyman Zazaoglu",
       "rating": 5,
       "date": "vor 3 Monaten",
@@ -156,7 +164,7 @@
       "avatar": "SZ"
     },
     {
-      "id": 23,
+      "id": 24,
       "name": "Adriatik Isufi",
       "rating": 5,
       "date": "vor 5 Monaten",
