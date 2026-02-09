@@ -36,30 +36,30 @@ export default function ImpressumPage() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
               <Link href="/" className="text-sm font-medium text-gray-700 hover:text-[#1351d8] transition-colors">
-                Home
+                Startseite
               </Link>
               <Link
-                href="/#services"
+                href="/#angebot"
                 className="text-sm font-medium text-gray-700 hover:text-[#1351d8] transition-colors"
               >
-                Services
+                Angebot
               </Link>
               <Link
-                href="/#prices"
+                href="/#preise"
                 className="text-sm font-medium text-gray-700 hover:text-[#1351d8] transition-colors"
               >
                 Preise
               </Link>
-              <Link href="/#about" className="text-sm font-medium text-gray-700 hover:text-[#1351d8] transition-colors">
+              <Link href="/#ueber-uns" className="text-sm font-medium text-gray-700 hover:text-[#1351d8] transition-colors">
                 Über uns
               </Link>
               <Link
-                href="/#contact"
+                href="/#kontakt"
                 className="text-sm font-medium text-gray-700 hover:text-[#1351d8] transition-colors"
               >
                 Kontakt
               </Link>
-              <Link href="/#contact">
+              <Link href="/#kontakt">
                 <Button className="bg-[#1351d8] hover:bg-[#1351d8]/90 text-white">Jetzt anmelden</Button>
               </Link>
             </div>
@@ -159,35 +159,35 @@ export default function ImpressumPage() {
                           href="/"
                           className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-[#1351d8] hover:bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20"
                         >
-                          Home
+                          Startseite
                         </Link>
                         <Link
-                          href="/#services"
+                          href="/#angebot"
                           className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-[#1351d8] hover:bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20"
                         >
-                          Services
+                          Angebot
                         </Link>
                         <Link
-                          href="/#prices"
+                          href="/#preise"
                           className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-[#1351d8] hover:bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20"
                         >
                           Preise
                         </Link>
                         <Link
-                          href="/#about"
+                          href="/#ueber-uns"
                           className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-[#1351d8] hover:bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20"
                         >
                           Über uns
                         </Link>
                         <Link
-                          href="/#contact"
+                          href="/#kontakt"
                           className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-[#1351d8] hover:bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20"
                         >
                           Kontakt
                         </Link>
                       </div>
                       <div className="pt-4">
-                        <Link href="/#contact">
+                        <Link href="/#kontakt">
                           <Button className="w-full bg-[#1351d8] hover:bg-[#1351d8]/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg">
                             Jetzt anmelden
                           </Button>

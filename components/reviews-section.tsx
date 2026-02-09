@@ -283,7 +283,7 @@ export function ReviewsSection() {
   const selectedStory = selectedStoryIndex !== null ? stories[selectedStoryIndex] : null
 
   return (
-    <section id="reviews" className="py-16 bg-white">
+    <section id="bewertungen" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative mb-8">
           <div className="text-center">

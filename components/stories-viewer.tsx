@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect, useRef } from "react"
+import Image from "next/image"
 import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import storiesData from "@/data/stories.json"
@@ -167,9 +168,11 @@ export function StoriesViewer() {
               <div className="absolute inset-0 bg-gradient-to-tr from-[#1351d8] via-blue-500 to-cyan-400 rounded-full p-[3px] animate-pulse">
                 <div className="bg-white rounded-full p-[3px] w-full h-full">
                   <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden">
-                    <img
+                    <Image
                       src={story.image || "/placeholder.svg"}
                       alt={story.name}
+                      width={80}
+                      height={80}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                   </div>
@@ -244,9 +247,11 @@ export function StoriesViewer() {
 
               {/* Story Image */}
               <div className="relative rounded-lg overflow-hidden bg-gray-900">
-                <img
+                <Image
                   src={selectedStory.image || "/placeholder.svg"}
-                  alt={selectedStory.caption}
+                  alt={selectedStory.caption || selectedStory.name}
+                  width={600}
+                  height={800}
                   className="w-full h-auto max-h-[70vh] object-contain"
                 />
                 {/* Caption Overlay */}

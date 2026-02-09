@@ -296,3 +296,27 @@ button:active {
 .animate-pulse-ring {
   animation: pulse-ring 2s ease-in-out infinite;
 }
+
+/* Modern form input styling */
+input, textarea {
+  font-feature-settings: "cv01", "cv02", "cv03";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Smooth input transitions */
+input, textarea {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+}
+
+/* Remove autofill background flash */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+  -webkit-text-fill-color: #111827;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Label styling for polish */
+label {
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}

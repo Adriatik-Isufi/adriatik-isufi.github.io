@@ -7,9 +7,9 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fahrschule06.ch"),
-  title: "Fahrschule 06 - Führerschein Aargau/Olten | Professionelle Fahrausbildung",
+  title: "Fahrschule 06 - Fahrausbildung in Aargau & Olten | Kat. B",
   description:
-    "Fahrschule 06: Deine professionelle Fahrschule in Aargau/Olten. Führerschein Kategorie B, VKU, Fahrstunden mit modernem Auto. Jetzt anmelden für deine Fahrausbildung!",
+    "Fahrschule 06 – moderne Fahrausbildung in Aargau & Olten. Kat. B Fahrstunden, VKU und persönliche Betreuung. Jetzt Termin sichern!",
   keywords:
     "Fahrschule Aargau, Fahrschule Olten, Führerschein Aargau, Fahrstunden Olten, VKU Aargau, Fahrausbildung, Kategorie B, Fahrschule 06, Reitnau",
   authors: [{ name: "Fahrschule 06", url: "https://fahrschule06.ch" }],
@@ -127,7 +127,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://elfsightcdn.com" />
 
-        <link rel="canonical" href="https://fahrschule06.ch" />
+        {/* Canonical URL handled by Next.js metadata - removed duplicate manual tag */}
 
         {/* Favicon and Icons - Comprehensive setup with correct attributes */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -188,8 +188,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "DrivingSchool",
-              "@id": "https://fahrschule06.ch#drivingschool",
+              "@type": "LocalBusiness",
+              "@id": "https://fahrschule06.ch#localbusiness",
               name: "Fahrschule 06",
               alternateName: "Fahrschule06",
               description: "Professionelle Fahrschule in Aargau/Olten für Führerschein Kategorie B, VKU und Fahrausbildung",
@@ -284,7 +284,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Service",
               serviceType: "VKU - Verkehrskundeunterricht",
-              provider: { "@id": "https://fahrschule06.ch#drivingschool" },
+              provider: { "@id": "https://fahrschule06.ch#localbusiness" },
               areaServed: [
                 { "@type": "State", name: "Aargau" },
                 { "@type": "City", name: "Olten" },
@@ -302,7 +302,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Service",
               serviceType: "Fahrstunden Kategorie B",
-              provider: { "@id": "https://fahrschule06.ch#drivingschool" },
+              provider: { "@id": "https://fahrschule06.ch#localbusiness" },
               areaServed: [
                 { "@type": "State", name: "Aargau" },
                 { "@type": "City", name: "Olten" },
@@ -381,6 +381,109 @@ export default function RootLayout({
                   email: "info@fahrschule06.ch",
                   areaServed: "CH",
                   availableLanguage: ["German", "English"],
+                },
+              ],
+            }),
+          }}
+        />
+
+        {/* FAQPage Schema for rich snippets */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "Was kostet der Führerschein bei Fahrschule 06?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Die Kosten für den Führerschein Kategorie B setzen sich zusammen aus: Fahrstunden (CHF 95/Lektion à 50 Min.), VKU-Kurs (CHF 200 für 8 Stunden), und den behördlichen Gebühren für Prüfungen. Die Gesamtkosten variieren je nach Anzahl benötigter Fahrstunden - im Durchschnitt zwischen CHF 2'500 und CHF 3'500.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Wie lange dauert die Fahrausbildung?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Die Dauer der Fahrausbildung ist individuell. Die meisten Fahrschüler benötigen zwischen 20 und 30 Fahrstunden. Mit regelmässigem Üben (2-3 Lektionen pro Woche) kann der Führerschein in 3-6 Monaten erreicht werden. Der VKU-Kurs dauert 8 Stunden und wird an 4 Abenden absolviert.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Was ist der VKU (Verkehrskundeunterricht)?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Der Verkehrskundeunterricht (VKU) ist ein obligatorischer 8-stündiger Theoriekurs für alle Führerschein-Anwärter in der Schweiz. Er behandelt Themen wie Verkehrssehen, Fahrdynamik, Umweltbewusstes Fahren und Erste Hilfe. Der VKU muss vor der praktischen Prüfung absolviert werden.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Wo findet die Fahrausbildung statt?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Die Fahrausbildung findet im Raum Aargau und Olten statt. Wir holen dich gerne an deinem Wohnort, Arbeitsplatz oder Bahnhof ab. Der VKU-Kurs wird in Reitnau durchgeführt. Die praktische Fahrprüfung findet beim Strassenverkehrsamt in Aarau statt.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Wie kann ich mich bei Fahrschule 06 anmelden?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Du kannst dich ganz einfach per WhatsApp, Telefon (+41 76 340 22 01) oder über das Kontaktformular auf der Website anmelden. Für die Anmeldung benötigst du einen gültigen Lernfahrausweis. Falls du noch keinen hast, helfen wir dir gerne bei den ersten Schritten.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+
+        {/* SiteNavigationElement Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SiteNavigationElement",
+              name: "Hauptnavigation",
+              url: "https://fahrschule06.ch",
+              hasPart: [
+                {
+                  "@type": "SiteNavigationElement",
+                  name: "Startseite",
+                  url: "https://fahrschule06.ch#startseite",
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  name: "Angebot",
+                  url: "https://fahrschule06.ch#angebot",
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  name: "Fahrlehrer",
+                  url: "https://fahrschule06.ch#fahrlehrer",
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  name: "Preise",
+                  url: "https://fahrschule06.ch#preise",
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  name: "Über uns",
+                  url: "https://fahrschule06.ch#ueber-uns",
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  name: "Bewertungen",
+                  url: "https://fahrschule06.ch#bewertungen",
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  name: "Kontakt",
+                  url: "https://fahrschule06.ch#kontakt",
                 },
               ],
             }),

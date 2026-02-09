@@ -76,6 +76,13 @@
         "image": "/Success/duena-success.jpg",
         "caption": "Gratuliere Duena 👏💪",
         "date": "2026-02-02"
+      },
+      {
+        "id": 11, 
+        "name": "Andrea",
+        "image": "/Success/andrea-success.jpg",
+        "caption": "Herzlichen Glückwunsch Andrea 🥳",
+        "date": "2026-02-02"
       }
     ]
   }

@@ -70,7 +70,7 @@ export default function FahrschulePage() {
     const handleScroll = () => {
       setScrollY(window.scrollY)
 
-      const sections = ["home", "services", "teacher", "prices", "about", "reviews", "contact"]
+      const sections = ["startseite", "angebot", "fahrlehrer", "preise", "ueber-uns", "bewertungen", "kontakt"]
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -239,7 +239,7 @@ export default function FahrschulePage() {
       ...prev,
       message: `Hallo, ich interessiere mich für das ${packageName}. Bitte kontaktieren Sie mich für weitere Informationen.`,
     }))
-    scrollToSection("contact")
+    scrollToSection("kontakt")
   }
 
   // Video control functions
@@ -271,6 +271,7 @@ export default function FahrschulePage() {
           href="https://wa.me/41763402201?text=Hallo%20Fahrschule%2006%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Fahrausbildung."
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="WhatsApp kontaktieren"
           className="flex items-center justify-center w-14 h-14 bg-green-500/90 hover:bg-green-500 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
         >
           <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
@@ -278,41 +279,53 @@ export default function FahrschulePage() {
           </svg>
         </a>
       </div>
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+      {/* Header with Navigation */}
+      <header>
+        <nav aria-label="Hauptnavigation" className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-3">
               <Image src="/logo-blue.svg" alt="Fahrschule 06 Logo" width={40} height={40} className="w-10 h-10" />
               <div>
-                <h1 className="text-xl font-bold text-[#1351d8]">Fahrschule 06</h1>
+                <span className="text-xl font-bold text-[#1351d8] block">Fahrschule 06</span>
                 <p className="text-xs text-gray-600">fahrschule06.ch</p>
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              {["Home", "Services", "Fahrlehrer", "Preise", "Über uns", "Bewertungen", "Kontakt"].map((item, index) => {
-                const sectionId = ["home", "services", "teacher", "prices", "about", "reviews", "contact"][index]
+            <ul className="hidden md:flex items-center space-x-8 list-none m-0 p-0">
+              {["Startseite", "Angebot", "Fahrlehrer", "Preise", "Über uns", "Bewertungen", "Kontakt"].map((item, index) => {
+                const sectionId = ["startseite", "angebot", "fahrlehrer", "preise", "ueber-uns", "bewertungen", "kontakt"][index]
                 return (
-                  <button
-                    key={item}
-                    onClick={() => scrollToSection(sectionId)}
-                    className={`text-sm font-medium transition-colors hover:text-[#1351d8] ${
-                      activeSection === sectionId ? "text-[#1351d8]" : "text-gray-700"
-                    }`}
-                  >
-                    {item}
-                  </button>
+                  <li key={item}>
+                    <a
+                      href={`#${sectionId}`}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        scrollToSection(sectionId)
+                      }}
+                      className={`text-sm font-medium transition-colors hover:text-[#1351d8] ${
+                        activeSection === sectionId ? "text-[#1351d8]" : "text-gray-700"
+                      }`}
+                    >
+                      {item}
+                    </a>
+                  </li>
                 )
               })}
-              <Button
-                onClick={() => scrollToSection("contact")}
-                className="bg-[#1351d8] hover:bg-[#1351d8]/90 text-white"
-              >
-                Jetzt anmelden
-              </Button>
-            </div>
+              <li>
+                <a
+                  href="#kontakt"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    scrollToSection("kontakt")
+                  }}
+                  className="inline-flex items-center justify-center rounded-md text-sm font-medium bg-[#1351d8] hover:bg-[#1351d8]/90 text-white h-10 px-4 py-2"
+                >
+                  Jetzt anmelden
+                </a>
+              </li>
+            </ul>
 
             {/* Mobile menu button */}
             <div className="md:hidden">
@@ -412,33 +425,42 @@ export default function FahrschulePage() {
                 <div className="px-6 pb-6">
                   {/* Navigation Section */}
                   {activeSidebarSection === "navigation" && (
-                    <div className="space-y-6">
+                    <nav aria-label="Mobile Navigation" className="space-y-6">
                       <h3 className="text-xl font-bold text-gray-900 mb-8 mt-4">Navigation</h3>
-                      <div className="space-y-3">
-                        {["Home", "Services", "Fahrlehrer", "Preise", "Über uns", "Bewertungen", "Kontakt"].map(
+                      <ul className="space-y-3 list-none m-0 p-0">
+                        {["Startseite", "Angebot", "Fahrlehrer", "Preise", "Über uns", "Bewertungen", "Kontakt"].map(
                           (item, index) => {
                             const sectionId = ["home", "services", "teacher", "prices", "about", "reviews", "contact"][
                               index
                             ]
                             return (
-                              <button
-                                key={item}
-                                onClick={() => scrollToSection(sectionId)}
-                                className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-[#1351d8] hover:bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20"
-                              >
-                                {item}
-                              </button>
+                              <li key={item}>
+                                <a
+                                  href={`#${sectionId}`}
+                                  onClick={(e) => {
+                                    e.preventDefault()
+                                    scrollToSection(sectionId)
+                                  }}
+                                  className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-[#1351d8] hover:bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20"
+                                >
+                                  {item}
+                                </a>
+                              </li>
                             )
                           },
                         )}
-                      </div>
+                      </ul>
                       <div className="pt-4">
-                        <Button
-                          onClick={() => scrollToSection("contact")}
-                          className="w-full bg-[#1351d8] hover:bg-[#1351d8]/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg"
+                        <a
+                          href="#kontakt"
+                          onClick={(e) => {
+                            e.preventDefault()
+                            scrollToSection("kontakt")
+                          }}
+                          className="block w-full text-center bg-[#1351d8] hover:bg-[#1351d8]/90 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg"
                         >
                           Jetzt anmelden
-                        </Button>
+                        </a>
                       </div>
                       <div className="pt-4 border-t border-gray-200 space-y-3">
                         <a
@@ -605,9 +627,12 @@ export default function FahrschulePage() {
           )}
         </div>
       </nav>
+      </header>
 
-      {/* Hero Section with subtle parallax */}
-      <section id="home" className="relative pt-16 bg-gradient-to-br from-[#1351d8]/5 to-white overflow-hidden">
+      {/* Main Content */}
+      <main>
+        {/* Hero Section with subtle parallax */}
+      <section id="startseite" className="relative pt-16 bg-gradient-to-br from-[#1351d8]/5 to-white overflow-hidden">
         {/* Subtle background elements with parallax */}
         <div
           className="absolute inset-0 opacity-30"
@@ -637,7 +662,7 @@ export default function FahrschulePage() {
                 <Button
                   size="lg"
                   className="bg-[#1351d8] hover:bg-[#1351d8]/90 text-lg px-8 text-white"
-                  onClick={() => scrollToSection("contact")}
+                  onClick={() => scrollToSection("kontakt")}
                 >
                   Jetzt anmelden
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -646,7 +671,7 @@ export default function FahrschulePage() {
                   size="lg"
                   variant="outline"
                   className="text-lg px-8 border-[#1351d8] text-[#1351d8] hover:bg-[#1351d8]/5 bg-transparent"
-                  onClick={() => scrollToSection("services")}
+                  onClick={() => scrollToSection("angebot")}
                 >
                   Services entdecken
                 </Button>
@@ -679,7 +704,7 @@ export default function FahrschulePage() {
       </section>
 
       {/* Services Section with Dramatic Background */}
-      <section id="services" className="relative py-16 overflow-hidden">
+      <section id="angebot" className="relative py-16 overflow-hidden">
         {/* Dark textured background with overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
           {/* Textured overlay */}
@@ -725,7 +750,7 @@ export default function FahrschulePage() {
                   <Button
                     size="lg"
                     className="bg-[#1351d8] hover:bg-[#1351d8]/90 text-white px-6 sm:px-8 py-3 text-base sm:text-lg w-full sm:w-auto shadow-lg hover:shadow-xl transition-all duration-300"
-                    onClick={() => scrollToSection("contact")}
+                    onClick={() => scrollToSection("kontakt")}
                   >
                     MELDE DICH JETZT AN
                     <ArrowRight className="ml-2 h-5 w-5" />
@@ -841,7 +866,7 @@ export default function FahrschulePage() {
                     <Button
                       variant="outline"
                       className="w-full border-white/40 text-white/90 hover:bg-white/20 hover:text-white hover:border-white/60 transition-all duration-300 bg-white/5 backdrop-blur-sm group-hover:shadow-lg"
-                      onClick={() => scrollToSection("contact")}
+                      onClick={() => scrollToSection("kontakt")}
                     >
                       Mehr erfahren
                       <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -857,7 +882,7 @@ export default function FahrschulePage() {
       </section>
 
       {/* Meet the Teacher Section */}
-      <section id="teacher" className="py-16 bg-gradient-to-br from-gray-50 to-white">
+      <section id="fahrlehrer" className="py-16 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20 mb-4">Ihr Fahrlehrer</Badge>
@@ -1013,7 +1038,7 @@ export default function FahrschulePage() {
                 <Button
                   size="lg"
                   className="bg-[#1351d8] hover:bg-[#1351d8]/90 text-white"
-                  onClick={() => scrollToSection("contact")}
+                  onClick={() => scrollToSection("kontakt")}
                 >
                   Jetzt Fahrstunde buchen
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -1022,7 +1047,7 @@ export default function FahrschulePage() {
                   size="lg"
                   variant="outline"
                   className="border-[#1351d8] text-[#1351d8] hover:bg-[#1351d8]/5 bg-transparent"
-                  onClick={() => scrollToSection("prices")}
+                  onClick={() => scrollToSection("preise")}
                 >
                   Preise ansehen
                 </Button>
@@ -1033,7 +1058,7 @@ export default function FahrschulePage() {
       </section>
 
       {/* Prices Section */}
-      <section id="prices" className="py-16 bg-white">
+      <section id="preise" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20 mb-4">Unsere Preise</Badge>
@@ -1303,7 +1328,7 @@ export default function FahrschulePage() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 bg-gradient-to-br from-[#1351d8]/5 to-white">
+      <section id="ueber-uns" className="py-16 bg-gradient-to-br from-[#1351d8]/5 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -1340,18 +1365,22 @@ export default function FahrschulePage() {
             <div className="flex gap-4 items-start">
               {/* Left side - Two stacked photos */}
               <div className="flex flex-col gap-4 flex-1">
-                <div className="relative overflow-hidden rounded-xl shadow-lg">
-                  <img
+                <div className="relative overflow-hidden rounded-xl shadow-lg h-48">
+                  <Image
                     src="/instructor-with-car.jpg"
                     alt="Fahrlehrer mit Fahrschule 06 Auto"
-                    className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                    width={400}
+                    height={192}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <div className="relative overflow-hidden rounded-xl shadow-lg">
-                  <img
+                <div className="relative overflow-hidden rounded-xl shadow-lg h-48">
+                  <Image
                     src="/instructor-in-car.jpg"
                     alt="Fahrlehrer im Fahrschule 06 Auto"
-                    className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                    width={400}
+                    height={192}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               </div>
@@ -1386,8 +1415,61 @@ export default function FahrschulePage() {
 
       <ReviewsSection />
 
+      {/* FAQ Section */}
+      <section id="faq" className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20 mb-4">FAQ</Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Häufig gestellte Fragen</h2>
+            <p className="text-xl text-gray-600">Antworten auf die wichtigsten Fragen zur Fahrausbildung</p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {
+                question: "Was kostet der Führerschein bei Fahrschule 06?",
+                answer: "Die Kosten für den Führerschein Kategorie B setzen sich zusammen aus: Fahrstunden (CHF 95/Lektion à 50 Min.), VKU-Kurs (CHF 200 für 8 Stunden), und den behördlichen Gebühren für Prüfungen. Die Gesamtkosten variieren je nach Anzahl benötigter Fahrstunden - im Durchschnitt zwischen CHF 2'500 und CHF 3'500."
+              },
+              {
+                question: "Wie lange dauert die Fahrausbildung?",
+                answer: "Die Dauer der Fahrausbildung ist individuell. Die meisten Fahrschüler benötigen zwischen 20 und 30 Fahrstunden. Mit regelmässigem Üben (2-3 Lektionen pro Woche) kann der Führerschein in 3-6 Monaten erreicht werden. Der VKU-Kurs dauert 8 Stunden und wird an 4 Abenden absolviert."
+              },
+              {
+                question: "Was ist der VKU (Verkehrskundeunterricht)?",
+                answer: "Der Verkehrskundeunterricht (VKU) ist ein obligatorischer 8-stündiger Theoriekurs für alle Führerschein-Anwärter in der Schweiz. Er behandelt Themen wie Verkehrssehen, Fahrdynamik, Umweltbewusstes Fahren und Erste Hilfe. Der VKU muss vor der praktischen Prüfung absolviert werden."
+              },
+              {
+                question: "Wo findet die Fahrausbildung statt?",
+                answer: "Die Fahrausbildung findet im Raum Aargau und Olten statt. Wir holen dich gerne an deinem Wohnort, Arbeitsplatz oder Bahnhof ab. Der VKU-Kurs wird in Reitnau durchgeführt. Die praktische Fahrprüfung findet beim Strassenverkehrsamt in Aarau statt."
+              },
+              {
+                question: "Wie kann ich mich anmelden?",
+                answer: "Du kannst dich ganz einfach per WhatsApp, Telefon (+41 76 340 22 01) oder über das Kontaktformular auf dieser Website anmelden. Für die Anmeldung benötigst du einen gültigen Lernfahrausweis. Falls du noch keinen hast, helfen wir dir gerne bei den ersten Schritten."
+              }
+            ].map((faq, index) => (
+              <details
+                key={index}
+                className="group bg-gray-50 rounded-xl border border-gray-200 overflow-hidden"
+              >
+                <summary className="flex items-center justify-between cursor-pointer p-6 hover:bg-gray-100 transition-colors">
+                  <span className="font-semibold text-gray-900 text-left pr-4">{faq.question}</span>
+                  <span className="flex-shrink-0 ml-2 text-[#1351d8] group-open:rotate-180 transition-transform">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="px-6 pb-6 text-gray-600 leading-relaxed">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
-      <section id="contact" className="py-16 bg-gray-50">
+      <section id="kontakt" className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20 mb-4">Kontakt</Badge>
@@ -1501,8 +1583,9 @@ export default function FahrschulePage() {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="text-sm font-medium text-gray-700 mb-2 block">Vorname</label>
+                      <label htmlFor="firstName" className="text-sm font-medium text-gray-700 mb-1.5 block tracking-tight">Vorname</label>
                       <Input
+                        id="firstName"
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleInputChange}
@@ -1511,8 +1594,9 @@ export default function FahrschulePage() {
                       />
                     </div>
                     <div>
-                      <label className="text-sm font-medium text-gray-700 mb-2 block">Nachname</label>
+                      <label htmlFor="lastName" className="text-sm font-medium text-gray-700 mb-1.5 block tracking-tight">Nachname</label>
                       <Input
+                        id="lastName"
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleInputChange}
@@ -1522,8 +1606,9 @@ export default function FahrschulePage() {
                     </div>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-700 mb-2 block">E-Mail</label>
+                    <label htmlFor="email" className="text-sm font-medium text-gray-700 mb-1.5 block tracking-tight">E-Mail</label>
                     <Input
+                      id="email"
                       type="email"
                       name="email"
                       value={formData.email}
@@ -1533,8 +1618,9 @@ export default function FahrschulePage() {
                     />
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-700 mb-2 block">Telefon</label>
+                    <label htmlFor="phone" className="text-sm font-medium text-gray-700 mb-1.5 block tracking-tight">Telefon</label>
                     <Input
+                      id="phone"
                       type="tel"
                       name="phone"
                       value={formData.phone}
@@ -1543,8 +1629,9 @@ export default function FahrschulePage() {
                     />
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-700 mb-2 block">Nachricht</label>
+                    <label htmlFor="message" className="text-sm font-medium text-gray-700 mb-1.5 block tracking-tight">Nachricht</label>
                     <Textarea
+                      id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
@@ -1593,6 +1680,7 @@ export default function FahrschulePage() {
           </div>
         </div>
       </section>
+      </main>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
