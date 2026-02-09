@@ -430,7 +430,7 @@ export default function FahrschulePage() {
                       <ul className="space-y-3 list-none m-0 p-0">
                         {["Startseite", "Angebot", "Fahrlehrer", "Preise", "Über uns", "Bewertungen", "Kontakt"].map(
                           (item, index) => {
-                            const sectionId = ["home", "services", "teacher", "prices", "about", "reviews", "contact"][
+                            const sectionId = ["startseite", "angebot", "fahrlehrer", "preise", "ueber-uns", "bewertungen", "kontakt"][
                               index
                             ]
                             return (
@@ -498,7 +498,7 @@ export default function FahrschulePage() {
                           <span className="font-medium">WhatsApp</span>
                         </a>
                       </div>
-                    </div>
+                    </nav>
                   )}
 
                   {/* Social Section */}
