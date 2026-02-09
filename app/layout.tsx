@@ -400,7 +400,7 @@ export default function RootLayout({
                   name: "Was kostet der Führerschein bei Fahrschule 06?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Die Kosten für den Führerschein Kategorie B setzen sich zusammen aus: Fahrstunden (CHF 95/Lektion à 50 Min.), VKU-Kurs (CHF 200 für 8 Stunden), und den behördlichen Gebühren für Prüfungen. Die Gesamtkosten variieren je nach Anzahl benötigter Fahrstunden - im Durchschnitt zwischen CHF 2'500 und CHF 3'500.",
+                    text: "Die Kosten hängen von der Anzahl der benötigten Fahrstunden oder dem gewählten Paket ab. Eine Fahrstunde (45 Min.) kostet CHF 85.–, der VKU-Kurs CHF 160.–, der Nothelferkurs CHF 120.– sowie eine einmalige Grundpauschale von CHF 100.–. Alternativ gibt es Pakete: das Basis-Paket mit 10 Fahrstunden für CHF 850.–, das Komfort-Paket mit 10 Fahrstunden, VKU und Anmeldung für CHF 950.– oder das Premium-Paket mit 20 Fahrstunden, VKU und Prüfungssimulation für CHF 1'790.–.",
                   },
                 },
                 {
@@ -408,7 +408,7 @@ export default function RootLayout({
                   name: "Wie lange dauert die Fahrausbildung?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Die Dauer der Fahrausbildung ist individuell. Die meisten Fahrschüler benötigen zwischen 20 und 30 Fahrstunden. Mit regelmässigem Üben (2-3 Lektionen pro Woche) kann der Führerschein in 3-6 Monaten erreicht werden. Der VKU-Kurs dauert 8 Stunden und wird an 4 Abenden absolviert.",
+                    text: "Die Dauer ist individuell – die meisten Fahrschüler benötigen zwischen 20 und 30 Fahrstunden. Wichtig: Gemäss Schweizer Gesetz müssen Fahrschüler im Alter von 17, 18 und 19 Jahren nach Erhalt des Lernfahrausweises mindestens 12 Monate warten, bevor sie zur praktischen Prüfung antreten dürfen. Ab 20 Jahren entfällt diese Wartefrist. Der VKU-Kurs dauert 8 Stunden und wird an 2 Abenden absolviert.",
                   },
                 },
                 {
@@ -416,7 +416,7 @@ export default function RootLayout({
                   name: "Was ist der VKU (Verkehrskundeunterricht)?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Der Verkehrskundeunterricht (VKU) ist ein obligatorischer 8-stündiger Theoriekurs für alle Führerschein-Anwärter in der Schweiz. Er behandelt Themen wie Verkehrssehen, Fahrdynamik, Umweltbewusstes Fahren und Erste Hilfe. Der VKU muss vor der praktischen Prüfung absolviert werden.",
+                    text: "Der Verkehrskundeunterricht (VKU) ist ein obligatorischer 8-stündiger Theoriekurs für alle Führerschein-Anwärter in der Schweiz. Er behandelt Themen wie Verkehrssehen, Verkehrsumwelt, Verkehrsdynamik und Verkehrstaktik. Der VKU muss vor der praktischen Prüfung absolviert werden.",
                   },
                 },
                 {
@@ -424,7 +424,7 @@ export default function RootLayout({
                   name: "Wo findet die Fahrausbildung statt?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Die Fahrausbildung findet im Raum Aargau und Olten statt. Wir holen dich gerne an deinem Wohnort, Arbeitsplatz oder Bahnhof ab. Der VKU-Kurs wird in Reitnau durchgeführt. Die praktische Fahrprüfung findet beim Strassenverkehrsamt in Aarau statt.",
+                    text: "Die Fahrausbildung findet im Raum Aargau und Olten statt. Wir holen dich gerne an deinem Wohnort, Arbeitsplatz oder Bahnhof ab. Der VKU-Kurs wird in Aarau durchgeführt. Die praktische Fahrprüfung findet beim Strassenverkehrsamt in Aarau oder Olten statt.",
                   },
                 },
                 {
