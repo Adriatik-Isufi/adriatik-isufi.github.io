@@ -522,13 +522,21 @@ export default function ImpressumPage() {
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
             <div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
-              <p>&copy; 2024 Fahrschule 06. Alle Rechte vorbehalten.</p>
-              <Link
-                href="/impressum"
-                className="text-gray-400 hover:text-white transition-colors underline hover:no-underline font-medium"
-              >
-                Impressum
-              </Link>
+              <p>&copy; 2025 Fahrschule 06. Alle Rechte vorbehalten.</p>
+              <div className="flex gap-6">
+                <Link
+                  href="/impressum"
+                  className="text-gray-400 hover:text-white transition-colors underline hover:no-underline font-medium"
+                >
+                  Impressum
+                </Link>
+                <Link
+                  href="/agb"
+                  className="text-gray-400 hover:text-white transition-colors underline hover:no-underline font-medium"
+                >
+                  AGB
+                </Link>
+              </div>
             </div>
           </div>
         </div>

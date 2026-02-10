@@ -53,6 +53,7 @@ export default function FahrschulePage() {
     email: "",
     phone: "",
     message: "",
+    agbAccepted: false,
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
@@ -224,6 +225,7 @@ export default function FahrschulePage() {
         email: "",
         phone: "",
         message: "",
+        agbAccepted: false,
       })
     } catch (error) {
       console.error("Email send failed:", error)
@@ -1428,7 +1430,7 @@ export default function FahrschulePage() {
             {[
               {
                 question: "Was kostet der Führerschein bei Fahrschule 06?",
-                answer: "Die Kosten für den Führerschein Kategorie B setzen sich zusammen aus: Fahrstunden (CHF 95/Lektion à 50 Min.), VKU-Kurs (CHF 200 für 8 Stunden), und den behördlichen Gebühren für Prüfungen. Die Gesamtkosten variieren je nach Anzahl benötigter Fahrstunden - im Durchschnitt zwischen CHF 2'500 und CHF 3'500."
+                answer: "Die Kosten für den Führerschein Kategorie B setzen sich zusammen aus: Fahrstunden (CHF 85.-/Lektion à 45 Min.), VKU-Kurs (CHF 160.- für 8 Stunden), und den behördlichen Gebühren für Prüfungen. Die Gesamtkosten variieren je nach Anzahl benötigter Fahrstunden - im Durchschnitt zwischen CHF 2'500 und CHF 3'500."
               },
               {
                 question: "Wie lange dauert die Fahrausbildung?",
@@ -1445,6 +1447,10 @@ export default function FahrschulePage() {
               {
                 question: "Wie kann ich mich anmelden?",
                 answer: "Du kannst dich ganz einfach per WhatsApp, Telefon (+41 76 340 22 01) oder über das Kontaktformular auf dieser Website anmelden. Für die Anmeldung benötigst du einen gültigen Lernfahrausweis. Falls du noch keinen hast, helfen wir dir gerne bei den ersten Schritten."
+              },
+              {
+                question: "Wo finde ich die Allgemeinen Geschäftsbedingungen (AGB)?",
+                answer: "agb_special"
               }
             ].map((faq, index) => (
               <details
@@ -1460,7 +1466,16 @@ export default function FahrschulePage() {
                   </span>
                 </summary>
                 <div className="px-6 pb-6 text-gray-600 leading-relaxed">
-                  {faq.answer}
+                  {faq.answer === "agb_special" ? (
+                    <>
+                      Unsere AGB regeln alle wichtigen Punkte rund um die Fahrausbildung bei Fahrschule 06 -- darunter Buchung und Bezahlung von Fahrstunden, Annullierungsbedingungen, VKU-Kursregelungen, Geschenkgutscheine sowie Datenschutz und Haftung. Wir empfehlen dir, die AGB vor Beginn der Ausbildung durchzulesen.{" "}
+                      <Link href="/agb" className="text-[#1351d8] hover:underline font-medium">
+                        Hier findest du unsere vollständigen AGB
+                      </Link>
+                    </>
+                  ) : (
+                    faq.answer
+                  )}
                 </div>
               </details>
             ))}
@@ -1641,6 +1656,25 @@ export default function FahrschulePage() {
                     />
                   </div>
 
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      id="agbAccepted"
+                      name="agbAccepted"
+                      checked={formData.agbAccepted}
+                      onChange={(e) => setFormData((prev) => ({ ...prev, agbAccepted: e.target.checked }))}
+                      required
+                      className="mt-1 h-4 w-4 rounded border-gray-300 text-[#1351d8] focus:ring-[#1351d8] cursor-pointer"
+                    />
+                    <label htmlFor="agbAccepted" className="text-sm text-gray-600 cursor-pointer">
+                      Ich habe die{" "}
+                      <a href="/agb" target="_blank" className="text-[#1351d8] hover:underline font-medium">
+                        Allgemeinen Geschäftsbedingungen (AGB)
+                      </a>{" "}
+                      gelesen und akzeptiere diese.
+                    </label>
+                  </div>
+
                   {submitStatus === "success" && (
                     <div className="p-4 bg-green-50 border border-green-200 rounded-md">
                       <p className="text-green-800 text-sm">
@@ -1782,12 +1816,20 @@ export default function FahrschulePage() {
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
             <div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
               <p>&copy; 2025 Fahrschule 06. Alle Rechte vorbehalten.</p>
-              <Link
-                href="/impressum"
-                className="text-gray-400 hover:text-white transition-colors underline hover:no-underline font-medium"
-              >
-                Impressum
-              </Link>
+              <div className="flex gap-6">
+                <Link
+                  href="/impressum"
+                  className="text-gray-400 hover:text-white transition-colors underline hover:no-underline font-medium"
+                >
+                  Impressum
+                </Link>
+                <Link
+                  href="/agb"
+                  className="text-gray-400 hover:text-white transition-colors underline hover:no-underline font-medium"
+                >
+                  AGB
+                </Link>
+              </div>
             </div>
           </div>
         </div>
