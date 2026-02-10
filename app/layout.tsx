@@ -416,7 +416,7 @@ export default function RootLayout({
                   name: "Was ist der VKU (Verkehrskundeunterricht)?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Der Verkehrskundeunterricht (VKU) ist ein obligatorischer 8-stündiger Theoriekurs für alle Führerschein-Anwärter in der Schweiz. Er behandelt Themen wie Verkehrssehen, Verkehrsumwelt, Verkehrsdynamik und Verkehrstaktik. Der VKU muss vor der praktischen Prüfung absolviert werden.",
+                    text: "Der Verkehrskundeunterricht (VKU) ist ein obligatorischer 8-stündiger Theoriekurs für alle Führerschein-Anwärter. Er behandelt Themen wie Verkehrssehen, Verkehrsumwelt, Verkehrsdynamik und Verkehrstaktik. Der VKU muss vor der praktischen Prüfung absolviert werden.",
                   },
                 },
                 {
@@ -433,6 +433,14 @@ export default function RootLayout({
                   acceptedAnswer: {
                     "@type": "Answer",
                     text: "Du kannst dich ganz einfach per WhatsApp, Telefon (+41 76 340 22 01) oder über das Kontaktformular auf der Website anmelden. Für die Anmeldung benötigst du einen gültigen Lernfahrausweis. Falls du noch keinen hast, helfen wir dir gerne bei den ersten Schritten.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Wo finde ich die Allgemeinen Geschäftsbedingungen (AGB)?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Unsere AGB regeln alle wichtigen Punkte rund um die Fahrausbildung bei Fahrschule 06 – darunter Buchung und Bezahlung von Fahrstunden, Annullierungsbedingungen, VKU-Kursregelungen, Geschenkgutscheine sowie Datenschutz und Haftung. Wir empfehlen dir, die AGB vor Beginn der Ausbildung durchzulesen.",
                   },
                 },
               ],
