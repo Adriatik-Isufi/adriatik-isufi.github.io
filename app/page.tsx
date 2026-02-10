@@ -693,11 +693,11 @@ export default function FahrschulePage() {
 
             <div className="relative">
               <Image
-                src="/hero-transparent.png"
+                src="/hero-new-bg.jpeg"
                 alt="Fahrschule 06 - Professioneller Fahrlehrer mit blauem Ford"
                 width={600}
-                height={400}
-                className="w-full h-auto"
+                height={800}
+                className="w-full h-auto rounded-2xl shadow-2xl object-cover"
                 priority
               />
             </div>
