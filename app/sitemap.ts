@@ -8,19 +8,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: baseUrl,
+      url: `${baseUrl}/`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/impressum`,
+      url: `${baseUrl}/impressum/`,
       lastModified: new Date('2025-02-06'),
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/agb`,
+      url: `${baseUrl}/agb/`,
       lastModified: new Date('2026-01-01'),
       changeFrequency: 'yearly',
       priority: 0.3,
