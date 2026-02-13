@@ -693,7 +693,7 @@ export default function FahrschulePage() {
 
             <div className="relative">
               <Image
-                src="/hero-new-bg.jpeg"
+                src="/hero-new-bg.webp"
                 alt="Fahrschule 06 - Professioneller Fahrlehrer mit blauem Ford"
                 width={600}
                 height={800}
@@ -1369,7 +1369,7 @@ export default function FahrschulePage() {
               <div className="flex flex-col gap-4 flex-1">
                 <div className="relative overflow-hidden rounded-xl shadow-lg h-48">
                   <Image
-                    src="/instructor-with-car.jpg"
+                    src="/instructor-with-car.webp"
                     alt="Fahrlehrer mit Fahrschule 06 Auto"
                     width={400}
                     height={192}
@@ -1378,7 +1378,7 @@ export default function FahrschulePage() {
                 </div>
                 <div className="relative overflow-hidden rounded-xl shadow-lg h-48">
                   <Image
-                    src="/instructor-in-car.jpg"
+                    src="/instructor-in-car.webp"
                     alt="Fahrlehrer im Fahrschule 06 Auto"
                     width={400}
                     height={192}

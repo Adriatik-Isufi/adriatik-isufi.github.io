@@ -6,13 +6,13 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://fahrschule06.ch"),
+  metadataBase: new URL("https://www.fahrschule06.ch"),
   title: "Fahrschule 06 - Fahrausbildung in Aargau & Olten | Kat. B",
   description:
     "Fahrschule 06 – moderne Fahrausbildung in Aargau & Olten. Kat. B Fahrstunden, VKU und persönliche Betreuung. Jetzt Termin sichern!",
   keywords:
     "Fahrschule Aargau, Fahrschule Olten, Führerschein Aargau, Fahrstunden Olten, VKU Aargau, Fahrausbildung, Kategorie B, Fahrschule 06, Reitnau",
-  authors: [{ name: "Fahrschule 06", url: "https://fahrschule06.ch" }],
+  authors: [{ name: "Fahrschule 06", url: "https://www.fahrschule06.ch" }],
   creator: "Fahrschule 06",
   publisher: "Fahrschule 06",
   generator: "Next.js",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description:
       "Professionelle Fahrausbildung in Aargau/Olten. Moderne Fahrzeuge, erfahrene Fahrlehrer, flexible Termine.",
     type: "website",
-    url: "https://fahrschule06.ch",
+    url: "https://www.fahrschule06.ch",
     locale: "de_CH",
     siteName: "Fahrschule 06",
     images: [
@@ -64,9 +64,9 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   alternates: {
-    canonical: "https://fahrschule06.ch",
+    canonical: "https://www.fahrschule06.ch",
     languages: {
-      "de-CH": "https://fahrschule06.ch",
+      "de-CH": "https://www.fahrschule06.ch",
     },
   },
 }
@@ -117,7 +117,7 @@ export default function RootLayout({
         <meta name="DC.date" content="2025-02-06" />
         <meta name="DC.type" content="Service" />
         <meta name="DC.format" content="text/html" />
-        <meta name="DC.identifier" content="https://fahrschule06.ch" />
+        <meta name="DC.identifier" content="https://www.fahrschule06.ch" />
         <meta name="DC.language" content="de-CH" />
         <meta name="DC.coverage" content="Aargau, Olten, Switzerland" />
         <meta name="DC.rights" content="Copyright 2025 Fahrschule 06. All rights reserved." />
@@ -146,15 +146,15 @@ export default function RootLayout({
         <link rel="icon" type="image/x-icon" sizes="16x16" href="/favicon.ico" />
 
         {/* Enhanced Open Graph Tags */}
-        <meta property="og:url" content="https://fahrschule06.ch" />
+        <meta property="og:url" content="https://www.fahrschule06.ch" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Fahrschule 06 - Führerschein Aargau/Olten" />
         <meta property="og:description" content="Professionelle Fahrausbildung in Aargau/Olten. Moderne Fahrzeuge, erfahrene Fahrlehrer, flexible Termine." />
         <meta property="og:locale" content="de_CH" />
         <meta property="og:site_name" content="Fahrschule 06" />
-        <meta property="og:image" content="https://fahrschule06.ch/logo-blue.svg" />
-        <meta property="og:image:url" content="https://fahrschule06.ch/logo-blue.svg" />
-        <meta property="og:image:secure_url" content="https://fahrschule06.ch/logo-blue.svg" />
+        <meta property="og:image" content="https://www.fahrschule06.ch/logo-blue.svg" />
+        <meta property="og:image:url" content="https://www.fahrschule06.ch/logo-blue.svg" />
+        <meta property="og:image:secure_url" content="https://www.fahrschule06.ch/logo-blue.svg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Fahrschule 06 - Professionelle Fahrausbildung" />
@@ -173,7 +173,7 @@ export default function RootLayout({
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Fahrschule 06 - Führerschein Aargau/Olten" />
         <meta name="twitter:description" content="Professionelle Fahrausbildung in Aargau/Olten. Moderne Fahrzeuge, erfahrene Fahrlehrer, flexible Termine." />
-        <meta name="twitter:image" content="https://fahrschule06.ch/logo-blue.svg" />
+        <meta name="twitter:image" content="https://www.fahrschule06.ch/logo-blue.svg" />
         <meta name="twitter:image:alt" content="Fahrschule 06 Logo" />
         <meta name="twitter:label1" content="Standort" />
         <meta name="twitter:data1" content="Aargau, Switzerland" />
@@ -189,13 +189,13 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              "@id": "https://fahrschule06.ch#localbusiness",
+              "@id": "https://www.fahrschule06.ch#localbusiness",
               name: "Fahrschule 06",
               alternateName: "Fahrschule06",
               description: "Professionelle Fahrschule in Aargau/Olten für Führerschein Kategorie B, VKU und Fahrausbildung",
-              url: "https://fahrschule06.ch",
-              logo: "https://fahrschule06.ch/logo-blue.svg",
-              image: "https://fahrschule06.ch/logo-blue.svg",
+              url: "https://www.fahrschule06.ch",
+              logo: "https://www.fahrschule06.ch/logo-blue.svg",
+              image: "https://www.fahrschule06.ch/logo-blue.svg",
               telephone: "+41763402201",
               email: "info@fahrschule06.ch",
               priceRange: "$$",
@@ -284,7 +284,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Service",
               serviceType: "VKU - Verkehrskundeunterricht",
-              provider: { "@id": "https://fahrschule06.ch#localbusiness" },
+              provider: { "@id": "https://www.fahrschule06.ch#localbusiness" },
               areaServed: [
                 { "@type": "State", name: "Aargau" },
                 { "@type": "City", name: "Olten" },
@@ -302,7 +302,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Service",
               serviceType: "Fahrstunden Kategorie B",
-              provider: { "@id": "https://fahrschule06.ch#localbusiness" },
+              provider: { "@id": "https://www.fahrschule06.ch#localbusiness" },
               areaServed: [
                 { "@type": "State", name: "Aargau" },
                 { "@type": "City", name: "Olten" },
@@ -324,7 +324,7 @@ export default function RootLayout({
                   "@type": "ListItem",
                   position: 1,
                   name: "Home",
-                  item: "https://fahrschule06.ch",
+                  item: "https://www.fahrschule06.ch",
                 },
               ],
             }),
@@ -338,10 +338,10 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "@id": "https://fahrschule06.ch#organization",
+              "@id": "https://www.fahrschule06.ch#organization",
               name: "Fahrschule 06",
-              url: "https://fahrschule06.ch",
-              logo: "https://fahrschule06.ch/logo-blue.svg",
+              url: "https://www.fahrschule06.ch",
+              logo: "https://www.fahrschule06.ch/logo-blue.svg",
               description: "Professionelle Fahrschule in Aargau/Olten",
               email: "info@fahrschule06.ch",
               telephone: "+41763402201",
@@ -456,42 +456,42 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "SiteNavigationElement",
               name: "Hauptnavigation",
-              url: "https://fahrschule06.ch",
+              url: "https://www.fahrschule06.ch",
               hasPart: [
                 {
                   "@type": "SiteNavigationElement",
                   name: "Startseite",
-                  url: "https://fahrschule06.ch#startseite",
+                  url: "https://www.fahrschule06.ch#startseite",
                 },
                 {
                   "@type": "SiteNavigationElement",
                   name: "Angebot",
-                  url: "https://fahrschule06.ch#angebot",
+                  url: "https://www.fahrschule06.ch#angebot",
                 },
                 {
                   "@type": "SiteNavigationElement",
                   name: "Fahrlehrer",
-                  url: "https://fahrschule06.ch#fahrlehrer",
+                  url: "https://www.fahrschule06.ch#fahrlehrer",
                 },
                 {
                   "@type": "SiteNavigationElement",
                   name: "Preise",
-                  url: "https://fahrschule06.ch#preise",
+                  url: "https://www.fahrschule06.ch#preise",
                 },
                 {
                   "@type": "SiteNavigationElement",
                   name: "Über uns",
-                  url: "https://fahrschule06.ch#ueber-uns",
+                  url: "https://www.fahrschule06.ch#ueber-uns",
                 },
                 {
                   "@type": "SiteNavigationElement",
                   name: "Bewertungen",
-                  url: "https://fahrschule06.ch#bewertungen",
+                  url: "https://www.fahrschule06.ch#bewertungen",
                 },
                 {
                   "@type": "SiteNavigationElement",
                   name: "Kontakt",
-                  url: "https://fahrschule06.ch#kontakt",
+                  url: "https://www.fahrschule06.ch#kontakt",
                 },
               ],
             }),

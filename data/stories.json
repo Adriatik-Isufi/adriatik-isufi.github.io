@@ -1,89 +1,88 @@
 {
-    "stories": [
-      {
-        "id": 1,
-        "name": "Süleyman",
-        "image": "/Success/suleiman-success.jpg",
-        "caption": "",
-        "date": "2025-10-13"
-      },
-      {
-        "id": 2,
-        "name": "Jon",
-        "image": "/Success/jon-success.jpg",
-        "caption": "Gratuliere Jon 👏💪😎",
-        "date": "2025-10-18"
-      },
-      {
-        "id": 3,
-        "name": "Viktor",
-        "image": "/Success/viktor-success.jpg",
-        "caption": "Gratuliere Viktor 👏💪😎",
-        "date": "2025-10-28"
-      },
-      {
-        "id": 4,
-        "name": "Tefik",
-        "image": "/Success/tefik-success.jpg",
-        "caption": "Herzlichen Glückwunsch Tefik 👏💪😎",
-        "date": "2025-10-30"
-      },
-      {
-        "id": 5,
-        "name": "Tenzin Norzin",
-        "image": "/Success/tenzin-norzin-success.jpg",
-        "caption": "Herzlichen Glückwunsch zur bestandenen Autoprüfung 🥳😃",
-        "date": "2025-11-12"
-      },
-      {
-        "id": 6, 
-        "name": "Emanuela Lenjani",
-        "image": "/Success/emanuela-lenjani-success.jpg",
-        "caption": "Gratuliere Emanuela 👏💪",
-        "date": "2025-11-12"
-      },
-      {
-        "id": 7, 
-        "name": "Severin",
-        "image": "/Success/severin-success.jpg",
-        "caption": "Herzlichen Glückwunsch zur bestandenen Prüfung Severin🥳😁",
-        "date": "2025-12-02"
-      },
-      {
-        "id": 8, 
-        "name": "Carolina Gräub",
-        "image": "/Success/carolina-graub-success.jpg",
-        "caption": "Gratuliere Carolina 💪👏",
-        "date": "2025-12-04"
-      },
-      {
-        "id": 9, 
-        "name": "Gershan",
-        "image": "/Success/gershan-success.jpg",
-        "caption": "Gratuliere Gershan 👏💪",
-        "date": "2026-01-08"
-      },
-      {
-        "id": 10, 
-        "name": "Josh",
-        "image": "/Success/josh-success.jpg",
-        "caption": "Herzlichen Glückwunsch zur bestandenen Autoprüfung Josh🥳",
-        "date": "2026-01-09"
-      },
-      {
-        "id": 11, 
-        "name": "Duena",
-        "image": "/Success/duena-success.jpg",
-        "caption": "Gratuliere Duena 👏💪",
-        "date": "2026-02-02"
-      },
-      {
-        "id": 11, 
-        "name": "Andrea",
-        "image": "/Success/andrea-success.jpg",
-        "caption": "Herzlichen Glückwunsch Andrea 🥳",
-        "date": "2026-02-02"
-      }
-    ]
-  }
-  
+  "stories": [
+    {
+      "id": 1,
+      "name": "Süleyman",
+      "image": "/Success/suleiman-success.webp",
+      "caption": "",
+      "date": "2025-10-13"
+    },
+    {
+      "id": 2,
+      "name": "Jon",
+      "image": "/Success/jon-success.webp",
+      "caption": "Gratuliere Jon 👏💪😎",
+      "date": "2025-10-18"
+    },
+    {
+      "id": 3,
+      "name": "Viktor",
+      "image": "/Success/viktor-success.webp",
+      "caption": "Gratuliere Viktor 👏💪😎",
+      "date": "2025-10-28"
+    },
+    {
+      "id": 4,
+      "name": "Tefik",
+      "image": "/Success/tefik-success.webp",
+      "caption": "Herzlichen Glückwunsch Tefik 👏💪😎",
+      "date": "2025-10-30"
+    },
+    {
+      "id": 5,
+      "name": "Tenzin Norzin",
+      "image": "/Success/tenzin-norzin-success.webp",
+      "caption": "Herzlichen Glückwunsch zur bestandenen Autoprüfung 🥳😃",
+      "date": "2025-11-12"
+    },
+    {
+      "id": 6,
+      "name": "Emanuela Lenjani",
+      "image": "/Success/emanuela-lenjani-success.webp",
+      "caption": "Gratuliere Emanuela 👏💪",
+      "date": "2025-11-12"
+    },
+    {
+      "id": 7,
+      "name": "Severin",
+      "image": "/Success/severin-success.webp",
+      "caption": "Herzlichen Glückwunsch zur bestandenen Prüfung Severin🥳😁",
+      "date": "2025-12-02"
+    },
+    {
+      "id": 8,
+      "name": "Carolina Gräub",
+      "image": "/Success/carolina-graub-success.webp",
+      "caption": "Gratuliere Carolina 💪👏",
+      "date": "2025-12-04"
+    },
+    {
+      "id": 9,
+      "name": "Gershan",
+      "image": "/Success/gershan-success.webp",
+      "caption": "Gratuliere Gershan 👏💪",
+      "date": "2026-01-08"
+    },
+    {
+      "id": 10,
+      "name": "Josh",
+      "image": "/Success/josh-success.webp",
+      "caption": "Herzlichen Glückwunsch zur bestandenen Autoprüfung Josh🥳",
+      "date": "2026-01-09"
+    },
+    {
+      "id": 11,
+      "name": "Duena",
+      "image": "/Success/duena-success.webp",
+      "caption": "Gratuliere Duena 👏💪",
+      "date": "2026-02-02"
+    },
+    {
+      "id": 12,
+      "name": "Andrea",
+      "image": "/Success/andrea-success.webp",
+      "caption": "Herzlichen Glückwunsch Andrea 🥳",
+      "date": "2026-02-09"
+    }
+  ]
+}
