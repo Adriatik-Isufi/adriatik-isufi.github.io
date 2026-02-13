@@ -28,7 +28,7 @@ export default function ImpressumPage() {
             <Link href="/" className="flex items-center space-x-3">
               <Image src="/logo-blue.svg" alt="Fahrschule 06 Logo" width={40} height={40} className="w-10 h-10" />
               <div>
-                <h1 className="text-xl font-bold text-[#1351d8]">Fahrschule 06</h1>
+                <span className="text-xl font-bold text-[#1351d8]">Fahrschule 06</span>
                 <p className="text-xs text-gray-600">fahrschule06.ch</p>
               </div>
             </Link>
@@ -370,7 +370,7 @@ export default function ImpressumPage() {
           {/* Impressum Content */}
           <Card className="shadow-lg">
             <CardHeader>
-              <CardTitle className="text-3xl font-bold text-gray-900">Impressum</CardTitle>
+              <h1 className="text-3xl font-bold text-gray-900">Impressum</h1>
             </CardHeader>
             <CardContent className="space-y-8">
               {/* Contact Information */}
@@ -531,7 +531,7 @@ export default function ImpressumPage() {
                   Impressum
                 </Link>
                 <Link
-                  href="/agb"
+                  href="/agb/"
                   className="text-gray-400 hover:text-white transition-colors underline hover:no-underline font-medium"
                 >
                   AGB

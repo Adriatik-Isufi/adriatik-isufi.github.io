@@ -28,3 +28,5 @@ next-env.d.ts
 
 # Original images backup (before WebP conversion)
 /public/_originals
+
+/screaming_frog

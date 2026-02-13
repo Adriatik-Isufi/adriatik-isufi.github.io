@@ -67,6 +67,7 @@ export const metadata: Metadata = {
     canonical: "https://www.fahrschule06.ch",
     languages: {
       "de-CH": "https://www.fahrschule06.ch",
+      "x-default": "https://www.fahrschule06.ch",
     },
   },
 }
@@ -80,6 +81,10 @@ export default function RootLayout({
     <html lang="de-CH" className="scroll-smooth">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* Security Meta Tags (GitHub Pages doesn't support HTTP headers) */}
+        <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://elfsightcdn.com https://static.elfsight.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:; frame-src https://www.google.com https://elfsight.com https://*.elfsight.com;" />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
 
         {/* Geographic Meta Tags */}
         <meta name="geo.region" content="CH-AG" />

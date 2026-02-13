@@ -23,6 +23,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.fahrschule06.ch/agb",
+    languages: {
+      "de-CH": "https://www.fahrschule06.ch/agb",
+      "x-default": "https://www.fahrschule06.ch/agb",
+    },
   },
 }
 

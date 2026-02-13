@@ -1469,7 +1469,7 @@ export default function FahrschulePage() {
                   {faq.answer === "agb_special" ? (
                     <>
                       Unsere AGB regeln alle wichtigen Punkte rund um die Fahrausbildung bei Fahrschule 06 -- darunter Buchung und Bezahlung von Fahrstunden, Annullierungsbedingungen, VKU-Kursregelungen, Geschenkgutscheine sowie Datenschutz und Haftung. Wir empfehlen dir, die AGB vor Beginn der Ausbildung durchzulesen.{" "}
-                      <Link href="/agb" className="text-[#1351d8] hover:underline font-medium">
+                      <Link href="/agb/" className="text-[#1351d8] hover:underline font-medium">
                         Hier findest du unsere vollständigen AGB
                       </Link>
                     </>
@@ -1668,7 +1668,7 @@ export default function FahrschulePage() {
                     />
                     <label htmlFor="agbAccepted" className="text-sm text-gray-600 cursor-pointer">
                       Ich habe die{" "}
-                      <a href="/agb" target="_blank" className="text-[#1351d8] hover:underline font-medium">
+                      <a href="/agb/" target="_blank" className="text-[#1351d8] hover:underline font-medium">
                         Allgemeinen Geschäftsbedingungen (AGB)
                       </a>{" "}
                       gelesen und akzeptiere diese.
@@ -1824,7 +1824,7 @@ export default function FahrschulePage() {
                   Impressum
                 </Link>
                 <Link
-                  href="/agb"
+                  href="/agb/"
                   className="text-gray-400 hover:text-white transition-colors underline hover:no-underline font-medium"
                 >
                   AGB

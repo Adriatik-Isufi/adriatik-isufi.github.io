@@ -55,7 +55,7 @@ export default function AGBPage() {
             <Link href="/" className="flex items-center gap-3">
               <Image src="/logo-blue.svg" alt="Fahrschule 06 Logo" width={40} height={40} className="w-10 h-10" />
               <div>
-                <h1 className="text-xl font-bold text-[#1351d8]">Fahrschule 06</h1>
+                <span className="text-xl font-bold text-[#1351d8]">Fahrschule 06</span>
                 <p className="text-xs text-gray-600">fahrschule06.ch</p>
               </div>
             </Link>
@@ -171,7 +171,7 @@ export default function AGBPage() {
                         <Link href="/impressum" className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-[#1351d8] hover:bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20">
                           Impressum
                         </Link>
-                        <Link href="/agb" className="block w-full text-left px-4 py-3 text-base font-medium text-[#1351d8] bg-blue-50 rounded-lg transition-colors border border-[#1351d8]/20">
+                        <Link href="/agb/" className="block w-full text-left px-4 py-3 text-base font-medium text-[#1351d8] bg-blue-50 rounded-lg transition-colors border border-[#1351d8]/20">
                           AGB
                         </Link>
                       </div>
@@ -490,7 +490,7 @@ export default function AGBPage() {
               <Link href="/impressum" className="text-sm text-gray-400 hover:text-white transition-colors">
                 Impressum
               </Link>
-              <Link href="/agb" className="text-sm text-gray-400 hover:text-white transition-colors font-medium">
+              <Link href="/agb/" className="text-sm text-gray-400 hover:text-white transition-colors font-medium">
                 AGB
               </Link>
             </div>

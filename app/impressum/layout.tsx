@@ -23,6 +23,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.fahrschule06.ch/impressum",
+    languages: {
+      "de-CH": "https://www.fahrschule06.ch/impressum",
+      "x-default": "https://www.fahrschule06.ch/impressum",
+    },
   },
 }
 
