@@ -1434,7 +1434,7 @@ export default function FahrschulePage() {
               },
               {
                 question: "Wie lange dauert die Fahrausbildung?",
-                answer: "Die Dauer ist individuell – die meisten Fahrschüler benötigen zwischen 20 und 30 Fahrstunden. Wichtig: Gemäss Schweizer Gesetz müssen Fahrschüler im Alter von 17, 18 und 19 Jahren nach Erhalt des Lernfahrausweises mindestens 12 Monate warten, bevor sie zur praktischen Prüfung antreten dürfen. Ab 20 Jahren entfällt diese Wartefrist. Der VKU-Kurs dauert 8 Stunden und wird an 2 Abenden absolviert."
+                answer: "Die Dauer ist individuell. Wichtig: Gemäss Schweizer Gesetz müssen Fahrschüler im Alter von 17, 18 und 19 Jahren nach Erhalt des Lernfahrausweises mindestens 12 Monate warten, bevor sie zur praktischen Prüfung antreten dürfen. Ab 20 Jahren entfällt diese Wartefrist. Der VKU-Kurs dauert 8 Stunden und wird an 2 Abenden absolviert."
               },
               {
                 question: "Was ist der VKU (Verkehrskundeunterricht)?",

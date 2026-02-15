@@ -264,7 +264,7 @@ export default function AGBPage() {
               <section id="terminbuchungen" className="mb-12 scroll-mt-24">
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">Terminbuchungen</h3>
                 <p className="text-gray-700 leading-relaxed">
-                  Fahrlektionen können telefonisch, per WhatsApp oder online gebucht werden. Die Buchung ist verbindlich. Der Fahrschüler erhält eine Bestätigung über den vereinbarten Termin. Fahrschule 06 behält sich das Recht vor, Termine bei Bedarf und nach Absprache mit dem Fahrschüler zu verschieben.
+                  Fahrlektionen können telefonisch oder per WhatsApp gebucht werden. Die Buchung ist verbindlich. Der Fahrschüler erhält eine Bestätigung über den vereinbarten Termin. Fahrschule 06 behält sich das Recht vor, Termine bei Bedarf und nach Absprache mit dem Fahrschüler zu verschieben.
                 </p>
               </section>
 
@@ -280,10 +280,10 @@ export default function AGBPage() {
               <section id="abmeldungen" className="mb-12 scroll-mt-24">
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">Abmeldungen, Verspätungen und Absenzen bei Fahrlektionen und Prüfungen</h3>
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  Absagen von Fahrlektionen müssen mindestens <strong>48 Stunden</strong> (2 Arbeitstage) vor dem vereinbarten Termin erfolgen. Bei verspäteter Absage oder Nichterscheinen wird die Lektion vollumfänglich verrechnet.
+                  Absagen von Fahrlektionen müssen mindestens <strong>24 Stunden</strong> (1 Arbeitstag) vor dem vereinbarten Termin erfolgen. Bei verspäteter Absage oder Nichterscheinen wird die Lektion vollumfänglich verrechnet.
                 </p>
                 <ul className="list-disc list-inside text-gray-700 space-y-2">
-                  <li>Absagen sind telefonisch, per WhatsApp oder E-Mail möglich.</li>
+                  <li>Absagen sind telefonisch oder per WhatsApp möglich.</li>
                   <li>Bei Verspätung des Fahrschülers wird die verlorene Zeit nicht nachgeholt. Die Lektion endet zum ursprünglich geplanten Zeitpunkt.</li>
                   <li>Absagen von Prüfungsterminen müssen ebenfalls rechtzeitig erfolgen. Kosten, die durch verspätete Abmeldung bei der Prüfungsbehörde entstehen, gehen zu Lasten des Fahrschülers.</li>
                   <li>In Ausnahmefällen (z.B. Krankheit mit ärztlichem Attest) kann eine kulante Regelung getroffen werden.</li>
@@ -344,6 +344,7 @@ export default function AGBPage() {
                 <ul className="list-disc list-inside text-gray-700 space-y-2">
                   <li>Barzahlung</li>
                   <li>Banküberweisung (TWINT)</li>
+                  <li>Rechnung</li>
                 </ul>
                 <p className="text-gray-700 leading-relaxed mt-4">
                   Bei Paketen oder Kursen ist die Bezahlung vor Beginn der Ausbildung fällig, sofern nicht anders vereinbart. Bei Zahlungsverzug behält sich Fahrschule 06 das Recht vor, weitere Lektionen zu verweigern und Mahngebühren zu erheben.
