@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Impressum - Fahrschule 06",
     description: "Rechtliche Informationen und Kontaktdaten der Fahrschule 06 in Reitnau, Aargau.",
-    url: "https://www.fahrschule06.ch/impressum",
+    url: "https://www.fahrschule06.ch/impressum/",
     type: "website",
     locale: "de_CH",
   },
@@ -22,10 +22,10 @@ export const metadata: Metadata = {
     description: "Rechtliche Informationen und Kontaktdaten der Fahrschule 06.",
   },
   alternates: {
-    canonical: "https://www.fahrschule06.ch/impressum",
+    canonical: "https://www.fahrschule06.ch/impressum/",
     languages: {
-      "de-CH": "https://www.fahrschule06.ch/impressum",
-      "x-default": "https://www.fahrschule06.ch/impressum",
+      "de-CH": "https://www.fahrschule06.ch/impressum/",
+      "x-default": "https://www.fahrschule06.ch/impressum/",
     },
   },
 }

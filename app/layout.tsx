@@ -64,10 +64,10 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   alternates: {
-    canonical: "https://www.fahrschule06.ch",
+    canonical: "https://www.fahrschule06.ch/",
     languages: {
-      "de-CH": "https://www.fahrschule06.ch",
-      "x-default": "https://www.fahrschule06.ch",
+      "de-CH": "https://www.fahrschule06.ch/",
+      "x-default": "https://www.fahrschule06.ch/",
     },
   },
 }

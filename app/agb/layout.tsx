@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AGB - Fahrschule 06",
     description: "Allgemeine Geschäftsbedingungen der Fahrschule 06 in Reitnau, Aargau.",
-    url: "https://www.fahrschule06.ch/agb",
+    url: "https://www.fahrschule06.ch/agb/",
     type: "website",
     locale: "de_CH",
   },
@@ -22,10 +22,10 @@ export const metadata: Metadata = {
     description: "Allgemeine Geschäftsbedingungen der Fahrschule 06.",
   },
   alternates: {
-    canonical: "https://www.fahrschule06.ch/agb",
+    canonical: "https://www.fahrschule06.ch/agb/",
     languages: {
-      "de-CH": "https://www.fahrschule06.ch/agb",
-      "x-default": "https://www.fahrschule06.ch/agb",
+      "de-CH": "https://www.fahrschule06.ch/agb/",
+      "x-default": "https://www.fahrschule06.ch/agb/",
     },
   },
 }
