@@ -111,6 +111,14 @@
       "image": "/Success/fisnik-sucess.webp",
       "caption": "Sauber, Fisnik! 💪🎉 Alles Stress war’s wert!",
       "date": "2026-03-03"
+    },
+    {
+      "id": 17,
+      "name": "Agon",
+      "image": "/Success/agon.webp",
+      "caption": "Sauber, Agon! 💪🎉",
+      "date": "2026-03-03"
+
     }
   ]
 }
