@@ -119,6 +119,20 @@
       "caption": "Sauber, Agon! 💪🎉",
       "date": "2026-03-03"
 
+    },
+    {
+      "id": 18,
+      "name": " ",
+      "image": "/Success/no-name-1.webp",
+      "caption": "Glückwunsch zum bestandenen Test! 🎉👏",
+      "date": "2026-03-10"    
+    },
+    {
+      "id": 19,
+      "name": "Mendimi",
+      "image": "/Success/mendimi-success.webp",
+      "caption": "Sauber! 💪🎉 Herzlichen Glückwunsch zum Erfolg!",
+      "date": "2026-03-10"    
     }
   ]
 }
