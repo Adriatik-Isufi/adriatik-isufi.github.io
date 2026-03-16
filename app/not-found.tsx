@@ -1,5 +1,15 @@
 import Link from "next/link"
 import Image from "next/image"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "404 - Seite nicht gefunden | Fahrschule 06",
+  description: "Die gesuchte Seite wurde nicht gefunden. Zurück zur Startseite von Fahrschule 06.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+}
 
 export default function NotFound() {
   return (
