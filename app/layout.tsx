@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import Script from "next/script"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -64,10 +65,10 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   alternates: {
-    canonical: "https://www.fahrschule06.ch/",
+    canonical: "/",
     languages: {
-      "de-CH": "https://www.fahrschule06.ch/",
-      "x-default": "https://www.fahrschule06.ch/",
+      "de-CH": "/",
+      "x-default": "/",
     },
   },
 }
@@ -83,7 +84,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {/* Security Meta Tags (GitHub Pages doesn't support HTTP headers) */}
-        <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://elfsightcdn.com https://static.elfsight.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:; frame-src https://www.google.com https://elfsight.com https://*.elfsight.com;" />
+        <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://elfsightcdn.com https://static.elfsight.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https: https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src https://www.google.com https://elfsight.com https://*.elfsight.com;" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
 
         {/* Geographic Meta Tags */}
@@ -130,6 +131,8 @@ export default function RootLayout({
         {/* Resource Hints */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://elfsightcdn.com" />
 
         {/* Canonical URL handled by Next.js metadata - removed duplicate manual tag */}
@@ -503,7 +506,23 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+
+        {/* Google Analytics 4 - G-NQBNQ1JF7V */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-NQBNQ1JF7V"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-NQBNQ1JF7V');
+          `}
+        </Script>
+      </body>
     </html>
   )
 }

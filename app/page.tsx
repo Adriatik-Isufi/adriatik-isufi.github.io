@@ -651,13 +651,13 @@ export default function FahrschulePage() {
             <div className="space-y-8 animate-fade-in-up" data-animate="hero-content" id="hero-content">
               <div className="space-y-4">
                 <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20">Fahren mit Vision</Badge>
-                <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                  Willkommen bei <span className="text-[#1351d8]">Fahrschule 06</span>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
+                  <span className="text-[#1351d8]">Fahrschule 06</span><br/>Deine Fahrschule in Aargau & Olten
                 </h1>
-                <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-                  Deine professionelle Fahrschule im Raum Aargau/Olten. Mit einem modernen Fahrzeug, erfahrenem
-                  Fahrlehrer und individueller Betreuung bringe ich dich sicher zum Führerschein.
-                </p>
+                <h2 className="text-lg sm:text-xl text-gray-600 leading-relaxed font-normal mt-2">
+                  Professionelle Fahrausbildung (Kategorie B) und VKU im Raum Aargau, Olten und Umgebung. Mit modernem Fahrzeug, erfahrenem
+                  Fahrlehrer und individueller Betreuung ans Ziel.
+                </h2>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -820,9 +820,9 @@ export default function FahrschulePage() {
           {/* Services Header */}
           <div className="text-center mb-16">
             <Badge className="bg-white/20 text-white border-white/30 mb-4 backdrop-blur-sm">Unsere Services</Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Professionelle Fahrausbildung</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Sicher ans Ziel: Deine Fahrausbildung in Aargau & Olten</h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Von der Theorie bis zur praktischen Prüfung - wir begleiten Sie auf Ihrem Weg zum Führerschein
+              Von der Theorie bis zur praktischen Prüfung – wir begleiten dich auf deinem Weg zum Führerschein Kategorie B
             </p>
           </div>
 
@@ -888,9 +888,9 @@ export default function FahrschulePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20 mb-4">Ihr Fahrlehrer</Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Lernen Sie mich kennen</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Dein lokaler Fahrlehrer für die Region Aarau – Zofingen – Olten</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Persönlich, professionell und mit Leidenschaft für die Fahrausbildung
+              Persönlich, professionell und mit Leidenschaft für die Fahrausbildung im Aargau
             </p>
           </div>
 
@@ -1339,9 +1339,10 @@ export default function FahrschulePage() {
                 Deine Fahrschule in der Region Aargau/Olten
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Fahrschule 06 steht für moderne Fahrausbildung im Raum Aargau/Olten. Mit meiner Erfahrung, modernem
-                Fahrzeug und individueller Betreuung bringen wir dich sicher und entspannt zum Führerschein - ganz nach
-                unserem Motto: Fahren mit Vision.
+                Wer eine geduldige und professionelle Fahrschule in Aargau oder eine zuverlässige Fahrschule in Olten sucht,
+                ist bei der Fahrschule 06 genau richtig. Von meinem Standort in Reitnau aus biete ich dir massgeschneiderte
+                Fahrstunden (Kat. B) im gesamten Grenzgebiet Aargau–Solothurn. Mit modernem Fahrzeug und meiner ruhigen Art
+                als Fahrlehrer bringen wir dich sicher durch die Prüfung – ganz nach unserem Motto: Fahren mit Vision.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
@@ -1417,12 +1418,63 @@ export default function FahrschulePage() {
 
       <ReviewsSection />
 
+      {/* Abholservice / Catchment Area Section */}
+      <section id="abholservice" className="py-16 bg-gradient-to-br from-[#1351d8]/5 to-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20 mb-4">Abholservice</Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Flexibler Abholservice: Dein Fahrlehrer kommt zu dir
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Egal ob du zur Schule gehst, arbeitest oder am Bahnhof wartest – ich biete dir maximale Flexibilität.
+              Als deine lokale Fahrschule für Aargau und Olten hole ich dich für die Fahrstunden an deinem Wunschort ab.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-[#1351d8]/10 rounded-xl flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-[#1351d8]" />
+                </div>
+                <h3 className="font-bold text-gray-900">Kanton Aargau</h3>
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Ich hole dich überall im Kanton Aargau ab – an deinem Wohnort, Bahnhof oder Arbeitsplatz.
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-[#1351d8]/10 rounded-xl flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-[#1351d8]" />
+                </div>
+                <h3 className="font-bold text-gray-900">Raum Olten</h3>
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Auch im Raum Olten bin ich für dich da – flexibler Treffpunkt, auch am Bahnhof Olten.
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-[#1351d8]/10 rounded-xl flex items-center justify-center">
+                  <Award className="w-5 h-5 text-[#1351d8]" />
+                </div>
+                <h3 className="font-bold text-gray-900">Prüfungsorte</h3>
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Prüfung beim StVA Aargau oder StVA Olten – wir üben gezielt auf den offiziellen Prüfungsrouten
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <section id="faq" className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20 mb-4">FAQ</Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Häufig gestellte Fragen</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">FAQ: Wichtige Fragen an deine Fahrschule in Aargau & Olten</h2>
             <p className="text-xl text-gray-600">Antworten auf die wichtigsten Fragen zur Fahrausbildung</p>
           </div>
 
@@ -1442,11 +1494,19 @@ export default function FahrschulePage() {
               },
               {
                 question: "Wo findet die Fahrausbildung statt?",
-                answer: "Die Fahrausbildung findet im Raum Aargau und Olten statt. Wir holen dich gerne an deinem Wohnort, Arbeitsplatz oder Bahnhof ab. Der VKU-Kurs wird in Aarau durchgeführt. Die praktische Fahrprüfung findet beim Strassenverkehrsamt in Aarau oder Olten statt."
+                answer: "Die Fahrausbildung findet im Raum Aargau und Olten statt. Wir holen dich gerne an deinem Wohnort, Arbeitsplatz oder Bahnhof ab. Der VKU-Kurs wird in Aarau durchgeführt. Die praktische Fahrprüfung findet beim Strassenverkehrsamt Aargau (Schafisheim) oder beim Strassenverkehrsamt Olten statt."
               },
               {
                 question: "Wie kann ich mich anmelden?",
                 answer: "Du kannst dich ganz einfach per WhatsApp, Telefon (+41 76 340 22 01) oder über das Kontaktformular auf dieser Website anmelden. Für die Anmeldung benötigst du einen gültigen Lernfahrausweis. Falls du noch keinen hast, helfen wir dir gerne bei den ersten Schritten."
+              },
+              {
+                question: "Wo trete ich zur praktischen Autoprüfung an?",
+                answer: "stva_special"
+              },
+              {
+                question: "Holst du mich für die Fahrstunden in Aarau oder Olten am Bahnhof ab?",
+                answer: "Ja, absolut! Viele meiner Fahrschüler schätzen den flexiblen Treffpunkt. Ich hole dich gerne direkt am Bahnhof Aarau, am Bahnhof Olten, an der Kanti, am Arbeitsplatz oder an einem anderen Wunschort im Raum Aargau und Olten ab."
               },
               {
                 question: "Wo finde ich die Allgemeinen Geschäftsbedingungen (AGB)?",
@@ -1472,6 +1532,13 @@ export default function FahrschulePage() {
                       <Link href="/agb/" className="text-[#1351d8] hover:underline font-medium">
                         Hier findest du unsere vollständigen AGB
                       </Link>
+                    </>
+                  ) : faq.answer === "stva_special" ? (
+                    <>
+                      Als Fahrschüler der Fahrschule 06 hast du in der Regel die Wahl: Wir absolvieren die praktische Fahrprüfung entweder beim Strassenverkehrsamt Aargau (Schafisheim) oder beim Strassenverkehrsamt Olten (Kanton Solothurn). Wir üben intensiv auf den spezifischen Prüfungsrouten beider Standorte, sodass du bestens vorbereitet bist.{" "}
+                      <a href="https://www.ag.ch/de/themen/mobilitaet-verkehr/strassenverkehr/fuehrerpruefung/theoriepruefung" target="_blank" rel="noopener noreferrer" className="text-[#1351d8] hover:underline font-medium">
+                        Offizielle Infos zur Führerprüfung (Kanton Aargau)
+                      </a>
                     </>
                   ) : (
                     faq.answer
