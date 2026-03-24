@@ -888,9 +888,9 @@ export default function FahrschulePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20 mb-4">Ihr Fahrlehrer</Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Dein lokaler Fahrlehrer für die Region Aarau – Zofingen – Olten</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Dein lokaler Fahrlehrer für die Region Aarau – Olten</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Persönlich, professionell und mit Leidenschaft für die Fahrausbildung im Aargau
+              Persönlich, professionell und mit Leidenschaft für die Fahrausbildung im Aargau und Olten
             </p>
           </div>
 
