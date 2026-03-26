@@ -196,7 +196,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "LocalBusiness",
+              "@type": "DrivingSchool",
               "@id": "https://www.fahrschule06.ch#localbusiness",
               name: "Fahrschule 06",
               alternateName: "Fahrschule06",
