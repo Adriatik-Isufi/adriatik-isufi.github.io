@@ -147,6 +147,13 @@
       "image": "/Success/elmin-success.webp",
       "caption": "Sauber, Elmin! 💪🎉",
       "date": "2026-03-25"    
+    },
+    {
+      "id": 22,
+      "name": "Dionis Salihu",
+      "image": "/Success/dionis-success.webp",
+      "caption": "Gratuliere Dionis 👏💪",
+      "date": "2026-03-26"    
     }
   ]
 }
