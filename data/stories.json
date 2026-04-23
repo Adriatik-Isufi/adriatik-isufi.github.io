@@ -154,6 +154,14 @@
       "image": "/Success/dionis-success.webp",
       "caption": "Gratuliere Dionis 👏💪",
       "date": "2026-03-26"    
+    },
+    {
+      "id": 23,
+      "name": "Ihdin",
+      "image": "/Success/Ihdin.webp",
+      "caption": "Sauber, Ihdin 👏💪",
+      "date": "2026-04-23"    
     }
+    
   ]
 }
