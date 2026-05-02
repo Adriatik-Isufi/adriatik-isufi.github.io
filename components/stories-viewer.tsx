@@ -20,7 +20,7 @@ export function StoriesViewer() {
   const [selectedStoryIndex, setSelectedStoryIndex] = useState<number | null>(null)
   const [progress, setProgress] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
-  const stories: Story[] = storiesData.stories
+  const stories: Story[] = [...storiesData.stories].reverse()
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null)
   const longPressTimerRef = useRef<NodeJS.Timeout | null>(null)
   const touchStartRef = useRef<{ x: number; y: number } | null>(null)

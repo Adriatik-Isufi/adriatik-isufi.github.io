@@ -1,26 +1,42 @@
 {
   "overallRating": 5.0,
-  "totalReviews": 34,
+  "totalReviews": 36,
   "googleReviewsUrl": "https://maps.app.goo.gl/FQjm2ZRoo8V7TPxz9",
   "reviews": [
     {
       "id": 1,
+      "name": "Anton Krasniqi",
+      "rating": 5,
+      "date": "vor 2 Tagen",
+      "text": "Absolut empfehlenswerte Fahrschule! Das Team ist professionell, geduldig und sehr zuvorkommend. Man fühlt sich jederzeit gut aufgehoben und optimal auf die Prüfung vorbereitet. Auch das Preis-Leistungs-Verhältnis ist top. Klare Empfehlung!",
+      "avatar": "AK"
+    },
+    {
+      "id": 2,
+      "name": "Dardan Kista",
+      "rating": 5,
+      "date": "vor 4 Tagen",
+      "text": "Ich habe meine Fahrprüfung bestanden und bin meinem Fahrlehrer Vaxhid sehr dankbar. Der Unterricht war geduldig, klar und sehr hilfreich. Ich habe mich gut vorbereitet gefühlt und kann ihn nur weiterempfehlen!",
+      "avatar": "DK"
+    },
+    {
+      "id": 3,
       "name": "dionis salihu",
       "rating": 5,
-      "date": "vor 3 Wochen",
+      "date": "vor einem Monat",
       "text": "Sehr gute Fahrschule mit professionellen Fahrlehrern. Alles wird klar und verständlich erklärt, und der Fokus liegt darauf, echtes Vertrauen beim Fahren aufzubauen, nicht nur die Prüfung zu bestehen. Die Fahrstunden waren gut strukturiert und praxisnah, und ich habe mich optimal auf die Prüfung vorbereitet gefühlt. Sehr empfehlenswert.",
       "avatar": "DS"
     },
     {
-      "id": 2,
+      "id": 4,
       "name": "Elmin Dubica",
       "rating": 5,
-      "date": "vor 4 Wochen",
+      "date": "vor einem Monat",
       "text": "Vaxhid ist ein sehr guter Fahrlehrer er hate sehr viel Geduld mit mir und auch bei den schwirigsten Situationen hat er mir geholfen. Jede Lektion wurde immer motivierter und erfolgreicher. Ich kann euch Fahrschule 06 nur weiter empfehlen.",
       "avatar": "ED"
     },
     {
-      "id": 3,
+      "id": 5,
       "name": "Nikola Zubovic",
       "rating": 5,
       "date": "vor einem Monat",
@@ -28,7 +44,7 @@
       "avatar": "NZ"
     },
     {
-      "id": 4,
+      "id": 6,
       "name": "Shala Mendim",
       "rating": 5,
       "date": "vor einem Monat",
@@ -36,7 +52,7 @@
       "avatar": "SM"
     },
     {
-      "id": 5,
+      "id": 7,
       "name": "yaşar yedisu",
       "rating": 5,
       "date": "vor einem Monat",
@@ -44,7 +60,7 @@
       "avatar": "YY"
     },
     {
-      "id": 6,
+      "id": 8,
       "name": "AT ST",
       "rating": 5,
       "date": "vor einem Monat",
@@ -52,7 +68,7 @@
       "avatar": "AS"
     },
     {
-      "id": 7,
+      "id": 9,
       "name": "Fisnik Bytyqi",
       "rating": 5,
       "date": "vor einem Monat",
@@ -60,7 +76,7 @@
       "avatar": "FB"
     },
     {
-      "id": 8,
+      "id": 10,
       "name": "Erijona Kodra",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -68,7 +84,7 @@
       "avatar": "EK"
     },
     {
-      "id": 9,
+      "id": 11,
       "name": "Ard It",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -76,7 +92,7 @@
       "avatar": "AI"
     },
     {
-      "id": 10,
+      "id": 12,
       "name": "Denisa Komani",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -84,7 +100,7 @@
       "avatar": "DK"
     },
     {
-      "id": 11,
+      "id": 13,
       "name": "Emelly Gjoka",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -92,7 +108,7 @@
       "avatar": "EG"
     },
     {
-      "id": 12,
+      "id": 14,
       "name": "Andrea Montiel",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -100,7 +116,7 @@
       "avatar": "AM"
     },
     {
-      "id": 13,
+      "id": 15,
       "name": "Duena Basha",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -108,7 +124,7 @@
       "avatar": "DB"
     },
     {
-      "id": 16,
+      "id": 18,
       "name": "Joshua Hottiger",
       "rating": 5,
       "date": "vor 3 Monaten",
@@ -116,7 +132,7 @@
       "avatar": "JH"
     },
     {
-      "id": 17,
+      "id": 19,
       "name": "Gershan Ambikaipalan",
       "rating": 5,
       "date": "vor 3 Monaten",
@@ -124,7 +140,7 @@
       "avatar": "GA"
     },
     {
-      "id": 18,
+      "id": 20,
       "name": "Carolina Gräub",
       "rating": 5,
       "date": "vor 4 Monaten",
@@ -132,7 +148,7 @@
       "avatar": "CG"
     },
     {
-      "id": 19,
+      "id": 21,
       "name": "Noizey",
       "rating": 5,
       "date": "vor 4 Monaten",
@@ -140,15 +156,15 @@
       "avatar": "N"
     },
     {
-      "id": 21,
+      "id": 23,
       "name": "Loresa Sylejmani",
       "rating": 5,
-      "date": "vor 4 Monaten",
+      "date": "vor 5 Monaten",
       "text": "Mit Vaxhid waren die Fahrstunden immer sehr lustig und sehr motivierend! Er hatte sich immer die Zeit genommen und alles verständlich erklärt. Kann Ihn nur weiter empfehlen!👏🏻 …",
       "avatar": "LS"
     },
     {
-      "id": 22,
+      "id": 24,
       "name": "Dinis Bagnibov",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -156,7 +172,7 @@
       "avatar": "DB"
     },
     {
-      "id": 23,
+      "id": 25,
       "name": "D&L Streetshine",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -164,7 +180,7 @@
       "avatar": "DS"
     },
     {
-      "id": 24,
+      "id": 26,
       "name": "Dominik Simic",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -172,7 +188,7 @@
       "avatar": "DS"
     },
     {
-      "id": 25,
+      "id": 27,
       "name": "Elisa Mirdita",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -180,7 +196,7 @@
       "avatar": "EM"
     },
     {
-      "id": 26,
+      "id": 28,
       "name": "Tenzin Norzin",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -188,7 +204,7 @@
       "avatar": "TN"
     },
     {
-      "id": 27,
+      "id": 29,
       "name": "Erza Thaqi",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -196,7 +212,7 @@
       "avatar": "ET"
     },
     {
-      "id": 28,
+      "id": 30,
       "name": "Nadine Gerber",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -204,15 +220,15 @@
       "avatar": "NG"
     },
     {
-      "id": 29,
+      "id": 31,
       "name": "Dila",
       "rating": 5,
-      "date": "vor 5 Monaten",
+      "date": "vor 6 Monaten",
       "text": "Der beste Fahrlehrer!!! Er nimmt sich immer Zeit, um alles perfekt zu erklären und zu zeigen. Kann ich nur jedem empfehlen 👍🏽👍🏽 …",
       "avatar": "D"
     },
     {
-      "id": 30,
+      "id": 32,
       "name": "Superjuanito 2.0",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -220,7 +236,7 @@
       "avatar": "S2"
     },
     {
-      "id": 31,
+      "id": 33,
       "name": "Timur Ünal",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -228,7 +244,7 @@
       "avatar": "TÜ"
     },
     {
-      "id": 32,
+      "id": 34,
       "name": "Lea Sermaxhaj",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -236,7 +252,7 @@
       "avatar": "LS"
     },
     {
-      "id": 33,
+      "id": 35,
       "name": "karacuha berra",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -244,7 +260,7 @@
       "avatar": "KB"
     },
     {
-      "id": 34,
+      "id": 36,
       "name": "jon",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -252,7 +268,7 @@
       "avatar": "J"
     },
     {
-      "id": 35,
+      "id": 37,
       "name": "Suleyman Zazaoglu",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -260,10 +276,10 @@
       "avatar": "SZ"
     },
     {
-      "id": 36,
+      "id": 38,
       "name": "Adriatik Isufi",
       "rating": 5,
-      "date": "vor 7 Monaten",
+      "date": "vor 8 Monaten",
       "text": "Super Fahrlehrer! Sehr geduldig, freundlich und erklärt alles so, dass man es direkt versteht. Hab mich von Anfang an wohlgefühlt und schon nach ca. 5 Stunden echt sicher auf der Straße. Kann ich nur empfehlen!",
       "avatar": "AI"
     }
