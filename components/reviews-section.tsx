@@ -43,7 +43,7 @@ export function ReviewsSection() {
   const overallRating = reviewsData.overallRating
   const totalReviews = reviewsData.totalReviews
   const googleReviewsUrl = reviewsData.googleReviewsUrl
-  const stories: Story[] = storiesData.stories
+  const stories: Story[] = [...storiesData.stories].reverse()
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null)
   const holdTimerRef = useRef<NodeJS.Timeout | null>(null)
   const storyDuration = 5000 // 5 seconds per story
@@ -502,13 +502,20 @@ export function ReviewsSection() {
                 <div className="relative rounded-lg overflow-hidden bg-gray-900">
                   <img
                     src={selectedStory.image || "/placeholder.svg"}
-                    alt={selectedStory.caption}
-                    className="w-full h-auto max-h-[70vh] object-contain"
+                    alt={selectedStory.caption || selectedStory.name}
+                    className={`w-full h-auto object-contain ${selectedStory.caption.length > 100 ? "max-h-[45vh]" : "max-h-[70vh]"}`}
                   />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                    <p className="text-white text-lg font-medium">{selectedStory.caption}</p>
-                  </div>
+                  {selectedStory.caption && selectedStory.caption.length <= 100 && (
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                      <p className="text-white text-lg font-medium">{selectedStory.caption}</p>
+                    </div>
+                  )}
                 </div>
+                {selectedStory.caption && selectedStory.caption.length > 100 && (
+                  <div className="mt-3 px-1 max-h-[25vh] overflow-y-auto">
+                    <p className="text-white text-sm leading-relaxed">{selectedStory.caption}</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>

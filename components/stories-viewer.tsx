@@ -252,13 +252,21 @@ export function StoriesViewer() {
                   alt={selectedStory.caption || selectedStory.name}
                   width={600}
                   height={800}
-                  className="w-full h-auto max-h-[70vh] object-contain"
+                  className={`w-full h-auto object-contain ${selectedStory.caption.length > 100 ? "max-h-[45vh]" : "max-h-[70vh]"}`}
                 />
-                {/* Caption Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                  <p className="text-white text-lg font-medium">{selectedStory.caption}</p>
-                </div>
+                {/* Short caption: overlay on image */}
+                {selectedStory.caption && selectedStory.caption.length <= 100 && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                    <p className="text-white text-lg font-medium">{selectedStory.caption}</p>
+                  </div>
+                )}
               </div>
+              {/* Long caption: shown below image */}
+              {selectedStory.caption && selectedStory.caption.length > 100 && (
+                <div className="mt-3 px-1 max-h-[25vh] overflow-y-auto">
+                  <p className="text-white text-sm leading-relaxed">{selectedStory.caption}</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
