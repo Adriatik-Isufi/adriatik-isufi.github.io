@@ -175,6 +175,27 @@
       "image": "/partnership.webp",
       "caption": "Herzlichen Dank an die AKS Garage für das Vertrauen und die wertschätzenden Worte. Es freut uns sehr, Teil Ihres Netzwerks zu sein und diese Partnerschaft aktiv mitzugestalten. Was uns verbindet, ist der gemeinsame Anspruch an Qualität, Verlässlichkeit und echtes Engagement im täglichen Tun – die beste Grundlage für nachhaltigen Erfolg. Wir freuen uns auf eine starke, langfristige Zusammenarbeit und viele gemeinsame Erfolge.",
       "date": "2026-04-30"    
+    },
+    {
+      "id": 26,
+      "name": "Granit Maloku",
+      "image": "/Success/granit-maloku-success.webp",
+      "caption": "Herzlichen Glückwunsch Granit 🥳",
+      "date": "2026-05-05"    
+    },
+    {
+      "id": 27,
+      "name": "Elma Tahiri",
+      "image": "/Success/elma-tahiri-success.webp",
+      "caption": "Gut gemacht, Elma Glückwunsch! 🎉👏😊",
+      "date": "2026-05-05"    
+    },
+    {
+      "id": 28,
+      "name": "Bruno",
+      "image": "/Success/bruno-success.webp",
+      "caption": "Sauber, Bruno 👏💪",
+      "date": "2026-05-06"    
     }
   ]
 }
