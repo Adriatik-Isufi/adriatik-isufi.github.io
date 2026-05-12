@@ -33,7 +33,6 @@ import { LottieAnimation } from "@/components/lottie-animation"
 import emailjs from "@emailjs/browser"
 import Link from "next/link"
 import { ReviewsSection } from "@/components/reviews-section"
-import { VKUEventPopup } from "@/components/vku-event-popup"
 
 // Dynamic import for Elfsight widget to prevent hydration issues
 const ElfsightReviews = dynamic(
@@ -276,9 +275,6 @@ export default function FahrschulePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* VKU Event Popup */}
-      <VKUEventPopup />
-      
       {/* Floating WhatsApp Button - Mobile */}
       <div className="fixed bottom-6 right-6 z-50 md:hidden">
         <a

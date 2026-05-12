@@ -196,6 +196,20 @@
       "image": "/Success/bruno-success.webp",
       "caption": "Sauber, Bruno 👏💪",
       "date": "2026-05-06"    
+    },
+    {
+      "id": 29,
+      "name": "Edjon E",
+      "image": "/Success/edjon-success.webp",
+      "caption": "Herzlichen Glückwunsch Edjon 🥳",
+      "date": "2026-05-05"    
+    },
+    {
+      "id": 30,
+      "name": "Blerta",
+      "image": "/Success/blerta-success.webp",
+      "caption": "Gut gemacht, Blerta! Glückwunsch! 🎉👏😊",
+      "date": "2026-05-06"    
     }
   ]
 }
