@@ -1,42 +1,50 @@
 {
   "overallRating": 5.0,
-  "totalReviews": 40,
+  "totalReviews": 41,
   "googleReviewsUrl": "https://maps.app.goo.gl/FQjm2ZRoo8V7TPxz9",
   "reviews": [
     {
       "id": 1,
+      "name": "Nasim Wahedi",
+      "rating": 5,
+      "date": "vor 1 Tag",
+      "text": "Vielen Dank meinen Fahrlehrer.",
+      "avatar": "NW"
+    },
+    {
+      "id": 2,
       "name": "Edjon E",
       "rating": 5,
-      "date": "vor 4 Tagen",
+      "date": "vor 6 Tagen",
       "text": "dank vaxhid hani mini prüefig bin erste mal bstande ich han vieles glernt bim vaxhid er ish seriös aber me chan es au lustig ha gönd alli zum vaxhid wenn ihr bim erste mal bestoh wönd und vieles lerne wönd king🎉 …",
       "avatar": "EE"
     },
     {
-      "id": 2,
+      "id": 3,
       "name": "bruno „Tranquilo“ costa",
       "rating": 5,
-      "date": "vor 5 Tagen",
+      "date": "vor einer Woche",
       "text": "Ich kann meinen Fahrlehrer nur wärmstens empfehlen! Vom ersten Tag an war er extrem professionell, geduldig und immer respektvoll. Er erklärt alles klar und verständlich, nimmt sich Zeit für Fragen und sorgt dafür, dass man sich jederzeit sicher und gut aufgehoben fühlt.\n\nBesonders beeindruckt hat mich seine Ruhe und seine Fähigkeit, auch in stressigen Situationen gelassen zu bleiben. Dadurch konnte ich viel Selbstvertrauen beim Fahren aufbauen. Er geht individuell auf die Schüler ein und passt den Unterricht perfekt an das eigene Tempo an.\n\nDank seiner Unterstützung habe ich die Prüfung erfolgreich bestanden und fühle mich nun sicher im Strassenverkehr. Für mich ist er ganz klar der beste Fahrlehrer – absolut empfehlenswert!#Team06",
       "avatar": "B„"
     },
     {
-      "id": 3,
+      "id": 4,
       "name": "Granit Maloku",
       "rating": 5,
-      "date": "vor 6 Tagen",
+      "date": "vor einer Woche",
       "text": "⭐⭐⭐⭐⭐ Top Fahrschule – absolut empfehlenswert!\n\nIch kann die Fahrschule 06 wirklich jedem weiterempfehlen!\nVom ersten Kontakt bis zur bestandenen Prüfung habe ich mich jederzeit bestens aufgehoben gefühlt.\n\nVaxhid ist ein unglaublich geduldiger, ruhiger und gleichzeitig motivierender Fahrlehrer. Er nimmt sich Zeit, erklärt alles verständlich und geht individuell auf die eigenen Stärken und Schwächen ein. Man merkt sofort, dass ihm seine Schüler wirklich wichtig sind – hier bist du keine Nummer, sondern stehst im Mittelpunkt.\n\nBesonders gefallen hat mir die entspannte, aber trotzdem zielorientierte Atmosphäre während den Fahrstunden. Fehler werden ruhig analysiert und man bekommt genau das Feedback, das man braucht, um sich schnell zu verbessern. Dadurch gewinnt man nicht nur Sicherheit im Strassenverkehr, sondern auch echtes Vertrauen in sich selbst.\n\nAuch die Flexibilität bei den Terminen ist top – perfekt, wenn man einen vollen Alltag hat.\n\nDank Fahrschule 06 habe ich nicht nur die Prüfung bestanden, sondern fühle mich heute wirklich sicher am Steuer. Genau so sollte eine Fahrschule sein!\n\n👉 Klare 5 Sterne – würde ich jederzeit wieder wählen! 🚗💨",
       "avatar": "GM"
     },
     {
-      "id": 4,
+      "id": 5,
       "name": "elma tahiri",
       "rating": 5,
-      "date": "vor 6 Tagen",
+      "date": "vor einer Woche",
       "text": "Ich kann Vaxhid als Fahrlehrer nur weiterempfehlen. Der Unterricht war nicht nur mega hilfreich, sondern auch immer lustig, man hat sich jedes Mal aufs Fahren gefreut. Er ist sehr geduldig und erklärt alles so, dass man es wirklich versteht. Dank ihm habe ich direkt beim ersten Mal bestanden.",
       "avatar": "ET"
     },
     {
-      "id": 5,
+      "id": 6,
       "name": "Anton Krasniqi",
       "rating": 5,
       "date": "vor einer Woche",
@@ -44,15 +52,15 @@
       "avatar": "AK"
     },
     {
-      "id": 6,
+      "id": 7,
       "name": "Dardan Kista",
       "rating": 5,
-      "date": "vor einer Woche",
+      "date": "vor 2 Wochen",
       "text": "Ich habe meine Fahrprüfung bestanden und bin meinem Fahrlehrer Vaxhid sehr dankbar. Der Unterricht war geduldig, klar und sehr hilfreich. Ich habe mich gut vorbereitet gefühlt und kann ihn nur weiterempfehlen!",
       "avatar": "DK"
     },
     {
-      "id": 7,
+      "id": 8,
       "name": "dionis salihu",
       "rating": 5,
       "date": "vor einem Monat",
@@ -60,7 +68,7 @@
       "avatar": "DS"
     },
     {
-      "id": 8,
+      "id": 9,
       "name": "Elmin Dubica",
       "rating": 5,
       "date": "vor einem Monat",
@@ -68,7 +76,7 @@
       "avatar": "ED"
     },
     {
-      "id": 9,
+      "id": 10,
       "name": "Nikola Zubovic",
       "rating": 5,
       "date": "vor einem Monat",
@@ -76,31 +84,31 @@
       "avatar": "NZ"
     },
     {
-      "id": 10,
+      "id": 11,
       "name": "Shala Mendim",
       "rating": 5,
-      "date": "vor einem Monat",
+      "date": "vor 2 Monaten",
       "text": "Top Fahrschule! Sehr gute Organisation und tolle Unterstützung während der ganzen Ausbildung. Vaxhid hat alles ruhig und verständlich erklärt. Dank der guten Vorbereitung habe ich die Prüfung beim ersten mal bestanden. Vielen Dank für die tolle Betreuung. 🚗😊🤗 …",
       "avatar": "SM"
     },
     {
-      "id": 11,
+      "id": 12,
       "name": "yaşar yedisu",
       "rating": 5,
-      "date": "vor einem Monat",
+      "date": "vor 2 Monaten",
       "text": "Ich kann Vaxhid als Fahrlehrer nur weiterempfehlen! Er ist sehr geduldig, erklärt alles sehr klar und verständlich. Auch wenn ich nervös war oder Fehler gemacht habe, ist er immer ruhig geblieben und hat mir geholfen, daraus zu lernen.\n\nBesonders gut fand ich, dass er mich sehr gut auf die praktische Prüfung vorbereitet hat und mir viele hilfreiche Tipps gegeben hat. Dank seiner Unterstützung habe ich mich mit jeder Fahrstunde sicherer gefühlt. Er motiviert einen und gibt einem Selbstvertrauen beim Fahren.\n\nEin wirklich top Fahrlehrer, den ich jedem empfehlen kann! Vielen Dank für die tolle Unterstützung! 🚘🤗",
       "avatar": "YY"
     },
     {
-      "id": 12,
+      "id": 13,
       "name": "AT ST",
       "rating": 5,
-      "date": "vor einem Monat",
+      "date": "vor 2 Monaten",
       "text": "Sehr seriöser und toller Fahrlehrer! Vaxhid ist sehr geduldig und freundlich! Bin sehr zufrieden vielen Dank!",
       "avatar": "AS"
     },
     {
-      "id": 13,
+      "id": 14,
       "name": "Fisnik Bytyqi",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -108,7 +116,7 @@
       "avatar": "FB"
     },
     {
-      "id": 14,
+      "id": 15,
       "name": "Erijona Kodra",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -116,7 +124,7 @@
       "avatar": "EK"
     },
     {
-      "id": 15,
+      "id": 16,
       "name": "Ard It",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -124,7 +132,7 @@
       "avatar": "AI"
     },
     {
-      "id": 16,
+      "id": 17,
       "name": "Denisa Komani",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -132,7 +140,7 @@
       "avatar": "DK"
     },
     {
-      "id": 17,
+      "id": 18,
       "name": "Emelly Gjoka",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -140,7 +148,7 @@
       "avatar": "EG"
     },
     {
-      "id": 18,
+      "id": 19,
       "name": "Andrea Montiel",
       "rating": 5,
       "date": "vor 3 Monaten",
@@ -148,7 +156,7 @@
       "avatar": "AM"
     },
     {
-      "id": 19,
+      "id": 20,
       "name": "Duena Basha",
       "rating": 5,
       "date": "vor 3 Monaten",
@@ -156,7 +164,7 @@
       "avatar": "DB"
     },
     {
-      "id": 22,
+      "id": 23,
       "name": "Joshua Hottiger",
       "rating": 5,
       "date": "vor 4 Monaten",
@@ -164,7 +172,7 @@
       "avatar": "JH"
     },
     {
-      "id": 23,
+      "id": 24,
       "name": "Gershan Ambikaipalan",
       "rating": 5,
       "date": "vor 4 Monaten",
@@ -172,7 +180,7 @@
       "avatar": "GA"
     },
     {
-      "id": 24,
+      "id": 25,
       "name": "Carolina Gräub",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -180,7 +188,7 @@
       "avatar": "CG"
     },
     {
-      "id": 25,
+      "id": 26,
       "name": "Noizey",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -188,7 +196,7 @@
       "avatar": "N"
     },
     {
-      "id": 27,
+      "id": 28,
       "name": "Loresa Sylejmani",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -196,7 +204,7 @@
       "avatar": "LS"
     },
     {
-      "id": 28,
+      "id": 29,
       "name": "Dinis Bagnibov",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -204,7 +212,7 @@
       "avatar": "DB"
     },
     {
-      "id": 29,
+      "id": 30,
       "name": "D&L Streetshine",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -212,7 +220,7 @@
       "avatar": "DS"
     },
     {
-      "id": 30,
+      "id": 31,
       "name": "Dominik Simic",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -220,23 +228,23 @@
       "avatar": "DS"
     },
     {
-      "id": 31,
+      "id": 32,
       "name": "Elisa Mirdita",
       "rating": 5,
-      "date": "vor 5 Monaten",
+      "date": "vor 6 Monaten",
       "text": "Beste Fahrschule! Der Unterricht war nie langweilig, ich habe jedes Mal etwas Neues gelernt. Die Fahrstunden waren entspannt, aber trotzdem effektiv. Man merkt, dass hier mit Herz und Erfahrung gearbeitet wird. 5 Sterne verdient ⭐⭐⭐⭐⭐",
       "avatar": "EM"
     },
     {
-      "id": 32,
+      "id": 33,
       "name": "Tenzin Norzin",
       "rating": 5,
-      "date": "vor 5 Monaten",
+      "date": "vor 6 Monaten",
       "text": "Heute endlich bestanden 🥳\nEin riesen Dank an Vaxhid für die ganze Unterstützung! Er war immer mega geduldig und jede Fahrstunde war super lehrreich.\nKann ihn wirklich jedem empfehlen!! 🚗🙌 …",
       "avatar": "TN"
     },
     {
-      "id": 33,
+      "id": 34,
       "name": "Erza Thaqi",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -244,7 +252,7 @@
       "avatar": "ET"
     },
     {
-      "id": 34,
+      "id": 35,
       "name": "Nadine Gerber",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -252,7 +260,7 @@
       "avatar": "NG"
     },
     {
-      "id": 35,
+      "id": 36,
       "name": "Dila",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -260,7 +268,7 @@
       "avatar": "D"
     },
     {
-      "id": 36,
+      "id": 37,
       "name": "Superjuanito 2.0",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -268,7 +276,7 @@
       "avatar": "S2"
     },
     {
-      "id": 37,
+      "id": 38,
       "name": "Timur Ünal",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -276,7 +284,7 @@
       "avatar": "TÜ"
     },
     {
-      "id": 38,
+      "id": 39,
       "name": "Lea Sermaxhaj",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -284,7 +292,7 @@
       "avatar": "LS"
     },
     {
-      "id": 39,
+      "id": 40,
       "name": "karacuha berra",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -292,7 +300,7 @@
       "avatar": "KB"
     },
     {
-      "id": 40,
+      "id": 41,
       "name": "jon",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -300,15 +308,15 @@
       "avatar": "J"
     },
     {
-      "id": 41,
+      "id": 42,
       "name": "Suleyman Zazaoglu",
       "rating": 5,
-      "date": "vor 6 Monaten",
+      "date": "vor 7 Monaten",
       "text": "Ich war mit der Fahrschule 06 sehr zufrieden. Ich kann Vacit wärmstens empfehlen. Vielen Dank für alles.",
       "avatar": "SZ"
     },
     {
-      "id": 42,
+      "id": 43,
       "name": "Adriatik Isufi",
       "rating": 5,
       "date": "vor 8 Monaten",

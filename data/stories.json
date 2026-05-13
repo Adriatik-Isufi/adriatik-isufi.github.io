@@ -210,6 +210,20 @@
       "image": "/Success/blerta-success.webp",
       "caption": "Gut gemacht, Blerta! Glückwunsch! 🎉👏😊",
       "date": "2026-05-06"    
+    },
+    {
+      "id": 31,
+      "name": "Nasim Wahedi",
+      "image": "/Success/nasim-success.webp",
+      "caption": "Herzlichen Glückwunsch zur bestandenen Autoprüfung Nasim🥳",
+      "date": "2026-05-05"    
+    },
+    {
+      "id": 32,
+      "name": "Lirjan",
+      "image": "/Success/lirjan-success.webp",
+      "caption": "Herzlichen Glückwunsch Lirjan 🥳",
+      "date": "2026-05-06"    
     }
   ]
 }
