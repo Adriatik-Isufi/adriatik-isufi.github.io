@@ -224,6 +224,20 @@
       "image": "/Success/lirjan-success.webp",
       "caption": "Herzlichen Glückwunsch Lirjan 🥳",
       "date": "2026-05-06"    
+    },
+    {
+      "id": 33,
+      "name": "Enisa Ibishi",
+      "image": "/Success/enisa-success.webp",
+      "caption": "Gut gemacht, Enisa Glückwunsch! 🎉👏😊",
+      "date": "2026-05-19"    
+    },
+    {
+      "id": 34,
+      "name": "Dean Kloter",
+      "image": "/Success/lirjan-success.webp",
+      "caption": "Sauber, Dean 👏💪",
+      "date": "2026-05-20"    
     }
   ]
 }
