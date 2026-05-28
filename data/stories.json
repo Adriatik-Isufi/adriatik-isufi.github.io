@@ -238,6 +238,13 @@
       "image": "/Success/dean-success.webp",
       "caption": "Sauber, Dean 👏💪",
       "date": "2026-05-20"    
+    },
+    {
+      "id": 35,
+      "name": "Briketa",
+      "image": "/Success/briketa-success.webp",
+      "caption": "Herzlichen Glückwunsch Briketa 🥳",
+      "date": "2026-05-27"    
     }
   ]
 }
