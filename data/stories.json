@@ -241,10 +241,17 @@
     },
     {
       "id": 35,
-      "name": "Briketa",
+      "name": "Briketa Cara",
       "image": "/Success/briketa-success.webp",
       "caption": "Herzlichen Glückwunsch Briketa 🥳",
       "date": "2026-05-27"    
+    },
+    {
+      "id": 36,
+      "name": "Dillara Nafezi",
+      "image": "/Success/dillara-success.webp",
+      "caption": "Gut gemacht, Dillara Glückwunsch! 🎉👏😊",
+      "date": "2026-05-29"    
     }
   ]
 }
