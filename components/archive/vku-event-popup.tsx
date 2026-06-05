@@ -63,8 +63,8 @@ export function VKUEventPopup() {
 
             {/* Event Image - Fully Responsive */}
             <Image
-              src="/vku-event-2026.png"
-              alt="VKU Veranstaltung - 28. & 24. April 2026 - Sicher im Straßenverkehr"
+              src="/VKU-24-25-June-2026.webp"
+              alt="VKU Veranstaltung - 24. & 25. Juni 2026 - Sicher im Straßenverkehr"
               width={800}
               height={1000}
               className="w-full h-auto object-contain"
