@@ -191,13 +191,13 @@ export default function RootLayout({
 
         <script src="https://elfsightcdn.com/platform.js" async></script>
 
-        {/* Enhanced JSON-LD Structured Data - DrivingSchool with Reviews */}
+        {/* Enhanced JSON-LD Structured Data - LocalBusiness with Reviews */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "DrivingSchool",
+              "@type": "LocalBusiness",
               "@id": "https://www.fahrschule06.ch#localbusiness",
               name: "Fahrschule 06",
               alternateName: "Fahrschule06",
@@ -254,7 +254,7 @@ export default function RootLayout({
                   "@type": "Review",
                   author: { "@type": "Person", name: "Duena Basha" },
                   datePublished: "2025-02-04",
-                  reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+                  reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
                   reviewBody:
                     "Er ist ein sehr guter Fahrlehrer. Er erklärt alles verständlich, ist nett, geduldig und man lernt viel bei ihm. Absolut empfehlenswert!",
                 },
@@ -262,7 +262,7 @@ export default function RootLayout({
                   "@type": "Review",
                   author: { "@type": "Person", name: "Joshua Hottiger" },
                   datePublished: "2025-01-16",
-                  reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+                  reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
                   reviewBody:
                     "Alles sehr gut erklärt, mit auch einer gewissen strenge. Was voll und ganz im normalen Bereich ist. Bin sehr zu frieden mit dem ganz Packet.",
                 },
@@ -270,7 +270,7 @@ export default function RootLayout({
                   "@type": "Review",
                   author: { "@type": "Person", name: "Gershan Ambikaipalan" },
                   datePublished: "2025-01-09",
-                  reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+                  reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
                   reviewBody:
                     "Ich kenne zwar nicht viele Fahrlehrer, aber ich kann mit Überzeugung sagen, dass Vaxhid der beste Fahrlehrer ist, den man sich aussuchen kann.",
                 },
