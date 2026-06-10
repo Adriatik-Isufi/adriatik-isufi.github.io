@@ -259,6 +259,20 @@
       "image": "/Success/liridon-miftari-success.webp",
       "caption": "Sauber, Liridon 👏💪",
       "date": "2026-06-08"    
+    },
+    {
+      "id": 38,
+      "name": "Joli Bajraktari",
+      "image": "/Success/jol-bajraktari-success.webp",
+      "caption": "Gut gemacht, Jol Glückwunsch! 🎉👏😊",
+      "date": "2026-06-10"    
+    },
+    {
+      "id": 39,
+      "name": "Floriana Kafexholli",
+      "image": "/Success/floriana-kafexholli-success.webp",
+      "caption": "Wir wünschen dir allzeit gute Fahrt und viel Spaß auf allen Wegen!",
+      "date": "2026-06-10"    
     }
   ]
 }
