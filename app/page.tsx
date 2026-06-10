@@ -47,8 +47,9 @@ export default function FahrschulePage() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
-  const [scrollY, setScrollY] = useState(0)
   const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set())
+  // Parallax is driven via direct DOM writes (no state) so scrolling never re-renders the page
+  const parallaxRef = useRef<HTMLDivElement>(null)
   const [selectedPackage, setSelectedPackage] = useState<string>("")
 
   // Video state management
@@ -58,24 +59,36 @@ export default function FahrschulePage() {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
+    // Throttle scroll work to one pass per animation frame
+    let ticking = false
     const handleScroll = () => {
-      setScrollY(window.scrollY)
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        ticking = false
+        const y = window.scrollY
 
-      const sections = ["startseite", "angebot", "fahrlehrer", "preise", "ueber-uns", "bewertungen", "kontakt"]
-      const scrollPosition = window.scrollY + 100
+        if (parallaxRef.current) {
+          parallaxRef.current.style.transform = `translateY(${y * 0.3}px)`
+        }
 
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const offsetTop = element.offsetTop
-          const offsetHeight = element.offsetHeight
+        const sections = ["startseite", "angebot", "fahrlehrer", "preise", "ueber-uns", "bewertungen", "kontakt"]
+        const scrollPosition = y + 100
 
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            break
+        for (const section of sections) {
+          const element = document.getElementById(section)
+          if (element) {
+            const offsetTop = element.offsetTop
+            const offsetHeight = element.offsetHeight
+
+            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+              // setState with an unchanged value doesn't re-render
+              setActiveSection(section)
+              break
+            }
           }
         }
-      }
+      })
     }
 
     // Intersection Observer for fade-in animations
@@ -147,7 +160,7 @@ export default function FahrschulePage() {
     // Set up observer after a short delay to ensure DOM is ready
     const timeoutId = setTimeout(setupObserver, 100)
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => {
       window.removeEventListener("scroll", handleScroll)
       observer.disconnect()
@@ -644,13 +657,8 @@ export default function FahrschulePage() {
       <main>
         {/* Hero Section with subtle parallax */}
       <section id="startseite" className="relative pt-16 bg-gradient-to-br from-[#1351d8]/5 to-white overflow-hidden">
-        {/* Subtle background elements with parallax */}
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            transform: `translateY(${scrollY * 0.3}px)`,
-          }}
-        >
+        {/* Subtle background elements with parallax (transform set directly in the scroll handler) */}
+        <div ref={parallaxRef} className="absolute inset-0 opacity-30">
           <div className="absolute top-20 right-10 w-32 h-32 bg-[#1351d8]/10 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 left-10 w-48 h-48 bg-blue-200/20 rounded-full blur-3xl"></div>
         </div>

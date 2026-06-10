@@ -103,6 +103,9 @@ export default function RootLayout({
         <meta name="format-detection" content="telephone=yes" />
 
         {/* Resource Hints */}
+        {/* VKU popup poster is the LCP element on mobile — preload it so the popup opens with the
+            image already cached. Remove this together with <VKUEventPopup /> after the event. */}
+        <link rel="preload" as="image" href="/VKU-24-25-June-2026.webp" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
