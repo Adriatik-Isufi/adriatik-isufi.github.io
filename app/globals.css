@@ -297,6 +297,16 @@ button:active {
   animation: pulse-ring 2s ease-in-out infinite;
 }
 
+/* Story viewer progress bar (driven by CSS so it doesn't re-render React 20x/second) */
+@keyframes story-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 /* Modern form input styling */
 input, textarea {
   font-feature-settings: "cv01", "cv02", "cv03";

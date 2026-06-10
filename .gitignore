@@ -29,4 +29,8 @@ next-env.d.ts
 # Original images backup (before WebP conversion)
 /public/_originals
 
+# Generated at build time by scripts/optimize-images.mjs
+/public/optimized
+/public/og-image.jpg
+
 /screaming_frog

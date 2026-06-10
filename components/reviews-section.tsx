@@ -27,14 +27,23 @@ interface Story {
   date: string
 }
 
+// Build-time optimized variants (see scripts/optimize-images.mjs).
+// thumbs: 160px square for the story circle, stories: max 1080px wide for the viewer.
+const optimizedSrc = (image: string, kind: "thumbs" | "stories") => {
+  const name = image.split("/").pop() ?? ""
+  return `/optimized/${kind}/${name.replace(/\.(jpe?g|png)$/i, ".webp")}`
+}
+
 export function ReviewsSection() {
   const [currentPage, setCurrentPage] = useState(0)
   const [mobileReviewIndex, setMobileReviewIndex] = useState(0)
   const [touchStart, setTouchStart] = useState<number | null>(null)
   const [touchEnd, setTouchEnd] = useState<number | null>(null)
   const [selectedStoryIndex, setSelectedStoryIndex] = useState<number | null>(null)
-  const [progress, setProgress] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const [imageLoaded, setImageLoaded] = useState(false)
+  // Stories whose optimized variant is missing — fall back to the original file
+  const [fallbackImages, setFallbackImages] = useState<Set<string>>(new Set())
   const [selectedReview, setSelectedReview] = useState<Review | null>(null)
   const [truncatedReviews, setTruncatedReviews] = useState<Set<number>>(new Set())
   const reviewRefs = useRef<Map<number, HTMLParagraphElement>>(new Map())
@@ -44,9 +53,34 @@ export function ReviewsSection() {
   const totalReviews = reviewsData.totalReviews
   const googleReviewsUrl = reviewsData.googleReviewsUrl
   const stories: Story[] = [...storiesData.stories].reverse()
-  const progressIntervalRef = useRef<NodeJS.Timeout | null>(null)
   const holdTimerRef = useRef<NodeJS.Timeout | null>(null)
   const storyDuration = 5000 // 5 seconds per story
+
+  const storySrc = (story: Story, kind: "thumbs" | "stories") =>
+    fallbackImages.has(story.image) ? story.image : optimizedSrc(story.image, kind)
+
+  const markFallback = (image: string) =>
+    setFallbackImages((prev) => {
+      if (prev.has(image)) return prev
+      const next = new Set(prev)
+      next.add(image)
+      return next
+    })
+
+  const goToPrevious = () => {
+    if (selectedStoryIndex !== null && selectedStoryIndex > 0) {
+      setSelectedStoryIndex(selectedStoryIndex - 1)
+    }
+  }
+
+  const goToNext = () => {
+    if (selectedStoryIndex === null) return
+    if (selectedStoryIndex < stories.length - 1) {
+      setSelectedStoryIndex(selectedStoryIndex + 1)
+    } else {
+      setSelectedStoryIndex(null)
+    }
+  }
 
   const totalPages = Math.ceil(reviews.length / reviewsPerPage)
   const startIndex = currentPage * reviewsPerPage
@@ -76,34 +110,6 @@ export function ReviewsSection() {
     }
     if (isRightSwipe && mobileReviewIndex > 0) {
       setMobileReviewIndex((prev) => prev - 1)
-    }
-  }
-
-  const handleHoldStart = () => {
-    holdTimerRef.current = setTimeout(() => {
-      setIsPaused(true)
-    }, 500) // 500ms to trigger pause
-  }
-
-  const handleHoldEnd = (direction?: 'left' | 'right') => {
-    if (holdTimerRef.current) {
-      clearTimeout(holdTimerRef.current)
-      holdTimerRef.current = null
-    }
-
-    // If it was a hold (paused), just unpause
-    if (isPaused) {
-      setIsPaused(false)
-      return
-    }
-
-    // Otherwise, it's a tap/click - navigate
-    if (direction === 'left' && selectedStoryIndex !== null && selectedStoryIndex > 0) {
-      setSelectedStoryIndex(selectedStoryIndex - 1)
-      setProgress(0)
-    } else if (direction === 'right' && selectedStoryIndex !== null && selectedStoryIndex < stories.length - 1) {
-      setSelectedStoryIndex(selectedStoryIndex + 1)
-      setProgress(0)
     }
   }
 
@@ -144,14 +150,10 @@ export function ReviewsSection() {
     }
 
     if (moveDistance < 10) {
-      if (direction === 'left' && selectedStoryIndex !== null && selectedStoryIndex > 0) {
-        setSelectedStoryIndex(selectedStoryIndex - 1)
-        setProgress(0)
-      } else if (direction === 'right' && selectedStoryIndex !== null && selectedStoryIndex < stories.length - 1) {
-        setSelectedStoryIndex(selectedStoryIndex + 1)
-        setProgress(0)
-      } else if (direction === 'right' && selectedStoryIndex === stories.length - 1) {
-        setSelectedStoryIndex(null)
+      if (direction === 'left') {
+        goToPrevious()
+      } else {
+        goToNext()
       }
     }
   }
@@ -174,46 +176,29 @@ export function ReviewsSection() {
     }
 
     // Navigate on click
-    if (direction === 'left' && selectedStoryIndex !== null && selectedStoryIndex > 0) {
-      setSelectedStoryIndex(selectedStoryIndex - 1)
-      setProgress(0)
-    } else if (direction === 'right' && selectedStoryIndex !== null && selectedStoryIndex < stories.length - 1) {
-      setSelectedStoryIndex(selectedStoryIndex + 1)
-      setProgress(0)
-    } else if (direction === 'right' && selectedStoryIndex === stories.length - 1) {
-      setSelectedStoryIndex(null)
+    if (direction === 'left') {
+      goToPrevious()
+    } else {
+      goToNext()
     }
   }
 
+  // Reset load state when the story changes so the progress bar waits for the image
   useEffect(() => {
-    if (selectedStoryIndex === null || isPaused) return
+    setImageLoaded(false)
+  }, [selectedStoryIndex])
 
-    setProgress(0)
-    const startTime = Date.now()
-
-    progressIntervalRef.current = setInterval(() => {
-      const elapsed = Date.now() - startTime
-      const newProgress = (elapsed / storyDuration) * 100
-
-      if (newProgress >= 100) {
-        // Auto-advance to next story
-        if (selectedStoryIndex < stories.length - 1) {
-          setSelectedStoryIndex(selectedStoryIndex + 1)
-        } else {
-          // Close modal when all stories are done
-          setSelectedStoryIndex(null)
-        }
-      } else {
-        setProgress(newProgress)
-      }
-    }, 50)
-
-    return () => {
-      if (progressIntervalRef.current) {
-        clearInterval(progressIntervalRef.current)
+  // Preload the adjacent stories so switching is instant
+  useEffect(() => {
+    if (selectedStoryIndex === null) return
+    for (const index of [selectedStoryIndex + 1, selectedStoryIndex - 1]) {
+      const story = stories[index]
+      if (story) {
+        const img = new Image()
+        img.src = storySrc(story, "stories")
       }
     }
-  }, [selectedStoryIndex, isPaused, stories.length])
+  }, [selectedStoryIndex, fallbackImages])
 
   useEffect(() => {
     const checkTruncation = () => {
@@ -331,9 +316,10 @@ export function ReviewsSection() {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-16 h-16 sm:w-[4.75rem] sm:h-[4.75rem] rounded-full overflow-hidden border-2 border-white">
                       <img
-                        src={stories[0].image || "/placeholder.svg"}
+                        src={storySrc(stories[0], "thumbs") || "/placeholder.svg"}
                         alt="Success Stories"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        onError={() => markFallback(stories[0].image)}
                       />
                     </div>
                   </div>
@@ -438,12 +424,22 @@ export function ReviewsSection() {
             <div className="absolute top-4 left-4 right-4 flex space-x-1 z-10">
               {stories.map((_, index) => (
                 <div key={index} className="flex-1 h-1 bg-white/30 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-white transition-all duration-100 ease-linear"
-                    style={{
-                      width: index < selectedStoryIndex ? "100%" : index === selectedStoryIndex ? `${progress}%` : "0%",
-                    }}
-                  />
+                  {index === selectedStoryIndex ? (
+                    <div
+                      key={`progress-${selectedStoryIndex}`}
+                      className="h-full bg-white"
+                      style={{
+                        animation: `story-progress ${storyDuration}ms linear forwards`,
+                        animationPlayState: isPaused || !imageLoaded ? "paused" : "running",
+                      }}
+                      onAnimationEnd={goToNext}
+                    />
+                  ) : (
+                    <div
+                      className="h-full bg-white"
+                      style={{ width: index < selectedStoryIndex ? "100%" : "0%" }}
+                    />
+                  )}
                 </div>
               ))}
             </div>
@@ -501,9 +497,11 @@ export function ReviewsSection() {
 
                 <div className="relative rounded-lg overflow-hidden bg-gray-900">
                   <img
-                    src={selectedStory.image || "/placeholder.svg"}
+                    src={storySrc(selectedStory, "stories") || "/placeholder.svg"}
                     alt={selectedStory.caption || selectedStory.name}
                     className={`w-full h-auto object-contain ${selectedStory.caption.length > 100 ? "max-h-[45vh]" : "max-h-[70vh]"}`}
+                    onLoad={() => setImageLoaded(true)}
+                    onError={() => markFallback(selectedStory.image)}
                   />
                   {selectedStory.caption && selectedStory.caption.length <= 100 && (
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">

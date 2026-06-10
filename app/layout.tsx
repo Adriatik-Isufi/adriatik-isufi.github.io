@@ -32,10 +32,10 @@ export const metadata: Metadata = {
     siteName: "Fahrschule 06",
     images: [
       {
-        url: "/logo-blue.svg",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Fahrschule 06 Logo - Professionelle Fahrausbildung",
+        alt: "Fahrschule 06 - Professionelle Fahrausbildung in Aargau & Olten",
       },
     ],
   },
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Fahrschule 06 - Führerschein Aargau/Olten",
     description: "Professionelle Fahrausbildung in Aargau/Olten. Moderne Fahrzeuge, erfahrene Fahrlehrer.",
-    images: ["/logo-blue.svg"],
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -90,9 +90,9 @@ export default function RootLayout({
 
         {/* Geographic Meta Tags */}
         <meta name="geo.region" content="CH-AG" />
-        <meta name="geo.placename" content="Aargau, Olten" />
-        <meta name="geo.position" content="47.3769;8.2297" />
-        <meta name="ICBM" content="47.3769, 8.2297" />
+        <meta name="geo.placename" content="Reitnau, Aargau" />
+        <meta name="geo.position" content="47.2505;8.0452" />
+        <meta name="ICBM" content="47.2505, 8.0452" />
 
         {/* Enhanced SEO Meta Tags */}
         <meta name="author" content="Fahrschule 06" />
@@ -161,13 +161,13 @@ export default function RootLayout({
         <meta property="og:description" content="Professionelle Fahrausbildung in Aargau/Olten. Moderne Fahrzeuge, erfahrene Fahrlehrer, flexible Termine." />
         <meta property="og:locale" content="de_CH" />
         <meta property="og:site_name" content="Fahrschule 06" />
-        <meta property="og:image" content="https://www.fahrschule06.ch/logo-blue.svg" />
-        <meta property="og:image:url" content="https://www.fahrschule06.ch/logo-blue.svg" />
-        <meta property="og:image:secure_url" content="https://www.fahrschule06.ch/logo-blue.svg" />
+        <meta property="og:image" content="https://www.fahrschule06.ch/og-image.jpg" />
+        <meta property="og:image:url" content="https://www.fahrschule06.ch/og-image.jpg" />
+        <meta property="og:image:secure_url" content="https://www.fahrschule06.ch/og-image.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Fahrschule 06 - Professionelle Fahrausbildung" />
-        <meta property="og:image:type" content="image/svg+xml" />
+        <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:street-address" content="Oberdorf 4" />
         <meta property="og:locality" content="Reitnau" />
         <meta property="og:region" content="Aargau" />
@@ -175,15 +175,15 @@ export default function RootLayout({
         <meta property="og:country-name" content="Switzerland" />
         <meta property="og:email" content="info@fahrschule06.ch" />
         <meta property="og:phone_number" content="+41763402201" />
-        <meta property="og:latitude" content="47.3769" />
-        <meta property="og:longitude" content="8.2297" />
+        <meta property="og:latitude" content="47.2505" />
+        <meta property="og:longitude" content="8.0452" />
 
         {/* Enhanced Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Fahrschule 06 - Führerschein Aargau/Olten" />
         <meta name="twitter:description" content="Professionelle Fahrausbildung in Aargau/Olten. Moderne Fahrzeuge, erfahrene Fahrlehrer, flexible Termine." />
-        <meta name="twitter:image" content="https://www.fahrschule06.ch/logo-blue.svg" />
-        <meta name="twitter:image:alt" content="Fahrschule 06 Logo" />
+        <meta name="twitter:image" content="https://www.fahrschule06.ch/og-image.jpg" />
+        <meta name="twitter:image:alt" content="Fahrschule 06 - Professionelle Fahrausbildung" />
         <meta name="twitter:label1" content="Standort" />
         <meta name="twitter:data1" content="Aargau, Switzerland" />
         <meta name="twitter:label2" content="Bewertung" />
@@ -224,8 +224,8 @@ export default function RootLayout({
               },
               geo: {
                 "@type": "GeoCoordinates",
-                latitude: "47.3769",
-                longitude: "8.2297",
+                latitude: "47.2505",
+                longitude: "8.0452",
               },
               openingHoursSpecification: [
                 {
@@ -240,40 +240,6 @@ export default function RootLayout({
                 { "@type": "City", name: "Olten", containedInPlace: { "@type": "State", name: "Solothurn" } },
                 { "@type": "City", name: "Aarau", containedInPlace: { "@type": "State", name: "Aargau" } },
                 { "@type": "State", name: "Aargau", containedInPlace: { "@type": "Country", name: "Switzerland" } },
-              ],
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "5.0",
-                bestRating: "5",
-                worstRating: "1",
-                ratingCount: "22",
-                reviewCount: "22",
-              },
-              review: [
-                {
-                  "@type": "Review",
-                  author: { "@type": "Person", name: "Duena Basha" },
-                  datePublished: "2025-02-04",
-                  reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
-                  reviewBody:
-                    "Er ist ein sehr guter Fahrlehrer. Er erklärt alles verständlich, ist nett, geduldig und man lernt viel bei ihm. Absolut empfehlenswert!",
-                },
-                {
-                  "@type": "Review",
-                  author: { "@type": "Person", name: "Joshua Hottiger" },
-                  datePublished: "2025-01-16",
-                  reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
-                  reviewBody:
-                    "Alles sehr gut erklärt, mit auch einer gewissen strenge. Was voll und ganz im normalen Bereich ist. Bin sehr zu frieden mit dem ganz Packet.",
-                },
-                {
-                  "@type": "Review",
-                  author: { "@type": "Person", name: "Gershan Ambikaipalan" },
-                  datePublished: "2025-01-09",
-                  reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
-                  reviewBody:
-                    "Ich kenne zwar nicht viele Fahrlehrer, aber ich kann mit Überzeugung sagen, dass Vaxhid der beste Fahrlehrer ist, den man sich aussuchen kann.",
-                },
               ],
               sameAs: [
                 "https://www.facebook.com/vaxhid.mustafa",

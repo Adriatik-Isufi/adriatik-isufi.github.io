@@ -60,6 +60,7 @@ Wir fahren schwerpunktmässig in der Region Aargau/Olten, inklusive Reitnau, Suh
 - Framework: Next.js App Router + Tailwind CSS (siehe `app/page.tsx`).
 - SEO: `app/layout.tsx` enthält Metadaten, OpenGraph und DrivingSchool-Structured-Data.
 - Assets: Logos, Videos und Bilder liegen in `public/`, statische Success-Fotos unter `public/Success/`.
+- Bilder-Optimierung: `scripts/optimize-images.mjs` läuft automatisch bei jedem Build und erzeugt verkleinerte Versionen der Success-Fotos (`public/optimized/`, git-ignoriert) sowie das Social-Share-Bild `og-image.jpg`. Neue Erfolgsfotos einfach wie bisher in voller Grösse nach `public/Success/` legen und in `data/stories.json` eintragen – der Rest passiert beim Deploy.
 - Deployment: `pnpm build && pnpm start` oder Docker-Setup (`Dockerfile`, `docker-compose.yml`).
 
 Für neue Inhalte oder Fragen genügt eine Nachricht an info@fahrschule06.ch – wir kümmern uns darum, dass Fahrschule 06 online wie offline überzeugt.

@@ -123,6 +123,13 @@ export default function FahrschulePage() {
                 }
               }
             }
+          } else if (entry.target.id === "promo-video") {
+            const video = entry.target as HTMLVideoElement
+            if (entry.isIntersecting) {
+              video.play().catch(() => {})
+            } else {
+              video.pause()
+            }
           }
         })
       },
@@ -136,10 +143,14 @@ export default function FahrschulePage() {
         observer.observe(el)
       })
 
-      // Observe the video for auto-mute functionality
+      // Observe the videos so they only load and play when scrolled into view
       const teacherVideo = document.getElementById("teacher-video")
       if (teacherVideo) {
         videoObserver.observe(teacherVideo)
+      }
+      const promoVideo = document.getElementById("promo-video")
+      if (promoVideo) {
+        videoObserver.observe(promoVideo)
       }
     }
 
@@ -910,15 +921,10 @@ export default function FahrschulePage() {
                   ref={videoRef}
                   id="teacher-video"
                   className="w-full h-auto rounded-xl"
-                  autoPlay
                   loop
                   muted={isVideoMuted}
                   playsInline
-                  onLoadedData={() => {
-                    if (videoRef.current) {
-                      videoRef.current.play()
-                    }
-                  }}
+                  preload="metadata"
                 >
                   <source src="/fahrschule06_video2.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
@@ -1400,12 +1406,13 @@ export default function FahrschulePage() {
               <div className="flex-shrink-0">
                 <div className="relative">
                   <video
+                    id="promo-video"
                     className="w-48 rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-300 object-cover"
                     style={{ height: "400px" }} // Exact height to match two photos + gap
-                    autoPlay
                     loop
                     muted
                     playsInline
+                    preload="metadata"
                   >
                     <source src="/video1.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
