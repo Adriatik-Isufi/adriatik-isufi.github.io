@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Video komprimieren – Fahrschule 06 Anleitung</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #1a1a1a; line-height: 1.6; }
+  h1 { color: #1351d8; }
+  .step { background: #f5f8ff; border-left: 4px solid #1351d8; padding: 12px 16px; margin: 16px 0; border-radius: 0 8px 8px 0; }
+  .step b { color: #1351d8; }
+  pre { background: #0d1117; color: #e6edf3; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 13px; line-height: 1.5; }
+  .highlight { background: #ffd33d33; color: #ffdf5d; font-weight: bold; }
+  button { background: #1351d8; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-size: 16px; cursor: pointer; margin: 8px 0; }
+  button:hover { background: #0f44b5; }
+  .ok { color: #1a7f37; font-weight: bold; display: none; }
+  .note { font-size: 14px; color: #555; }
+</style>
+</head>
+<body>
+
+<h1>🎬 Neues Video komprimieren</h1>
+<p>Diese Anleitung funktioniert auf jedem Windows-PC – <b>es muss nichts installiert sein</b>. Alles Nötige (ffmpeg) wird beim ersten Mal automatisch heruntergeladen.</p>
+
+<div class="step"><b>Schritt 1:</b> Das neue Video in den <code>public</code>-Ordner des Projekts legen.</div>
+<div class="step"><b>Schritt 2:</b> Unten im Befehl <span style="background:#ffd33d55; padding:2px 6px; border-radius:4px;">NUR den Dateinamen in der ersten Zeile</span> anpassen.</div>
+<div class="step"><b>Schritt 3:</b> Auf „Befehl kopieren" klicken.</div>
+<div class="step"><b>Schritt 4:</b> Windows-Taste drücken, <code>powershell</code> tippen, Enter. Dann im blauen Fenster: Rechtsklick (= einfügen) und Enter drücken.</div>
+<div class="step"><b>Schritt 5:</b> Warten bis „Fertig!" erscheint (1–3 Minuten). Danach wie gewohnt committen und pushen.</div>
+
+<pre id="cmd">$video = "<span class="highlight">video1.mp4</span>"   # &lt;-- NUR DIESEN DATEINAMEN ANPASSEN
+
+cd "$env:USERPROFILE\Documents\Projects\adriatik-isufi.github.io"
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+$ProgressPreference = "SilentlyContinue"
+$ffdir = "$env:LOCALAPPDATA\ffmpeg-portable"
+$ffmpeg = Get-ChildItem $ffdir -Recurse -Filter ffmpeg.exe -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName
+if (-not $ffmpeg) {
+  Write-Output "Lade ffmpeg herunter (einmalig, ca. 170 MB)..."
+  New-Item -ItemType Directory -Force $ffdir | Out-Null
+  Invoke-WebRequest -UseBasicParsing -Uri "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip" -OutFile "$ffdir\ffmpeg.zip"
+  Expand-Archive -Path "$ffdir\ffmpeg.zip" -DestinationPath $ffdir -Force
+  Remove-Item "$ffdir\ffmpeg.zip"
+  $ffmpeg = Get-ChildItem $ffdir -Recurse -Filter ffmpeg.exe | Select-Object -First 1 -ExpandProperty FullName
+}
+New-Item -ItemType Directory -Force "public\_originals" | Out-Null
+if (Test-Path "public\_originals\$video") {
+  Write-Output "Hinweis: Backup existiert schon - das Original wird NICHT ueberschrieben."
+} else {
+  Copy-Item "public\$video" "public\_originals\$video"
+}
+Write-Output "Komprimiere $video ... (1-3 Minuten)"
+$tmp = "public\_originals\TEMP_$video"
+&amp; $ffmpeg -y -v error -i "public\$video" -c:v libx264 -crf 28 -preset slow -profile:v high -pix_fmt yuv420p -c:a aac -b:a 96k -movflags +faststart $tmp
+if ($LASTEXITCODE -ne 0 -or -not (Test-Path $tmp)) {
+  Write-Output "FEHLER: Komprimierung fehlgeschlagen! Das Original wurde NICHT veraendert. Bitte Dateinamen pruefen."
+  if (Test-Path $tmp) { Remove-Item $tmp }
+} else {
+  Move-Item -Force $tmp "public\$video"
+  "VORHER:  {0:N1} MB" -f ((Get-Item "public\_originals\$video").Length / 1MB)
+  "NACHHER: {0:N1} MB" -f ((Get-Item "public\$video").Length / 1MB)
+  Write-Output "Fertig! Das unkomprimierte Original liegt als Backup in public\_originals\ (wird nicht committet)."
+}</pre>
+
+<button onclick="copyCmd()">📋 Befehl kopieren</button>
+<span class="ok" id="ok">✓ Kopiert!</span>
+
+<p class="note">Qualität: CRF 28 + preset slow – bei Handy-Videos visuell nicht vom Original zu unterscheiden (wurde per Einzelbild-Vergleich geprüft). Das Original bleibt als Backup in <code>public\_originals\</code> erhalten (dieser Ordner ist git-ignoriert und landet nie auf der Website).</p>
+<p class="note">Falls das Video danach komisch aussieht (unwahrscheinlich): einfach das Backup aus <code>public\_originals\</code> zurückkopieren.</p>
+
+<script>
+function copyCmd() {
+  navigator.clipboard.writeText(document.getElementById("cmd").innerText).then(() => {
+    document.getElementById("ok").style.display = "inline";
+    setTimeout(() => document.getElementById("ok").style.display = "none", 2500);
+  });
+}
+</script>
+
+</body>
+</html>

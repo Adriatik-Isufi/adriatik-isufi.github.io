@@ -26,7 +26,7 @@ Saisonale Aktionen (z. B. Weihnachtsgutschein, Sommer-Express) werden direkt a
 - **Regional verankert:** Aargau/Olten mit Treffpunkten in Reitnau, Aarau, Olten und Umgebung.
 - **Stressfrei lernen:** kleine Lektionseinheiten, klare Lernziele und WhatsApp-Support zwischen den Fahrstunden.
 - **Messbarer Erfolg:** 4.8 ⭐ Google-Bewertung, dokumentierte Erfolgsstories in der Galerie `public/Success/`.
-- **Digitale Experience:** Video-Hero, Social-Proof-Widget (Elfsight) und Stories Viewer machen die Seite zu einer echten Landingpage.
+- **Digitale Experience:** Video-Hero, Bewertungs-Sektion und Stories Viewer machen die Seite zu einer echten Landingpage.
 - **Direkter Draht:** Telefon, WhatsApp, E-Mail oder Formular – alle Nachrichten landen sofort im Fahrschule-Postfach.
 
 ## Kontakt & Anmeldung
@@ -45,7 +45,7 @@ Wir fahren schwerpunktmässig in der Region Aargau/Olten, inklusive Reitnau, Suh
 ## Bewertungen & Erfolgsgeschichten
 
 - Wöchentliche Erfolgsfotos im Bereich `public/Success/` sowie auf Instagram/TikTok (@fahrschule06).
-- Google- und Instagram-Bewertungen sind via Elfsight-Widget auf der Startseite eingebettet.
+- Google-Bewertungen werden manuell in `data/reviews.json` gepflegt und auf der Startseite angezeigt.
 - Testimonials rotieren auf der Seite `components/reviews-section.tsx` und können jederzeit aktualisiert werden.
 
 ## Digitale Kanäle & Branding
@@ -58,7 +58,7 @@ Wir fahren schwerpunktmässig in der Region Aargau/Olten, inklusive Reitnau, Suh
 ## Technische Basis (Kurzinfo)
 
 - Framework: Next.js App Router + Tailwind CSS (siehe `app/page.tsx`).
-- SEO: `app/layout.tsx` enthält Metadaten, OpenGraph und DrivingSchool-Structured-Data.
+- SEO: `app/layout.tsx` enthält Metadaten, OpenGraph und LocalBusiness-Structured-Data.
 - Assets: Logos, Videos und Bilder liegen in `public/`, statische Success-Fotos unter `public/Success/`.
 - Bilder-Optimierung: `scripts/optimize-images.mjs` läuft automatisch bei jedem Build und erzeugt verkleinerte Versionen der Success-Fotos (`public/optimized/`, git-ignoriert) sowie das Social-Share-Bild `og-image.jpg`. Neue Erfolgsfotos einfach wie bisher in voller Grösse nach `public/Success/` legen und in `data/stories.json` eintragen – der Rest passiert beim Deploy.
 - Deployment: `pnpm build && pnpm start` oder Docker-Setup (`Dockerfile`, `docker-compose.yml`).

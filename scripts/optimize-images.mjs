@@ -86,6 +86,20 @@ async function main() {
     `[optimize-images] ${sources.length} story images checked, ${generated} files (re)generated` +
       (missing ? `, ${missing} MISSING` : '')
   )
+
+  // Guardrail: video compression is a manual step (see VIDEO-KOMPRIMIEREN.html in the repo root),
+  // so warn loudly when an uncompressed video is about to ship.
+  const VIDEO_LIMIT_MB = 12
+  for (const file of await fs.readdir(publicDir)) {
+    if (!file.toLowerCase().endsWith('.mp4')) continue
+    const sizeMb = (await fs.stat(path.join(publicDir, file))).size / 1024 / 1024
+    if (sizeMb > VIDEO_LIMIT_MB) {
+      console.warn(
+        `\n[optimize-images] ⚠️  WARNING: public/${file} is ${sizeMb.toFixed(1)} MB — ` +
+          `compress it before deploying! Anleitung: VIDEO-KOMPRIMIEREN.html\n`
+      )
+    }
+  }
 }
 
 main().catch((err) => {

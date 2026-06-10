@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { useState, useEffect, useRef } from "react"
-import dynamic from "next/dynamic"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -33,15 +32,6 @@ import { LottieAnimation } from "@/components/lottie-animation"
 import emailjs from "@emailjs/browser"
 import Link from "next/link"
 import { ReviewsSection } from "@/components/reviews-section"
-
-// Dynamic import for Elfsight widget to prevent hydration issues
-const ElfsightReviews = dynamic(
-  () =>
-    Promise.resolve(() => (
-      <div className="elfsight-app-e1b3b955-e48e-4ee8-a212-977e492efaa4" data-elfsight-app-lazy></div>
-    )),
-  { ssr: false },
-)
 
 export default function FahrschulePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

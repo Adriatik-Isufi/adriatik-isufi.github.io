@@ -85,7 +85,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {/* Security Meta Tags (GitHub Pages doesn't support HTTP headers) */}
-        <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://elfsightcdn.com https://static.elfsight.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https: https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src https://www.google.com https://elfsight.com https://*.elfsight.com;" />
+        <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https: https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src https://www.google.com;" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
 
         {/* Geographic Meta Tags */}
@@ -93,18 +93,6 @@ export default function RootLayout({
         <meta name="geo.placename" content="Reitnau, Aargau" />
         <meta name="geo.position" content="47.2505;8.0452" />
         <meta name="ICBM" content="47.2505, 8.0452" />
-
-        {/* Enhanced SEO Meta Tags */}
-        <meta name="author" content="Fahrschule 06" />
-        <meta name="coverage" content="Aargau, Olten, Switzerland" />
-        <meta name="distribution" content="local" />
-        <meta name="language" content="German" />
-        <meta name="rating" content="general" />
-        <meta name="revisit-after" content="7 days" />
-        <meta name="subject" content="Driving Education and Training" />
-        <meta name="topic" content="Driver's License Training in Aargau" />
-        <meta name="abstract" content="Professional driving school in Aargau/Olten offering Category B license training, VKU courses, and practical driving lessons." />
-        <meta name="directory" content="Business : Automotive : Driving Schools" />
 
         {/* Mobile Meta Tags */}
         <meta name="MobileOptimized" content="width" />
@@ -114,27 +102,11 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Fahrschule 06" />
         <meta name="format-detection" content="telephone=yes" />
 
-        {/* Dublin Core Meta Tags */}
-        <meta name="DC.title" content="Fahrschule 06 - Führerschein Aargau/Olten" />
-        <meta name="DC.creator" content="Fahrschule 06" />
-        <meta name="DC.subject" content="Driving Education, Driver's License Training" />
-        <meta name="DC.description" content="Professional driving school in Aargau/Olten offering comprehensive driver training." />
-        <meta name="DC.publisher" content="Fahrschule 06" />
-        <meta name="DC.contributor" content="Vaxhid Mustafa" />
-        <meta name="DC.date" content="2025-02-06" />
-        <meta name="DC.type" content="Service" />
-        <meta name="DC.format" content="text/html" />
-        <meta name="DC.identifier" content="https://www.fahrschule06.ch" />
-        <meta name="DC.language" content="de-CH" />
-        <meta name="DC.coverage" content="Aargau, Olten, Switzerland" />
-        <meta name="DC.rights" content="Copyright 2025 Fahrschule 06. All rights reserved." />
-
         {/* Resource Hints */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
-        <link rel="dns-prefetch" href="https://elfsightcdn.com" />
 
         {/* Canonical URL handled by Next.js metadata - removed duplicate manual tag */}
 
@@ -189,14 +161,13 @@ export default function RootLayout({
         <meta name="twitter:label2" content="Bewertung" />
         <meta name="twitter:data2" content="5.0 ⭐ (22 Bewertungen)" />
 
-        <script src="https://elfsightcdn.com/platform.js" async></script>
-
-        {/* Enhanced JSON-LD Structured Data - LocalBusiness with Reviews */}
+        {/* Enhanced JSON-LD Structured Data - LocalBusiness */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
+              // schema.org has no DrivingSchool type — LocalBusiness is the correct, most specific valid type
               "@type": "LocalBusiness",
               "@id": "https://www.fahrschule06.ch#localbusiness",
               name: "Fahrschule 06",
