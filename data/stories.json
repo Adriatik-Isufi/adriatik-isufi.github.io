@@ -294,6 +294,13 @@
       "image": "/Success/ramon-success.webp",
       "caption": "Herzlichen Glückwunsch Ramon 🥳",
       "date": "2026-06-22"    
+    },
+    {
+      "id": 43,
+      "name": "Medina",
+      "image": "/Success/medina-success.webp",
+      "caption": "Sauber, Medina 👏💪",
+      "date": "2026-06-23"    
     }
   ]
 }

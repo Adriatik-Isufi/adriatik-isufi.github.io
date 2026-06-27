@@ -3,7 +3,8 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import Script from "next/script"
 import "./globals.css"
-import { VKUEventPopup } from "@/components/archive/vku-event-popup"
+import { AnnouncementPopup } from "@/components/announcement-popup"
+import { getActiveAnnouncement } from "@/config/announcements"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -79,6 +80,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const activeAnnouncement = getActiveAnnouncement()
+
   return (
     <html lang="de-CH" className="scroll-smooth">
       <head>
@@ -103,9 +106,11 @@ export default function RootLayout({
         <meta name="format-detection" content="telephone=yes" />
 
         {/* Resource Hints */}
-        {/* VKU popup poster is the LCP element on mobile — preload it so the popup opens with the
-            image already cached. Remove this together with <VKUEventPopup /> after the event. */}
-        <link rel="preload" as="image" href="/VKU-24-25-June-2026.webp" />
+        {/* When an announcement is active its image is the LCP element on mobile — preload it
+            so the popup opens with the image already cached. Driven by config/announcements.ts. */}
+        {activeAnnouncement && (
+          <link rel="preload" as="image" href={activeAnnouncement.image} />
+        )}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
@@ -448,7 +453,7 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <VKUEventPopup />
+        <AnnouncementPopup />
         {children}
 
         {/* Google Analytics 4 - G-NQBNQ1JF7V */}
