@@ -301,6 +301,20 @@
       "image": "/Success/medina-success.webp",
       "caption": "Sauber, Medina 👏💪",
       "date": "2026-06-23"    
+    },
+    {
+      "id": 43,
+      "name": "Bayan",
+      "image": "/Success/bayan-success.webp",
+      "caption": "Herzlichen Glückwunsch Bayan 🥳",
+      "date": "2026-06-30"    
+    },
+    {
+      "id": 44,
+      "name": "Lorin",
+      "image": "/Success/medina-success.webp",
+      "caption": "Gut gemacht, Lorin Glückwunsch! 🎉👏😊",
+      "date": "2026-07-01"    
     }
   ]
 }
