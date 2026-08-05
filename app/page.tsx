@@ -29,7 +29,6 @@ import {
   User,
 } from "lucide-react"
 import { LottieAnimation } from "@/components/lottie-animation"
-import emailjs from "@emailjs/browser"
 import Link from "next/link"
 import { ReviewsSection } from "@/components/reviews-section"
 
@@ -47,16 +46,22 @@ export default function FahrschulePage() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
-  const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set())
   // Parallax is driven via direct DOM writes (no state) so scrolling never re-renders the page
   const parallaxRef = useRef<HTMLDivElement>(null)
   const [selectedPackage, setSelectedPackage] = useState<string>("")
 
-  // Video state management
-  const [isVideoMuted, setIsVideoMuted] = useState(false) // Start unmuted
-  const [isVideoPlaying, setIsVideoPlaying] = useState(true)
-  const [isVideoVisible, setIsVideoVisible] = useState(true)
+  // Video state management — sources attach only when near viewport
+  const [isVideoMuted, setIsVideoMuted] = useState(true)
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false)
+  const [isVideoVisible, setIsVideoVisible] = useState(false)
+  const [teacherVideoReady, setTeacherVideoReady] = useState(false)
+  const [promoVideoReady, setPromoVideoReady] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const isVideoMutedRef = useRef(true)
+
+  useEffect(() => {
+    isVideoMutedRef.current = isVideoMuted
+  }, [isVideoMuted])
 
   useEffect(() => {
     // Throttle scroll work to one pass per animation frame
@@ -91,42 +96,45 @@ export default function FahrschulePage() {
       })
     }
 
-    // Intersection Observer for fade-in animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
-    }
+    // Fade-ins via classList — avoids re-rendering the entire page on each reveal
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible")
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+    )
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setVisibleElements((prev) => new Set([...prev, entry.target.id]))
-        }
-      })
-    }, observerOptions)
-
-    // Video visibility observer for auto-mute functionality
+    // Attach video sources only when near viewport; then play/pause on visibility
     const videoObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.target.id === "teacher-video") {
             setIsVideoVisible(entry.isIntersecting)
-            if (videoRef.current) {
+            if (entry.isIntersecting) {
+              setTeacherVideoReady(true)
+            }
+            if (videoRef.current?.querySelector("source")) {
               if (entry.isIntersecting) {
-                // Video is visible - play and keep current mute state
-                videoRef.current.play()
+                videoRef.current.play().catch(() => {})
                 setIsVideoPlaying(true)
               } else {
-                // Video is not visible - pause and mute
                 videoRef.current.pause()
                 setIsVideoPlaying(false)
-                if (!isVideoMuted) {
+                if (!isVideoMutedRef.current) {
                   setIsVideoMuted(true)
                   videoRef.current.muted = true
                 }
               }
             }
           } else if (entry.target.id === "promo-video") {
+            if (entry.isIntersecting) {
+              setPromoVideoReady(true)
+            }
             const video = entry.target as HTMLVideoElement
             if (entry.isIntersecting) {
               video.play().catch(() => {})
@@ -136,28 +144,17 @@ export default function FahrschulePage() {
           }
         })
       },
-      { threshold: 0.3 },
+      { threshold: 0.25, rootMargin: "200px 0px" },
     )
 
-    // Use a timeout to ensure DOM is ready and observe elements
     const setupObserver = () => {
-      const animatedElements = document.querySelectorAll("[data-animate]")
-      animatedElements.forEach((el) => {
-        observer.observe(el)
-      })
-
-      // Observe the videos so they only load and play when scrolled into view
+      document.querySelectorAll("[data-animate]").forEach((el) => observer.observe(el))
       const teacherVideo = document.getElementById("teacher-video")
-      if (teacherVideo) {
-        videoObserver.observe(teacherVideo)
-      }
+      if (teacherVideo) videoObserver.observe(teacherVideo)
       const promoVideo = document.getElementById("promo-video")
-      if (promoVideo) {
-        videoObserver.observe(promoVideo)
-      }
+      if (promoVideo) videoObserver.observe(promoVideo)
     }
 
-    // Set up observer after a short delay to ensure DOM is ready
     const timeoutId = setTimeout(setupObserver, 100)
 
     window.addEventListener("scroll", handleScroll, { passive: true })
@@ -167,7 +164,24 @@ export default function FahrschulePage() {
       videoObserver.disconnect()
       clearTimeout(timeoutId)
     }
-  }, [isVideoMuted])
+  }, [])
+
+  // Play teacher video once the source is attached and visible
+  useEffect(() => {
+    if (!teacherVideoReady || !isVideoVisible || !videoRef.current) return
+    videoRef.current.load()
+    videoRef.current.play().catch(() => {})
+    setIsVideoPlaying(true)
+  }, [teacherVideoReady, isVideoVisible])
+
+  // Load + play promo video once its source is attached
+  useEffect(() => {
+    if (!promoVideoReady) return
+    const video = document.getElementById("promo-video") as HTMLVideoElement | null
+    if (!video) return
+    video.load()
+    video.play().catch(() => {})
+  }, [promoVideoReady])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -218,10 +232,11 @@ export default function FahrschulePage() {
     setSubmitStatus("idle")
 
     try {
-      // EmailJS configuration - Replace with your actual values
+      // Load EmailJS only on submit so it stays out of the initial JS bundle
+      const emailjs = (await import("@emailjs/browser")).default
       await emailjs.send(
-        "service_053ed8o", // Your service ID
-        "template_2tlhjo6", // Your new template ID
+        "service_053ed8o",
+        "template_2tlhjo6",
         {
           from_name: `${formData.firstName} ${formData.lastName}`,
           from_email: formData.email,
@@ -229,7 +244,7 @@ export default function FahrschulePage() {
           message: formData.message,
           to_name: "Fahrschule 06",
         },
-        "XKVNSypCYuDXoJ-Oo", // Your public key
+        "XKVNSypCYuDXoJ-Oo",
       )
 
       setSubmitStatus("success")
@@ -309,7 +324,7 @@ export default function FahrschulePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-3">
-              <Image src="/logo-blue.svg" alt="Fahrschule 06 Logo" width={40} height={40} className="w-10 h-10" />
+              <Image src="/optimized/logo-blue-80.png" alt="Fahrschule 06 Logo" width={40} height={40} className="w-10 h-10" priority />
               <div>
                 <span className="text-xl font-bold text-[#1351d8] block">Fahrschule 06</span>
                 <p className="text-xs text-gray-600">fahrschule06.ch</p>
@@ -716,13 +731,17 @@ export default function FahrschulePage() {
             </div>
 
             <div className="relative">
-              <Image
-                src="/hero-new-bg.webp"
-                alt="Fahrschule 06 - Professioneller Fahrlehrer mit blauem Ford"
+              {/* Responsive LCP image: ~49KB on mobile vs 170KB full-res original */}
+              <img
+                src="/optimized/hero/hero-640.webp"
+                srcSet="/optimized/hero/hero-640.webp 640w, /optimized/hero/hero-960.webp 960w, /optimized/hero/hero-1200.webp 1200w"
+                sizes="(max-width: 768px) 92vw, 600px"
                 width={600}
                 height={800}
+                alt="Fahrschule 06 - Professioneller Fahrlehrer mit blauem Ford"
                 className="w-full h-auto rounded-2xl shadow-2xl object-cover"
-                priority
+                fetchPriority="high"
+                decoding="async"
               />
             </div>
           </div>
@@ -855,9 +874,7 @@ export default function FahrschulePage() {
             {services.map((service, index) => (
               <Card
                 key={index}
-                className={`group border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-700 hover:-translate-y-2 md:hover:-translate-y-4 bg-white/10 backdrop-blur-md relative overflow-hidden transform hover:bg-white/15 ${
-                  visibleElements.has(`service-${index}`) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
+                className="group border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-700 hover:-translate-y-2 md:hover:-translate-y-4 bg-white/10 backdrop-blur-md relative overflow-hidden transform hover:bg-white/15"
                 data-animate={`service-${index}`}
                 id={`service-${index}`}
                 style={{ animationDelay: `${index * 150}ms` }}
@@ -929,9 +946,9 @@ export default function FahrschulePage() {
                   loop
                   muted={isVideoMuted}
                   playsInline
-                  preload="metadata"
+                  preload="none"
                 >
-                  <source src="/fahrschule06_video2.mp4" type="video/mp4" />
+                  {teacherVideoReady && <source src="/fahrschule06_video2.mp4" type="video/mp4" />}
                   Your browser does not support the video tag.
                 </video>
 
@@ -1203,7 +1220,7 @@ export default function FahrschulePage() {
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Basis Paket */}
             <Card
-              className={`relative border-2 border-gray-200 hover:border-[#1351d8]/30 transition-all duration-500 hover:scale-105 ${visibleElements.has("price-basic") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className="relative border-2 border-gray-200 hover:border-[#1351d8]/30 transition-all duration-500 hover:scale-105"
               data-animate="price-basic"
               id="price-basic"
             >
@@ -1244,7 +1261,7 @@ export default function FahrschulePage() {
 
             {/* Komfort Paket */}
             <Card
-              className={`relative border-2 border-[#1351d8] hover:border-[#1351d8] transition-all duration-500 hover:scale-105 shadow-lg ${visibleElements.has("price-comfort") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className="relative border-2 border-[#1351d8] hover:border-[#1351d8] transition-all duration-500 hover:scale-105 shadow-lg"
               data-animate="price-comfort"
               id="price-comfort"
               style={{ animationDelay: "200ms" }}
@@ -1297,7 +1314,7 @@ export default function FahrschulePage() {
 
             {/* Premium Paket */}
             <Card
-              className={`relative border-2 border-gray-200 hover:border-[#1351d8]/30 transition-all duration-500 hover:scale-105 ${visibleElements.has("price-premium") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className="relative border-2 border-gray-200 hover:border-[#1351d8]/30 transition-all duration-500 hover:scale-105"
               data-animate="price-premium"
               id="price-premium"
               style={{ animationDelay: "400ms" }}
@@ -1421,9 +1438,9 @@ export default function FahrschulePage() {
                     loop
                     muted
                     playsInline
-                    preload="metadata"
+                    preload="none"
                   >
-                    <source src="/video1.mp4" type="video/mp4" />
+                    {promoVideoReady && <source src="/video1.mp4" type="video/mp4" />}
                     Your browser does not support the video tag.
                   </video>
 
@@ -1813,7 +1830,7 @@ export default function FahrschulePage() {
           <div className="grid md:grid-cols-5 gap-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
-                <Image src="/logo.svg" alt="Fahrschule 06 Logo" width={32} height={32} className="w-8 h-8" />
+                <Image src="/optimized/logo-80.png" alt="Fahrschule 06 Logo" width={32} height={32} className="w-8 h-8" loading="lazy" />
                 <div>
                   <h3 className="text-lg font-bold">Fahrschule 06</h3>
                   <p className="text-sm text-gray-400">fahrschule06.ch</p>

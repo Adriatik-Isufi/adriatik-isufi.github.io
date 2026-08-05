@@ -6,7 +6,12 @@ import "./globals.css"
 import { AnnouncementPopup } from "@/components/announcement-popup"
 import { getActiveAnnouncement } from "@/config/announcements"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+  adjustFontFallback: true,
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.fahrschule06.ch"),
@@ -106,15 +111,25 @@ export default function RootLayout({
         <meta name="format-detection" content="telephone=yes" />
 
         {/* Resource Hints */}
+        {/* Hero is the LCP element on mobile — preload the 640w variant matching mobile display size. */}
+        {!activeAnnouncement && (
+          <link
+            rel="preload"
+            as="image"
+            href="/optimized/hero/hero-640.webp"
+            type="image/webp"
+            imageSrcSet="/optimized/hero/hero-640.webp 640w, /optimized/hero/hero-960.webp 960w, /optimized/hero/hero-1200.webp 1200w"
+            imageSizes="(max-width: 768px) 92vw, 600px"
+            fetchPriority="high"
+          />
+        )}
         {/* When an announcement is active its image is the LCP element on mobile — preload it
             so the popup opens with the image already cached. Driven by config/announcements.ts. */}
         {activeAnnouncement && (
           <link rel="preload" as="image" href={activeAnnouncement.image} />
         )}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
+        {/* Fonts are self-hosted via next/font — no Google Fonts preconnect needed.
+            Analytics loads with lazyOnload, so no early preconnect either. */}
 
         {/* Canonical URL handled by Next.js metadata - removed duplicate manual tag */}
 
@@ -456,10 +471,10 @@ export default function RootLayout({
         <AnnouncementPopup />
         {children}
 
-        {/* Google Analytics 4 - G-NQBNQ1JF7V */}
+        {/* Queue analytics immediately, but defer downloading the third-party library until idle. */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-NQBNQ1JF7V"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`

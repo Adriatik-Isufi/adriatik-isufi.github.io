@@ -16,7 +16,7 @@ export default function NotFound() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white flex flex-col items-center justify-center px-4">
       <div className="text-center max-w-md">
         <Image
-          src="/logo-blue.svg"
+          src="/optimized/logo-blue-80.png"
           alt="Fahrschule 06 Logo"
           width={80}
           height={80}

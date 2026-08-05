@@ -53,7 +53,7 @@ export default function AGBPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center gap-3">
-              <Image src="/logo-blue.svg" alt="Fahrschule 06 Logo" width={40} height={40} className="w-10 h-10" />
+              <Image src="/optimized/logo-blue-80.png" alt="Fahrschule 06 Logo" width={40} height={40} className="w-10 h-10" />
               <div>
                 <span className="text-xl font-bold text-[#1351d8]">Fahrschule 06</span>
                 <p className="text-xs text-gray-600">fahrschule06.ch</p>

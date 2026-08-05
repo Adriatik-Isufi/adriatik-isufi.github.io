@@ -7,7 +7,7 @@
     "optimize:images": "node scripts/optimize-images.mjs",
     "export": "next build && next export",
     "deploy": "pnpm build",
-    "dev": "next dev",
+    "dev": "node scripts/optimize-images.mjs && next dev",
     "lint": "next lint",
     "start": "next start",
     "docker:build": "docker build -t fahrschule-06 .",

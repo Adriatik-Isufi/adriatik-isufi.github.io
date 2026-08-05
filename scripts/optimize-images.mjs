@@ -16,6 +16,8 @@ const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)))
 const publicDir = path.join(root, 'public')
 const thumbsDir = path.join(publicDir, 'optimized', 'thumbs')
 const storiesDir = path.join(publicDir, 'optimized', 'stories')
+const heroDir = path.join(publicDir, 'optimized', 'hero')
+const optimizedDir = path.join(publicDir, 'optimized')
 
 async function isUpToDate(src, out) {
   try {
@@ -49,9 +51,40 @@ async function optimizeStoryImage(src) {
   return done
 }
 
+async function optimizeHeroVariants(src) {
+  let done = 0
+  // Mobile LCP + desktop sizes. Full 1536px original is far larger than any display size.
+  for (const width of [640, 960, 1200]) {
+    const out = path.join(heroDir, `hero-${width}.webp`)
+    if (await isUpToDate(src, out)) continue
+    await sharp(src)
+      .resize({ width, withoutEnlargement: true })
+      .webp({ quality: width <= 640 ? 68 : 62 })
+      .toFile(out)
+    done++
+  }
+  return done
+}
+
+async function optimizeLogoPngs(src, name) {
+  let done = 0
+  // The source SVGs are path-heavy. Nav/footer only need tiny rasters.
+  for (const size of [80, 180]) {
+    const out = path.join(optimizedDir, `${name}-${size}.png`)
+    if (await isUpToDate(src, out)) continue
+    await sharp(src)
+      .resize(size, size, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+      .png({ compressionLevel: 9 })
+      .toFile(out)
+    done++
+  }
+  return done
+}
+
 async function main() {
   await fs.mkdir(thumbsDir, { recursive: true })
   await fs.mkdir(storiesDir, { recursive: true })
+  await fs.mkdir(heroDir, { recursive: true })
 
   // All images referenced in data/stories.json (covers /Success plus one-offs like /partnership.webp)
   const storiesJson = JSON.parse(await fs.readFile(path.join(root, 'data', 'stories.json'), 'utf8'))
@@ -71,8 +104,10 @@ async function main() {
     generated += await optimizeStoryImage(src)
   }
 
-  // OG share image (1200x630) from the hero photo
+  // Responsive hero (LCP on mobile) + OG share crop
   const ogSrc = path.join(publicDir, 'hero-new-bg.jpeg')
+  generated += await optimizeHeroVariants(ogSrc)
+
   const ogOut = path.join(publicDir, 'og-image.jpg')
   if (!(await isUpToDate(ogSrc, ogOut))) {
     await sharp(ogSrc)
@@ -80,6 +115,16 @@ async function main() {
       .jpeg({ quality: 82 })
       .toFile(ogOut)
     generated++
+  }
+
+  for (const name of ['logo-blue', 'logo']) {
+    const logoSrc = path.join(publicDir, `${name}.svg`)
+    try {
+      await fs.access(logoSrc)
+      generated += await optimizeLogoPngs(logoSrc, name)
+    } catch {
+      console.warn(`[optimize-images] WARNING: ${name}.svg not found`)
+    }
   }
 
   console.log(
