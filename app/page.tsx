@@ -34,7 +34,7 @@ import { ReviewsSection } from "@/components/reviews-section"
 
 export default function FahrschulePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState("home")
+  const [activeSection, setActiveSection] = useState("startseite")
   const [activeSidebarSection, setActiveSidebarSection] = useState("navigation")
   const [formData, setFormData] = useState({
     firstName: "",
@@ -76,23 +76,6 @@ export default function FahrschulePage() {
         if (parallaxRef.current) {
           parallaxRef.current.style.transform = `translateY(${y * 0.3}px)`
         }
-
-        const sections = ["startseite", "angebot", "fahrlehrer", "preise", "ueber-uns", "bewertungen", "kontakt"]
-        const scrollPosition = y + 100
-
-        for (const section of sections) {
-          const element = document.getElementById(section)
-          if (element) {
-            const offsetTop = element.offsetTop
-            const offsetHeight = element.offsetHeight
-
-            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-              // setState with an unchanged value doesn't re-render
-              setActiveSection(section)
-              break
-            }
-          }
-        }
       })
     }
 
@@ -107,6 +90,18 @@ export default function FahrschulePage() {
         })
       },
       { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+    )
+
+    // Track the current navigation section without synchronously reading layout
+    // (offsetTop/offsetHeight) on every scroll frame.
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries.find((entry) => entry.isIntersecting)
+        if (visibleSection?.target.id) {
+          setActiveSection(visibleSection.target.id)
+        }
+      },
+      { rootMargin: "-80px 0px -65% 0px" },
     )
 
     // Attach video sources only when near viewport; then play/pause on visibility
@@ -149,6 +144,10 @@ export default function FahrschulePage() {
 
     const setupObserver = () => {
       document.querySelectorAll("[data-animate]").forEach((el) => observer.observe(el))
+      for (const section of ["startseite", "angebot", "fahrlehrer", "preise", "ueber-uns", "bewertungen", "kontakt"]) {
+        const element = document.getElementById(section)
+        if (element) sectionObserver.observe(element)
+      }
       const teacherVideo = document.getElementById("teacher-video")
       if (teacherVideo) videoObserver.observe(teacherVideo)
       const promoVideo = document.getElementById("promo-video")
@@ -161,6 +160,7 @@ export default function FahrschulePage() {
     return () => {
       window.removeEventListener("scroll", handleScroll)
       observer.disconnect()
+      sectionObserver.disconnect()
       videoObserver.disconnect()
       clearTimeout(timeoutId)
     }
@@ -687,7 +687,7 @@ export default function FahrschulePage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8 animate-fade-in-up" data-animate="hero-content" id="hero-content">
+            <div className="space-y-8" data-animate="hero-content" id="hero-content">
               <div className="space-y-4">
                 <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20">Fahren mit Vision</Badge>
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
@@ -731,18 +731,25 @@ export default function FahrschulePage() {
             </div>
 
             <div className="relative">
-              {/* Responsive LCP image: ~49KB on mobile vs 170KB full-res original */}
-              <img
-                src="/optimized/hero/hero-640.webp"
-                srcSet="/optimized/hero/hero-640.webp 640w, /optimized/hero/hero-960.webp 960w, /optimized/hero/hero-1200.webp 1200w"
-                sizes="(max-width: 768px) 92vw, 600px"
-                width={600}
-                height={800}
-                alt="Fahrschule 06 - Professioneller Fahrlehrer mit blauem Ford"
-                className="w-full h-auto rounded-2xl shadow-2xl object-cover"
-                fetchPriority="high"
-                decoding="async"
-              />
+              {/* AVIF cuts the LCP transfer while WebP preserves broad browser support. */}
+              <picture>
+                <source
+                  type="image/avif"
+                  srcSet="/optimized/hero/hero-640.avif 640w, /optimized/hero/hero-800.avif 800w, /optimized/hero/hero-960.avif 960w, /optimized/hero/hero-1200.avif 1200w"
+                  sizes="(max-width: 768px) 92vw, 600px"
+                />
+                <img
+                  src="/optimized/hero/hero-640.webp"
+                  srcSet="/optimized/hero/hero-640.webp 640w, /optimized/hero/hero-800.webp 800w, /optimized/hero/hero-960.webp 960w, /optimized/hero/hero-1200.webp 1200w"
+                  sizes="(max-width: 768px) 92vw, 600px"
+                  width={600}
+                  height={800}
+                  alt="Fahrschule 06 - Professioneller Fahrlehrer mit blauem Ford"
+                  className="w-full h-auto rounded-2xl shadow-2xl object-cover"
+                  fetchPriority="high"
+                  decoding="async"
+                />
+              </picture>
             </div>
           </div>
         </div>

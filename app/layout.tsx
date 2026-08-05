@@ -8,7 +8,9 @@ import { getActiveAnnouncement } from "@/config/announcements"
 
 const inter = Inter({
   subsets: ["latin"],
-  display: "swap",
+  // Avoid a late text repaint becoming LCP on constrained mobile networks.
+  // The adjusted fallback has matching metrics and Inter still wins on normal connections.
+  display: "fallback",
   preload: true,
   adjustFontFallback: true,
 })
@@ -116,9 +118,10 @@ export default function RootLayout({
           <link
             rel="preload"
             as="image"
-            href="/optimized/hero/hero-640.webp"
-            type="image/webp"
-            imageSrcSet="/optimized/hero/hero-640.webp 640w, /optimized/hero/hero-960.webp 960w, /optimized/hero/hero-1200.webp 1200w"
+            media="(min-width: 769px)"
+            href="/optimized/hero/hero-640.avif"
+            type="image/avif"
+            imageSrcSet="/optimized/hero/hero-640.avif 640w, /optimized/hero/hero-800.avif 800w, /optimized/hero/hero-960.avif 960w, /optimized/hero/hero-1200.avif 1200w"
             imageSizes="(max-width: 768px) 92vw, 600px"
             fetchPriority="high"
           />
@@ -471,11 +474,9 @@ export default function RootLayout({
         <AnnouncementPopup />
         {children}
 
-        {/* Queue analytics immediately, but defer downloading the third-party library until idle. */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-NQBNQ1JF7V"
-          strategy="lazyOnload"
-        />
+        {/* Queue analytics immediately, but keep its large third-party bundle
+            out of the initial load. Interaction loads it at once; otherwise
+            queued events flush after a short delay. */}
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -483,6 +484,21 @@ export default function RootLayout({
             gtag('js', new Date());
             gtag('config', 'G-NQBNQ1JF7V');
             gtag('config', 'AW-17979343965');
+
+            var analyticsLoaded = false;
+            function loadAnalytics() {
+              if (analyticsLoaded) return;
+              analyticsLoaded = true;
+              var script = document.createElement('script');
+              script.async = true;
+              script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NQBNQ1JF7V';
+              document.head.appendChild(script);
+              window.removeEventListener('pointerdown', loadAnalytics);
+              window.removeEventListener('keydown', loadAnalytics);
+            }
+            window.addEventListener('pointerdown', loadAnalytics, { once: true, passive: true });
+            window.addEventListener('keydown', loadAnalytics, { once: true });
+            window.setTimeout(loadAnalytics, 10000);
           `}
         </Script>
       </body>

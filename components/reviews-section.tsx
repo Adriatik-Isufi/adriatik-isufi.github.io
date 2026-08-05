@@ -210,48 +210,32 @@ export function ReviewsSection() {
   useEffect(() => {
     const checkTruncation = () => {
       const truncated = new Set<number>()
-      
+
+      // Read each rendered paragraph in one pass. scrollHeight exposes the
+      // unclamped content height, so no temporary DOM clones or style writes
+      // are needed and the browser can satisfy all measurements from one layout.
       reviewRefs.current.forEach((element, reviewId) => {
-        if (!element) return
-        
-        // Create a clone to measure natural height
-        const clone = element.cloneNode(true) as HTMLElement
-        clone.style.display = 'block'
-        clone.style.webkitLineClamp = 'unset'
-        clone.style.position = 'absolute'
-        clone.style.visibility = 'hidden'
-        clone.style.width = `${element.offsetWidth}px` // Match original width
-        
-        // Append to body temporarily
-        document.body.appendChild(clone)
-        
-        // Get the natural height
-        const naturalHeight = clone.offsetHeight
-        
-        // Get the clamped height from the original element
-        const clampedHeight = element.offsetHeight
-        
-        // Remove the clone
-        document.body.removeChild(clone)
-        
-        // If natural height is greater than clamped height, it's truncated
-        if (naturalHeight > clampedHeight) {
+        if (element.isConnected && element.scrollHeight > element.clientHeight + 1) {
           truncated.add(reviewId)
         }
       })
-      
+
       setTruncatedReviews(truncated)
     }
 
-    // Wait for fonts and layout to be ready
-    const timeoutId = setTimeout(checkTruncation, 150)
-    
-    // Recheck on window resize
-    window.addEventListener('resize', checkTruncation)
-    
+    let frameId = requestAnimationFrame(checkTruncation)
+    const scheduleCheck = () => {
+      cancelAnimationFrame(frameId)
+      frameId = requestAnimationFrame(checkTruncation)
+    }
+
+    // Recheck after the web font settles and whenever card widths change.
+    document.fonts?.ready.then(scheduleCheck)
+    window.addEventListener('resize', scheduleCheck, { passive: true })
+
     return () => {
-      clearTimeout(timeoutId)
-      window.removeEventListener('resize', checkTruncation)
+      cancelAnimationFrame(frameId)
+      window.removeEventListener('resize', scheduleCheck)
     }
   }, [currentPage, mobileReviewIndex])
 

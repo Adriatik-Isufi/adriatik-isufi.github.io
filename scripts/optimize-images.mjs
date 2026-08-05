@@ -53,15 +53,27 @@ async function optimizeStoryImage(src) {
 
 async function optimizeHeroVariants(src) {
   let done = 0
-  // Mobile LCP + desktop sizes. Full 1536px original is far larger than any display size.
-  for (const width of [640, 960, 1200]) {
-    const out = path.join(heroDir, `hero-${width}.webp`)
-    if (await isUpToDate(src, out)) continue
-    await sharp(src)
-      .resize({ width, withoutEnlargement: true })
-      .webp({ quality: width <= 640 ? 68 : 62 })
-      .toFile(out)
-    done++
+  // Keep a close 800px candidate for high-density phones and serve AVIF where
+  // supported. AVIF preserves the current dimensions while substantially
+  // reducing the LCP download; WebP remains the compatibility fallback.
+  for (const width of [640, 800, 960, 1200]) {
+    const webpOut = path.join(heroDir, `hero-${width}.webp`)
+    if (!(await isUpToDate(src, webpOut))) {
+      await sharp(src)
+        .resize({ width, withoutEnlargement: true })
+        .webp({ quality: width <= 640 ? 68 : 62 })
+        .toFile(webpOut)
+      done++
+    }
+
+    const avifOut = path.join(heroDir, `hero-${width}.avif`)
+    if (!(await isUpToDate(src, avifOut))) {
+      await sharp(src)
+        .resize({ width, withoutEnlargement: true })
+        .avif({ quality: 50, effort: 5 })
+        .toFile(avifOut)
+      done++
+    }
   }
   return done
 }
