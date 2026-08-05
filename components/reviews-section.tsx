@@ -34,6 +34,13 @@ const optimizedSrc = (image: string, kind: "thumbs" | "stories") => {
   return `/optimized/${kind}/${name.replace(/\.(jpe?g|png)$/i, ".webp")}`
 }
 
+// Keep the indicator row narrow enough for a phone: a sliding window around the active item
+const indicatorWindow = (current: number, total: number, max = 7) => {
+  if (total <= max) return Array.from({ length: total }, (_, i) => i)
+  const start = Math.min(Math.max(current - Math.floor(max / 2), 0), total - max)
+  return Array.from({ length: max }, (_, i) => start + i)
+}
+
 export function ReviewsSection() {
   const [currentPage, setCurrentPage] = useState(0)
   const [mobileReviewIndex, setMobileReviewIndex] = useState(0)
@@ -280,8 +287,16 @@ export function ReviewsSection() {
 
             {stories.length > 0 && (
               <div className="flex items-center justify-center gap-3 mb-4">
-                <button onClick={() => setSelectedStoryIndex(0)} className="group relative">
-                  <svg className="w-20 h-20 sm:w-24 sm:h-24 -rotate-90 animate-pulse-ring" viewBox="0 0 100 100">
+                <button
+                  onClick={() => setSelectedStoryIndex(0)}
+                  className="group relative"
+                  aria-label={`Erfolgsgeschichten ansehen (${stories.length})`}
+                >
+                  <svg
+                    className="w-20 h-20 sm:w-24 sm:h-24 -rotate-90 animate-pulse-ring"
+                    viewBox="0 0 100 100"
+                    aria-hidden="true"
+                  >
                     {stories.map((_, index) => {
                       const segmentAngle = 360 / stories.length
                       const startAngle = index * segmentAngle
@@ -317,7 +332,7 @@ export function ReviewsSection() {
                     <div className="w-16 h-16 sm:w-[4.75rem] sm:h-[4.75rem] rounded-full overflow-hidden border-2 border-white">
                       <img
                         src={storySrc(stories[0], "thumbs") || "/placeholder.svg"}
-                        alt="Success Stories"
+                        alt=""
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                         onError={() => markFallback(stories[0].image)}
                       />
@@ -387,6 +402,7 @@ export function ReviewsSection() {
                 size="icon"
                 className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
                 onClick={() => setSelectedReview(null)}
+                aria-label="Bewertung schliessen"
               >
                 <X className="h-5 w-5" />
               </Button>
@@ -449,6 +465,7 @@ export function ReviewsSection() {
               size="icon"
               className="absolute top-4 right-4 text-white hover:bg-white/10 z-10"
               onClick={() => setSelectedStoryIndex(null)}
+              aria-label="Erfolgsgeschichten schliessen"
             >
               <X className="h-6 w-6" />
             </Button>
@@ -579,18 +596,26 @@ export function ReviewsSection() {
               </div>
             </div>
 
-            <div className="flex items-center justify-center space-x-2 mt-4">
-              {reviews.map((_, i) => (
+            <div className="flex items-center justify-center gap-1 mt-4">
+              {indicatorWindow(mobileReviewIndex, reviews.length).map((i) => (
                 <button
                   key={i}
                   onClick={() => setMobileReviewIndex(i)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    i === mobileReviewIndex ? "bg-[#1351d8] w-8" : "bg-gray-300"
-                  }`}
-                  aria-label={`Go to review ${i + 1}`}
-                />
+                  className="flex h-6 w-6 items-center justify-center"
+                  aria-label={`Zu Bewertung ${i + 1} von ${reviews.length}`}
+                  aria-current={i === mobileReviewIndex ? "true" : undefined}
+                >
+                  <span
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      i === mobileReviewIndex ? "bg-[#1351d8] w-5" : "bg-gray-300 w-2"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
+            <p className="text-sm text-gray-600 mt-2" aria-live="polite">
+              Bewertung {mobileReviewIndex + 1} von {reviews.length}
+            </p>
           </div>
 
           <div className="hidden md:grid md:grid-cols-3 gap-6 mb-8">
@@ -648,21 +673,27 @@ export function ReviewsSection() {
                 variant="outline"
                 size="icon"
                 onClick={prevPage}
+                aria-label="Vorherige Bewertungen"
                 className="border-[#1351d8] text-[#1351d8] hover:bg-[#1351d8]/5 bg-transparent"
               >
                 <ChevronLeft className="h-5 w-5" />
               </Button>
 
-              <div className="flex items-center space-x-2">
-                {[...Array(totalPages)].map((_, i) => (
+              <div className="flex items-center gap-1">
+                {indicatorWindow(currentPage, totalPages).map((i) => (
                   <button
                     key={i}
                     onClick={() => setCurrentPage(i)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      i === currentPage ? "bg-[#1351d8] w-8" : "bg-gray-300 hover:bg-gray-400"
-                    }`}
-                    aria-label={`Go to page ${i + 1}`}
-                  />
+                    className="flex h-6 w-6 items-center justify-center group"
+                    aria-label={`Zu Seite ${i + 1} von ${totalPages}`}
+                    aria-current={i === currentPage ? "true" : undefined}
+                  >
+                    <span
+                      className={`h-2 rounded-full transition-all duration-300 ${
+                        i === currentPage ? "bg-[#1351d8] w-5" : "bg-gray-300 w-2 group-hover:bg-gray-400"
+                      }`}
+                    />
+                  </button>
                 ))}
               </div>
 
@@ -670,6 +701,7 @@ export function ReviewsSection() {
                 variant="outline"
                 size="icon"
                 onClick={nextPage}
+                aria-label="Weitere Bewertungen"
                 className="border-[#1351d8] text-[#1351d8] hover:bg-[#1351d8]/5 bg-transparent"
               >
                 <ChevronRight className="h-5 w-5" />
@@ -680,7 +712,7 @@ export function ReviewsSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-[#4285F4] hover:bg-[#4285F4]/90 text-white shadow-lg"
+              className="bg-[#1967d2] hover:bg-[#1558b0] text-white shadow-lg"
               onClick={() => window.open(googleReviewsUrl, "_blank")}
             >
               <svg className="mr-2 h-5 w-5" viewBox="0 0 24 24">
@@ -706,7 +738,7 @@ export function ReviewsSection() {
             <Button
               size="lg"
               variant="outline"
-              className="border-[#4285F4] text-[#4285F4] hover:bg-[#4285F4]/5 bg-transparent shadow-lg"
+              className="border-[#1967d2] text-[#1967d2] hover:bg-[#1967d2]/5 bg-transparent shadow-lg"
               onClick={() => {
                 const reviewTemplate =
                   "Ich war sehr zufrieden mit Fahrschule 06! Vaxhid ist ein geduldiger und professioneller Fahrlehrer. Die Fahrstunden waren gut strukturiert und ich habe mich immer sicher gefühlt. Kann ich nur weiterempfehlen! ⭐⭐⭐⭐⭐"

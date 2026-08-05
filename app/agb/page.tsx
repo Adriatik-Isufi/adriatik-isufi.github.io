@@ -84,7 +84,13 @@ export default function AGBPage() {
 
             {/* Mobile menu button */}
             <div className="md:hidden">
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-700 hover:text-[#1351d8]">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-gray-700 hover:text-[#1351d8]"
+                aria-label={isMenuOpen ? "Menü schliessen" : "Menü öffnen"}
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-menu"
+              >
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
             </div>
@@ -93,6 +99,7 @@ export default function AGBPage() {
           {/* Mobile Navigation */}
           {isMenuOpen && (
             <div
+              id="mobile-menu"
               className="md:hidden fixed inset-0 top-16 bg-white shadow-lg border-t border-gray-200 overflow-hidden flex"
               style={{ zIndex: 60, height: "calc(100vh - 4rem)" }}
             >
