@@ -120,9 +120,11 @@ export function ReviewsSection() {
     }
   }
 
+  // No preventDefault here: React registers touchstart at the root as a passive
+  // listener, so the call is a no-op that only logs a console warning. The tap
+  // zones carry `touch-none`, which suppresses scroll and zoom declaratively,
+  // and handleTouchEnd still cancels the synthetic mouse events.
   const handleTouchStart = (e: React.TouchEvent, direction: 'left' | 'right') => {
-    e.preventDefault()
-    
     const touchX = e.touches[0].clientX
     const touchY = e.touches[0].clientY
     
