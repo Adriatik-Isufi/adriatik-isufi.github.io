@@ -125,13 +125,9 @@
 
 html {
   scroll-behavior: smooth;
-}
-
-/* Skip layout and paint work for below-the-fold sections until the browser
-   approaches them. The remembered intrinsic size keeps scrolling stable. */
-main > section:not(#startseite) {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
+  /* Clears the 4rem fixed header so anchor jumps land on a section's heading
+     rather than underneath the navigation. */
+  scroll-padding-top: 4.5rem;
 }
 
 /* Custom scrollbar */

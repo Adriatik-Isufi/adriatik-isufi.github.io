@@ -93,6 +93,28 @@ async function optimizeLogoPngs(src, name) {
   return done
 }
 
+// Android masks maskable icons down to as little as the centre 80%, and the mask
+// is filled rather than transparent — so the artwork needs padding on an opaque
+// background or the logo gets cropped.
+async function optimizeMaskableIcon(src, out) {
+  if (await isUpToDate(src, out)) return 0
+  const size = 512
+  const safeArea = Math.round(size * 0.6)
+  const inset = Math.round((size - safeArea) / 2)
+  const logo = await sharp(src)
+    .resize(safeArea, safeArea, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .png()
+    .toBuffer()
+
+  await sharp({
+    create: { width: size, height: size, channels: 4, background: '#ffffff' },
+  })
+    .composite([{ input: logo, top: inset, left: inset }])
+    .png({ compressionLevel: 9 })
+    .toFile(out)
+  return 1
+}
+
 async function main() {
   await fs.mkdir(thumbsDir, { recursive: true })
   await fs.mkdir(storiesDir, { recursive: true })
@@ -137,6 +159,15 @@ async function main() {
     } catch {
       console.warn(`[optimize-images] WARNING: ${name}.svg not found`)
     }
+  }
+
+  // Maskable PWA icon referenced by public/manifest.json
+  const maskableSrc = path.join(publicDir, 'logo-blue.svg')
+  try {
+    await fs.access(maskableSrc)
+    generated += await optimizeMaskableIcon(maskableSrc, path.join(optimizedDir, 'icon-maskable-512.png'))
+  } catch {
+    console.warn('[optimize-images] WARNING: logo-blue.svg not found, skipping maskable icon')
   }
 
   console.log(

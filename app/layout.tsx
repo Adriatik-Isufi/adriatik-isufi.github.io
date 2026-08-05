@@ -95,7 +95,10 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {/* Security Meta Tags (GitHub Pages doesn't support HTTP headers) */}
-        <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https: https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src https://www.google.com;" />
+        {/* The AW-* Google Ads tag loads its conversion script from googleads.g.doubleclick.net
+            and www.googleadservices.com, and drops conversion iframes from td.doubleclick.net —
+            all three must be allow-listed or gtag('config') is blocked. */}
+        <meta httpEquiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https: https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com; frame-src https://www.google.com https://www.googletagmanager.com https://td.doubleclick.net;" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
 
         {/* Geographic Meta Tags */}
@@ -107,6 +110,7 @@ export default function RootLayout({
         {/* Mobile Meta Tags */}
         <meta name="MobileOptimized" content="width" />
         <meta name="HandheldFriendly" content="true" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="Fahrschule 06" />
