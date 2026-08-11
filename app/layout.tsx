@@ -90,8 +90,14 @@ export default function RootLayout({
   const activeAnnouncement = getActiveAnnouncement()
 
   return (
-    <html lang="de-CH" className="scroll-smooth">
+    <html lang="de-CH" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        {/* Apply theme before paint to avoid flash of incorrect theme (FOIT). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var s=localStorage.getItem("theme");var d=s==="dark"||(s!=="light"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.classList.toggle("dark",d);}catch(e){}})();`,
+          }}
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {/* Security Meta Tags (GitHub Pages doesn't support HTTP headers) */}

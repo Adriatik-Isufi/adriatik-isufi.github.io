@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white flex flex-col items-center justify-center px-4">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 dark:from-neutral-900 to-white dark:to-neutral-950 flex flex-col items-center justify-center px-4">
       <div className="text-center max-w-md">
         <Image
           src="/optimized/logo-blue-80.png"
@@ -24,10 +24,10 @@ export default function NotFound() {
         />
 
         <h1 className="text-6xl font-bold text-[#1351d8] mb-4">404</h1>
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-neutral-50 mb-4">
           Seite nicht gefunden
         </h2>
-        <p className="text-gray-600 mb-8">
+        <p className="text-gray-600 dark:text-neutral-400 mb-8">
           Die angeforderte Seite existiert leider nicht. Vielleicht finden Sie, was Sie suchen, auf unserer Startseite.
         </p>
 
@@ -46,7 +46,7 @@ export default function NotFound() {
           </Link>
         </div>
 
-        <div className="mt-12 text-sm text-gray-500">
+        <div className="mt-12 text-sm text-gray-500 dark:text-neutral-400">
           <p>Oder rufen Sie uns direkt an:</p>
           <a
             href="tel:+41763402201"

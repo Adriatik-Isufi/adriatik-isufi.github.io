@@ -52,8 +52,8 @@ export default function ComingSoon({ onEnterSite }: { onEnterSite: () => void })
     <div className="min-h-screen bg-gradient-to-br from-[#1351d8] via-blue-600 to-blue-800 flex items-center justify-center relative overflow-hidden">
       {/* Enhanced animated background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-white/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-white/10 dark:bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-white/5 dark:bg-white/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 right-1/3 w-32 h-32 bg-white/15 rounded-full blur-xl animate-bounce delay-500"></div>
         <div className="absolute top-10 right-10 w-20 h-20 bg-white/8 rounded-full blur-lg animate-float-slow"></div>
         <div className="absolute bottom-20 left-20 w-16 h-16 bg-white/12 rounded-full blur-md animate-float-reverse"></div>
@@ -62,12 +62,12 @@ export default function ComingSoon({ onEnterSite }: { onEnterSite: () => void })
       {/* Enhanced floating road and car elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-10 opacity-20 animate-float">
-          <div className="w-16 h-1 bg-white rounded-full"></div>
-          <div className="w-8 h-1 bg-white rounded-full mt-2 ml-4"></div>
+          <div className="w-16 h-1 bg-white dark:bg-neutral-950 rounded-full"></div>
+          <div className="w-8 h-1 bg-white dark:bg-neutral-950 rounded-full mt-2 ml-4"></div>
         </div>
         <div className="absolute bottom-32 right-16 opacity-15 animate-float delay-700">
-          <div className="w-20 h-1 bg-white rounded-full"></div>
-          <div className="w-10 h-1 bg-white rounded-full mt-2 ml-6"></div>
+          <div className="w-20 h-1 bg-white dark:bg-neutral-950 rounded-full"></div>
+          <div className="w-10 h-1 bg-white dark:bg-neutral-950 rounded-full mt-2 ml-6"></div>
         </div>
         <div className="absolute top-1/3 left-0 opacity-30 animate-drive-across">
           <div className="text-4xl">🚗</div>
@@ -118,8 +118,8 @@ export default function ComingSoon({ onEnterSite }: { onEnterSite: () => void })
           </div>
 
           <div className="max-w-md mx-auto space-y-4">
-            <div className="bg-white/20 rounded-full h-3 overflow-hidden">
-              <div className="bg-gradient-to-r from-white to-blue-200 h-full rounded-full animate-loading-bar-enhanced"></div>
+            <div className="bg-white/20 dark:bg-white/20 rounded-full h-3 overflow-hidden">
+              <div className="bg-gradient-to-r from-white dark:from-neutral-950 to-blue-200 h-full rounded-full animate-loading-bar-enhanced"></div>
             </div>
             <div className="flex justify-between text-sm text-blue-200">
               {steps.map((step, index) => (
@@ -138,7 +138,7 @@ export default function ComingSoon({ onEnterSite }: { onEnterSite: () => void })
           </div>
 
           {/* Contact info with enhanced animations */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 max-w-md mx-auto border border-white/20 animate-glow">
+          <div className="bg-white/10 dark:bg-white/10 backdrop-blur-sm rounded-2xl p-6 max-w-md mx-auto border border-white/20 animate-glow">
             <h3 className="text-white font-semibold mb-4 animate-fade-in-delayed">
               Kontaktieren Sie uns bereits jetzt:
             </h3>

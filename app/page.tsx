@@ -31,6 +31,7 @@ import {
 import { LottieAnimation } from "@/components/lottie-animation"
 import Link from "next/link"
 import { ReviewsSection } from "@/components/reviews-section"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function FahrschulePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -303,7 +304,7 @@ export default function FahrschulePage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-neutral-950">
       {/* Floating WhatsApp Button - Mobile */}
       <div className="fixed bottom-6 right-6 z-50 md:hidden">
         <a
@@ -320,14 +321,14 @@ export default function FahrschulePage() {
       </div>
       {/* Header with Navigation */}
       <header>
-        <nav aria-label="Hauptnavigation" className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+        <nav aria-label="Hauptnavigation" className="fixed top-0 w-full bg-white/95 dark:bg-neutral-950/95 backdrop-blur-sm z-50 border-b border-gray-100 dark:border-neutral-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-3">
               <Image src="/optimized/logo-blue-80.png" alt="Fahrschule 06 Logo" width={40} height={40} className="w-10 h-10" priority />
               <div>
                 <span className="text-xl font-bold text-[#1351d8] block">Fahrschule 06</span>
-                <p className="text-xs text-gray-600">fahrschule06.ch</p>
+                <p className="text-xs text-gray-600 dark:text-neutral-400">fahrschule06.ch</p>
               </div>
             </div>
 
@@ -344,7 +345,7 @@ export default function FahrschulePage() {
                         scrollToSection(sectionId)
                       }}
                       className={`text-sm font-medium transition-colors hover:text-[#1351d8] ${
-                        activeSection === sectionId ? "text-[#1351d8]" : "text-gray-700"
+                        activeSection === sectionId ? "text-[#1351d8]" : "text-gray-700 dark:text-neutral-300"
                       }`}
                     >
                       {item}
@@ -352,6 +353,9 @@ export default function FahrschulePage() {
                   </li>
                 )
               })}
+              <li>
+                <ThemeToggle />
+              </li>
               <li>
                 <a
                   href="#kontakt"
@@ -367,10 +371,11 @@ export default function FahrschulePage() {
             </ul>
 
             {/* Mobile menu button */}
-            <div className="md:hidden">
+            <div className="md:hidden flex items-center gap-1">
+              <ThemeToggle />
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-700 hover:text-[#1351d8]"
+                className="text-gray-700 hover:text-[#1351d8] dark:text-neutral-300 dark:hover:text-[#1351d8]"
                 aria-label={isMenuOpen ? "Menü schliessen" : "Menü öffnen"}
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-menu"
@@ -384,7 +389,7 @@ export default function FahrschulePage() {
           {isMenuOpen && (
             <div
               id="mobile-menu"
-              className="md:hidden fixed inset-0 top-16 bg-white shadow-lg border-t border-gray-200 overflow-hidden flex"
+              className="md:hidden fixed inset-0 top-16 bg-white dark:bg-neutral-950 shadow-lg border-t border-gray-200 dark:border-neutral-800 overflow-hidden flex"
               style={{ zIndex: 60, height: "calc(100vh - 4rem)" }}
             >
               {/* Sidebar */}
@@ -393,7 +398,7 @@ export default function FahrschulePage() {
                 <button
                   onClick={() => setActiveSidebarSection("navigation")}
                   className={`flex-1 flex flex-col items-center justify-center py-8 text-white transition-all duration-300 relative ${
-                    activeSidebarSection === "navigation" ? "bg-white/20" : "hover:bg-white/10"
+                    activeSidebarSection === "navigation" ? "bg-white/20 dark:bg-white/20" : "hover:bg-white/10"
                   }`}
                 >
                   <span className="text-xs font-medium transform -rotate-90 whitespace-nowrap tracking-widest">
@@ -415,7 +420,7 @@ export default function FahrschulePage() {
                 <button
                   onClick={() => setActiveSidebarSection("social")}
                   className={`flex-1 flex flex-col items-center justify-center py-8 text-white transition-all duration-300 relative ${
-                    activeSidebarSection === "social" ? "bg-white/20" : "hover:bg-white/10"
+                    activeSidebarSection === "social" ? "bg-white/20 dark:bg-white/20" : "hover:bg-white/10"
                   }`}
                 >
                   <span className="text-xs font-medium transform -rotate-90 whitespace-nowrap tracking-widest">
@@ -437,7 +442,7 @@ export default function FahrschulePage() {
                 <button
                   onClick={() => setActiveSidebarSection("legal")}
                   className={`flex-1 flex flex-col items-center justify-center py-8 text-white transition-all duration-300 relative ${
-                    activeSidebarSection === "legal" ? "bg-white/20" : "hover:bg-white/10"
+                    activeSidebarSection === "legal" ? "bg-white/20 dark:bg-white/20" : "hover:bg-white/10"
                   }`}
                 >
                   <span className="text-xs font-medium transform -rotate-90 whitespace-nowrap tracking-widest">
@@ -457,14 +462,14 @@ export default function FahrschulePage() {
               </div>
 
               {/* Content Area */}
-              <div className="flex-1 overflow-y-auto bg-white">
+              <div className="flex-1 overflow-y-auto bg-white dark:bg-neutral-950">
                 {/* Simple close button in top right 
                   <div className="flex justify-end p-4">
                     <button
                       onClick={() => setIsMenuOpen(false)}
-                      className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                      className="p-2 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-lg transition-colors"
                     >
-                      <X className="h-5 w-5 text-gray-500" />
+                      <X className="h-5 w-5 text-gray-500 dark:text-neutral-400" />
                     </button>
                   </div>*/}
 
@@ -472,7 +477,7 @@ export default function FahrschulePage() {
                   {/* Navigation Section */}
                   {activeSidebarSection === "navigation" && (
                     <nav aria-label="Mobile Navigation" className="space-y-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-8 mt-4">Navigation</h3>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-neutral-50 mb-8 mt-4">Navigation</h3>
                       <ul className="space-y-3 list-none m-0 p-0">
                         {["Startseite", "Angebot", "Fahrlehrer", "Preise", "Über uns", "Bewertungen", "Kontakt"].map(
                           (item, index) => {
@@ -487,7 +492,7 @@ export default function FahrschulePage() {
                                     e.preventDefault()
                                     scrollToSection(sectionId)
                                   }}
-                                  className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-[#1351d8] hover:bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20"
+                                  className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 dark:text-neutral-300 hover:text-[#1351d8] hover:bg-blue-50 dark:hover:bg-[#1351d8]/10 rounded-lg transition-colors border border-gray-100 dark:border-neutral-800 hover:border-[#1351d8]/20"
                                 >
                                   {item}
                                 </a>
@@ -508,10 +513,10 @@ export default function FahrschulePage() {
                           Jetzt anmelden
                         </a>
                       </div>
-                      <div className="pt-4 border-t border-gray-200 space-y-3">
+                      <div className="pt-4 border-t border-gray-200 dark:border-neutral-800 space-y-3">
                         <a
                           href="tel:+41763402201"
-                          className="flex items-center space-x-3 text-[#1351d8] hover:text-[#1351d8]/80 transition-colors p-3 rounded-lg hover:bg-blue-50"
+                          className="flex items-center space-x-3 text-[#1351d8] hover:text-[#1351d8]/80 transition-colors p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-[#1351d8]/10"
                         >
                           <Phone className="w-5 h-5" />
                           <span className="font-medium">+41 76 340 22 01</span>
@@ -519,7 +524,7 @@ export default function FahrschulePage() {
 
                         <a
                           href="mailto:info@fahrschule06.ch"
-                          className="flex items-center space-x-3 text-[#1351d8] hover:text-[#1351d8]/80 transition-colors p-3 rounded-lg hover:bg-blue-50"
+                          className="flex items-center space-x-3 text-[#1351d8] hover:text-[#1351d8]/80 transition-colors p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-[#1351d8]/10"
                         >
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path
@@ -550,8 +555,8 @@ export default function FahrschulePage() {
                   {/* Social Section */}
                   {activeSidebarSection === "social" && (
                     <div className="space-y-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-8 mt-4">Sozial</h3>
-                      <p className="text-gray-600 mb-6">
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-neutral-50 mb-8 mt-4">Sozial</h3>
+                      <p className="text-gray-600 dark:text-neutral-400 mb-6">
                         Folgen Sie uns auf unseren Social Media Kanälen für Updates und Neuigkeiten!
                       </p>
 
@@ -560,7 +565,7 @@ export default function FahrschulePage() {
                           href="https://www.instagram.com/fahrschule06/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group border border-gray-100"
+                          className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-neutral-800/60 transition-colors group border border-gray-100 dark:border-neutral-800"
                         >
                           <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center">
                             <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -568,8 +573,8 @@ export default function FahrschulePage() {
                             </svg>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 group-hover:text-[#1351d8]">Instagram</p>
-                            <p className="text-sm text-gray-600">@fahrschule06</p>
+                            <p className="font-semibold text-gray-900 dark:text-neutral-50 group-hover:text-[#1351d8]">Instagram</p>
+                            <p className="text-sm text-gray-600 dark:text-neutral-400">@fahrschule06</p>
                           </div>
                         </a>
 
@@ -577,7 +582,7 @@ export default function FahrschulePage() {
                           href="https://www.facebook.com/vaxhid.mustafa"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group border border-gray-100"
+                          className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-neutral-800/60 transition-colors group border border-gray-100 dark:border-neutral-800"
                         >
                           <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
                             <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -585,8 +590,8 @@ export default function FahrschulePage() {
                             </svg>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 group-hover:text-[#1351d8]">Facebook</p>
-                            <p className="text-sm text-gray-600">Fahrschule 06</p>
+                            <p className="font-semibold text-gray-900 dark:text-neutral-50 group-hover:text-[#1351d8]">Facebook</p>
+                            <p className="text-sm text-gray-600 dark:text-neutral-400">Fahrschule 06</p>
                           </div>
                         </a>
 
@@ -594,7 +599,7 @@ export default function FahrschulePage() {
                           href="https://www.tiktok.com/@fahrschule_06"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group border border-gray-100"
+                          className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-neutral-800/60 transition-colors group border border-gray-100 dark:border-neutral-800"
                         >
                           <div className="w-12 h-12 bg-black rounded-xl flex items-center justify-center">
                             <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -602,8 +607,8 @@ export default function FahrschulePage() {
                             </svg>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 group-hover:text-[#1351d8]">TikTok</p>
-                            <p className="text-sm text-gray-600">@fahrschule_06</p>
+                            <p className="font-semibold text-gray-900 dark:text-neutral-50 group-hover:text-[#1351d8]">TikTok</p>
+                            <p className="text-sm text-gray-600 dark:text-neutral-400">@fahrschule_06</p>
                           </div>
                         </a>
 
@@ -611,7 +616,7 @@ export default function FahrschulePage() {
                           href="https://www.linkedin.com/in/vaxhid-mustafa-ab8574210/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group border border-gray-100"
+                          className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-neutral-800/60 transition-colors group border border-gray-100 dark:border-neutral-800"
                         >
                           <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center">
                             <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -619,12 +624,12 @@ export default function FahrschulePage() {
                             </svg>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 group-hover:text-[#1351d8]">LinkedIn</p>
-                            <p className="text-sm text-gray-600">Vaxhid Mustafa</p>
+                            <p className="font-semibold text-gray-900 dark:text-neutral-50 group-hover:text-[#1351d8]">LinkedIn</p>
+                            <p className="text-sm text-gray-600 dark:text-neutral-400">Vaxhid Mustafa</p>
                           </div>
                         </a>
 
-                        <div className="pt-4 border-t border-gray-200">
+                        <div className="pt-4 border-t border-gray-200 dark:border-neutral-800">
                           <a
                             href="https://wa.me/41763402201?text=Hallo%20Fahrschule%2006%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Fahrausbildung."
                             target="_blank"
@@ -644,16 +649,16 @@ export default function FahrschulePage() {
                   {/* Legal Section */}
                   {activeSidebarSection === "legal" && (
                     <div className="space-y-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-8 mt-4">Rechtliches</h3>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-neutral-50 mb-8 mt-4">Rechtliches</h3>
                       <div className="space-y-4">
                         <Link
                           href="/impressum"
-                          className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-[#1351d8] hover:bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20"
+                          className="block px-4 py-3 text-base font-medium text-gray-700 dark:text-neutral-300 hover:text-[#1351d8] hover:bg-blue-50 dark:hover:bg-[#1351d8]/10 rounded-lg transition-colors border border-gray-100 dark:border-neutral-800 hover:border-[#1351d8]/20"
                         >
                           Impressum
                         </Link>
-                        <div className="px-4 py-4 text-sm text-gray-600 bg-gray-50 rounded-lg border border-gray-100">
-                          <p className="mb-3 font-semibold text-gray-900">Fahrschule 06</p>
+                        <div className="px-4 py-4 text-sm text-gray-600 dark:text-neutral-400 bg-gray-50 dark:bg-neutral-900 rounded-lg border border-gray-100 dark:border-neutral-800">
+                          <p className="mb-3 font-semibold text-gray-900 dark:text-neutral-50">Fahrschule 06</p>
                           <div className="space-y-1">
                             <p>Inhaber: Vaxhid Mustafa</p>
                             <p>Oberdorf 4, 5057 Reitnau</p>
@@ -661,7 +666,7 @@ export default function FahrschulePage() {
                             <p>+41 76 340 22 01</p>
                           </div>
                         </div>
-                        <div className="pt-4 text-xs text-gray-500 text-center">
+                        <div className="pt-4 text-xs text-gray-500 dark:text-neutral-400 text-center">
                           <p>&copy; 2025 Fahrschule 06. Alle Rechte vorbehalten.</p>
                         </div>
                       </div>
@@ -678,7 +683,7 @@ export default function FahrschulePage() {
       {/* Main Content */}
       <main>
         {/* Hero Section with subtle parallax */}
-      <section id="startseite" className="relative pt-16 bg-gradient-to-br from-[#1351d8]/5 to-white overflow-hidden">
+      <section id="startseite" className="relative pt-16 bg-gradient-to-br from-[#1351d8]/5 dark:from-[#1351d8]/10 to-white dark:to-neutral-950 overflow-hidden">
         {/* Subtle background elements with parallax (transform set directly in the scroll handler) */}
         <div ref={parallaxRef} className="absolute inset-0 opacity-30">
           <div className="absolute top-20 right-10 w-32 h-32 bg-[#1351d8]/10 rounded-full blur-3xl"></div>
@@ -690,10 +695,10 @@ export default function FahrschulePage() {
             <div className="space-y-8" data-animate="hero-content" id="hero-content">
               <div className="space-y-4">
                 <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20">Fahren mit Vision</Badge>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 dark:text-neutral-50 leading-tight">
                   <span className="text-[#1351d8]">Fahrschule 06</span><br/>Deine Fahrschule in Aargau & Olten
                 </h1>
-                <h2 className="text-lg sm:text-xl text-gray-600 leading-relaxed font-normal mt-2">
+                <h2 className="text-lg sm:text-xl text-gray-600 dark:text-neutral-400 leading-relaxed font-normal mt-2">
                   Professionelle Fahrausbildung (Kategorie B) und VKU im Raum Aargau, Olten und Umgebung. Mit modernem Fahrzeug, erfahrenem
                   Fahrlehrer und individueller Betreuung ans Ziel.
                 </h2>
@@ -721,11 +726,11 @@ export default function FahrschulePage() {
               <div className="flex items-center space-x-8 pt-8">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-[#1351d8]">200+</div>
-                  <div className="text-sm text-gray-600">Erfolgreiche Schüler</div>
+                  <div className="text-sm text-gray-600 dark:text-neutral-400">Erfolgreiche Schüler</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-[#1351d8]">3+</div>
-                  <div className="text-sm text-gray-600">Jahre Erfahrung</div>
+                  <div className="text-sm text-gray-600 dark:text-neutral-400">Jahre Erfahrung</div>
                 </div>
               </div>
             </div>
@@ -813,8 +818,8 @@ export default function FahrschulePage() {
                 <div className="flex justify-center lg:justify-end">
                   <div className="relative">
                     {/* Always visible background decorative elements */}
-                    <div className="absolute inset-0 bg-white/10 rounded-full blur-2xl scale-110"></div>
-                    <div className="relative bg-white/5 backdrop-blur-sm rounded-full p-4 border border-white/20 w-[320px] h-[320px] flex items-center justify-center">
+                    <div className="absolute inset-0 bg-white/10 dark:bg-white/10 rounded-full blur-2xl scale-110"></div>
+                    <div className="relative bg-white/5 dark:bg-white/5 backdrop-blur-sm rounded-full p-4 border border-white/20 w-[320px] h-[320px] flex items-center justify-center">
                       {/* Background decorative elements - always visible */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-green-400/20 to-green-600/20 rounded-full flex items-center justify-center shadow-lg animate-pulse">
@@ -845,7 +850,7 @@ export default function FahrschulePage() {
                           style={{ animationDelay: "1s" }}
                         ></div>
                         <div
-                          className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-white/30 rounded-full animate-pulse"
+                          className="absolute left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-white/30 dark:bg-white/30 rounded-full animate-pulse"
                           style={{ animationDelay: "0.5s" }}
                         ></div>
                         <div
@@ -869,7 +874,7 @@ export default function FahrschulePage() {
 
           {/* Services Header */}
           <div className="text-center mb-16">
-            <Badge className="bg-white/20 text-white border-white/30 mb-4 backdrop-blur-sm">Unsere Services</Badge>
+            <Badge className="bg-white/20 dark:bg-white/20 text-white border-white/30 mb-4 backdrop-blur-sm">Unsere Services</Badge>
             <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Sicher ans Ziel: Deine Fahrausbildung in Aargau & Olten</h2>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
               Von der Theorie bis zur praktischen Prüfung – wir begleiten dich auf deinem Weg zum Führerschein Kategorie B
@@ -881,7 +886,7 @@ export default function FahrschulePage() {
             {services.map((service, index) => (
               <Card
                 key={index}
-                className="group border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-700 hover:-translate-y-2 md:hover:-translate-y-4 bg-white/10 backdrop-blur-md relative overflow-hidden transform hover:bg-white/15"
+                className="group border border-white/20 shadow-2xl hover:shadow-3xl transition-all duration-700 hover:-translate-y-2 md:hover:-translate-y-4 bg-white/10 dark:bg-white/10 backdrop-blur-md relative overflow-hidden transform hover:bg-white/15"
                 data-animate={`service-${index}`}
                 id={`service-${index}`}
                 style={{ animationDelay: `${index * 150}ms` }}
@@ -915,7 +920,7 @@ export default function FahrschulePage() {
                   <div className="pt-4 border-t border-white/20">
                     <Button
                       variant="outline"
-                      className="w-full border-white/40 text-white/90 hover:bg-white/20 hover:text-white hover:border-white/60 transition-all duration-300 bg-white/5 backdrop-blur-sm group-hover:shadow-lg"
+                      className="w-full border-white/40 text-white/90 hover:bg-white/20 hover:text-white hover:border-white/60 transition-all duration-300 bg-white/5 dark:bg-white/5 backdrop-blur-sm group-hover:shadow-lg"
                       onClick={() => scrollToSection("kontakt")}
                     >
                       Mehr erfahren
@@ -932,12 +937,12 @@ export default function FahrschulePage() {
       </section>
 
       {/* Meet the Teacher Section */}
-      <section id="fahrlehrer" className="py-16 bg-gradient-to-br from-gray-50 to-white">
+      <section id="fahrlehrer" className="py-16 bg-gradient-to-br from-gray-50 dark:from-neutral-900 to-white dark:to-neutral-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20 mb-4">Ihr Fahrlehrer</Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Dein lokaler Fahrlehrer für die Region Aarau – Olten</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-neutral-50 mb-4">Dein lokaler Fahrlehrer für die Region Aarau – Olten</h2>
+            <p className="text-xl text-gray-600 dark:text-neutral-400 max-w-3xl mx-auto">
               Persönlich, professionell und mit Leidenschaft für die Fahrausbildung im Aargau und Olten
             </p>
           </div>
@@ -945,7 +950,7 @@ export default function FahrschulePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left side - Video */}
             <div className="relative lg:mx-auto lg:w-3/4">
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl group bg-gradient-to-br from-[#1351d8]/5 to-blue-50 p-3">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl group bg-gradient-to-br from-[#1351d8]/5 dark:from-[#1351d8]/10 to-blue-50 dark:to-neutral-900 p-3">
                 <video
                   ref={videoRef}
                   id="teacher-video"
@@ -967,7 +972,7 @@ export default function FahrschulePage() {
                       onClick={toggleVideoPlay}
                       aria-label={isVideoPlaying ? "Video pausieren" : "Video abspielen"}
                       aria-controls="teacher-video"
-                      className="flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 group/btn"
+                      className="flex items-center justify-center w-12 h-12 bg-white/20 dark:bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 group/btn"
                     >
                       {isVideoPlaying ? (
                         <Pause className="w-6 h-6 text-white group-hover/btn:scale-110 transition-transform" />
@@ -981,7 +986,7 @@ export default function FahrschulePage() {
                       onClick={toggleVideoMute}
                       aria-label={isVideoMuted ? "Ton einschalten" : "Ton ausschalten"}
                       aria-controls="teacher-video"
-                      className="flex items-center justify-center w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 group/btn"
+                      className="flex items-center justify-center w-12 h-12 bg-white/20 dark:bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-all duration-300 group/btn"
                     >
                       {isVideoMuted ? (
                         <VolumeX className="w-6 h-6 text-white group-hover/btn:scale-110 transition-transform" />
@@ -1028,18 +1033,18 @@ export default function FahrschulePage() {
                     <User className="h-6 w-6 text-[#1351d8]" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900">Vaxhid Mustafa</h3>
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-neutral-50">Vaxhid Mustafa</h3>
                     <p className="text-[#1351d8] font-medium">Eidgenössisch diplomierter Fahrlehrer</p>
                   </div>
                 </div>
 
-                <p className="text-lg text-gray-600 leading-relaxed">
+                <p className="text-lg text-gray-600 dark:text-neutral-400 leading-relaxed">
                   Hallo! Ich bin Vaxhid, Ihr persönlicher Fahrlehrer bei Fahrschule 06. Mit über 3 Jahren Erfahrung und
                   mehr als 200 erfolgreich ausgebildeten Fahrschülern bringe ich Sie sicher und entspannt zum
                   Führerschein.
                 </p>
 
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 dark:text-neutral-400 leading-relaxed">
                   Meine Philosophie ist einfach: Jeder lernt anders, und deshalb passe ich meinen Unterricht individuell
                   an Ihre Bedürfnisse an. Ob Sie nervös sind oder bereits Vorerfahrung haben - gemeinsam schaffen wir
                   das!
@@ -1047,35 +1052,35 @@ export default function FahrschulePage() {
               </div>
 
               <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-gray-900">Meine Qualifikationen:</h4>
+                <h4 className="text-lg font-semibold text-gray-900 dark:text-neutral-50">Meine Qualifikationen:</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">Eidg. Fahrlehrerdiplom</span>
+                    <span className="text-gray-700 dark:text-neutral-300">Eidg. Fahrlehrerdiplom</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">VKU-Moderator</span>
+                    <span className="text-gray-700 dark:text-neutral-300">VKU-Moderator</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">Kategorie B & BPT 121</span>
+                    <span className="text-gray-700 dark:text-neutral-300">Kategorie B & BPT 121</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">3+ Jahre Erfahrung</span>
+                    <span className="text-gray-700 dark:text-neutral-300">3+ Jahre Erfahrung</span>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-[#1351d8]/5 to-blue-50 rounded-xl p-6 border border-[#1351d8]/10">
+              <div className="bg-gradient-to-r from-[#1351d8]/5 dark:from-[#1351d8]/10 to-blue-50 dark:to-neutral-900 rounded-xl p-6 border border-[#1351d8]/10">
                 <div className="flex items-start space-x-4">
                   <div className="w-10 h-10 bg-[#1351d8]/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <Star className="h-5 w-5 text-[#1351d8]" />
                   </div>
                   <div>
-                    <h5 className="font-semibold text-gray-900 mb-2">Mein Versprechen an Sie:</h5>
-                    <p className="text-gray-600 text-sm leading-relaxed">
+                    <h5 className="font-semibold text-gray-900 dark:text-neutral-50 mb-2">Mein Versprechen an Sie:</h5>
+                    <p className="text-gray-600 dark:text-neutral-400 text-sm leading-relaxed">
                       "Ich begleite Sie geduldig und professionell auf Ihrem Weg zum Führerschein. Ihr Erfolg ist mein
                       Erfolg - und gemeinsam erreichen wir Ihr Ziel!"
                     </p>
@@ -1107,50 +1112,50 @@ export default function FahrschulePage() {
       </section>
 
       {/* Prices Section */}
-      <section id="preise" className="py-16 bg-white">
+      <section id="preise" className="py-16 bg-white dark:bg-neutral-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20 mb-4">Unsere Preise</Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Transparente Preisgestaltung</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-neutral-50 mb-4">Transparente Preisgestaltung</h2>
+            <p className="text-xl text-gray-600 dark:text-neutral-400 max-w-3xl mx-auto">
               Transparente Preise ohne versteckte Kosten. Wählen Sie das Paket, das am besten zu Ihnen passt.
             </p>
           </div>
 
           {/* Individual Pricing Breakdown */}
           <div className="mb-16">
-            <div className="bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-2xl p-8 shadow-lg">
+            <div className="bg-gradient-to-br from-gray-50 dark:from-neutral-900 to-white dark:to-neutral-950 border border-gray-200 dark:border-neutral-800 rounded-2xl p-8 shadow-lg">
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Einzelpreise</h3>
-                <p className="text-gray-600">Flexible Buchung nach Ihren Bedürfnissen</p>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-neutral-50 mb-2">Einzelpreise</h3>
+                <p className="text-gray-600 dark:text-neutral-400">Flexible Buchung nach Ihren Bedürfnissen</p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Fahrstunden */}
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-4 flex items-center">
                     <Car className="h-5 w-5 text-[#1351d8] mr-2" />
                     Fahrstunden
                   </h4>
                   <div className="space-y-3">
-                    <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                    <div className="flex justify-between items-center py-2 border-b border-gray-100 dark:border-neutral-800">
                       <div>
-                        <span className="font-medium text-gray-900">Einzellektion</span>
-                        <span className="text-sm text-gray-500 block">45 min</span>
+                        <span className="font-medium text-gray-900 dark:text-neutral-50">Einzellektion</span>
+                        <span className="text-sm text-gray-500 dark:text-neutral-400 block">45 min</span>
                       </div>
                       <span className="font-semibold text-[#1351d8]">CHF 85.-</span>
                     </div>
-                    <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                    <div className="flex justify-between items-center py-2 border-b border-gray-100 dark:border-neutral-800">
                       <div>
-                        <span className="font-medium text-gray-900">Doppellektion</span>
-                        <span className="text-sm text-gray-500 block">90 min</span>
+                        <span className="font-medium text-gray-900 dark:text-neutral-50">Doppellektion</span>
+                        <span className="text-sm text-gray-500 dark:text-neutral-400 block">90 min</span>
                       </div>
                       <span className="font-semibold text-[#1351d8]">CHF 160.-</span>
                     </div>
                     <div className="flex justify-between items-center py-2">
                       <div>
-                        <span className="font-medium text-gray-900">Kontrollfahrt</span>
-                        <span className="text-sm text-gray-500 block">90 min</span>
+                        <span className="font-medium text-gray-900 dark:text-neutral-50">Kontrollfahrt</span>
+                        <span className="text-sm text-gray-500 dark:text-neutral-400 block">90 min</span>
                       </div>
                       <span className="font-semibold text-[#1351d8]">CHF 160.-</span>
                     </div>
@@ -1159,29 +1164,29 @@ export default function FahrschulePage() {
 
                 {/* Theorie */}
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-neutral-50 mb-4 flex items-center">
                     <Users className="h-5 w-5 text-[#1351d8] mr-2" />
                     Theorie
                   </h4>
                   <div className="space-y-3">
-                    <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                    <div className="flex justify-between items-center py-2 border-b border-gray-100 dark:border-neutral-800">
                       <div>
-                        <span className="font-medium text-gray-900">Einzellektion</span>
-                        <span className="text-sm text-gray-500 block">45 min</span>
+                        <span className="font-medium text-gray-900 dark:text-neutral-50">Einzellektion</span>
+                        <span className="text-sm text-gray-500 dark:text-neutral-400 block">45 min</span>
                       </div>
                       <span className="font-semibold text-[#1351d8]">CHF 55.-</span>
                     </div>
-                    <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                    <div className="flex justify-between items-center py-2 border-b border-gray-100 dark:border-neutral-800">
                       <div>
-                        <span className="font-medium text-gray-900">Doppellektion</span>
-                        <span className="text-sm text-gray-500 block">90 min</span>
+                        <span className="font-medium text-gray-900 dark:text-neutral-50">Doppellektion</span>
+                        <span className="text-sm text-gray-500 dark:text-neutral-400 block">90 min</span>
                       </div>
                       <span className="font-semibold text-[#1351d8]">CHF 90.-</span>
                     </div>
-                    <div className="flex justify-between items-center py-2 border-b border-gray-100">
+                    <div className="flex justify-between items-center py-2 border-b border-gray-100 dark:border-neutral-800">
                       <div>
-                        <span className="font-medium text-gray-900">VKU</span>
-                        <span className="text-sm text-gray-500 block">4 Teile (à 2h)</span>
+                        <span className="font-medium text-gray-900 dark:text-neutral-50">VKU</span>
+                        <span className="text-sm text-gray-500 dark:text-neutral-400 block">4 Teile (à 2h)</span>
                       </div>
                       <div className="text-right">
                         <span className="font-semibold text-[#1351d8]">CHF 160.-</span>
@@ -1189,8 +1194,8 @@ export default function FahrschulePage() {
                     </div>
                     <div className="flex justify-between items-center py-2">
                       <div>
-                        <span className="font-medium text-gray-900">Nothelferkurs</span>
-                        <span className="text-sm text-gray-500 block">2 Teile (à 5h)</span>
+                        <span className="font-medium text-gray-900 dark:text-neutral-50">Nothelferkurs</span>
+                        <span className="text-sm text-gray-500 dark:text-neutral-400 block">2 Teile (à 5h)</span>
                       </div>
                       <span className="font-semibold text-[#1351d8]">CHF 120.-</span>
                     </div>
@@ -1202,7 +1207,7 @@ export default function FahrschulePage() {
             {/* Value Proposition Bridge */}
             <div className="text-center mt-12 mb-8">
               <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-[#1351d8]/10 via-[#1351d8]/5 to-[#1351d8]/10 px-8 py-4 rounded-full border border-[#1351d8]/20">
-                <div className="text-sm text-gray-600">Einzelbuchung zu teuer?</div>
+                <div className="text-sm text-gray-600 dark:text-neutral-400">Einzelbuchung zu teuer?</div>
                 <ArrowRight className="h-4 w-4 text-[#1351d8]" />
                 <div className="text-sm font-semibold text-[#1351d8]">Sparen Sie mit unseren Paketen!</div>
               </div>
@@ -1210,10 +1215,10 @@ export default function FahrschulePage() {
           </div>
 
           <div className="mb-16">
-            <div className="bg-gradient-to-br from-blue-50 to-white border border-blue-200 rounded-2xl p-8 shadow-lg">
+            <div className="bg-gradient-to-br from-blue-50 dark:from-neutral-900 to-white dark:to-neutral-950 border border-blue-200 dark:border-blue-900 rounded-2xl p-8 shadow-lg">
               <div className="text-center">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Grundpauschale</h3>
-                <p className="text-gray-600 mb-4">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-neutral-50 mb-4">Grundpauschale</h3>
+                <p className="text-gray-600 dark:text-neutral-400 mb-4">
                   Die Grundpauschale beinhaltet einen Versicherungsanteil sowie die Fahrschüleradministration. Die
                   Pauschale ist einmalig zu Bezahlen und beläuft sich auf Fr. 100.-
                 </p>
@@ -1227,16 +1232,16 @@ export default function FahrschulePage() {
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Basis Paket */}
             <Card
-              className="relative border-2 border-gray-200 hover:border-[#1351d8]/30 transition-all duration-500 hover:scale-105"
+              className="relative border-2 border-gray-200 dark:border-neutral-800 hover:border-[#1351d8]/30 transition-all duration-500 hover:scale-105"
               data-animate="price-basic"
               id="price-basic"
             >
               <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl font-bold text-gray-900 mb-2">Basis Paket</CardTitle>
-                <p className="text-gray-600 mb-6">Ideal für Einsteiger</p>
+                <CardTitle className="text-2xl font-bold text-gray-900 dark:text-neutral-50 mb-2">Basis Paket</CardTitle>
+                <p className="text-gray-600 dark:text-neutral-400 mb-6">Ideal für Einsteiger</p>
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-[#1351d8]">CHF 850</span>
-                  <span className="text-gray-600">.-</span>
+                  <span className="text-gray-600 dark:text-neutral-400">.-</span>
                   <div className="text-sm text-green-600 font-medium mt-2">Sie sparen CHF 50.-</div>
                 </div>
               </CardHeader>
@@ -1244,15 +1249,15 @@ export default function FahrschulePage() {
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">10 Fahrstunden à 45 Min</span>
+                    <span className="text-gray-700 dark:text-neutral-300">10 Fahrstunden à 45 Min</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">Grundpauschale</span>
+                    <span className="text-gray-700 dark:text-neutral-300">Grundpauschale</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">Individuelle Betreuung</span>
+                    <span className="text-gray-700 dark:text-neutral-300">Individuelle Betreuung</span>
                   </div>
                 </div>
                 <div className="pt-6">
@@ -1277,11 +1282,11 @@ export default function FahrschulePage() {
                 <Badge className="bg-[#1351d8] text-white px-4 py-1 text-sm font-medium">⭐ Beliebt</Badge>
               </div>
               <CardHeader className="text-center pb-8 pt-8">
-                <CardTitle className="text-2xl font-bold text-gray-900 mb-2">Komfort Paket</CardTitle>
-                <p className="text-gray-600 mb-6">Unser beliebtes Angebot</p>
+                <CardTitle className="text-2xl font-bold text-gray-900 dark:text-neutral-50 mb-2">Komfort Paket</CardTitle>
+                <p className="text-gray-600 dark:text-neutral-400 mb-6">Unser beliebtes Angebot</p>
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-[#1351d8]">CHF 950</span>
-                  <span className="text-gray-600">.-</span>
+                  <span className="text-gray-600 dark:text-neutral-400">.-</span>
                   <div className="text-sm text-green-600 font-medium mt-2">Sie sparen CHF 110.-</div>
                 </div>
               </CardHeader>
@@ -1289,23 +1294,23 @@ export default function FahrschulePage() {
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">10 Fahrstunden à 45 Min</span>
+                    <span className="text-gray-700 dark:text-neutral-300">10 Fahrstunden à 45 Min</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">Verkehrskundeunterricht (VKU)</span>
+                    <span className="text-gray-700 dark:text-neutral-300">Verkehrskundeunterricht (VKU)</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">Grundpauschale</span>
+                    <span className="text-gray-700 dark:text-neutral-300">Grundpauschale</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">Individuelle Betreuung</span>
+                    <span className="text-gray-700 dark:text-neutral-300">Individuelle Betreuung</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">Prüfungsanmeldung</span>
+                    <span className="text-gray-700 dark:text-neutral-300">Prüfungsanmeldung</span>
                   </div>
                 </div>
                 <div className="pt-6">
@@ -1321,17 +1326,17 @@ export default function FahrschulePage() {
 
             {/* Premium Paket */}
             <Card
-              className="relative border-2 border-gray-200 hover:border-[#1351d8]/30 transition-all duration-500 hover:scale-105"
+              className="relative border-2 border-gray-200 dark:border-neutral-800 hover:border-[#1351d8]/30 transition-all duration-500 hover:scale-105"
               data-animate="price-premium"
               id="price-premium"
               style={{ animationDelay: "400ms" }}
             >
               <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl font-bold text-gray-900 mb-2">Premium Paket</CardTitle>
-                <p className="text-gray-600 mb-6">Rundum-sorglos-Paket</p>
+                <CardTitle className="text-2xl font-bold text-gray-900 dark:text-neutral-50 mb-2">Premium Paket</CardTitle>
+                <p className="text-gray-600 dark:text-neutral-400 mb-6">Rundum-sorglos-Paket</p>
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-[#1351d8]">CHF 1,790</span>
-                  <span className="text-gray-600">.-</span>
+                  <span className="text-gray-600 dark:text-neutral-400">.-</span>
                   <div className="text-sm text-green-600 font-medium mt-2">Sie sparen CHF 230.-</div>
                 </div>
               </CardHeader>
@@ -1339,27 +1344,27 @@ export default function FahrschulePage() {
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">20 Fahrstunden à 45 Min</span>
+                    <span className="text-gray-700 dark:text-neutral-300">20 Fahrstunden à 45 Min</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">Verkehrskundeunterricht (VKU)</span>
+                    <span className="text-gray-700 dark:text-neutral-300">Verkehrskundeunterricht (VKU)</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">Grundpauschale</span>
+                    <span className="text-gray-700 dark:text-neutral-300">Grundpauschale</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">Individuelle Betreuung</span>
+                    <span className="text-gray-700 dark:text-neutral-300">Individuelle Betreuung</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">1 Prüfungssimulation à 90 Min</span>
+                    <span className="text-gray-700 dark:text-neutral-300">1 Prüfungssimulation à 90 Min</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700">Prüfungsanmeldung</span>
+                    <span className="text-gray-700 dark:text-neutral-300">Prüfungsanmeldung</span>
                   </div>
                 </div>
                 <div className="pt-6">
@@ -1377,15 +1382,15 @@ export default function FahrschulePage() {
       </section>
 
       {/* About Section */}
-      <section id="ueber-uns" className="py-16 bg-gradient-to-br from-[#1351d8]/5 to-white">
+      <section id="ueber-uns" className="py-16 bg-gradient-to-br from-[#1351d8]/5 dark:from-[#1351d8]/10 to-white dark:to-neutral-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20">Über uns</Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-neutral-50">
                 Deine Fahrschule in der Region Aargau/Olten
               </h2>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-gray-600 dark:text-neutral-400 leading-relaxed">
                 Wer eine geduldige und professionelle Fahrschule in Aargau oder eine zuverlässige Fahrschule in Olten sucht,
                 ist bei der Fahrschule 06 genau richtig. Von meinem Standort in Reitnau aus biete ich dir massgeschneiderte
                 Fahrstunden (Kat. B) im gesamten Grenzgebiet Aargau–Solothurn. Mit modernem Fahrzeug und meiner ruhigen Art
@@ -1394,19 +1399,19 @@ export default function FahrschulePage() {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Award className="h-6 w-6 text-[#1351d8]" />
-                  <span className="text-gray-700">
+                  <span className="text-gray-700 dark:text-neutral-300">
                     Eidgenössisch Diplomierter Fahrlehrer mit langjähriger Erfahrung
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Car className="h-6 w-6 text-[#1351d8]" />
-                  <span className="text-gray-700">
+                  <span className="text-gray-700 dark:text-neutral-300">
                     Modernes Fahrzeug mit neuester Sicherheitstechnik und Ausstattung
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Users className="h-6 w-6 text-[#1351d8]" />
-                  <span className="text-gray-700">Massgeschneiderte Betreuung und flexible Terminplanung</span>
+                  <span className="text-gray-700 dark:text-neutral-300">Massgeschneiderte Betreuung und flexible Terminplanung</span>
                 </div>
               </div>
             </div>
@@ -1467,49 +1472,49 @@ export default function FahrschulePage() {
       <ReviewsSection />
 
       {/* Abholservice / Catchment Area Section */}
-      <section id="abholservice" className="py-16 bg-gradient-to-br from-[#1351d8]/5 to-white">
+      <section id="abholservice" className="py-16 bg-gradient-to-br from-[#1351d8]/5 dark:from-[#1351d8]/10 to-white dark:to-neutral-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20 mb-4">Abholservice</Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-neutral-50 mb-4">
               Flexibler Abholservice: Dein Fahrlehrer kommt zu dir
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-neutral-400 max-w-3xl mx-auto">
               Egal ob du zur Schule gehst, arbeitest oder am Bahnhof wartest – ich biete dir maximale Flexibilität.
               Als deine lokale Fahrschule für Aargau und Olten hole ich dich für die Fahrstunden an deinem Wunschort ab.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+            <div className="bg-white dark:bg-neutral-950 rounded-2xl border border-gray-200 dark:border-neutral-800 shadow-sm p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 bg-[#1351d8]/10 rounded-xl flex items-center justify-center">
                   <MapPin className="w-5 h-5 text-[#1351d8]" />
                 </div>
-                <h3 className="font-bold text-gray-900">Kanton Aargau</h3>
+                <h3 className="font-bold text-gray-900 dark:text-neutral-50">Kanton Aargau</h3>
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-gray-600 dark:text-neutral-400 text-sm leading-relaxed">
                 Ich hole dich überall im Kanton Aargau ab – an deinem Wohnort, Bahnhof oder Arbeitsplatz.
               </p>
             </div>
-            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+            <div className="bg-white dark:bg-neutral-950 rounded-2xl border border-gray-200 dark:border-neutral-800 shadow-sm p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 bg-[#1351d8]/10 rounded-xl flex items-center justify-center">
                   <MapPin className="w-5 h-5 text-[#1351d8]" />
                 </div>
-                <h3 className="font-bold text-gray-900">Raum Olten</h3>
+                <h3 className="font-bold text-gray-900 dark:text-neutral-50">Raum Olten</h3>
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-gray-600 dark:text-neutral-400 text-sm leading-relaxed">
                 Auch im Raum Olten bin ich für dich da – flexibler Treffpunkt, auch am Bahnhof Olten.
               </p>
             </div>
-            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+            <div className="bg-white dark:bg-neutral-950 rounded-2xl border border-gray-200 dark:border-neutral-800 shadow-sm p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 bg-[#1351d8]/10 rounded-xl flex items-center justify-center">
                   <Award className="w-5 h-5 text-[#1351d8]" />
                 </div>
-                <h3 className="font-bold text-gray-900">Prüfungsorte</h3>
+                <h3 className="font-bold text-gray-900 dark:text-neutral-50">Prüfungsorte</h3>
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-gray-600 dark:text-neutral-400 text-sm leading-relaxed">
                 Prüfung beim StVA Aargau oder StVA Olten – wir üben gezielt auf den offiziellen Prüfungsrouten
               </p>
             </div>
@@ -1518,12 +1523,12 @@ export default function FahrschulePage() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-16 bg-white">
+      <section id="faq" className="py-16 bg-white dark:bg-neutral-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20 mb-4">FAQ</Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">FAQ: Wichtige Fragen an deine Fahrschule in Aargau & Olten</h2>
-            <p className="text-xl text-gray-600">Antworten auf die wichtigsten Fragen zur Fahrausbildung</p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-neutral-50 mb-4">FAQ: Wichtige Fragen an deine Fahrschule in Aargau & Olten</h2>
+            <p className="text-xl text-gray-600 dark:text-neutral-400">Antworten auf die wichtigsten Fragen zur Fahrausbildung</p>
           </div>
 
           <div className="space-y-4">
@@ -1563,17 +1568,17 @@ export default function FahrschulePage() {
             ].map((faq, index) => (
               <details
                 key={index}
-                className="group bg-gray-50 rounded-xl border border-gray-200 overflow-hidden"
+                className="group bg-gray-50 dark:bg-neutral-900 rounded-xl border border-gray-200 dark:border-neutral-800 overflow-hidden"
               >
-                <summary className="flex items-center justify-between cursor-pointer p-6 hover:bg-gray-100 transition-colors">
-                  <span className="font-semibold text-gray-900 text-left pr-4">{faq.question}</span>
+                <summary className="flex items-center justify-between cursor-pointer p-6 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-colors">
+                  <span className="font-semibold text-gray-900 dark:text-neutral-50 text-left pr-4">{faq.question}</span>
                   <span className="flex-shrink-0 ml-2 text-[#1351d8] group-open:rotate-180 transition-transform">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </span>
                 </summary>
-                <div className="px-6 pb-6 text-gray-600 leading-relaxed">
+                <div className="px-6 pb-6 text-gray-600 dark:text-neutral-400 leading-relaxed">
                   {faq.answer === "agb_special" ? (
                     <>
                       Unsere AGB regeln alle wichtigen Punkte rund um die Fahrausbildung bei Fahrschule 06 -- darunter Buchung und Bezahlung von Fahrstunden, Annullierungsbedingungen, VKU-Kursregelungen, Geschenkgutscheine sowie Datenschutz und Haftung. Wir empfehlen dir, die AGB vor Beginn der Ausbildung durchzulesen.{" "}
@@ -1599,12 +1604,12 @@ export default function FahrschulePage() {
       </section>
 
       {/* Contact Section */}
-      <section id="kontakt" className="py-16 bg-gray-50">
+      <section id="kontakt" className="py-16 bg-gray-50 dark:bg-neutral-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <Badge className="bg-[#1351d8]/10 text-[#1351d8] border-[#1351d8]/20 mb-4">Kontakt</Badge>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Jetzt Kontakt aufnehmen</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-neutral-50 mb-4">Jetzt Kontakt aufnehmen</h2>
+            <p className="text-xl text-gray-600 dark:text-neutral-400 max-w-3xl mx-auto">
               Bereit für Ihren Führerschein? Kontaktieren Sie uns für eine kostenlose Beratung
             </p>
           </div>
@@ -1613,14 +1618,14 @@ export default function FahrschulePage() {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Kontaktinformationen</h3>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-neutral-50 mb-6">Kontaktinformationen</h3>
                 <div className="space-y-4">
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-[#1351d8]/10 rounded-full flex items-center justify-center">
                       <Phone className="h-6 w-6 text-[#1351d8]" />
                     </div>
                     <div>
-                      <div className="font-semibold text-gray-900">Telefon</div>
+                      <div className="font-semibold text-gray-900 dark:text-neutral-50">Telefon</div>
                       <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0">
                         <a
                           href="tel:+41763402201"
@@ -1654,7 +1659,7 @@ export default function FahrschulePage() {
                       </svg>
                     </div>
                     <div>
-                      <div className="font-semibold text-gray-900">E-Mail</div>
+                      <div className="font-semibold text-gray-900 dark:text-neutral-50">E-Mail</div>
                       <div className="flex flex-col space-y-1">
                         <a
                           href="mailto:info@fahrschule06.ch"
@@ -1662,7 +1667,7 @@ export default function FahrschulePage() {
                         >
                           info@fahrschule06.ch
                         </a>
-                        <span className="text-sm text-gray-500">oder nutzen Sie das Formular auf der Seite</span>
+                        <span className="text-sm text-gray-500 dark:text-neutral-400">oder nutzen Sie das Formular auf der Seite</span>
                       </div>
                     </div>
                   </div>
@@ -1671,8 +1676,8 @@ export default function FahrschulePage() {
                       <MapPin className="h-6 w-6 text-[#1351d8]" />
                     </div>
                     <div>
-                      <div className="font-semibold text-gray-900">Adresse</div>
-                      <div className="text-gray-600">
+                      <div className="font-semibold text-gray-900 dark:text-neutral-50">Adresse</div>
+                      <div className="text-gray-600 dark:text-neutral-400">
                         Oberdorf 4
                         <br />
                         5057 Reitnau
@@ -1684,8 +1689,8 @@ export default function FahrschulePage() {
                       <Globe className="h-6 w-6 text-[#1351d8]" />
                     </div>
                     <div>
-                      <div className="font-semibold text-gray-900">Website</div>
-                      <div className="text-gray-600">fahrschule06.ch</div>
+                      <div className="font-semibold text-gray-900 dark:text-neutral-50">Website</div>
+                      <div className="text-gray-600 dark:text-neutral-400">fahrschule06.ch</div>
                     </div>
                   </div>
                   <div className="flex items-center space-x-4">
@@ -1693,8 +1698,8 @@ export default function FahrschulePage() {
                       <Clock className="h-6 w-6 text-[#1351d8]" />
                     </div>
                     <div>
-                      <div className="font-semibold text-gray-900">Öffnungszeiten</div>
-                      <div className="text-gray-600">Mo-Sa: 08:00 - 20:00</div>
+                      <div className="font-semibold text-gray-900 dark:text-neutral-50">Öffnungszeiten</div>
+                      <div className="text-gray-600 dark:text-neutral-400">Mo-Sa: 08:00 - 20:00</div>
                     </div>
                   </div>
                 </div>
@@ -1704,7 +1709,7 @@ export default function FahrschulePage() {
             {/* Contact Form */}
             <Card className="border-0 shadow-lg">
               <CardHeader>
-                <CardTitle className="text-xl text-gray-900">Nachricht senden</CardTitle>
+                <CardTitle className="text-xl text-gray-900 dark:text-neutral-50">Nachricht senden</CardTitle>
                 <CardDescription>
                   Füllen Sie das Formular aus und wir melden uns schnellstmöglich bei Ihnen
                 </CardDescription>
@@ -1713,7 +1718,7 @@ export default function FahrschulePage() {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="firstName" className="text-sm font-medium text-gray-700 mb-1.5 block tracking-tight">Vorname</label>
+                      <label htmlFor="firstName" className="text-sm font-medium text-gray-700 dark:text-neutral-300 mb-1.5 block tracking-tight">Vorname</label>
                       <Input
                         id="firstName"
                         name="firstName"
@@ -1724,7 +1729,7 @@ export default function FahrschulePage() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="lastName" className="text-sm font-medium text-gray-700 mb-1.5 block tracking-tight">Nachname</label>
+                      <label htmlFor="lastName" className="text-sm font-medium text-gray-700 dark:text-neutral-300 mb-1.5 block tracking-tight">Nachname</label>
                       <Input
                         id="lastName"
                         name="lastName"
@@ -1736,7 +1741,7 @@ export default function FahrschulePage() {
                     </div>
                   </div>
                   <div>
-                    <label htmlFor="email" className="text-sm font-medium text-gray-700 mb-1.5 block tracking-tight">E-Mail</label>
+                    <label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-neutral-300 mb-1.5 block tracking-tight">E-Mail</label>
                     <Input
                       id="email"
                       type="email"
@@ -1748,7 +1753,7 @@ export default function FahrschulePage() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="text-sm font-medium text-gray-700 mb-1.5 block tracking-tight">Telefon</label>
+                    <label htmlFor="phone" className="text-sm font-medium text-gray-700 dark:text-neutral-300 mb-1.5 block tracking-tight">Telefon</label>
                     <Input
                       id="phone"
                       type="tel"
@@ -1759,7 +1764,7 @@ export default function FahrschulePage() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="message" className="text-sm font-medium text-gray-700 mb-1.5 block tracking-tight">Nachricht</label>
+                    <label htmlFor="message" className="text-sm font-medium text-gray-700 dark:text-neutral-300 mb-1.5 block tracking-tight">Nachricht</label>
                     <Textarea
                       id="message"
                       name="message"
@@ -1779,9 +1784,9 @@ export default function FahrschulePage() {
                       checked={formData.agbAccepted}
                       onChange={(e) => setFormData((prev) => ({ ...prev, agbAccepted: e.target.checked }))}
                       required
-                      className="mt-1 h-4 w-4 rounded border-gray-300 text-[#1351d8] focus:ring-[#1351d8] cursor-pointer"
+                      className="mt-1 h-4 w-4 rounded border-gray-300 dark:border-neutral-700 text-[#1351d8] focus:ring-[#1351d8] cursor-pointer"
                     />
-                    <label htmlFor="agbAccepted" className="text-sm text-gray-600 cursor-pointer">
+                    <label htmlFor="agbAccepted" className="text-sm text-gray-600 dark:text-neutral-400 cursor-pointer">
                       Ich habe die{" "}
                       <a href="/agb/" target="_blank" className="text-[#1351d8] underline hover:text-[#0f41ac] font-medium">
                         Allgemeinen Geschäftsbedingungen (AGB)
@@ -1840,10 +1845,10 @@ export default function FahrschulePage() {
                 <Image src="/optimized/logo-80.png" alt="Fahrschule 06 Logo" width={32} height={32} className="w-8 h-8" loading="lazy" />
                 <div>
                   <h3 className="text-lg font-bold">Fahrschule 06</h3>
-                  <p className="text-sm text-gray-400">fahrschule06.ch</p>
+                  <p className="text-sm text-gray-400 dark:text-neutral-500">fahrschule06.ch</p>
                 </div>
               </div>
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-400 dark:text-neutral-500 text-sm">
                 Ihre professionelle Fahrschule in der Region Aargau/Olten für eine sichere und entspannte
                 Fahrausbildung.
               </p>
@@ -1851,7 +1856,7 @@ export default function FahrschulePage() {
 
             <div>
               <h4 className="font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-400 dark:text-neutral-500">
                 <li>Kategorie B (Auto)</li>
                 <li>Kategorie B BPT 121 (Taxi)</li>
                 <li>Kontrollfahrt</li>
@@ -1861,7 +1866,7 @@ export default function FahrschulePage() {
 
             <div>
               <h4 className="font-semibold mb-4">Kontakt</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-400 dark:text-neutral-500">
                 <li>+41 76 340 22 01</li>
                 <li>info@fahrschule06.ch</li>
                 <li>Oberdorf 4</li>
@@ -1872,7 +1877,7 @@ export default function FahrschulePage() {
 
             <div>
               <h4 className="font-semibold mb-4">Öffnungszeiten</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-400 dark:text-neutral-500">
                 <li>Mo-Sa: 08:00 - 20:00</li>
               </ul>
             </div>
@@ -1884,7 +1889,7 @@ export default function FahrschulePage() {
                   href="https://www.facebook.com/vaxhid.mustafa"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 dark:text-neutral-500 hover:text-white transition-colors"
                   aria-label="Facebook"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -1895,7 +1900,7 @@ export default function FahrschulePage() {
                   href="https://www.instagram.com/fahrschule06/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 dark:text-neutral-500 hover:text-white transition-colors"
                   aria-label="Instagram"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -1906,7 +1911,7 @@ export default function FahrschulePage() {
                   href="https://www.tiktok.com/@fahrschule_06"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 dark:text-neutral-500 hover:text-white transition-colors"
                   aria-label="TikTok"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -1917,7 +1922,7 @@ export default function FahrschulePage() {
                   href="https://www.linkedin.com/in/vaxhid-mustafa-ab8574210/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 dark:text-neutral-500 hover:text-white transition-colors"
                   aria-label="LinkedIn"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -1928,19 +1933,19 @@ export default function FahrschulePage() {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400 dark:text-neutral-500">
             <div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
               <p>&copy; 2025 Fahrschule 06. Alle Rechte vorbehalten.</p>
               <div className="flex gap-6">
                 <Link
                   href="/impressum"
-                  className="text-gray-400 hover:text-white transition-colors underline hover:no-underline font-medium"
+                  className="text-gray-400 dark:text-neutral-500 hover:text-white transition-colors underline hover:no-underline font-medium"
                 >
                   Impressum
                 </Link>
                 <Link
                   href="/agb/"
-                  className="text-gray-400 hover:text-white transition-colors underline hover:no-underline font-medium"
+                  className="text-gray-400 dark:text-neutral-500 hover:text-white transition-colors underline hover:no-underline font-medium"
                 >
                   AGB
                 </Link>

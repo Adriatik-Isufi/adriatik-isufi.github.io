@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowLeft, Menu, X, Globe, CheckCircle, Phone } from "lucide-react"
 import Link from "next/link"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function ImpressumPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -20,55 +21,57 @@ export default function ImpressumPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-neutral-950">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+      <nav className="fixed top-0 w-full bg-white/95 dark:bg-neutral-950/95 backdrop-blur-sm z-50 border-b border-gray-100 dark:border-neutral-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center space-x-3">
               <Image src="/optimized/logo-blue-80.png" alt="Fahrschule 06 Logo" width={40} height={40} className="w-10 h-10" />
               <div>
                 <span className="text-xl font-bold text-[#1351d8]">Fahrschule 06</span>
-                <p className="text-xs text-gray-600">fahrschule06.ch</p>
+                <p className="text-xs text-gray-600 dark:text-neutral-400">fahrschule06.ch</p>
               </div>
             </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/" className="text-sm font-medium text-gray-700 hover:text-[#1351d8] transition-colors">
+              <Link href="/" className="text-sm font-medium text-gray-700 dark:text-neutral-300 hover:text-[#1351d8] transition-colors">
                 Startseite
               </Link>
               <Link
                 href="/#angebot"
-                className="text-sm font-medium text-gray-700 hover:text-[#1351d8] transition-colors"
+                className="text-sm font-medium text-gray-700 dark:text-neutral-300 hover:text-[#1351d8] transition-colors"
               >
                 Angebot
               </Link>
               <Link
                 href="/#preise"
-                className="text-sm font-medium text-gray-700 hover:text-[#1351d8] transition-colors"
+                className="text-sm font-medium text-gray-700 dark:text-neutral-300 hover:text-[#1351d8] transition-colors"
               >
                 Preise
               </Link>
-              <Link href="/#ueber-uns" className="text-sm font-medium text-gray-700 hover:text-[#1351d8] transition-colors">
+              <Link href="/#ueber-uns" className="text-sm font-medium text-gray-700 dark:text-neutral-300 hover:text-[#1351d8] transition-colors">
                 Über uns
               </Link>
               <Link
                 href="/#kontakt"
-                className="text-sm font-medium text-gray-700 hover:text-[#1351d8] transition-colors"
+                className="text-sm font-medium text-gray-700 dark:text-neutral-300 hover:text-[#1351d8] transition-colors"
               >
                 Kontakt
               </Link>
+              <ThemeToggle />
               <Link href="/#kontakt">
                 <Button className="bg-[#1351d8] hover:bg-[#1351d8]/90 text-white">Jetzt anmelden</Button>
               </Link>
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden">
+            <div className="md:hidden flex items-center gap-1">
+              <ThemeToggle />
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-700 hover:text-[#1351d8]"
+                className="text-gray-700 hover:text-[#1351d8] dark:text-neutral-300 dark:hover:text-[#1351d8]"
                 aria-label={isMenuOpen ? "Menü schliessen" : "Menü öffnen"}
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-menu"
@@ -82,7 +85,7 @@ export default function ImpressumPage() {
           {isMenuOpen && (
             <div
               id="mobile-menu"
-              className="md:hidden fixed inset-0 top-16 bg-white shadow-lg border-t border-gray-200 overflow-hidden flex"
+              className="md:hidden fixed inset-0 top-16 bg-white dark:bg-neutral-950 shadow-lg border-t border-gray-200 dark:border-neutral-800 overflow-hidden flex"
               style={{ zIndex: 60, height: "calc(100vh - 4rem)" }}
             >
               {/* Sidebar */}
@@ -91,7 +94,7 @@ export default function ImpressumPage() {
                 <button
                   onClick={() => setActiveSidebarSection("navigation")}
                   className={`flex-1 flex flex-col items-center justify-center py-8 text-white transition-all duration-300 relative ${
-                    activeSidebarSection === "navigation" ? "bg-white/20" : "hover:bg-white/10"
+                    activeSidebarSection === "navigation" ? "bg-white/20 dark:bg-white/20" : "hover:bg-white/10"
                   }`}
                 >
                   <span className="text-xs font-medium transform -rotate-90 whitespace-nowrap tracking-widest">
@@ -113,7 +116,7 @@ export default function ImpressumPage() {
                 <button
                   onClick={() => setActiveSidebarSection("social")}
                   className={`flex-1 flex flex-col items-center justify-center py-8 text-white transition-all duration-300 relative ${
-                    activeSidebarSection === "social" ? "bg-white/20" : "hover:bg-white/10"
+                    activeSidebarSection === "social" ? "bg-white/20 dark:bg-white/20" : "hover:bg-white/10"
                   }`}
                 >
                   <span className="text-xs font-medium transform -rotate-90 whitespace-nowrap tracking-widest">
@@ -135,7 +138,7 @@ export default function ImpressumPage() {
                 <button
                   onClick={() => setActiveSidebarSection("legal")}
                   className={`flex-1 flex flex-col items-center justify-center py-8 text-white transition-all duration-300 relative ${
-                    activeSidebarSection === "legal" ? "bg-white/20" : "hover:bg-white/10"
+                    activeSidebarSection === "legal" ? "bg-white/20 dark:bg-white/20" : "hover:bg-white/10"
                   }`}
                 >
                   <span className="text-xs font-medium transform -rotate-90 whitespace-nowrap tracking-widest">
@@ -155,40 +158,40 @@ export default function ImpressumPage() {
               </div>
 
               {/* Content Area */}
-              <div className="flex-1 overflow-y-auto bg-white">
+              <div className="flex-1 overflow-y-auto bg-white dark:bg-neutral-950">
                 <div className="px-6 pb-6">
                   {/* Navigation Section */}
                   {activeSidebarSection === "navigation" && (
                     <div className="space-y-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-8 mt-4">Navigation</h3>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-neutral-50 mb-8 mt-4">Navigation</h3>
                       <div className="space-y-3">
                         <Link
                           href="/"
-                          className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-[#1351d8] hover:bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20"
+                          className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 dark:text-neutral-300 hover:text-[#1351d8] hover:bg-blue-50 dark:hover:bg-[#1351d8]/10 rounded-lg transition-colors border border-gray-100 dark:border-neutral-800 hover:border-[#1351d8]/20"
                         >
                           Startseite
                         </Link>
                         <Link
                           href="/#angebot"
-                          className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-[#1351d8] hover:bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20"
+                          className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 dark:text-neutral-300 hover:text-[#1351d8] hover:bg-blue-50 dark:hover:bg-[#1351d8]/10 rounded-lg transition-colors border border-gray-100 dark:border-neutral-800 hover:border-[#1351d8]/20"
                         >
                           Angebot
                         </Link>
                         <Link
                           href="/#preise"
-                          className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-[#1351d8] hover:bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20"
+                          className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 dark:text-neutral-300 hover:text-[#1351d8] hover:bg-blue-50 dark:hover:bg-[#1351d8]/10 rounded-lg transition-colors border border-gray-100 dark:border-neutral-800 hover:border-[#1351d8]/20"
                         >
                           Preise
                         </Link>
                         <Link
                           href="/#ueber-uns"
-                          className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-[#1351d8] hover:bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20"
+                          className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 dark:text-neutral-300 hover:text-[#1351d8] hover:bg-blue-50 dark:hover:bg-[#1351d8]/10 rounded-lg transition-colors border border-gray-100 dark:border-neutral-800 hover:border-[#1351d8]/20"
                         >
                           Über uns
                         </Link>
                         <Link
                           href="/#kontakt"
-                          className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:text-[#1351d8] hover:bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20"
+                          className="block w-full text-left px-4 py-3 text-base font-medium text-gray-700 dark:text-neutral-300 hover:text-[#1351d8] hover:bg-blue-50 dark:hover:bg-[#1351d8]/10 rounded-lg transition-colors border border-gray-100 dark:border-neutral-800 hover:border-[#1351d8]/20"
                         >
                           Kontakt
                         </Link>
@@ -200,10 +203,10 @@ export default function ImpressumPage() {
                           </Button>
                         </Link>
                       </div>
-                      <div className="pt-4 border-t border-gray-200 space-y-3">
+                      <div className="pt-4 border-t border-gray-200 dark:border-neutral-800 space-y-3">
                         <a
                           href="tel:+41763402201"
-                          className="flex items-center space-x-3 text-[#1351d8] hover:text-[#1351d8]/80 transition-colors p-3 rounded-lg hover:bg-blue-50"
+                          className="flex items-center space-x-3 text-[#1351d8] hover:text-[#1351d8]/80 transition-colors p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-[#1351d8]/10"
                         >
                           <Phone className="w-5 h-5" />
                           <span className="font-medium">+41 76 340 22 01</span>
@@ -211,7 +214,7 @@ export default function ImpressumPage() {
                         
                         <a
                           href="mailto:info@fahrschule06.ch"
-                          className="flex items-center space-x-3 text-[#1351d8] hover:text-[#1351d8]/80 transition-colors p-3 rounded-lg hover:bg-blue-50"
+                          className="flex items-center space-x-3 text-[#1351d8] hover:text-[#1351d8]/80 transition-colors p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-[#1351d8]/10"
                         >
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -237,8 +240,8 @@ export default function ImpressumPage() {
                   {/* Social Section */}
                   {activeSidebarSection === "social" && (
                     <div className="space-y-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-8 mt-4">Sozial</h3>
-                      <p className="text-gray-600 mb-6">
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-neutral-50 mb-8 mt-4">Sozial</h3>
+                      <p className="text-gray-600 dark:text-neutral-400 mb-6">
                         Folgen Sie uns auf unseren Social Media Kanälen für Updates und Neuigkeiten!
                       </p>
 
@@ -247,7 +250,7 @@ export default function ImpressumPage() {
                           href="https://www.instagram.com/fahrschule06/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group border border-gray-100"
+                          className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-neutral-800/60 transition-colors group border border-gray-100 dark:border-neutral-800"
                         >
                           <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center">
                             <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -255,8 +258,8 @@ export default function ImpressumPage() {
                             </svg>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 group-hover:text-[#1351d8]">Instagram</p>
-                            <p className="text-sm text-gray-600">@fahrschule06</p>
+                            <p className="font-semibold text-gray-900 dark:text-neutral-50 group-hover:text-[#1351d8]">Instagram</p>
+                            <p className="text-sm text-gray-600 dark:text-neutral-400">@fahrschule06</p>
                           </div>
                         </a>
 
@@ -264,7 +267,7 @@ export default function ImpressumPage() {
                           href="https://www.facebook.com/vaxhid.mustafa"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group border border-gray-100"
+                          className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-neutral-800/60 transition-colors group border border-gray-100 dark:border-neutral-800"
                         >
                           <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
                             <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -272,8 +275,8 @@ export default function ImpressumPage() {
                             </svg>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 group-hover:text-[#1351d8]">Facebook</p>
-                            <p className="text-sm text-gray-600">Fahrschule 06</p>
+                            <p className="font-semibold text-gray-900 dark:text-neutral-50 group-hover:text-[#1351d8]">Facebook</p>
+                            <p className="text-sm text-gray-600 dark:text-neutral-400">Fahrschule 06</p>
                           </div>
                         </a>
 
@@ -281,7 +284,7 @@ export default function ImpressumPage() {
                           href="https://www.tiktok.com/@fahrschule_06"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group border border-gray-100"
+                          className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-neutral-800/60 transition-colors group border border-gray-100 dark:border-neutral-800"
                         >
                           <div className="w-12 h-12 bg-black rounded-xl flex items-center justify-center">
                             <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -289,8 +292,8 @@ export default function ImpressumPage() {
                             </svg>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 group-hover:text-[#1351d8]">TikTok</p>
-                            <p className="text-sm text-gray-600">@fahrschule_06</p>
+                            <p className="font-semibold text-gray-900 dark:text-neutral-50 group-hover:text-[#1351d8]">TikTok</p>
+                            <p className="text-sm text-gray-600 dark:text-neutral-400">@fahrschule_06</p>
                           </div>
                         </a>
 
@@ -298,7 +301,7 @@ export default function ImpressumPage() {
                           href="https://www.linkedin.com/in/vaxhid-mustafa-ab8574210/"
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group border border-gray-100"
+                          className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-neutral-800/60 transition-colors group border border-gray-100 dark:border-neutral-800"
                         >
                           <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center">
                             <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -306,12 +309,12 @@ export default function ImpressumPage() {
                             </svg>
                           </div>
                           <div>
-                            <p className="font-semibold text-gray-900 group-hover:text-[#1351d8]">LinkedIn</p>
-                            <p className="text-sm text-gray-600">Vaxhid Mustafa</p>
+                            <p className="font-semibold text-gray-900 dark:text-neutral-50 group-hover:text-[#1351d8]">LinkedIn</p>
+                            <p className="text-sm text-gray-600 dark:text-neutral-400">Vaxhid Mustafa</p>
                           </div>
                         </a>
 
-                        <div className="pt-4 border-t border-gray-200">
+                        <div className="pt-4 border-t border-gray-200 dark:border-neutral-800">
                           <a
                             href="https://wa.me/41763402201?text=Hallo%20Fahrschule%2006%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Fahrausbildung."
                             target="_blank"
@@ -331,16 +334,16 @@ export default function ImpressumPage() {
                   {/* Legal Section */}
                   {activeSidebarSection === "legal" && (
                     <div className="space-y-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-8 mt-4">Rechtliches</h3>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-neutral-50 mb-8 mt-4">Rechtliches</h3>
                       <div className="space-y-4">
                         <Link
                           href="/impressum"
-                          className="block px-4 py-3 text-base font-medium text-[#1351d8] bg-blue-50 rounded-lg transition-colors border border-gray-100 hover:border-[#1351d8]/20"
+                          className="block px-4 py-3 text-base font-medium text-[#1351d8] bg-blue-50 dark:bg-[#1351d8]/15 rounded-lg transition-colors border border-gray-100 dark:border-neutral-800 hover:border-[#1351d8]/20"
                         >
                           Impressum (Aktuelle Seite)
                         </Link>
-                        <div className="px-4 py-4 text-sm text-gray-600 bg-gray-50 rounded-lg border border-gray-100">
-                          <p className="mb-3 font-semibold text-gray-900">Fahrschule 06</p>
+                        <div className="px-4 py-4 text-sm text-gray-600 dark:text-neutral-400 bg-gray-50 dark:bg-neutral-900 rounded-lg border border-gray-100 dark:border-neutral-800">
+                          <p className="mb-3 font-semibold text-gray-900 dark:text-neutral-50">Fahrschule 06</p>
                           <div className="space-y-1">
                             <p>Inhaber: Vaxhid Mustafa</p>
                             <p>Oberdorf 4, 5057 Reitnau</p>
@@ -348,7 +351,7 @@ export default function ImpressumPage() {
                             <p>+41 76 340 22 01</p>
                           </div>
                         </div>
-                        <div className="pt-4 text-xs text-gray-500 text-center">
+                        <div className="pt-4 text-xs text-gray-500 dark:text-neutral-400 text-center">
                           <p>&copy; 2025 Fahrschule 06. Alle Rechte vorbehalten.</p>
                         </div>
                       </div>
@@ -377,36 +380,36 @@ export default function ImpressumPage() {
           {/* Impressum Content */}
           <Card className="shadow-lg">
             <CardHeader>
-              <h1 className="text-3xl font-bold text-gray-900">Impressum</h1>
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-neutral-50">Impressum</h1>
             </CardHeader>
             <CardContent className="space-y-8">
               {/* Contact Information */}
               <div className="space-y-4">
-                <h2 className="text-xl font-semibold text-gray-900">Kontaktdaten</h2>
-                <div className="bg-gray-50 p-6 rounded-lg space-y-2">
-                  <p className="font-semibold text-gray-900">Fahrschule 06</p>
-                  <p className="text-gray-700">Inhaber: Vaxhid Mustafa</p>
-                  <p className="text-gray-700">Oberdorf 4</p>
-                  <p className="text-gray-700">5057 Reitnau</p>
-                  <p className="text-gray-700">Telefon: +41 76 340 22 01</p>
-                  <p className="text-gray-700">E-Mail: info@fahrschule06.ch</p>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-neutral-50">Kontaktdaten</h2>
+                <div className="bg-gray-50 dark:bg-neutral-900 p-6 rounded-lg space-y-2">
+                  <p className="font-semibold text-gray-900 dark:text-neutral-50">Fahrschule 06</p>
+                  <p className="text-gray-700 dark:text-neutral-300">Inhaber: Vaxhid Mustafa</p>
+                  <p className="text-gray-700 dark:text-neutral-300">Oberdorf 4</p>
+                  <p className="text-gray-700 dark:text-neutral-300">5057 Reitnau</p>
+                  <p className="text-gray-700 dark:text-neutral-300">Telefon: +41 76 340 22 01</p>
+                  <p className="text-gray-700 dark:text-neutral-300">E-Mail: info@fahrschule06.ch</p>
                 </div>
               </div>
 
               {/* Disclaimer */}
               <div className="space-y-4">
-                <h2 className="text-xl font-semibold text-gray-900">Haftungsausschluss</h2>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-neutral-50">Haftungsausschluss</h2>
                 <div className="prose prose-gray max-w-none">
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-700 dark:text-neutral-300 leading-relaxed">
                     Der Autor übernimmt keinerlei Gewähr hinsichtlich der inhaltlichen Richtigkeit, Genauigkeit,
                     Aktualität, Zuverlässigkeit und Vollständigkeit der Informationen.
                   </p>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-700 dark:text-neutral-300 leading-relaxed">
                     Haftungsansprüche gegen den Autor wegen Schäden materieller oder immaterieller Art, welche aus dem
                     Zugriff oder der Nutzung bzw. Nichtnutzung der veröffentlichten Informationen, durch Missbrauch der
                     Verbindung oder durch technische Störungen entstanden sind, werden ausgeschlossen.
                   </p>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-700 dark:text-neutral-300 leading-relaxed">
                     Alle Angebote sind unverbindlich. Der Autor behält es sich ausdrücklich vor, Teile der Seiten oder
                     das gesamte Angebot ohne besondere Ankündigung zu verändern, zu ergänzen, zu löschen oder die
                     Veröffentlichung zeitweise oder endgültig einzustellen.
@@ -416,9 +419,9 @@ export default function ImpressumPage() {
 
               {/* Links Disclaimer */}
               <div className="space-y-4">
-                <h2 className="text-xl font-semibold text-gray-900">Haftungsausschluss für Links</h2>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-neutral-50">Haftungsausschluss für Links</h2>
                 <div className="prose prose-gray max-w-none">
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-700 dark:text-neutral-300 leading-relaxed">
                     Verweise und Links auf Webseiten Dritter liegen ausserhalb unseres Verantwortungsbereichs. Es wird
                     jegliche Verantwortung für solche Webseiten abgelehnt. Der Zugriff und die Nutzung solcher Webseiten
                     erfolgen auf eigene Gefahr des jeweiligen Nutzers.
@@ -439,10 +442,10 @@ export default function ImpressumPage() {
                 <Image src="/logo.svg" alt="Fahrschule 06 Logo" width={32} height={32} className="w-8 h-8" />
                 <div>
                   <h3 className="text-lg font-bold">Fahrschule 06</h3>
-                  <p className="text-sm text-gray-400">fahrschule06.ch</p>
+                  <p className="text-sm text-gray-400 dark:text-neutral-500">fahrschule06.ch</p>
                 </div>
               </div>
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-400 dark:text-neutral-500 text-sm">
                 Ihre professionelle Fahrschule in der Region Aargau/Olten für eine sichere und entspannte
                 Fahrausbildung.
               </p>
@@ -450,7 +453,7 @@ export default function ImpressumPage() {
 
             <div>
               <h4 className="font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-400 dark:text-neutral-500">
                 <li>Kategorie B (Auto)</li>
                 <li>Kategorie B BPT 121 (Taxi)</li>
                 <li>Kontrollfahrt</li>
@@ -460,7 +463,7 @@ export default function ImpressumPage() {
 
             <div>
               <h4 className="font-semibold mb-4">Kontakt</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-400 dark:text-neutral-500">
                 <li>+41 76 340 22 01</li>
                 <li>info@fahrschule06.ch</li>
                 <li>Oberdorf 4</li>
@@ -471,7 +474,7 @@ export default function ImpressumPage() {
 
             <div>
               <h4 className="font-semibold mb-4">Öffnungszeiten</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-400 dark:text-neutral-500">
                 <li>Mo-Sa: 08:00 - 20:00</li>
               </ul>
             </div>
@@ -483,7 +486,7 @@ export default function ImpressumPage() {
                   href="https://www.facebook.com/vaxhid.mustafa"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 dark:text-neutral-500 hover:text-white transition-colors"
                   aria-label="Facebook"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -494,7 +497,7 @@ export default function ImpressumPage() {
                   href="https://www.instagram.com/fahrschule06/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 dark:text-neutral-500 hover:text-white transition-colors"
                   aria-label="Instagram"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -505,7 +508,7 @@ export default function ImpressumPage() {
                   href="https://www.tiktok.com/@fahrschule_06"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 dark:text-neutral-500 hover:text-white transition-colors"
                   aria-label="TikTok"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -516,7 +519,7 @@ export default function ImpressumPage() {
                   href="https://www.linkedin.com/in/vaxhid-mustafa-ab8574210/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="text-gray-400 dark:text-neutral-500 hover:text-white transition-colors"
                   aria-label="LinkedIn"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -527,19 +530,19 @@ export default function ImpressumPage() {
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400 dark:text-neutral-500">
             <div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
               <p>&copy; 2025 Fahrschule 06. Alle Rechte vorbehalten.</p>
               <div className="flex gap-6">
                 <Link
                   href="/impressum"
-                  className="text-gray-400 hover:text-white transition-colors underline hover:no-underline font-medium"
+                  className="text-gray-400 dark:text-neutral-500 hover:text-white transition-colors underline hover:no-underline font-medium"
                 >
                   Impressum
                 </Link>
                 <Link
                   href="/agb/"
-                  className="text-gray-400 hover:text-white transition-colors underline hover:no-underline font-medium"
+                  className="text-gray-400 dark:text-neutral-500 hover:text-white transition-colors underline hover:no-underline font-medium"
                 >
                   AGB
                 </Link>

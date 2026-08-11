@@ -105,14 +105,14 @@ export function AnnouncementPopup() {
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={handleClose}></div>
 
           {/* Modal content */}
-          <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden animate-scale-in scrollbar-hide">
+          <div className="relative bg-white dark:bg-neutral-950 rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden animate-scale-in scrollbar-hide">
             {/* Close button */}
             <button
               onClick={handleClose}
-              className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-white/90 dark:bg-neutral-950/90 hover:bg-white dark:hover:bg-neutral-800 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 group"
               aria-label="Schließen"
             >
-              <X className="w-5 h-5 text-gray-700 group-hover:text-gray-900" />
+              <X className="w-5 h-5 text-gray-700 dark:text-neutral-300 group-hover:text-gray-900 dark:group-hover:text-neutral-50" />
             </button>
 
             {/* Announcement image */}
@@ -127,14 +127,14 @@ export function AnnouncementPopup() {
 
             {/* Optional text + CTA panel (only when configured) */}
             {(hasContent || hasButton) && (
-              <div className="p-4 sm:p-6 bg-gradient-to-t from-white to-transparent">
+              <div className="p-4 sm:p-6 bg-gradient-to-t from-white dark:from-neutral-950 to-transparent">
                 {announcement.title && (
-                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-neutral-50 mb-2">
                     {announcement.title}
                   </h2>
                 )}
                 {announcement.description && (
-                  <p className="text-gray-600 text-sm sm:text-base mb-4">{announcement.description}</p>
+                  <p className="text-gray-600 dark:text-neutral-400 text-sm sm:text-base mb-4">{announcement.description}</p>
                 )}
                 {hasButton && (
                   <Button
