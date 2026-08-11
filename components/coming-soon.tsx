@@ -62,12 +62,12 @@ export default function ComingSoon({ onEnterSite }: { onEnterSite: () => void })
       {/* Enhanced floating road and car elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-10 opacity-20 animate-float">
-          <div className="w-16 h-1 bg-white dark:bg-neutral-950 rounded-full"></div>
-          <div className="w-8 h-1 bg-white dark:bg-neutral-950 rounded-full mt-2 ml-4"></div>
+          <div className="w-16 h-1 bg-white rounded-full"></div>
+          <div className="w-8 h-1 bg-white rounded-full mt-2 ml-4"></div>
         </div>
         <div className="absolute bottom-32 right-16 opacity-15 animate-float delay-700">
-          <div className="w-20 h-1 bg-white dark:bg-neutral-950 rounded-full"></div>
-          <div className="w-10 h-1 bg-white dark:bg-neutral-950 rounded-full mt-2 ml-6"></div>
+          <div className="w-20 h-1 bg-white rounded-full"></div>
+          <div className="w-10 h-1 bg-white rounded-full mt-2 ml-6"></div>
         </div>
         <div className="absolute top-1/3 left-0 opacity-30 animate-drive-across">
           <div className="text-4xl">🚗</div>
@@ -119,7 +119,7 @@ export default function ComingSoon({ onEnterSite }: { onEnterSite: () => void })
 
           <div className="max-w-md mx-auto space-y-4">
             <div className="bg-white/20 dark:bg-white/20 rounded-full h-3 overflow-hidden">
-              <div className="bg-gradient-to-r from-white dark:from-neutral-950 to-blue-200 h-full rounded-full animate-loading-bar-enhanced"></div>
+              <div className="bg-gradient-to-r from-white dark:from-slate-950 to-blue-200 h-full rounded-full animate-loading-bar-enhanced"></div>
             </div>
             <div className="flex justify-between text-sm text-blue-200">
               {steps.map((step, index) => (

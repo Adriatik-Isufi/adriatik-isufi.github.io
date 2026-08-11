@@ -44,7 +44,7 @@ export function ThemeToggle({ className = "" }: ThemeToggleProps) {
       onClick={handleToggle}
       aria-label={label}
       title={label}
-      className={`inline-flex h-10 w-10 items-center justify-center rounded-md text-gray-700 transition-colors hover:text-[#1351d8] dark:text-neutral-300 dark:hover:text-[#1351d8] ${className}`}
+      className={`inline-flex h-10 w-10 items-center justify-center rounded-md text-gray-700 transition-colors hover:text-[#1351d8] dark:text-slate-200 dark:hover:text-[#1351d8] ${className}`}
     >
       {/* Avoid icon flash before client hydration resolves theme */}
       {mounted ? (
