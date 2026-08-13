@@ -2,9 +2,13 @@
 
 import { useState, useEffect } from "react"
 import { X, Megaphone } from "lucide-react"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { getActiveAnnouncement } from "@/config/announcements"
+
+/** Contain any aspect ratio in the viewport. Never crop. Flex min-w-0 is required
+ *  so a 1920px-wide file cannot force the popup wider than the screen. */
+const IMAGE_FIT =
+  "block h-auto w-auto max-h-[calc(100dvh-2rem)] max-w-[min(42rem,calc(100vw-2rem))] object-contain"
 
 /**
  * Generic, data-driven announcement popup.
@@ -82,6 +86,7 @@ export function AnnouncementPopup() {
 
   const hasContent = Boolean(announcement.title || announcement.description)
   const hasButton = Boolean(announcement.buttonText && announcement.buttonLink)
+  const imageOnly = !hasContent && !hasButton
 
   return (
     <>
@@ -104,8 +109,15 @@ export function AnnouncementPopup() {
           {/* Backdrop */}
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={handleClose}></div>
 
-          {/* Modal content */}
-          <div className="relative bg-white dark:bg-slate-900 rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden animate-scale-in scrollbar-hide border border-transparent dark:border-slate-700">
+          {/* Image-only: flyer is the popup — no white frame, no scroll.
+              Text/CTA campaigns keep the padded card and may scroll. */}
+          <div
+            className={
+              imageOnly
+                ? "relative z-10 min-w-0 w-fit max-w-full overflow-hidden rounded-3xl shadow-2xl animate-scale-in"
+                : "relative z-10 bg-white dark:bg-slate-900 rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden animate-scale-in scrollbar-hide"
+            }
+          >
             {/* Close button */}
             <button
               onClick={handleClose}
@@ -115,14 +127,13 @@ export function AnnouncementPopup() {
               <X className="w-5 h-5 text-gray-700 dark:text-slate-200 group-hover:text-gray-900 dark:group-hover:text-slate-50" />
             </button>
 
-            {/* Announcement image */}
-            <Image
+            {/* Native img so portrait / landscape / square all size from the file itself.
+                Do not put width/height here — that would be campaign-specific. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={announcement.image}
               alt={announcement.imageAlt || announcement.title || "Aktion"}
-              width={800}
-              height={1000}
-              className="w-full h-auto object-contain"
-              priority
+              className={imageOnly ? IMAGE_FIT : "block w-full h-auto"}
             />
 
             {/* Optional text + CTA panel (only when configured) */}

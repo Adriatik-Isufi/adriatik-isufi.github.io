@@ -34,3 +34,6 @@ next-env.d.ts
 /public/og-image.jpg
 
 /screaming_frog
+
+# Local announcement popup fit-test screenshots
+/scripts/announcement-fit-test/out

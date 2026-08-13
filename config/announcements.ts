@@ -3,9 +3,10 @@
  *
  * To run a new promotion / campaign / holiday offer / event:
  *   1. Drop the image into `public/announcements/` (e.g. `public/announcements/summer-2026.webp`).
+ *      Portrait, landscape, or square — the popup scales it to the screen automatically.
  *   2. Add (or edit) an entry in the `announcements` array below.
- *   3. Set `enabled: true`.
- *   4. Fill in title, description, button text/link and optional start/end dates.
+ *   3. Set `enabled: true` (and `enabled: false` on the previous one).
+ *   4. Optional: title, description, button text/link, startDate / endDate.
  *
  * No component / React code needs to change — ever. Only this file + the image.
  *
