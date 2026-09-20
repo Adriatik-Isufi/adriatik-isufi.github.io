@@ -336,6 +336,20 @@
       "image": "/Success/janik.webp",
       "caption": "Herzlichen Glückwunsch, Janik! 👏 Super Leistung!",
       "date": "2026-09-03"    
+    },
+    {
+      "id": 49,
+      "name": "Inaz",
+      "image": "/Success/inaz.webp",
+      "caption": "Gratuliere Inaz 👏💪😎",
+      "date": "2026-09-25"    
+    },
+    {
+      "id": 50,
+      "name": "Erkan",
+      "image": "/Success/erkan.webp",
+      "caption": "Herzlichen Glückwunsch, Erkan! 👏 Super Leistung!",
+      "date": "2026-09-25"    
     }
   ]
 }
