@@ -750,7 +750,7 @@ export default function FahrschulePage() {
                   width={600}
                   height={800}
                   alt="Fahrschule 06 - Professioneller Fahrlehrer mit blauem Ford"
-                  className="w-full h-auto rounded-2xl shadow-2xl object-cover"
+                  className="w-full h-auto rounded-2xl shadow-2xl object-cover lg:w-auto lg:max-w-full lg:max-h-[calc(100svh-11rem)] lg:ml-auto"
                   fetchPriority="high"
                   decoding="async"
                 />
