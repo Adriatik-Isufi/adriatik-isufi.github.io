@@ -4,91 +4,91 @@
       "id": 1,
       "name": "Süleyman",
       "image": "/Success/suleiman-success.webp",
-      "caption": "",
+      "caption": "Gratuliere, Süleyman! 👏💪 Prüfung bestanden!",
       "date": "2025-10-13"
     },
     {
       "id": 2,
       "name": "Jon",
       "image": "/Success/jon-success.webp",
-      "caption": "Gratuliere Jon 👏💪😎",
+      "caption": "Herzlichen Glückwunsch zur bestandenen Fahrprüfung, Jon! 🥳🚗",
       "date": "2025-10-18"
     },
     {
       "id": 3,
       "name": "Viktor",
       "image": "/Success/viktor-success.webp",
-      "caption": "Gratuliere Viktor 👏💪😎",
+      "caption": "Sauber, Viktor! 💪🎉 Du hast es geschafft!",
       "date": "2025-10-28"
     },
     {
       "id": 4,
       "name": "Tefik",
       "image": "/Success/tefik-success.webp",
-      "caption": "Herzlichen Glückwunsch Tefik 👏💪😎",
+      "caption": "Mega, Tefik! 🎉 Ab jetzt heisst es: freie Fahrt! 🚗",
       "date": "2025-10-30"
     },
     {
       "id": 5,
       "name": "Tenzin Norzin",
       "image": "/Success/tenzin-norzin-success.webp",
-      "caption": "Herzlichen Glückwunsch zur bestandenen Autoprüfung 🥳😃",
+      "caption": "Super Leistung, Tenzin! 👏 Wir sind stolz auf dich!",
       "date": "2025-11-12"
     },
     {
       "id": 6,
       "name": "Emanuela Lenjani",
       "image": "/Success/emanuela-lenjani-success.webp",
-      "caption": "Gratuliere Emanuela 👏💪",
+      "caption": "Geschafft, Emanuela! 🥳 Herzliche Gratulation zum Führerausweis!",
       "date": "2025-11-12"
     },
     {
       "id": 7,
       "name": "Severin",
       "image": "/Success/severin-success.webp",
-      "caption": "Herzlichen Glückwunsch zur bestandenen Prüfung Severin🥳😁",
+      "caption": "Stark gefahren, Severin! 💪🚗 Herzlichen Glückwunsch!",
       "date": "2025-12-02"
     },
     {
       "id": 8,
       "name": "Carolina Gräub",
       "image": "/Success/carolina-graub-success.webp",
-      "caption": "Gratuliere Carolina 💪👏",
+      "caption": "Prüfung bestanden! 🎉👏 Herzliche Gratulation, Carolina!",
       "date": "2025-12-04"
     },
     {
       "id": 9,
       "name": "Gershan",
       "image": "/Success/gershan-success.webp",
-      "caption": "Gratuliere Gershan 👏💪",
+      "caption": "Bravo, Gershan! 👏 Die harte Arbeit hat sich gelohnt! 💪",
       "date": "2026-01-08"
     },
     {
       "id": 10,
       "name": "Josh",
       "image": "/Success/josh-success.webp",
-      "caption": "Herzlichen Glückwunsch zur bestandenen Autoprüfung Josh🥳",
+      "caption": "Wir gratulieren dir ganz herzlich, Josh! 🎉 Allzeit gute Fahrt! 🚗",
       "date": "2026-01-09"
     },
     {
       "id": 11,
       "name": "Duena",
       "image": "/Success/duena-success.webp",
-      "caption": "Gratuliere Duena 👏💪",
+      "caption": "Top gemacht, Duena! 💪🎉 Willkommen auf der Strasse!",
       "date": "2026-02-02"
     },
     {
       "id": 12,
       "name": "Andrea",
       "image": "/Success/andrea-success.webp",
-      "caption": "Herzlichen Glückwunsch Andrea 🥳",
+      "caption": "Herzlichen Glückwunsch, Andrea! 🥳 Ab jetzt ohne Fahrlehrer unterwegs! 😎",
       "date": "2026-02-09"
     },
     {
       "id": 13,
       "name": "Erijona",
       "image": "/Success/erijona-sucess.webp",
-      "caption": "Gut gemacht, Erijona! Glückwunsch! 🎉👏😊",
+      "caption": "Gratuliere, Erijona! 👏💪 Prüfung bestanden!",
       "date": "2026-02-12"
     },
     {
@@ -102,254 +102,267 @@
       "id": 15,
       "name": "Mërgim",
       "image": "/Success/mergim-sucess.webp",
-      "caption": "Mega, Mërgim! 🎉👏 Endlich geschafft – richtig stark!",
+      "caption": "Herzlichen Glückwunsch zur bestandenen Fahrprüfung, Mërgim! 🥳🚗",
       "date": "2026-02-25"
     },
     {
       "id": 16,
       "name": "Fisnik",
       "image": "/Success/fisnik-sucess.webp",
-      "caption": "Sauber, Fisnik! 💪🎉 Alles Stress war’s wert!",
+      "caption": "Sauber, Fisnik! 💪🎉 Du hast es geschafft!",
       "date": "2026-03-03"
     },
     {
       "id": 17,
       "name": "Agon",
       "image": "/Success/agon.webp",
-      "caption": "Sauber, Agon! 💪🎉",
+      "caption": "Mega, Agon! 🎉 Ab jetzt heisst es: freie Fahrt! 🚗",
       "date": "2026-03-03"
-
     },
     {
       "id": 19,
       "name": "Mendimi",
       "image": "/Success/mendimi-success.webp",
-      "caption": "Sauber! 💪🎉 Herzlichen Glückwunsch zum Erfolg!",
-      "date": "2026-03-13"    
+      "caption": "Super Leistung, Mendimi! 👏 Wir sind stolz auf dich!",
+      "date": "2026-03-13"
     },
     {
       "id": 20,
       "name": "Nikola",
       "image": "/Success/nikola-success.webp",
-      "caption": "Sauber, Nikola! 💪🎉",
-      "date": "2026-03-19"    
+      "caption": "Geschafft, Nikola! 🥳 Herzliche Gratulation zum Führerausweis!",
+      "date": "2026-03-19"
     },
     {
       "id": 21,
       "name": "Elmin",
       "image": "/Success/elmin-success.webp",
-      "caption": "Sauber, Elmin! 💪🎉",
-      "date": "2026-03-25"    
+      "caption": "Stark gefahren, Elmin! 💪🚗 Herzlichen Glückwunsch!",
+      "date": "2026-03-25"
     },
     {
       "id": 22,
       "name": "Dionis Salihu",
       "image": "/Success/dionis-success.webp",
-      "caption": "Gratuliere Dionis 👏💪",
-      "date": "2026-03-26"    
+      "caption": "Prüfung bestanden! 🎉👏 Herzliche Gratulation, Dionis!",
+      "date": "2026-03-26"
     },
     {
       "id": 23,
       "name": "Ihdin",
       "image": "/Success/Ihdin.webp",
-      "caption": "Sauber, Ihdin 👏💪",
-      "date": "2026-04-23"    
+      "caption": "Bravo, Ihdin! 👏 Die harte Arbeit hat sich gelohnt! 💪",
+      "date": "2026-04-23"
     },
     {
       "id": 24,
       "name": "Dardan Kista",
       "image": "/Success/dardan-success.webp",
-      "caption": "Sauber, Dardan 👏💪",
-      "date": "2026-04-28"    
+      "caption": "Wir gratulieren dir ganz herzlich, Dardan! 🎉 Allzeit gute Fahrt! 🚗",
+      "date": "2026-04-28"
     },
     {
       "id": 25,
       "name": "AKS Garage",
       "image": "/partnership.webp",
       "caption": "Herzlichen Dank an die AKS Garage für das Vertrauen und die wertschätzenden Worte. Es freut uns sehr, Teil Ihres Netzwerks zu sein und diese Partnerschaft aktiv mitzugestalten. Was uns verbindet, ist der gemeinsame Anspruch an Qualität, Verlässlichkeit und echtes Engagement im täglichen Tun – die beste Grundlage für nachhaltigen Erfolg. Wir freuen uns auf eine starke, langfristige Zusammenarbeit und viele gemeinsame Erfolge.",
-      "date": "2026-04-30"    
+      "date": "2026-04-30"
     },
     {
       "id": 26,
       "name": "Granit Maloku",
       "image": "/Success/granit-maloku-success.webp",
-      "caption": "Herzlichen Glückwunsch Granit 🥳",
-      "date": "2026-05-05"    
+      "caption": "Top gemacht, Granit! 💪🎉 Willkommen auf der Strasse!",
+      "date": "2026-05-05"
     },
     {
       "id": 27,
       "name": "Elma Tahiri",
       "image": "/Success/elma-tahiri-success.webp",
-      "caption": "Gut gemacht, Elma Glückwunsch! 🎉👏😊",
-      "date": "2026-05-05"    
+      "caption": "Herzlichen Glückwunsch, Elma! 🥳 Ab jetzt ohne Fahrlehrer unterwegs! 😎",
+      "date": "2026-05-05"
     },
     {
       "id": 28,
       "name": "Bruno",
       "image": "/Success/bruno-success.webp",
-      "caption": "Sauber, Bruno 👏💪",
-      "date": "2026-05-06"    
+      "caption": "Gratuliere, Bruno! 👏💪 Prüfung bestanden!",
+      "date": "2026-05-06"
     },
     {
       "id": 29,
       "name": "Edjon E",
       "image": "/Success/edjon-success.webp",
-      "caption": "Herzlichen Glückwunsch Edjon 🥳",
-      "date": "2026-05-05"    
+      "caption": "Herzlichen Glückwunsch zur bestandenen Fahrprüfung, Edjon! 🥳🚗",
+      "date": "2026-05-05"
     },
     {
       "id": 30,
       "name": "Blerta",
       "image": "/Success/blerta-success.webp",
-      "caption": "Gut gemacht, Blerta! Glückwunsch! 🎉👏😊",
-      "date": "2026-05-06"    
+      "caption": "Sauber, Blerta! 💪🎉 Du hast es geschafft!",
+      "date": "2026-05-06"
     },
     {
       "id": 31,
       "name": "Nasim Wahedi",
       "image": "/Success/nasim-success.webp",
-      "caption": "Herzlichen Glückwunsch zur bestandenen Autoprüfung Nasim🥳",
-      "date": "2026-05-05"    
+      "caption": "Mega, Nasim! 🎉 Ab jetzt heisst es: freie Fahrt! 🚗",
+      "date": "2026-05-05"
     },
     {
       "id": 32,
       "name": "Lirjan",
       "image": "/Success/lirjan-success.webp",
-      "caption": "Herzlichen Glückwunsch Lirjan 🥳",
-      "date": "2026-05-06"    
+      "caption": "Super Leistung, Lirjan! 👏 Wir sind stolz auf dich!",
+      "date": "2026-05-06"
     },
     {
       "id": 33,
       "name": "Enisa Ibishi",
       "image": "/Success/enisa-success.webp",
-      "caption": "Gut gemacht, Enisa Glückwunsch! 🎉👏😊",
-      "date": "2026-05-19"    
+      "caption": "Geschafft, Enisa! 🥳 Herzliche Gratulation zum Führerausweis!",
+      "date": "2026-05-19"
     },
     {
       "id": 34,
       "name": "Dean Kloter",
       "image": "/Success/dean-success.webp",
-      "caption": "Sauber, Dean 👏💪",
-      "date": "2026-05-20"    
+      "caption": "Stark gefahren, Dean! 💪🚗 Herzlichen Glückwunsch!",
+      "date": "2026-05-20"
     },
     {
       "id": 35,
       "name": "Briketa Cara",
       "image": "/Success/briketa-success.webp",
-      "caption": "Herzlichen Glückwunsch Briketa 🥳",
-      "date": "2026-05-27"    
+      "caption": "Prüfung bestanden! 🎉👏 Herzliche Gratulation, Briketa!",
+      "date": "2026-05-27"
     },
     {
       "id": 36,
       "name": "Dillara Nafezi",
       "image": "/Success/dillara-success.webp",
-      "caption": "Gut gemacht, Dillara Glückwunsch! 🎉👏😊",
-      "date": "2026-05-29"    
+      "caption": "Bravo, Dillara! 👏 Die harte Arbeit hat sich gelohnt! 💪",
+      "date": "2026-05-29"
     },
     {
       "id": 37,
       "name": "Liridon Miftari",
       "image": "/Success/liridon-miftari-success.webp",
-      "caption": "Sauber, Liridon 👏💪",
-      "date": "2026-06-08"    
+      "caption": "Wir gratulieren dir ganz herzlich, Liridon! 🎉 Allzeit gute Fahrt! 🚗",
+      "date": "2026-06-08"
     },
     {
       "id": 38,
       "name": "Joli Bajraktari",
       "image": "/Success/jol-bajraktari-success.webp",
-      "caption": "Gut gemacht, Jol Glückwunsch! 🎉👏😊",
-      "date": "2026-06-10"    
+      "caption": "Top gemacht, Joli! 💪🎉 Willkommen auf der Strasse!",
+      "date": "2026-06-10"
     },
     {
       "id": 39,
       "name": "Floriana Kafexholli",
       "image": "/Success/floriana-kafexholli-success.webp",
-      "caption": "Wir wünschen dir allzeit gute Fahrt und viel Spaß auf allen Wegen!",
-      "date": "2026-06-10"    
+      "caption": "Herzlichen Glückwunsch, Floriana! 🥳 Ab jetzt ohne Fahrlehrer unterwegs! 😎",
+      "date": "2026-06-10"
     },
     {
       "id": 40,
       "name": "Galipcan",
       "image": "/Success/galipcan-success.webp",
-      "caption": "Sauber, Galipcan 👏💪",
-      "date": "2026-06-17"    
+      "caption": "Gratuliere, Galipcan! 👏💪 Prüfung bestanden!",
+      "date": "2026-06-17"
     },
     {
       "id": 41,
       "name": "Albijona Mulaj",
       "image": "/Success/albijona-success.webp",
-      "caption": "Gut gemacht, Albijona Glückwunsch! 🎉👏😊",
-      "date": "2026-06-22"    
+      "caption": "Herzlichen Glückwunsch zur bestandenen Fahrprüfung, Albijona! 🥳🚗",
+      "date": "2026-06-22"
     },
     {
       "id": 42,
       "name": "Ramon",
       "image": "/Success/ramon-success.webp",
-      "caption": "Herzlichen Glückwunsch Ramon 🥳",
-      "date": "2026-06-22"    
+      "caption": "Sauber, Ramon! 💪🎉 Du hast es geschafft!",
+      "date": "2026-06-22"
     },
     {
       "id": 43,
       "name": "Medina",
       "image": "/Success/medina-success.webp",
-      "caption": "Sauber, Medina 👏💪",
-      "date": "2026-06-23"    
-    },
-    {
-      "id": 43,
-      "name": "Bayan",
-      "image": "/Success/bayan-success.webp",
-      "caption": "Herzlichen Glückwunsch Bayan 🥳",
-      "date": "2026-06-30"    
+      "caption": "Mega, Medina! 🎉 Ab jetzt heisst es: freie Fahrt! 🚗",
+      "date": "2026-06-23"
     },
     {
       "id": 44,
-      "name": "Lorin",
-      "image": "/Success/lorin-success.webp",
-      "caption": "Gut gemacht, Lorin Glückwunsch! 🎉👏😊",
-      "date": "2026-07-01"    
+      "name": "Bayan",
+      "image": "/Success/bayan-success.webp",
+      "caption": "Super Leistung, Bayan! 👏 Wir sind stolz auf dich!",
+      "date": "2026-06-30"
     },
     {
       "id": 45,
-      "name": "Erion",
-      "image": "/Success/erion.webp",
-      "caption": "Sauber, Erion 👏💪",
-      "date": "2026-08-24"    
+      "name": "Lorin",
+      "image": "/Success/lorin-success.webp",
+      "caption": "Geschafft, Lorin! 🥳 Herzliche Gratulation zum Führerausweis!",
+      "date": "2026-07-01"
     },
     {
       "id": 46,
-      "name": "Sara",
-      "image": "/Success/sara.webp",
-      "caption": "Herzlichen Glückwunsch Sara 🥳",
-      "date": "2026-08-25"    
+      "name": "Erion",
+      "image": "/Success/erion.webp",
+      "caption": "Stark gefahren, Erion! 💪🚗 Herzlichen Glückwunsch!",
+      "date": "2026-08-24"
     },
     {
       "id": 47,
-      "name": "Migjen",
-      "image": "/Success/migjen.webp",
-      "caption": "Gratuliere Migjen 👏💪😎",
-      "date": "2026-08-31"    
+      "name": "Sara",
+      "image": "/Success/sara.webp",
+      "caption": "Prüfung bestanden! 🎉👏 Herzliche Gratulation, Sara!",
+      "date": "2026-08-25"
     },
     {
       "id": 48,
-      "name": "Janik",
-      "image": "/Success/janik.webp",
-      "caption": "Herzlichen Glückwunsch, Janik! 👏 Super Leistung!",
-      "date": "2026-09-03"    
+      "name": "Migjen",
+      "image": "/Success/migjen.webp",
+      "caption": "Bravo, Migjen! 👏 Die harte Arbeit hat sich gelohnt! 💪",
+      "date": "2026-08-31"
     },
     {
       "id": 49,
-      "name": "Inaz",
-      "image": "/Success/inaz.webp",
-      "caption": "Gratuliere Inaz 👏💪😎",
-      "date": "2026-09-25"    
+      "name": "Janik",
+      "image": "/Success/janik.webp",
+      "caption": "Wir gratulieren dir ganz herzlich, Janik! 🎉 Allzeit gute Fahrt! 🚗",
+      "date": "2026-09-03"
     },
     {
       "id": 50,
+      "name": "Inaz",
+      "image": "/Success/inaz.webp",
+      "caption": "Top gemacht, Inaz! 💪🎉 Willkommen auf der Strasse!",
+      "date": "2026-09-25"
+    },
+    {
+      "id": 51,
       "name": "Erkan",
       "image": "/Success/erkan.webp",
-      "caption": "Herzlichen Glückwunsch, Erkan! 👏 Super Leistung!",
-      "date": "2026-09-25"    
+      "caption": "Herzlichen Glückwunsch, Erkan! 🥳 Ab jetzt ohne Fahrlehrer unterwegs! 😎",
+      "date": "2026-09-25"
+    },
+    {
+      "id": 52,
+      "name": "Talha",
+      "image": "/Success/Talha.webp",
+      "caption": "Gratuliere, Talha! 👏💪 Prüfung bestanden!",
+      "date": "2026-10-06"
+    },
+    {
+      "id": 53,
+      "name": "Diellona",
+      "image": "/Success/Diellona.webp",
+      "caption": "Herzlichen Glückwunsch zur bestandenen Fahrprüfung, Diellona! 🥳🚗",
+      "date": "2026-10-08"
     }
   ]
 }
