@@ -1,34 +1,74 @@
 {
   "overallRating": 4.9,
-  "totalReviews": 60,
+  "totalReviews": 65,
   "googleReviewsUrl": "https://maps.app.goo.gl/FQjm2ZRoo8V7TPxz9",
   "reviews": [
     {
       "id": 1,
+      "name": "Altin Cerkini",
+      "rating": 5,
+      "date": "vor 11 Stunden",
+      "text": "BESTER FAHRLEHRER IN DER SCHWEIZ!!!",
+      "avatar": "AC"
+    },
+    {
+      "id": 2,
+      "name": "Endrit Shabani",
+      "rating": 5,
+      "date": "vor 12 Stunden",
+      "text": "Tolle Erfahrung mit der Fahrschule 06! Ein riesiges Dankeschön an meinen Fahrlehrer Vaxhid. Er war extrem geduldig und hat alles immer super und verständlich erklärt. Dank ihm habe ich mich beim Fahren sofort sicher gefühlt. Absolut empfehlenswert! ⭐️⭐️⭐️⭐️⭐️",
+      "avatar": "ES"
+    },
+    {
+      "id": 3,
+      "name": "Enis Lipovica",
+      "rating": 5,
+      "date": "vor 14 Stunden",
+      "text": "Ich hatte eine sehr gute Zeit bei der Fahrschule 06. Vaxhid ist ein sympathischer und geduldiger Fahrlehrer, der alles verständlich erklärt. Die Fahrstunden waren immer angenehm und haben auch Spass gemacht. Ich habe viel gelernt und mich beim Fahren immer wohlgefühlt. Kann die Fahrschule auf jeden Fall weiterempfehlen!",
+      "avatar": "EL"
+    },
+    {
+      "id": 4,
+      "name": "NCWiki",
+      "rating": 5,
+      "date": "vor 16 Stunden",
+      "text": "Super Fahrlehrer! Beim ersten mal bestanden!!!!!",
+      "avatar": "N"
+    },
+    {
+      "id": 5,
+      "name": "Aylin Bal",
+      "rating": 5,
+      "date": "vor 21 Stunden",
+      "text": "Vaxhid ist ein wirklich toller Fahrlehrer! Ich habe mich jedes Mal auf die Fahrstunden gefreut. Er ist sehr geduldig, freundlich und erklärt alles verständlich und ausführlich. Seine ruhige Art hat mir sehr geholfen, mich beim Fahren sicherer zu fühlen und immer mehr dazuzulernen. Ich kann ihn nur weiterempfehlen!!!",
+      "avatar": "AB"
+    },
+    {
+      "id": 6,
       "name": "Diellona Hyseni",
       "rating": 5,
-      "date": "vor 22 Stunden",
+      "date": "vor 5 Tagen",
       "text": "Heute habe ich meine praktische Fahrprüfung bestanden und bin super zufrieden. Ich habe mich in den Fahrstunden immer wohlgefühlt. Es war immer lustig, entspannt und gleichzeitig sehr lehrreich. Auch wenn ich mehrmals die gleichen Fehler gemacht habe, ist Vaxhid immer geduldig geblieben und hat mir nie ein schlechtes Gefühl gegeben. Ich kann ihn wirklich jedem weiterempfehlen! Vielen Dank für die tolle Zeit",
       "avatar": "DH"
     },
     {
-      "id": 2,
+      "id": 7,
       "name": "Talha Özarslan",
       "rating": 5,
-      "date": "vor 2 Tagen",
+      "date": "vor einer Woche",
       "text": "Sehr gute Fahrschule!, Ich habe mich bei den fahrstunden sehr wohl gefühlt und habe auch immer davon profitiert. Kann ich nur weiter Empfehlen!🙏 …",
       "avatar": "TÖ"
     },
     {
-      "id": 3,
+      "id": 8,
       "name": "Erkan Türksoy",
       "rating": 5,
-      "date": "vor 2 Wochen",
+      "date": "vor 3 Wochen",
       "text": "Super Fahrlehrer! Geduldig, freundlich und kompetent. Der Unterricht war immer angenehm und ich habe mich bestens auf die Prüfung vorbereitet gefühlt. Klare Empfehlung!",
       "avatar": "ET"
     },
     {
-      "id": 4,
+      "id": 9,
       "name": "Janik Pohl",
       "rating": 5,
       "date": "vor einem Monat",
@@ -36,7 +76,7 @@
       "avatar": "JP"
     },
     {
-      "id": 5,
+      "id": 10,
       "name": "Migjen Grabanica",
       "rating": 5,
       "date": "vor einem Monat",
@@ -44,7 +84,7 @@
       "avatar": "MG"
     },
     {
-      "id": 6,
+      "id": 11,
       "name": "Sara T",
       "rating": 5,
       "date": "vor einem Monat",
@@ -52,7 +92,7 @@
       "avatar": "ST"
     },
     {
-      "id": 7,
+      "id": 12,
       "name": "Adrian Gerber",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -60,7 +100,7 @@
       "avatar": "AG"
     },
     {
-      "id": 8,
+      "id": 13,
       "name": "Bayan Almahamid",
       "rating": 5,
       "date": "vor 3 Monaten",
@@ -68,7 +108,7 @@
       "avatar": "BA"
     },
     {
-      "id": 9,
+      "id": 14,
       "name": "Opa Lorin",
       "rating": 5,
       "date": "vor 3 Monaten",
@@ -76,7 +116,7 @@
       "avatar": "OL"
     },
     {
-      "id": 10,
+      "id": 15,
       "name": "Floriana Kafexholli",
       "rating": 5,
       "date": "Bearbeitet: vor 3 Monaten",
@@ -84,7 +124,7 @@
       "avatar": "FK"
     },
     {
-      "id": 11,
+      "id": 16,
       "name": "elma tahiri",
       "rating": 5,
       "date": "Bearbeitet: vor 3 Monaten",
@@ -92,7 +132,7 @@
       "avatar": "ET"
     },
     {
-      "id": 12,
+      "id": 17,
       "name": "B'n'C",
       "rating": 5,
       "date": "vor 3 Monaten",
@@ -100,7 +140,7 @@
       "avatar": "B"
     },
     {
-      "id": 13,
+      "id": 18,
       "name": "Jol Bajraktari",
       "rating": 5,
       "date": "Bearbeitet: vor 3 Monaten",
@@ -108,7 +148,7 @@
       "avatar": "JB"
     },
     {
-      "id": 14,
+      "id": 19,
       "name": "ViinccN GT",
       "rating": 5,
       "date": "vor 3 Monaten",
@@ -116,7 +156,7 @@
       "avatar": "VG"
     },
     {
-      "id": 15,
+      "id": 20,
       "name": "Galipcan Genc",
       "rating": 5,
       "date": "vor 3 Monaten",
@@ -124,7 +164,7 @@
       "avatar": "GG"
     },
     {
-      "id": 16,
+      "id": 21,
       "name": "Briketa Cara",
       "rating": 5,
       "date": "vor 4 Monaten",
@@ -132,7 +172,7 @@
       "avatar": "BC"
     },
     {
-      "id": 17,
+      "id": 22,
       "name": "Dean Kloter",
       "rating": 5,
       "date": "vor 4 Monaten",
@@ -140,7 +180,7 @@
       "avatar": "DK"
     },
     {
-      "id": 18,
+      "id": 23,
       "name": "Enisa Ibishi",
       "rating": 5,
       "date": "vor 4 Monaten",
@@ -148,7 +188,7 @@
       "avatar": "EI"
     },
     {
-      "id": 19,
+      "id": 24,
       "name": "g u",
       "rating": 5,
       "date": "vor 4 Monaten",
@@ -156,15 +196,15 @@
       "avatar": "GU"
     },
     {
-      "id": 20,
+      "id": 25,
       "name": "Nasim Wahedi",
       "rating": 5,
-      "date": "vor 4 Monaten",
+      "date": "vor 5 Monaten",
       "text": "Vielen Dank meinen Fahrlehrer.",
       "avatar": "NW"
     },
     {
-      "id": 21,
+      "id": 26,
       "name": "Edjon E",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -172,7 +212,7 @@
       "avatar": "EE"
     },
     {
-      "id": 22,
+      "id": 27,
       "name": "bruno „Tranquilo“ costa",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -180,7 +220,7 @@
       "avatar": "B„"
     },
     {
-      "id": 23,
+      "id": 28,
       "name": "Granit Maloku",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -188,7 +228,7 @@
       "avatar": "GM"
     },
     {
-      "id": 24,
+      "id": 29,
       "name": "Anton Krasniqi",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -196,7 +236,7 @@
       "avatar": "AK"
     },
     {
-      "id": 25,
+      "id": 30,
       "name": "Dardan Kista",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -204,7 +244,7 @@
       "avatar": "DK"
     },
     {
-      "id": 26,
+      "id": 31,
       "name": "dionis salihu",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -212,7 +252,7 @@
       "avatar": "DS"
     },
     {
-      "id": 27,
+      "id": 32,
       "name": "Elmin Dubica",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -220,7 +260,7 @@
       "avatar": "ED"
     },
     {
-      "id": 28,
+      "id": 33,
       "name": "Nikola Zubovic",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -228,23 +268,23 @@
       "avatar": "NZ"
     },
     {
-      "id": 29,
+      "id": 34,
       "name": "Shala Mendim",
       "rating": 5,
-      "date": "vor 6 Monaten",
+      "date": "vor 7 Monaten",
       "text": "Top Fahrschule! Sehr gute Organisation und tolle Unterstützung während der ganzen Ausbildung. Vaxhid hat alles ruhig und verständlich erklärt. Dank der guten Vorbereitung habe ich die Prüfung beim ersten mal bestanden. Vielen Dank für die tolle Betreuung. 🚗😊🤗 …",
       "avatar": "SM"
     },
     {
-      "id": 30,
+      "id": 35,
       "name": "AT ST",
       "rating": 5,
-      "date": "vor 6 Monaten",
+      "date": "vor 7 Monaten",
       "text": "Sehr seriöser und toller Fahrlehrer! Vaxhid ist sehr geduldig und freundlich! Bin sehr zufrieden vielen Dank!",
       "avatar": "AS"
     },
     {
-      "id": 31,
+      "id": 36,
       "name": "Fisnik Bytyqi",
       "rating": 5,
       "date": "vor 7 Monaten",
@@ -252,7 +292,7 @@
       "avatar": "FB"
     },
     {
-      "id": 32,
+      "id": 37,
       "name": "Erijona Kodra",
       "rating": 5,
       "date": "vor 7 Monaten",
@@ -260,7 +300,7 @@
       "avatar": "EK"
     },
     {
-      "id": 33,
+      "id": 38,
       "name": "Ard It",
       "rating": 5,
       "date": "vor 7 Monaten",
@@ -268,7 +308,7 @@
       "avatar": "AI"
     },
     {
-      "id": 34,
+      "id": 39,
       "name": "Denisa Komani",
       "rating": 5,
       "date": "vor 7 Monaten",
@@ -276,7 +316,7 @@
       "avatar": "DK"
     },
     {
-      "id": 35,
+      "id": 40,
       "name": "Emelly Gjoka",
       "rating": 5,
       "date": "vor 7 Monaten",
@@ -284,7 +324,7 @@
       "avatar": "EG"
     },
     {
-      "id": 36,
+      "id": 41,
       "name": "Andrea Montiel",
       "rating": 5,
       "date": "vor 8 Monaten",
@@ -292,7 +332,7 @@
       "avatar": "AM"
     },
     {
-      "id": 37,
+      "id": 42,
       "name": "Duena Basha",
       "rating": 5,
       "date": "vor 8 Monaten",
@@ -300,15 +340,15 @@
       "avatar": "DB"
     },
     {
-      "id": 40,
+      "id": 45,
       "name": "Joshua Hottiger",
       "rating": 5,
-      "date": "vor 8 Monaten",
+      "date": "vor 9 Monaten",
       "text": "Alles sehr gut erklärt, mit auch einer gewissen strenge. Was voll und ganz im normalen Bereich ist. Bin sehr zu frieden mit dem ganz Packet.",
       "avatar": "JH"
     },
     {
-      "id": 41,
+      "id": 46,
       "name": "Gershan Ambikaipalan",
       "rating": 5,
       "date": "vor 9 Monaten",
@@ -316,7 +356,7 @@
       "avatar": "GA"
     },
     {
-      "id": 42,
+      "id": 47,
       "name": "Carolina Gräub",
       "rating": 5,
       "date": "vor 10 Monaten",
@@ -324,7 +364,7 @@
       "avatar": "CG"
     },
     {
-      "id": 43,
+      "id": 48,
       "name": "Noizey",
       "rating": 5,
       "date": "vor 10 Monaten",
@@ -332,7 +372,7 @@
       "avatar": "N"
     },
     {
-      "id": 45,
+      "id": 50,
       "name": "Loresa Sylejmani",
       "rating": 5,
       "date": "vor 10 Monaten",
@@ -340,7 +380,7 @@
       "avatar": "LS"
     },
     {
-      "id": 46,
+      "id": 51,
       "name": "Dinis Bagnibov",
       "rating": 5,
       "date": "vor 10 Monaten",
@@ -348,7 +388,7 @@
       "avatar": "DB"
     },
     {
-      "id": 47,
+      "id": 52,
       "name": "D&L Streetshine",
       "rating": 5,
       "date": "vor 10 Monaten",
@@ -356,7 +396,7 @@
       "avatar": "DS"
     },
     {
-      "id": 48,
+      "id": 53,
       "name": "Dominik Simic",
       "rating": 5,
       "date": "vor 10 Monaten",
@@ -364,23 +404,23 @@
       "avatar": "DS"
     },
     {
-      "id": 49,
+      "id": 54,
       "name": "Elisa Mirdita",
       "rating": 5,
-      "date": "vor 10 Monaten",
+      "date": "vor 11 Monaten",
       "text": "Beste Fahrschule! Der Unterricht war nie langweilig, ich habe jedes Mal etwas Neues gelernt. Die Fahrstunden waren entspannt, aber trotzdem effektiv. Man merkt, dass hier mit Herz und Erfahrung gearbeitet wird. 5 Sterne verdient ⭐⭐⭐⭐⭐",
       "avatar": "EM"
     },
     {
-      "id": 50,
+      "id": 55,
       "name": "Tenzin Norzin",
       "rating": 5,
-      "date": "vor 10 Monaten",
+      "date": "vor 11 Monaten",
       "text": "Heute endlich bestanden 🥳\nEin riesen Dank an Vaxhid für die ganze Unterstützung! Er war immer mega geduldig und jede Fahrstunde war super lehrreich.\nKann ihn wirklich jedem empfehlen!! 🚗🙌 …",
       "avatar": "TN"
     },
     {
-      "id": 51,
+      "id": 56,
       "name": "Erza Thaqi",
       "rating": 5,
       "date": "vor 11 Monaten",
@@ -388,7 +428,7 @@
       "avatar": "ET"
     },
     {
-      "id": 52,
+      "id": 57,
       "name": "Nadine Gerber",
       "rating": 5,
       "date": "vor 11 Monaten",
@@ -396,7 +436,7 @@
       "avatar": "NG"
     },
     {
-      "id": 53,
+      "id": 58,
       "name": "Dila",
       "rating": 5,
       "date": "vor 11 Monaten",
@@ -404,15 +444,15 @@
       "avatar": "D"
     },
     {
-      "id": 54,
-      "name": "Superjuanito 2.0",
+      "id": 59,
+      "name": "Superjuanito",
       "rating": 5,
       "date": "vor 11 Monaten",
       "text": "Ich kann meinen Fahrlehrer nur wärmstens empfehlen! Vom ersten Tag an war der Unterricht professionell, geduldig und motivierend. Er hat immer Ruhe bewahrt, selbst wenn ich mal nervös oder unsicher war. Besonders toll fand ich, dass er alles verständlich erklärt und mir das nötige Selbstvertrauen fürs Fahren gegeben hat. Dank seiner Unterstützung habe ich meine Prüfung beim ersten Mal bestanden! Ein wirklich super Fahrlehrer – vielen Dank für alles!",
-      "avatar": "S2"
+      "avatar": "S"
     },
     {
-      "id": 55,
+      "id": 60,
       "name": "Timur Ünal",
       "rating": 5,
       "date": "vor 11 Monaten",
@@ -420,7 +460,7 @@
       "avatar": "TÜ"
     },
     {
-      "id": 56,
+      "id": 61,
       "name": "Lea Sermaxhaj",
       "rating": 5,
       "date": "vor 11 Monaten",
@@ -428,7 +468,7 @@
       "avatar": "LS"
     },
     {
-      "id": 57,
+      "id": 62,
       "name": "karacuha berra",
       "rating": 5,
       "date": "vor 11 Monaten",
@@ -436,7 +476,7 @@
       "avatar": "KB"
     },
     {
-      "id": 58,
+      "id": 63,
       "name": "jon",
       "rating": 5,
       "date": "vor 11 Monaten",
@@ -444,15 +484,15 @@
       "avatar": "J"
     },
     {
-      "id": 59,
+      "id": 64,
       "name": "Suleyman Zazaoglu",
       "rating": 5,
-      "date": "vor 11 Monaten",
+      "date": "vor einem Jahr",
       "text": "Ich war mit der Fahrschule 06 sehr zufrieden. Ich kann Vacit wärmstens empfehlen. Vielen Dank für alles.",
       "avatar": "SZ"
     },
     {
-      "id": 60,
+      "id": 65,
       "name": "Adriatik Isufi",
       "rating": 5,
       "date": "vor einem Jahr",

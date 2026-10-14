@@ -32,6 +32,7 @@ import { LottieAnimation } from "@/components/lottie-animation"
 import Link from "next/link"
 import { ReviewsSection } from "@/components/reviews-section"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { CountUp } from "@/components/count-up"
 
 export default function FahrschulePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -723,13 +724,18 @@ export default function FahrschulePage() {
                 </Button>
               </div>
 
-              <div className="flex items-center space-x-8 pt-8">
+              {/* Phones: two equal columns so the pair sits centered under the full-width buttons */}
+              <div className="grid grid-cols-2 gap-4 pt-8 sm:flex sm:items-center sm:gap-8">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-[#1351d8]">200+</div>
+                  <div className="text-2xl font-bold text-[#1351d8]">
+                    <CountUp to={250} suffix="+" />
+                  </div>
                   <div className="text-sm text-gray-600 dark:text-slate-300">Erfolgreiche Schüler</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-[#1351d8]">3+</div>
+                  <div className="text-2xl font-bold text-[#1351d8]">
+                    <CountUp to={4} suffix="+" />
+                  </div>
                   <div className="text-sm text-gray-600 dark:text-slate-300">Jahre Erfahrung</div>
                 </div>
               </div>
@@ -801,7 +807,7 @@ export default function FahrschulePage() {
                       im Raum Aargau/Olten
                     </div>
                     <div className="text-lg text-white/80 max-w-md mx-auto lg:mx-0">
-                      Über 200 zufriedene Fahrschüler haben bereits erfolgreich ihre Prüfung mit mir bestanden.
+                      Über 250 zufriedene Fahrschüler haben bereits erfolgreich ihre Prüfung mit mir bestanden.
                     </div>
                   </div>
                   <Button
@@ -1039,8 +1045,8 @@ export default function FahrschulePage() {
                 </div>
 
                 <p className="text-lg text-gray-600 dark:text-slate-300 leading-relaxed">
-                  Hallo! Ich bin Vaxhid, Ihr persönlicher Fahrlehrer bei Fahrschule 06. Mit über 3 Jahren Erfahrung und
-                  mehr als 200 erfolgreich ausgebildeten Fahrschülern bringe ich Sie sicher und entspannt zum
+                  Hallo! Ich bin Vaxhid, Ihr persönlicher Fahrlehrer bei Fahrschule 06. Mit über 4 Jahren Erfahrung und
+                  mehr als 250 erfolgreich ausgebildeten Fahrschülern bringe ich Sie sicher und entspannt zum
                   Führerschein.
                 </p>
 
@@ -1068,7 +1074,7 @@ export default function FahrschulePage() {
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-700 dark:text-slate-200">3+ Jahre Erfahrung</span>
+                    <span className="text-gray-700 dark:text-slate-200">4+ Jahre Erfahrung</span>
                   </div>
                 </div>
               </div>
