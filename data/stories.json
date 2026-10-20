@@ -370,6 +370,20 @@
       "image": "/Success/Aylin.webp",
       "caption": "Mega, Aylin! 🎉 Ab jetzt heisst es: freie Fahrt! 🚗 🥳🚗",
       "date": "2026-10-14"
+    },
+    {
+      "id": 54,
+      "name": "Dren",
+      "image": "/Success/Dren.webp",
+      "caption": "Geschafft, Dren! 🥳 Herzliche Gratulation zum Führerausweis!",
+      "date": "2026-10-16"
+    },
+    {
+      "id": 55,
+      "name": "Leart",
+      "image": "/Success/Leart.webp",
+      "caption": "Top gemacht, Leart! 💪🎉 Willkommen auf der Strasse!",
+      "date": "2026-10-19"
     }
   ]
 }
