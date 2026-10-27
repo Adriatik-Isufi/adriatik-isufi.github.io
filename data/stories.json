@@ -384,6 +384,20 @@
       "image": "/Success/Leart.webp",
       "caption": "Top gemacht, Leart! 💪🎉 Willkommen auf der Strasse!",
       "date": "2026-10-19"
+    },
+    {
+      "id": 56,
+      "name": "Sean",
+      "image": "/Success/Sean.webp",
+      "caption": "Bravo, Sean! 👏 Die harte Arbeit hat sich gelohnt! 💪",
+      "date": "2026-10-22"
+    },
+    {
+      "id": 57,
+      "name": "Erza",
+      "image": "/Success/Erza.webp",
+      "caption": "Herzlichen Glückwunsch zur bestandenen Fahrprüfung, Erza! 🥳🚗",
+      "date": "2026-10-26"
     }
   ]
 }
