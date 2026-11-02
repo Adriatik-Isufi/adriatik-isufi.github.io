@@ -398,6 +398,13 @@
       "image": "/Success/Erza.webp",
       "caption": "Herzlichen Glückwunsch zur bestandenen Fahrprüfung, Erza! 🥳🚗",
       "date": "2026-10-26"
+    },
+    {
+      "id": 58,
+      "name": "Pamela",
+      "image": "/Success/Pamela.webp",
+      "caption": "Super Leistung, Pamela! 👏 Wir sind stolz auf dich!",
+      "date": "2026-11-02"
     }
   ]
 }

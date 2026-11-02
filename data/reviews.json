@@ -1,10 +1,18 @@
 {
   "overallRating": 4.9,
-  "totalReviews": 69,
+  "totalReviews": 70,
   "googleReviewsUrl": "https://maps.app.goo.gl/FQjm2ZRoo8V7TPxz9",
   "reviews": [
     {
       "id": 1,
+      "name": "Pamela Hadushaj",
+      "rating": 5,
+      "date": "vor 2 Stunden",
+      "text": "Ich bin sehr zufrieden mit der Fahrschule 06! Sehr professionelle, geduldige und freundliche Fahrlehrer. Eine tolle Erfahrung von Anfang bis Ende. Absolut empfehlenswert! Vielen Dank für alles! 🚗❤️",
+      "avatar": "PH"
+    },
+    {
+      "id": 2,
       "name": "Erza Sakaj",
       "rating": 5,
       "date": "vor 6 Tagen",
@@ -12,7 +20,7 @@
       "avatar": "ES"
     },
     {
-      "id": 2,
+      "id": 3,
       "name": "Sean Hottiger",
       "rating": 5,
       "date": "vor einer Woche",
@@ -20,15 +28,15 @@
       "avatar": "SH"
     },
     {
-      "id": 3,
+      "id": 4,
       "name": "Leart Kastrati",
       "rating": 5,
-      "date": "vor einer Woche",
+      "date": "vor 2 Wochen",
       "text": "Vaxhid isch en super Fahrlehrer! er ish sehr geduldig, erklärt alles verständlich und git eim es sichers gfühl bim Fahre. d'Fahrstunde sind immer agnehm, lustig und mer lernt jedes Mal öppis dezue. Ich chan ihn jedem witerempfehle, wo de Führerschii mache will!",
       "avatar": "LK"
     },
     {
-      "id": 4,
+      "id": 5,
       "name": "Elona Xhelili",
       "rating": 5,
       "date": "vor 2 Wochen",
@@ -36,7 +44,7 @@
       "avatar": "EX"
     },
     {
-      "id": 5,
+      "id": 6,
       "name": "dren kadriaj",
       "rating": 5,
       "date": "vor 2 Wochen",
@@ -44,7 +52,7 @@
       "avatar": "DK"
     },
     {
-      "id": 6,
+      "id": 7,
       "name": "fatmir nuredini",
       "rating": 5,
       "date": "vor 2 Wochen",
@@ -52,7 +60,7 @@
       "avatar": "FN"
     },
     {
-      "id": 7,
+      "id": 8,
       "name": "Altin Cerkini",
       "rating": 5,
       "date": "vor 2 Wochen",
@@ -60,7 +68,7 @@
       "avatar": "AC"
     },
     {
-      "id": 8,
+      "id": 9,
       "name": "Endrit Shabani",
       "rating": 5,
       "date": "vor 2 Wochen",
@@ -68,7 +76,7 @@
       "avatar": "ES"
     },
     {
-      "id": 9,
+      "id": 10,
       "name": "NCWiki",
       "rating": 5,
       "date": "vor 2 Wochen",
@@ -76,7 +84,7 @@
       "avatar": "N"
     },
     {
-      "id": 10,
+      "id": 11,
       "name": "Aylin Bal",
       "rating": 5,
       "date": "vor 2 Wochen",
@@ -84,7 +92,7 @@
       "avatar": "AB"
     },
     {
-      "id": 11,
+      "id": 12,
       "name": "Diellona Hyseni",
       "rating": 5,
       "date": "vor 3 Wochen",
@@ -92,7 +100,7 @@
       "avatar": "DH"
     },
     {
-      "id": 12,
+      "id": 13,
       "name": "Talha Özarslan",
       "rating": 5,
       "date": "vor 3 Wochen",
@@ -100,7 +108,7 @@
       "avatar": "TÖ"
     },
     {
-      "id": 13,
+      "id": 14,
       "name": "Erkan Türksoy",
       "rating": 5,
       "date": "vor einem Monat",
@@ -108,7 +116,7 @@
       "avatar": "ET"
     },
     {
-      "id": 14,
+      "id": 15,
       "name": "Janik Pohl",
       "rating": 5,
       "date": "vor einem Monat",
@@ -116,7 +124,7 @@
       "avatar": "JP"
     },
     {
-      "id": 15,
+      "id": 16,
       "name": "Migjen Grabanica",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -124,7 +132,7 @@
       "avatar": "MG"
     },
     {
-      "id": 16,
+      "id": 17,
       "name": "Sara T",
       "rating": 5,
       "date": "vor 2 Monaten",
@@ -132,7 +140,7 @@
       "avatar": "ST"
     },
     {
-      "id": 17,
+      "id": 18,
       "name": "Adrian Gerber",
       "rating": 5,
       "date": "vor 3 Monaten",
@@ -140,7 +148,7 @@
       "avatar": "AG"
     },
     {
-      "id": 18,
+      "id": 19,
       "name": "Bayan Almahamid",
       "rating": 5,
       "date": "vor 4 Monaten",
@@ -148,7 +156,7 @@
       "avatar": "BA"
     },
     {
-      "id": 19,
+      "id": 20,
       "name": "Opa Lorin",
       "rating": 5,
       "date": "vor 4 Monaten",
@@ -156,7 +164,7 @@
       "avatar": "OL"
     },
     {
-      "id": 20,
+      "id": 21,
       "name": "Floriana Kafexholli",
       "rating": 5,
       "date": "Bearbeitet: vor 4 Monaten",
@@ -164,7 +172,7 @@
       "avatar": "FK"
     },
     {
-      "id": 21,
+      "id": 22,
       "name": "elma tahiri",
       "rating": 5,
       "date": "Bearbeitet: vor 4 Monaten",
@@ -172,7 +180,7 @@
       "avatar": "ET"
     },
     {
-      "id": 22,
+      "id": 23,
       "name": "B'n'C",
       "rating": 5,
       "date": "vor 4 Monaten",
@@ -180,7 +188,7 @@
       "avatar": "B"
     },
     {
-      "id": 23,
+      "id": 24,
       "name": "Jol Bajraktari",
       "rating": 5,
       "date": "Bearbeitet: vor 4 Monaten",
@@ -188,7 +196,7 @@
       "avatar": "JB"
     },
     {
-      "id": 24,
+      "id": 25,
       "name": "ViinccN GT",
       "rating": 5,
       "date": "vor 4 Monaten",
@@ -196,7 +204,7 @@
       "avatar": "VG"
     },
     {
-      "id": 25,
+      "id": 26,
       "name": "Galipcan Genc",
       "rating": 5,
       "date": "vor 4 Monaten",
@@ -204,7 +212,7 @@
       "avatar": "GG"
     },
     {
-      "id": 26,
+      "id": 27,
       "name": "Briketa Cara",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -212,7 +220,7 @@
       "avatar": "BC"
     },
     {
-      "id": 27,
+      "id": 28,
       "name": "Dean Kloter",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -220,7 +228,7 @@
       "avatar": "DK"
     },
     {
-      "id": 28,
+      "id": 29,
       "name": "Enisa Ibishi",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -228,7 +236,7 @@
       "avatar": "EI"
     },
     {
-      "id": 29,
+      "id": 30,
       "name": "g u",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -236,7 +244,7 @@
       "avatar": "GU"
     },
     {
-      "id": 30,
+      "id": 31,
       "name": "Nasim Wahedi",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -244,7 +252,7 @@
       "avatar": "NW"
     },
     {
-      "id": 31,
+      "id": 32,
       "name": "Edjon E",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -252,7 +260,7 @@
       "avatar": "EE"
     },
     {
-      "id": 32,
+      "id": 33,
       "name": "bruno „Tranquilo“ costa",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -260,7 +268,7 @@
       "avatar": "B„"
     },
     {
-      "id": 33,
+      "id": 34,
       "name": "Granit Maloku",
       "rating": 5,
       "date": "vor 5 Monaten",
@@ -268,7 +276,7 @@
       "avatar": "GM"
     },
     {
-      "id": 34,
+      "id": 35,
       "name": "Anton Krasniqi",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -276,7 +284,7 @@
       "avatar": "AK"
     },
     {
-      "id": 35,
+      "id": 36,
       "name": "Dardan Kista",
       "rating": 5,
       "date": "vor 6 Monaten",
@@ -284,7 +292,7 @@
       "avatar": "DK"
     },
     {
-      "id": 36,
+      "id": 37,
       "name": "dionis salihu",
       "rating": 5,
       "date": "vor 7 Monaten",
@@ -292,7 +300,7 @@
       "avatar": "DS"
     },
     {
-      "id": 37,
+      "id": 38,
       "name": "Elmin Dubica",
       "rating": 5,
       "date": "vor 7 Monaten",
@@ -300,7 +308,7 @@
       "avatar": "ED"
     },
     {
-      "id": 38,
+      "id": 39,
       "name": "Nikola Zubovic",
       "rating": 5,
       "date": "vor 7 Monaten",
@@ -308,7 +316,7 @@
       "avatar": "NZ"
     },
     {
-      "id": 39,
+      "id": 40,
       "name": "Shala Mendim",
       "rating": 5,
       "date": "vor 7 Monaten",
@@ -316,7 +324,7 @@
       "avatar": "SM"
     },
     {
-      "id": 40,
+      "id": 41,
       "name": "AT ST",
       "rating": 5,
       "date": "vor 7 Monaten",
@@ -324,7 +332,7 @@
       "avatar": "AS"
     },
     {
-      "id": 41,
+      "id": 42,
       "name": "Fisnik Bytyqi",
       "rating": 5,
       "date": "vor 7 Monaten",
@@ -332,7 +340,7 @@
       "avatar": "FB"
     },
     {
-      "id": 42,
+      "id": 43,
       "name": "Erijona Kodra",
       "rating": 5,
       "date": "vor 8 Monaten",
@@ -340,7 +348,7 @@
       "avatar": "EK"
     },
     {
-      "id": 43,
+      "id": 44,
       "name": "Ard It",
       "rating": 5,
       "date": "vor 8 Monaten",
@@ -348,7 +356,7 @@
       "avatar": "AI"
     },
     {
-      "id": 44,
+      "id": 45,
       "name": "Emelly Gjoka",
       "rating": 5,
       "date": "vor 8 Monaten",
@@ -356,7 +364,7 @@
       "avatar": "EG"
     },
     {
-      "id": 45,
+      "id": 46,
       "name": "Andrea Montiel",
       "rating": 5,
       "date": "vor 8 Monaten",
@@ -364,7 +372,7 @@
       "avatar": "AM"
     },
     {
-      "id": 46,
+      "id": 47,
       "name": "Duena Basha",
       "rating": 5,
       "date": "vor 8 Monaten",
@@ -372,7 +380,7 @@
       "avatar": "DB"
     },
     {
-      "id": 49,
+      "id": 50,
       "name": "Joshua Hottiger",
       "rating": 5,
       "date": "vor 9 Monaten",
@@ -380,7 +388,7 @@
       "avatar": "JH"
     },
     {
-      "id": 50,
+      "id": 51,
       "name": "Gershan Ambikaipalan",
       "rating": 5,
       "date": "vor 9 Monaten",
@@ -388,7 +396,7 @@
       "avatar": "GA"
     },
     {
-      "id": 51,
+      "id": 52,
       "name": "Carolina Gräub",
       "rating": 5,
       "date": "vor 10 Monaten",
@@ -396,7 +404,7 @@
       "avatar": "CG"
     },
     {
-      "id": 52,
+      "id": 53,
       "name": "Noizey",
       "rating": 5,
       "date": "vor 10 Monaten",
@@ -404,7 +412,7 @@
       "avatar": "N"
     },
     {
-      "id": 54,
+      "id": 55,
       "name": "Loresa Sylejmani",
       "rating": 5,
       "date": "vor 11 Monaten",
@@ -412,7 +420,7 @@
       "avatar": "LS"
     },
     {
-      "id": 55,
+      "id": 56,
       "name": "Dinis Bagnibov",
       "rating": 5,
       "date": "vor 11 Monaten",
@@ -420,7 +428,7 @@
       "avatar": "DB"
     },
     {
-      "id": 56,
+      "id": 57,
       "name": "D&L Streetshine",
       "rating": 5,
       "date": "vor 11 Monaten",
@@ -428,7 +436,7 @@
       "avatar": "DS"
     },
     {
-      "id": 57,
+      "id": 58,
       "name": "Dominik Simic",
       "rating": 5,
       "date": "vor 11 Monaten",
@@ -436,7 +444,7 @@
       "avatar": "DS"
     },
     {
-      "id": 58,
+      "id": 59,
       "name": "Elisa Mirdita",
       "rating": 5,
       "date": "vor 11 Monaten",
@@ -444,7 +452,7 @@
       "avatar": "EM"
     },
     {
-      "id": 59,
+      "id": 60,
       "name": "Tenzin Norzin",
       "rating": 5,
       "date": "vor 11 Monaten",
@@ -452,7 +460,7 @@
       "avatar": "TN"
     },
     {
-      "id": 60,
+      "id": 61,
       "name": "Erza Thaqi",
       "rating": 5,
       "date": "vor 11 Monaten",
@@ -460,7 +468,7 @@
       "avatar": "ET"
     },
     {
-      "id": 61,
+      "id": 62,
       "name": "Nadine Gerber",
       "rating": 5,
       "date": "vor 11 Monaten",
@@ -468,7 +476,7 @@
       "avatar": "NG"
     },
     {
-      "id": 62,
+      "id": 63,
       "name": "Dila",
       "rating": 5,
       "date": "vor einem Jahr",
@@ -476,7 +484,7 @@
       "avatar": "D"
     },
     {
-      "id": 63,
+      "id": 64,
       "name": "Superjuanito",
       "rating": 5,
       "date": "vor einem Jahr",
@@ -484,7 +492,7 @@
       "avatar": "S"
     },
     {
-      "id": 64,
+      "id": 65,
       "name": "Timur Ünal",
       "rating": 5,
       "date": "vor einem Jahr",
@@ -492,7 +500,7 @@
       "avatar": "TÜ"
     },
     {
-      "id": 65,
+      "id": 66,
       "name": "User muster",
       "rating": 5,
       "date": "vor einem Jahr",
@@ -500,7 +508,7 @@
       "avatar": "UM"
     },
     {
-      "id": 66,
+      "id": 67,
       "name": "karacuha berra",
       "rating": 5,
       "date": "vor einem Jahr",
@@ -508,7 +516,7 @@
       "avatar": "KB"
     },
     {
-      "id": 67,
+      "id": 68,
       "name": "jon",
       "rating": 5,
       "date": "vor einem Jahr",
@@ -516,7 +524,7 @@
       "avatar": "J"
     },
     {
-      "id": 68,
+      "id": 69,
       "name": "Suleyman Zazaoglu",
       "rating": 5,
       "date": "vor einem Jahr",
@@ -524,7 +532,7 @@
       "avatar": "SZ"
     },
     {
-      "id": 69,
+      "id": 70,
       "name": "Adriatik Isufi",
       "rating": 5,
       "date": "vor einem Jahr",
