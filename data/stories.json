@@ -405,6 +405,13 @@
       "image": "/Success/Pamela.webp",
       "caption": "Super Leistung, Pamela! 👏 Wir sind stolz auf dich!",
       "date": "2026-11-02"
+    },
+    {
+      "id": 59,
+      "name": "Nora",
+      "image": "/Success/Nora.webp",
+      "caption": "Herzlichen Glückwunsch, Nora! 🥳 Ab jetzt ohne Fahrlehrer unterwegs! 😎",
+      "date": "2026-11-05"
     }
   ]
 }
