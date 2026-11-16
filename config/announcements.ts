@@ -42,8 +42,17 @@ export interface Announcement {
 
 export const announcements: Announcement[] = [
   {
-    id: "vku-november-2026",
+    id: "vku-december-2026",
     enabled: true,
+    image: "/announcements/VKU-14-15-December-2026.webp",
+    imageAlt: "VKU Verkehrskundeunterricht - 14. & 15. Dezember 2026, 18:00–22:00 Uhr, Klubschule Migros Aarau - letzte Chance 2026",
+    showOnce: false,
+    startDate: null,
+    endDate: "2026-12-16",
+  },
+  {
+    id: "vku-november-2026",
+    enabled: false,
     image: "/announcements/VKU-25-26-November-2026.webp",
     imageAlt: "VKU Verkehrskundeunterricht - 25. & 26. November 2026, 18:00–22:00 Uhr, Klubschule Migros Aarau",
     showOnce: false,
